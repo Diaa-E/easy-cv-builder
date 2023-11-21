@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import './styles/App.css';
+import './styles/reset.css';
 
 function App() {
 

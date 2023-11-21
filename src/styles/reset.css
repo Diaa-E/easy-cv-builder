@@ -1,0 +1,29 @@
+*, *::before, *::after{
+    color-scheme: only light;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    border: none;
+    list-style: none;
+    transition-duration: 100ms; /*for media query transition"*/
+}
+
+*, *::after, *::before{
+    outline: none;
+    cursor: default;
+    user-select: none;
+}
+
+input[type=text]{
+    cursor: text;
+}
+
+img, picture, svg, video{
+    display: block;
+    max-width: 100%;
+}
+
+body{
+    min-height: 100vh;
+}
