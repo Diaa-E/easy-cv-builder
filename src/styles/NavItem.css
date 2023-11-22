@@ -24,16 +24,23 @@
     outline-color: var(--accent);
 }
 
+.nav-item:hover{
+    background-color: var(--main-dark);
+}
+
 .nav-item, .nav-item>img{
     cursor: pointer;
+    transition-duration: 500ms;
 }
 
 .selected{
     background-color: var(--accent);
-    transition-duration: .5s;
+}
+
+.selected:hover{
+    background-color: var(--accent);
 }
 
 .selected>img{
     filter: invert(1);
-    transition-duration: .5s;
 }
