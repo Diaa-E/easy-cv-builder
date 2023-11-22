@@ -30,7 +30,7 @@
 
 .nav-item, .nav-item>img{
     cursor: pointer;
-    transition-duration: 500ms;
+    transition-duration: 300ms;
 }
 
 .selected{
