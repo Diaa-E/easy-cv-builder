@@ -9,6 +9,7 @@ import experienceIcon from "./assets/experience.svg";
 import skillsIcon from "./assets/skills.svg";
 import languagesIcon from "./assets/languages.svg";
 import settingsIcon from "./assets/settings.svg";
+import logo from "./assets/logo.svg";
 
 import NavItem from './components/NavItem';
 
@@ -71,6 +72,7 @@ function App() {
 
   return (
     <>
+      <img src={logo} alt="Easy CV builder's logo" className='logo' />
       <nav className='nav'>
         {
           tabs.map(tab => (

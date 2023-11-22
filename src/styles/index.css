@@ -19,3 +19,8 @@ body {
   min-width: 100vw;
   min-height: 100vh;
 }
+
+.logo{
+  grid-area: logo;
+  width: 70px;
+}
