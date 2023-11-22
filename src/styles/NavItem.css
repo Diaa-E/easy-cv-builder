@@ -7,6 +7,7 @@
     border-radius: 10px;
     grid-area: nav;
     width: 70px;
+    gap: 1px;
 }
 
 .nav-item{
@@ -16,6 +17,11 @@
     place-content: center;
     border-radius: 10px;
     padding: 15px;
+}
+
+.nav-item:focus{
+    outline: auto;
+    outline-color: var(--accent);
 }
 
 .nav-item, .nav-item>img{
