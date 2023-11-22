@@ -6,7 +6,7 @@
     background-color: var(--main);
     border-radius: 10px;
     grid-area: nav;
-    width: 100px;
+    width: 70px;
 }
 
 .nav-item{
@@ -15,7 +15,7 @@
     place-items: center;
     place-content: center;
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
 }
 
 .nav-item, .nav-item>img{
