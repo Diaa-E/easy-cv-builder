@@ -1,0 +1,33 @@
+.nav{
+    display: flex;
+    flex-direction: column;
+    place-items: stretch;
+    place-content: stretch;
+    background-color: var(--main);
+    border-radius: 10px;
+    grid-area: nav;
+    width: 100px;
+}
+
+.nav-item{
+    background-color: var(--main);
+    display: flex;
+    place-items: center;
+    place-content: center;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.nav-item, .nav-item>img{
+    cursor: pointer;
+}
+
+.selected{
+    background-color: var(--accent);
+    transition-duration: .5s;
+}
+
+.selected>img{
+    filter: invert(1);
+    transition-duration: .5s;
+}
