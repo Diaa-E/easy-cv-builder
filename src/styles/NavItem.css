@@ -11,6 +11,7 @@
 }
 
 .nav-item{
+    will-change: filter, background-color;
     background-color: var(--main);
     display: flex;
     place-items: center;
@@ -25,7 +26,7 @@
 }
 
 .nav-item:hover{
-    background-color: var(--main-dark);
+    filter: brightness(90%);
 }
 
 .nav-item, .nav-item>img{
