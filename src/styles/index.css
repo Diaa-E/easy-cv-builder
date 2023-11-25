@@ -10,9 +10,13 @@
   -webkit-text-size-adjust: 100%;
 
   --accent: #0078ff;
+  --accent-hover: #429aff;
   --danger: #ff3121;
+  --danger-hover: #ff695e;
   --main: #ffffff;
   --main-dark: #ededed;
+  --text: #000000;
+  --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, 0.08);
 }
 
 body {
@@ -23,4 +27,18 @@ body {
 .logo{
   grid-area: logo;
   width: 70px;
+}
+
+.main-controls{
+  position: sticky;
+  top: 20px;
+  background-color: var(--main);
+  border-radius: 10px;
+  grid-area: controls;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-items: flex-end;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
 }

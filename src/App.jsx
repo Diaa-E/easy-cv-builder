@@ -12,6 +12,7 @@ import settingsIcon from "./assets/settings.svg";
 import logo from "./assets/logo.svg";
 
 import NavItem from './components/NavItem';
+import FormButton from './components/FormButton';
 
 import './styles/reset.css';
 import './styles/App.css';
@@ -73,6 +74,7 @@ function App() {
   return (
     <>
       <img src={logo} alt="Easy CV builder's logo" className='logo' />
+
       <nav className='nav'>
         {
           tabs.map(tab => (
@@ -87,6 +89,12 @@ function App() {
           ))
         }
       </nav>
+
+      <div id='mainControls' className='main-controls'>
+        <FormButton text='Clear' classes={["form-button", "red-button"]}/>
+        <FormButton text='Reset' classes={["form-button", "white-button"]}/>
+        <FormButton text='Print' classes={["form-button", "blue-button"]}/>
+      </div>
     </>
   )
 }

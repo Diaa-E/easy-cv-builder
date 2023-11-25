@@ -3,7 +3,7 @@
   min-height: 100vh;
   min-width: 100vw;
   display: grid;
-  grid-template-columns: 1fr 4fr 6fr;
+  grid-template-columns: min-content 4fr 6fr;
   grid-template-rows: repeat(4, min-content);
   grid-template-areas:
   "logo controls preview"

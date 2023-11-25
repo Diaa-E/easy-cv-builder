@@ -1,0 +1,36 @@
+.form-button{
+    padding: 5px;
+    min-width: 90px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 200ms;
+}
+
+.blue-button{
+    background-color: var(--accent);
+    color: var(--main);
+}
+
+.blue-button:hover{
+    background-color: var(--accent-hover);
+}
+
+.white-button{
+    background-color: var(--main);
+    color: var(--text);
+    border: 1px solid var(--text);
+}
+
+.white-button:hover{
+    background-color: var(--main-dark);
+}
+
+.red-button{
+    background-color: var(--danger);
+    color: var(--main);
+    margin: 0 auto 0 0;
+}
+
+.red-button:hover{
+    background-color: var(--danger-hover);
+}
