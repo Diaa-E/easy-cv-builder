@@ -71,6 +71,21 @@ function App() {
     setCurrentTab(id)
   }
 
+  function resetAll()
+  {
+
+  }
+
+  function clearAll()
+  {
+
+  }
+
+  function print()
+  {
+
+  }
+
   return (
     <>
       <img src={logo} alt="Easy CV builder's logo" className='logo' />
@@ -91,9 +106,9 @@ function App() {
       </nav>
 
       <div id='mainControls' className='main-controls'>
-        <FormButton text='Clear' classes={["form-button", "red-button"]}/>
-        <FormButton text='Reset' classes={["form-button", "white-button"]}/>
-        <FormButton text='Print' classes={["form-button", "blue-button"]}/>
+        <FormButton text='Clear' classes={["form-button", "red-button"]} onClick={clearAll}/>
+        <FormButton text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
+        <FormButton text='Print' classes={["form-button", "blue-button"]} onClick={print}/>
       </div>
     </>
   )
