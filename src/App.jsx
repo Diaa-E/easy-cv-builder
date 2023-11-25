@@ -18,6 +18,7 @@ import './styles/reset.css';
 import './styles/App.css';
 import PersonalInformation from './components/PersonalInformation';
 import Contact from './components/Contact';
+import sampleInfo from './sampleInfo';
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
   ]);
 
   const [currentTab, setCurrentTab] = useState(tabs[0].id);
+  const [personalInfo, setPersonalInfo] = useState(sampleInfo.personalInfo)
 
   function selectTab(id)
   {
@@ -115,7 +117,17 @@ function App() {
 
       <div className="editor">
         <h1 className='editor-title'>{tabs.find(tab => tab.id === currentTab).title}</h1>
-        <PersonalInformation enabled={tabs[0].id === currentTab} />
+        <PersonalInformation
+          enabled={tabs[0].id === currentTab}
+          fullName={personalInfo.fullName}
+          updateFullName={(e) => setPersonalInfo({...personalInfo, fullName: e.target.value})}
+          profession={personalInfo.profession}
+          updateProfession={(e) => setPersonalInfo({...personalInfo, profession: e.target.value})}
+          address={personalInfo.address}
+          updateAddress={(e) => setPersonalInfo({...personalInfo, address: e.target.value})}
+          zip={personalInfo.zip}
+          updateZip={(e) => setPersonalInfo({...personalInfo, zip: e.target.value})}
+        />
         <Contact enabled={tabs[3].id === currentTab} />
       </div>
     </>
