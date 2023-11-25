@@ -17,6 +17,7 @@ import FormButton from './components/FormButton';
 import './styles/reset.css';
 import './styles/App.css';
 import PersonalInformation from './components/PersonalInformation';
+import Contact from './components/Contact';
 
 
 function App() {
@@ -115,6 +116,7 @@ function App() {
       <div className="editor">
         <h1 className='editor-title'>{tabs.find(tab => tab.id === currentTab).title}</h1>
         <PersonalInformation enabled={tabs[0].id === currentTab} />
+        <Contact enabled={tabs[3].id === currentTab} />
       </div>
     </>
   )
