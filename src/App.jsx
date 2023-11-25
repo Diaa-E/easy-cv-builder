@@ -120,20 +120,24 @@ function App() {
         <h1 className='editor-title'>{tabs.find(tab => tab.id === currentTab).title}</h1>
         <PersonalInformation
           enabled={tabs[0].id === currentTab}
+          
           fullName={personalInfo.fullName}
-          updateFullName={(e) => setPersonalInfo({...personalInfo, fullName: e.target.value})}
           profession={personalInfo.profession}
-          updateProfession={(e) => setPersonalInfo({...personalInfo, profession: e.target.value})}
           address={personalInfo.address}
-          updateAddress={(e) => setPersonalInfo({...personalInfo, address: e.target.value})}
           zip={personalInfo.zip}
+
+          updateFullName={(e) => setPersonalInfo({...personalInfo, fullName: e.target.value})}
+          updateProfession={(e) => setPersonalInfo({...personalInfo, profession: e.target.value})}
+          updateAddress={(e) => setPersonalInfo({...personalInfo, address: e.target.value})}
           updateZip={(e) => setPersonalInfo({...personalInfo, zip: e.target.value})}
         />
         <Contact
           enabled={tabs[3].id === currentTab}
+
           phoneNumber={contact.phoneNumber}
-          updatePhoneNumber={(e) => setContact({...contact, phoneNumber: e.target.value})}
           email={contact.email}
+
+          updatePhoneNumber={(e) => setContact({...contact, phoneNumber: e.target.value})}
           updateEmail={(e) => setContact({...contact, email: e.target.value})}
         />
       </div>
