@@ -68,7 +68,8 @@ function App() {
   ]);
 
   const [currentTab, setCurrentTab] = useState(tabs[0].id);
-  const [personalInfo, setPersonalInfo] = useState(sampleInfo.personalInfo)
+  const [personalInfo, setPersonalInfo] = useState(sampleInfo.personalInfo);
+  const [contact, setContact] = useState(sampleInfo.contact);
 
   function selectTab(id)
   {
@@ -128,7 +129,13 @@ function App() {
           zip={personalInfo.zip}
           updateZip={(e) => setPersonalInfo({...personalInfo, zip: e.target.value})}
         />
-        <Contact enabled={tabs[3].id === currentTab} />
+        <Contact
+          enabled={tabs[3].id === currentTab}
+          phoneNumber={contact.phoneNumber}
+          updatePhoneNumber={(e) => setContact({...contact, phoneNumber: e.target.value})}
+          email={contact.email}
+          updateEmail={(e) => setContact({...contact, email: e.target.value})}
+        />
       </div>
     </>
   )
