@@ -55,14 +55,18 @@ body {
 }
 
 .editor{
+  display: flex;
+  flex-direction: column;
   grid-area: edit;
   background-color: var(--main);
   align-self: flex-start;
   border-radius: 10px;
   padding: 20px;
+  gap: 10px;
 }
 
 .editor-title{
   font-size: 24px;
   font-weight: bold;
+  margin: auto auto 40px 0;
 }
