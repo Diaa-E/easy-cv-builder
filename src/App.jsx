@@ -78,7 +78,8 @@ function App() {
 
   function resetAll()
   {
-
+    setPersonalInfo(sampleInfo.personalInfo);
+    setContact(sampleInfo.contact);
   }
 
   function clearAll()
@@ -120,7 +121,7 @@ function App() {
         <h1 className='editor-title'>{tabs.find(tab => tab.id === currentTab).title}</h1>
         <PersonalInformation
           enabled={tabs[0].id === currentTab}
-          
+
           fullName={personalInfo.fullName}
           profession={personalInfo.profession}
           address={personalInfo.address}
