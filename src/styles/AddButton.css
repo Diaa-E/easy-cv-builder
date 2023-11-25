@@ -1,0 +1,12 @@
+.add-button{
+    display: flex;
+    place-items: center;
+    place-content: center;
+    background-color: var(--main-dark);
+    border-radius: 5px;
+    margin: 30px 0 auto 0;
+}
+
+.add-button, .add-button>img{
+    cursor: pointer;
+}
