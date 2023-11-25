@@ -110,6 +110,10 @@ function App() {
         <FormButton text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
         <FormButton text='Print' classes={["form-button", "blue-button"]} onClick={print}/>
       </div>
+
+      <div className="editor">
+        <h1 className='editor-title'>{tabs.find(tab => tab.id === currentTab).title}</h1>
+      </div>
     </>
   )
 }

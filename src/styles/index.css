@@ -42,3 +42,15 @@ body {
   padding: 10px;
   gap: 10px;
 }
+
+.editor{
+  grid-area: edit;
+  background-color: var(--main);
+  align-self: flex-start;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.editor-title{
+  font-size: 24px;
+}
