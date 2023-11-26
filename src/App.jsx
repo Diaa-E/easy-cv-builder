@@ -19,8 +19,7 @@ import './styles/App.css';
 import PersonalInformation from './components/PersonalInformation';
 import Contact from './components/Contact';
 import sampleInfo from './sampleInfo';
-import AddButton from './components/AddButton';
-import EducationItem from './components/EducationItem';
+import Education from './components/Education';
 
 
 function App() {
@@ -72,6 +71,7 @@ function App() {
   const [currentTab, setCurrentTab] = useState(tabs[0].id);
   const [personalInfo, setPersonalInfo] = useState(sampleInfo.personalInfo);
   const [contact, setContact] = useState(sampleInfo.contact);
+  const [education, setEducation] = useState(sampleInfo.education);
 
   function selectTab(id)
   {
@@ -143,6 +143,8 @@ function App() {
           updatePhoneNumber={(e) => setContact({...contact, phoneNumber: e.target.value})}
           updateEmail={(e) => setContact({...contact, email: e.target.value})}
         />
+
+        <Education enabled={tabs[1].id === currentTab} educationItems={education}/>
       </div>
     </>
   )

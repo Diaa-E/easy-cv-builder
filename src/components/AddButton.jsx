@@ -5,7 +5,7 @@ export default function AddButton({onclick = () => {}})
 {
     return (
         <>
-            <button onclick={onclick} className="add-button">
+            <button onClick={onclick} className="add-button">
                 <img src={addIcon} alt="add a new item icon" />
             </button>
         </>
