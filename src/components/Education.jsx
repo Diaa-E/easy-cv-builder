@@ -1,7 +1,7 @@
 import EducationItem from "./EducationItem";
 import AddButton from "./AddButton";
 
-export default function Education({educationItems, enabled = true})
+export default function Education({educationItems, enabled = true, addItem = () => {}})
 {
     if (enabled)
     {
@@ -18,7 +18,7 @@ export default function Education({educationItems, enabled = true})
                                 />
                     })
                 }
-                <AddButton/>
+                <AddButton onclick={addItem}/>
             </div>
         )
     }

@@ -73,6 +73,16 @@ function App() {
   const [contact, setContact] = useState(sampleInfo.contact);
   const [education, setEducation] = useState(sampleInfo.education);
 
+  const emptyEducationItem = {
+    id: generateId(),
+    degree: "Degree",
+    school: "School",
+    location: "",
+    start: "",
+    end: "",
+    hidden: false
+  }
+
   function selectTab(id)
   {
     setCurrentTab(id)
@@ -144,7 +154,11 @@ function App() {
           updateEmail={(e) => setContact({...contact, email: e.target.value})}
         />
 
-        <Education enabled={tabs[1].id === currentTab} educationItems={education}/>
+        <Education
+          enabled={tabs[1].id === currentTab}
+          educationItems={education}
+          addItem={() => setEducation([...education, emptyEducationItem])}
+        />
       </div>
     </>
   )
