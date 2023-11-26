@@ -158,6 +158,12 @@ function App() {
           enabled={tabs[1].id === currentTab}
           educationItems={education}
           addItem={() => setEducation([...education, emptyEducationItem])}
+          toggleHide={(id) => {
+            const newEducation = Array.from(education);
+            const hideTarget = newEducation.findIndex(item => item.id === id);
+            newEducation[hideTarget].hidden = !newEducation[hideTarget].hidden;
+            setEducation(newEducation);
+          }}
         />
       </div>
     </>

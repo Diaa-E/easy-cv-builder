@@ -5,7 +5,7 @@ import editIcon from "../assets/images/edit.svg";
 
 import ItemButton from "./ItemButton";
 
-export default function EducationItem({degree, school, hidden = false, id})
+export default function EducationItem({degree, school, hidden = false, id, toggleHide})
 {
     return (
         <div className={hidden ? "education-item-hidden" : "education-item"}>
@@ -14,7 +14,7 @@ export default function EducationItem({degree, school, hidden = false, id})
                 <p>{school}</p>
             </div>
             <ItemButton text="edit item" imgPath={editIcon}/>
-            <ItemButton text="toggle visibility" imgPath={hidden ? hiddenIcon : visibleIcon}/>
+            <ItemButton onClick={() => toggleHide(id)} text="toggle visibility" imgPath={hidden ? hiddenIcon : visibleIcon}/>
         </div>
     )
 }

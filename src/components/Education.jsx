@@ -1,7 +1,7 @@
 import EducationItem from "./EducationItem";
 import AddButton from "./AddButton";
 
-export default function Education({educationItems, enabled = true, addItem = () => {}})
+export default function Education({educationItems, enabled = true, addItem, toggleHide})
 {
     if (enabled)
     {
@@ -15,6 +15,7 @@ export default function Education({educationItems, enabled = true, addItem = () 
                                     hidden={item.hidden}
                                     id={item.id}
                                     key={item.id}
+                                    toggleHide={toggleHide}
                                 />
                     })
                 }
