@@ -1,5 +1,4 @@
 import "../styles/EducationItem.css";
-import AddButton from "./AddButton";
 import hiddenIcon from "../assets/images/hidden.svg";
 import visibleIcon from "../assets/images/visible.svg";
 import editIcon from "../assets/images/edit.svg";
