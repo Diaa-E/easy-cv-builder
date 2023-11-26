@@ -4,7 +4,7 @@ import AddButton from "./AddButton";
 import TextInput from "./TextInput";
 import FormButton from "./FormButton";
 
-export default function Education({educationItems, enabled = true, addItem, toggleHide, updateItems})
+export default function Education({educationItems, enabled = true, addItem, toggleHide, updateItems, deleteItem})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -52,7 +52,14 @@ export default function Education({educationItems, enabled = true, addItem, togg
                         id="end"
                     />
                     <div className="edit-controls">
-                    <FormButton text='Delete' classes={["form-button", "red-button"]} onClick={() => {}}/>
+                    <FormButton
+                        text='Delete'
+                        classes={["form-button", "red-button"]}
+                        onClick={() => {
+                            setEditMode(false);
+                            deleteItem(currentItem);
+                        }
+                    }/>
                     <FormButton text='Cancel' classes={["form-button", "white-button"]} onClick={() => {setEditMode(false)}}/>
                     <FormButton
                         text='Save'

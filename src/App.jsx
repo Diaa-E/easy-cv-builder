@@ -170,6 +170,10 @@ function App() {
             newEducation[newItemIndex] = newItem;
             setEducation(newEducation);
           }}
+          deleteItem={(targetItem) => {
+            const newEducation = education.filter(item => item.id !== targetItem.id);
+            setEducation(newEducation);
+          }}
         />
       </div>
     </>
