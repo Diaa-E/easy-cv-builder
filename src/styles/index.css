@@ -72,8 +72,24 @@ body {
   margin: auto auto 40px 0;
 }
 
+h2{
+  font-size: 20px;
+  font-weight: bold;
+  margin: auto auto 20px 0;
+}
+
 .items-container{
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.edit-controls{
+  display: flex;
+  background-color: var(--main);
+  border-radius: 10px;
+  justify-items: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 0 0;
 }
