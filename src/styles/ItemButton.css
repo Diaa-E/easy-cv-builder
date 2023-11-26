@@ -1,0 +1,11 @@
+.item-button{
+    background-color: var(--none);
+}
+
+.item-button, .item-button>img{
+    cursor: pointer;
+}
+
+.item-button>img{
+    width: 40px;
+}

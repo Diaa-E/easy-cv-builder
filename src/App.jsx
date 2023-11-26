@@ -19,6 +19,8 @@ import './styles/App.css';
 import PersonalInformation from './components/PersonalInformation';
 import Contact from './components/Contact';
 import sampleInfo from './sampleInfo';
+import AddButton from './components/AddButton';
+import EducationItem from './components/EducationItem';
 
 
 function App() {
