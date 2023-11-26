@@ -7,8 +7,7 @@ import FormButton from "./FormButton";
 export default function Education({educationItems, enabled = true, addItem, toggleHide})
 {
     const [editMode, setEditMode] = useState(false);
-    const [currentItemId, setCurrentItemId] = useState(educationItems[0]?.id);
-    const currentItem = educationItems.find(item => item.id === currentItemId);
+    const [currentItem, setCurrentItem] = useState({});
 
     if (enabled)
     {
@@ -20,35 +19,35 @@ export default function Education({educationItems, enabled = true, addItem, togg
                     <TextInput
                         text={currentItem.degree}
                         labelText="Degree"
-                        onChange={() => {}}
+                        onChange={(e) => {setCurrentItem({...currentItem, degree: e.target.value})}}
                         placeholder="degree"
                         id="degree"
                     />
                     <TextInput
                         text={currentItem.school}
                         labelText="School"
-                        onChange={() => {}}
+                        onChange={(e) => {setCurrentItem({...currentItem, school: e.target.value})}}
                         placeholder="school"
                         id="school"
                     />
                     <TextInput
                         text={currentItem.location}
                         labelText="Location"
-                        onChange={() => {}}
+                        onChange={(e) => {setCurrentItem({...currentItem, location: e.target.value})}}
                         placeholder="location"
                         id="location"
                     />
                     <TextInput
                         text={currentItem.start}
                         labelText="Start"
-                        onChange={() => {}}
+                        onChange={(e) => {setCurrentItem({...currentItem, start: e.target.value})}}
                         placeholder="start"
                         id="start"
                     />
                     <TextInput
                         text={currentItem.end}
                         labelText="End"
-                        onChange={() => {}}
+                        onChange={(e) => {setCurrentItem({...currentItem, end: e.target.value})}}
                         placeholder="end"
                         id="end"
                     />
@@ -75,7 +74,7 @@ export default function Education({educationItems, enabled = true, addItem, togg
                                         toggleHide={toggleHide}
                                         toggleEdit={(id) => {
                                             setEditMode(true)
-                                            setCurrentItemId(id)
+                                            setCurrentItem(educationItems.find(item => item.id === id))
                                         }}
                                     />
                         })
