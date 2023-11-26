@@ -164,6 +164,12 @@ function App() {
             newEducation[hideTarget].hidden = !newEducation[hideTarget].hidden;
             setEducation(newEducation);
           }}
+          updateItems={(newItem) => {
+            const newEducation = Array.from(education);
+            const newItemIndex = newEducation.findIndex(item => item.id === newItem.id);
+            newEducation[newItemIndex] = newItem;
+            setEducation(newEducation);
+          }}
         />
       </div>
     </>
