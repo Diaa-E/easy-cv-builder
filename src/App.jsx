@@ -126,6 +126,14 @@ function App() {
     stateSetter(newArray);
   }
 
+  function updateItems(newItem, stateArray, stateSetter)
+  {
+    const newArray = Array.from(stateArray);
+    const newItemIndex = newArray.findIndex(item => item.id === newItem.id);
+    newArray[newItemIndex] = newItem;
+    stateSetter(newArray);
+  }
+
   return (
     <>
       <img src={logo} alt="Easy CV builder's logo" className='logo' />
@@ -181,12 +189,7 @@ function App() {
           educationItems={education}
           addItem={() => setEducation([...education, emptyEducationItem])}
           toggleHide={(id) => toggleHide(id, education, setEducation)}
-          updateItems={(newItem) => {
-            const newEducation = Array.from(education);
-            const newItemIndex = newEducation.findIndex(item => item.id === newItem.id);
-            newEducation[newItemIndex] = newItem;
-            setEducation(newEducation);
-          }}
+          updateItems={(newItem) => updateItems(newItem, education, setEducation)}
           deleteItem={(targetItem) => {
             const newEducation = education.filter(item => item.id !== targetItem.id);
             setEducation(newEducation);
@@ -198,12 +201,7 @@ function App() {
           experienceItems={experience}
           addItem={() => setExperience([...experience, emptyExperienceItem])}
           toggleHide={(id) => toggleHide(id, experience, setExperience)}
-          updateItems={(newItem) => {
-            const newExperience = Array.from(experience);
-            const newItemIndex = newExperience.findIndex(item => item.id === newItem.id);
-            newExperience[newItemIndex] = newItem;
-            setExperience(newExperience);
-          }}
+          updateItems={(newItem) => updateItems(newItem, experience, setExperience)}
           deleteItem={(targetItem) => {
             const newExperience = experience.filter(item => item.id !== targetItem.id);
             setExperience(newExperience);
