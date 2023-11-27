@@ -92,6 +92,7 @@ function App() {
   {
     setPersonalInfo(sampleInfo.personalInfo);
     setContact(sampleInfo.contact);
+    setEducation(sampleInfo.education);
   }
 
   function clearAll()
