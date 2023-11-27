@@ -134,6 +134,12 @@ function App() {
     stateSetter(newArray);
   }
 
+  function deleteItem(targetItem, stateArray, stateSetter)
+  {
+    const newArray = stateArray.filter(item => item.id !== targetItem.id);
+    stateSetter(newArray);
+  }
+
   return (
     <>
       <img src={logo} alt="Easy CV builder's logo" className='logo' />
@@ -190,10 +196,7 @@ function App() {
           addItem={() => setEducation([...education, emptyEducationItem])}
           toggleHide={(id) => toggleHide(id, education, setEducation)}
           updateItems={(newItem) => updateItems(newItem, education, setEducation)}
-          deleteItem={(targetItem) => {
-            const newEducation = education.filter(item => item.id !== targetItem.id);
-            setEducation(newEducation);
-          }}
+          deleteItem={(targetItem) => deleteItem(targetItem, education, setEducation)}
         />
 
         <Experience
@@ -202,10 +205,7 @@ function App() {
           addItem={() => setExperience([...experience, emptyExperienceItem])}
           toggleHide={(id) => toggleHide(id, experience, setExperience)}
           updateItems={(newItem) => updateItems(newItem, experience, setExperience)}
-          deleteItem={(targetItem) => {
-            const newExperience = experience.filter(item => item.id !== targetItem.id);
-            setExperience(newExperience);
-          }}
+          deleteItem={(targetItem) => deleteItem(targetItem, experience, setExperience)}
         />
       </div>
     </>
