@@ -1,26 +1,40 @@
-.list-item-text, .list-item-text-hidden{
+.list-item, .list-item-hidden{
     display: flex;
     justify-content: flex-end;
     border-radius: 5px;
     padding: 10px;
     gap: 5px;
+    transition-duration: 300ms;
 }
 
-.list-item-text{
+.list-item{
     background-color: var(--main);
     box-shadow: var(--shadow);
 }
 
-.list-item-text-hidden{
+.list-item-hidden{
     background-color: var(--main-dark);
 }
 
 .item-details{
     display: flex;
-    flex-direction: column;
     margin: auto auto auto 0;
 }
 
-.item-details>p{
+.item-details-column{
+    flex-direction: column;
+}
+
+.item-details-row{
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.item-details-column>p{
     font-size: 16px;
+}
+
+.item-icon{
+    width: 50px;
 }

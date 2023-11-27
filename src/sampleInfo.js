@@ -1,3 +1,6 @@
+import githubIcon from "./assets/link_icons/github.svg";
+import behanceIcon from "./assets/link_icons/behance.svg";
+
 const sampleInfo = {
     personalInfo: {
         fullName: "John Doe",
@@ -49,6 +52,18 @@ const sampleInfo = {
             end: "present",
             details: "",
             hidden: false,
+        }
+    ],
+    links: [
+        {
+            link: "github.com/john-doe",
+            icon: githubIcon,
+            hidden: false,
+        },
+        {
+            link: "behance.com/john-doe",
+            icon: behanceIcon,
+            hidden: true,
         }
     ],
 }

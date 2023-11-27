@@ -22,7 +22,6 @@ import sampleInfo from './sampleInfo';
 import Education from './components/Education';
 import Experience from './components/Experience';
 
-
 function App() {
 
   //Using state to preserve id's, a regular variable regenerates all id's with every render
@@ -189,7 +188,6 @@ function App() {
           updatePhoneNumber={(e) => setContact({...contact, phoneNumber: e.target.value})}
           updateEmail={(e) => setContact({...contact, email: e.target.value})}
         />
-
         <Education
           enabled={tabs[1].id === currentTab}
           educationItems={education}
@@ -198,7 +196,6 @@ function App() {
           updateItems={(newItem) => updateItems(newItem, education, setEducation)}
           deleteItem={(targetItem) => deleteItem(targetItem, education, setEducation)}
         />
-
         <Experience
           enabled={tabs[4].id === currentTab}
           experienceItems={experience}
