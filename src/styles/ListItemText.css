@@ -1,4 +1,4 @@
-.education-item, .education-item-hidden{
+.list-item-text, .list-item-text-hidden{
     display: flex;
     justify-content: flex-end;
     border-radius: 5px;
@@ -6,12 +6,12 @@
     gap: 5px;
 }
 
-.education-item{
+.list-item-text{
     background-color: var(--main);
     box-shadow: var(--shadow);
 }
 
-.education-item-hidden{
+.list-item-text-hidden{
     background-color: var(--main-dark);
 }
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import EducationItem from "./EducationItem";
+import ListItemText from "./ListItemText";
 import AddButton from "./AddButton";
 import TextInput from "./TextInput";
 import FormButton from "./FormButton";
@@ -78,9 +78,9 @@ export default function Education({educationItems, enabled = true, addItem, togg
                 <div className="items-container">
                     {
                         educationItems.map(item => {
-                            return <EducationItem
-                                        degree={item.degree}
-                                        school={item.school}
+                            return <ListItemText
+                                        firstLine={item.degree}
+                                        secondLine={item.school}
                                         hidden={item.hidden}
                                         id={item.id}
                                         key={item.id}
