@@ -28,7 +28,29 @@ const sampleInfo = {
             end: "2010", 
             hidden: true
         },
-    ]
+    ],
+    experience: [
+        {
+            id: 2,
+            company: "Unknown INC.",
+            location: "city, Country",
+            position: "Position title",
+            start: "2012",
+            end: "2013",
+            details: "",
+            hidden: true
+        },
+        {
+            id: 3,
+            company: "Known INC.",
+            location: "city, Country",
+            position: "Position title",
+            start: "2013",
+            end: "present",
+            details: "",
+            hidden: false,
+        }
+    ],
 }
 
 export default sampleInfo

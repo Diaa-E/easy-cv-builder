@@ -20,6 +20,7 @@ import PersonalInformation from './components/PersonalInformation';
 import Contact from './components/Contact';
 import sampleInfo from './sampleInfo';
 import Education from './components/Education';
+import Experience from './components/Experience';
 
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
   const [personalInfo, setPersonalInfo] = useState(sampleInfo.personalInfo);
   const [contact, setContact] = useState(sampleInfo.contact);
   const [education, setEducation] = useState(sampleInfo.education);
+  const [experience, setExperience] = useState(sampleInfo.experience);
 
   const emptyEducationItem = {
     id: generateId(),
@@ -81,7 +83,18 @@ function App() {
     start: "",
     end: "",
     hidden: false
-  }
+  };
+
+  const emptyExperienceItem = {
+    id: generateId(),
+    company: "Unknown INC.",
+    location: "city, Country",
+    position: "Position title",
+    start: "",
+    end: "",
+    details: "",
+    hidden: false,
+  };
 
   function selectTab(id)
   {
@@ -174,6 +187,28 @@ function App() {
           deleteItem={(targetItem) => {
             const newEducation = education.filter(item => item.id !== targetItem.id);
             setEducation(newEducation);
+          }}
+        />
+
+        <Experience
+          enabled={tabs[4].id === currentTab}
+          experienceItems={experience}
+          addItem={() => setExperience([...experience, emptyExperienceItem])}
+          toggleHide={(id) => {
+            const newExperience = Array.from(experience);
+            const hideTarget = newExperience.findIndex(item => item.id === id);
+            newExperience[hideTarget].hidden = !newExperience[hideTarget].hidden;
+            setExperience(newExperience);
+          }}
+          updateItems={(newItem) => {
+            const newExperience = Array.from(experience);
+            const newItemIndex = newExperience.findIndex(item => item.id === newItem.id);
+            newExperience[newItemIndex] = newItem;
+            setExperience(newExperience);
+          }}
+          deleteItem={(targetItem) => {
+            const newExperience = experience.filter(item => item.id !== targetItem.id);
+            setExperience(newExperience);
           }}
         />
       </div>

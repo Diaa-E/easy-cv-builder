@@ -1,0 +1,24 @@
+.text-area-input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.text-area-input-field{
+    background-color: var(--main-dark);
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 5px;
+    resize: none;
+    cursor: text;
+}
+
+.text-area-input-field:focus{
+    outline: auto;
+    outline-color: var(--accent);
+}
+
+.text-area-input-label{
+    font-size: 16px;
+    font-weight: bold;
+}

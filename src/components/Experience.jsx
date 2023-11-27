@@ -3,8 +3,9 @@ import ListItemText from "./ListItemText";
 import AddButton from "./AddButton";
 import TextInput from "./TextInput";
 import FormButton from "./FormButton";
+import TextAreaInput from "./TextAreaInput";
 
-export default function Education({educationItems, enabled = true, addItem, toggleHide, updateItems, deleteItem})
+export default function Experience({experienceItems, enabled = true, addItem, toggleHide, updateItems, deleteItem})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -15,20 +16,20 @@ export default function Education({educationItems, enabled = true, addItem, togg
         {
             return (
                 <div className="items-container">
-                    <h2>Edit Degree</h2>
+                    <h2>Edit Job</h2>
                     <TextInput
-                        text={currentItem.degree}
-                        labelText="Degree"
-                        onChange={(e) => {setCurrentItem({...currentItem, degree: e.target.value})}}
-                        placeholder="degree"
-                        id="degree"
+                        text={currentItem.company}
+                        labelText="Company"
+                        onChange={(e) => {setCurrentItem({...currentItem, company: e.target.value})}}
+                        placeholder="company"
+                        id="company"
                     />
                     <TextInput
-                        text={currentItem.school}
-                        labelText="School"
-                        onChange={(e) => {setCurrentItem({...currentItem, school: e.target.value})}}
-                        placeholder="school"
-                        id="school"
+                        text={currentItem.position}
+                        labelText="Position"
+                        onChange={(e) => {setCurrentItem({...currentItem, position: e.target.value})}}
+                        placeholder="position"
+                        id="position"
                     />
                     <TextInput
                         text={currentItem.location}
@@ -51,28 +52,35 @@ export default function Education({educationItems, enabled = true, addItem, togg
                         placeholder="end"
                         id="end"
                     />
+                    <TextAreaInput
+                        text={currentItem.details}
+                        labelText="Details"
+                        onChange={(e) => {setCurrentItem({...currentItem, details: e.target.value})}}
+                        placeholder="details"
+                        id="details"
+                    />
                     <div className="edit-controls">
-                    <FormButton
-                        text='Delete'
-                        classes={["form-button", "red-button"]}
-                        onClick={() => {
-                            setEditMode(false);
-                            deleteItem(currentItem);
-                        }}
-                    />
-                    <FormButton
-                        text='Cancel'
-                        classes={["form-button", "white-button"]}
-                        onClick={() => {setEditMode(false)}}
-                    />
-                    <FormButton
-                        text='Save'
-                        classes={["form-button", "blue-button"]}
-                        onClick={() => {
-                            setEditMode(false);
-                            updateItems(currentItem);
-                        }}
-                    />
+                        <FormButton
+                            text='Delete'
+                            classes={["form-button", "red-button"]}
+                            onClick={() => {
+                                setEditMode(false);
+                                deleteItem(currentItem);
+                            }}
+                        />
+                        <FormButton
+                            text='Cancel'
+                            classes={["form-button", "white-button"]}
+                            onClick={() => {setEditMode(false)}}
+                        />
+                        <FormButton
+                            text='Save'
+                            classes={["form-button", "blue-button"]}
+                            onClick={() => {
+                                setEditMode(false);
+                                updateItems(currentItem);
+                            }}
+                        />
                     </div>
                 </div>
             )
@@ -82,17 +90,17 @@ export default function Education({educationItems, enabled = true, addItem, togg
             return (
                 <div className="items-container">
                     {
-                        educationItems.map(item => {
+                        experienceItems.map(item => {
                             return <ListItemText
-                                        firstLine={item.degree}
-                                        secondLine={item.school}
+                                        firstLine={item.company}
+                                        secondLine={item.position}
                                         hidden={item.hidden}
                                         id={item.id}
                                         key={item.id}
                                         toggleHide={toggleHide}
                                         toggleEdit={(id) => {
                                             setEditMode(true)
-                                            setCurrentItem(educationItems.find(item => item.id === id))
+                                            setCurrentItem(experienceItems.find(item => item.id === id))
                                         }}
                                     />
                         })
