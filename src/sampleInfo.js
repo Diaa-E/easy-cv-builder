@@ -1,5 +1,6 @@
 import githubIcon from "./assets/link_icons/github.svg";
 import behanceIcon from "./assets/link_icons/behance.svg";
+import { v4 as generateId } from 'uuid';
 
 const sampleInfo = {
     personalInfo: {
@@ -14,7 +15,7 @@ const sampleInfo = {
     },
     education: [
         {
-            id: 0,
+            id: generateId(),
             degree: "B.S in computer science",
             school: "Unknown university",
             location: "Unknown city",
@@ -23,7 +24,7 @@ const sampleInfo = {
             hidden: false
         },
         {
-            id: 1,
+            id: generateId(),
             degree: "Master's in computer science",
             school: "Unknown university",
             location: "Unknown city",
@@ -34,7 +35,7 @@ const sampleInfo = {
     ],
     experience: [
         {
-            id: 2,
+            id: generateId(),
             company: "Unknown INC.",
             location: "city, Country",
             position: "Position title",
@@ -44,7 +45,7 @@ const sampleInfo = {
             hidden: true
         },
         {
-            id: 3,
+            id: generateId(),
             company: "Known INC.",
             location: "city, Country",
             position: "Position title",
@@ -56,11 +57,13 @@ const sampleInfo = {
     ],
     links: [
         {
+            id: generateId(),
             link: "github.com/john-doe",
             icon: githubIcon,
             hidden: false,
         },
         {
+            id: generateId(),
             link: "behance.com/john-doe",
             icon: behanceIcon,
             hidden: true,
