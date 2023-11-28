@@ -19,10 +19,10 @@ export default function Languages({languagetems, enabled = true, addItem, toggle
                     <h2>Edit Language</h2>
                     <TextInput
                         text={currentItem.name}
-                        labelText="Skill"
+                        labelText="Language"
                         onChange={(e) => {setCurrentItem({...currentItem, name: e.target.value})}}
-                        placeholder="skill"
-                        id="skill"
+                        placeholder="language"
+                        id="language"
                     />
                     <RangeInput
                         value={currentItem.level}
