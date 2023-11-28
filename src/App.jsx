@@ -24,6 +24,7 @@ import Experience from './components/Experience';
 import linkIcons from './iconsBarrel';
 import Links from './components/Links';
 import Skills from './components/Skills';
+import Languages from './components/Languages';
 
 function App() {
 
@@ -78,6 +79,7 @@ function App() {
   const [experience, setExperience] = useState(sampleInfo.experience);
   const [links, setLinks] = useState(sampleInfo.links);
   const [skills, setSkills] = useState(sampleInfo.skills);
+  const [languages, setLanguages] = useState(sampleInfo.languages);
 
   const emptyEducationItem = {
     id: generateId(),
@@ -110,6 +112,14 @@ function App() {
   const emptySkillsItem = {
     id: generateId(),
     name: "Skill",
+    level: 60,
+    hidden: false,
+    showLevel: true,
+  }
+
+  const emptyLanguageItem = {
+    id: generateId(),
+    name: "Language",
     level: 60,
     hidden: false,
     showLevel: true,
@@ -239,6 +249,14 @@ function App() {
           toggleHide={(id) => {toggleHide(id, skills, setSkills)}}
           updateItems={(newItem) => updateItems(newItem, skills, setSkills)}
           deleteItem={(targetItem) => deleteItem(targetItem, skills, setSkills)}
+        />
+        <Languages
+          enabled={tabs[6].id === currentTab}
+          languagetems={languages}
+          addItem={() => setLanguages([...languages, emptyLanguageItem])}
+          toggleHide={(id) => {toggleHide(id, languages, setLanguages)}}
+          updateItems={(newItem) => updateItems(newItem, languages, setLanguages)}
+          deleteItem={(targetItem) => deleteItem(targetItem, languages, setLanguages)}
         />
       </div>
     </>

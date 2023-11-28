@@ -90,7 +90,30 @@ const sampleInfo = {
             hidden: false,
             showLevel: false,
         }
-    ]
+    ],
+    languages: [
+        {
+            id: generateId(),
+            name: "English",
+            level: 20,
+            hidden: false,
+            showLevel: true,
+        },
+        {
+            id: generateId(),
+            name: "Russian",
+            level: 60,
+            hidden: true,
+            showLevel: true,
+        },
+        {
+            id: generateId(),
+            name: "Arabic",
+            level: 100,
+            hidden: false,
+            showLevel: false,
+        }
+    ],
 }
 
 export default sampleInfo
