@@ -52,27 +52,27 @@ export default function Education({educationItems, enabled = true, addItem, togg
                         id="end"
                     />
                     <div className="edit-controls">
-                    <FormButton
-                        text='Delete'
-                        classes={["form-button", "red-button"]}
-                        onClick={() => {
-                            setEditMode(false);
-                            deleteItem(currentItem);
-                        }}
-                    />
-                    <FormButton
-                        text='Cancel'
-                        classes={["form-button", "white-button"]}
-                        onClick={() => {setEditMode(false)}}
-                    />
-                    <FormButton
-                        text='Save'
-                        classes={["form-button", "blue-button"]}
-                        onClick={() => {
-                            setEditMode(false);
-                            updateItems(currentItem);
-                        }}
-                    />
+                        <FormButton
+                            text='Delete'
+                            classes={["form-button", "red-button"]}
+                            onClick={() => {
+                                setEditMode(false);
+                                deleteItem(currentItem);
+                            }}
+                        />
+                        <FormButton
+                            text='Cancel'
+                            classes={["form-button", "white-button"]}
+                            onClick={() => {setEditMode(false)}}
+                        />
+                        <FormButton
+                            text='Save'
+                            classes={["form-button", "blue-button"]}
+                            onClick={() => {
+                                setEditMode(false);
+                                updateItems(currentItem);
+                            }}
+                        />
                     </div>
                 </div>
             )

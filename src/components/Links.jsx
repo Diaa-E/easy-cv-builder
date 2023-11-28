@@ -29,7 +29,7 @@ export default function Links({linksItems, enabled = true, addItem, toggleHide, 
                     <TextInput
                         text={currentItem.url}
                         labelText="URL"
-                        onChange={(e) => {setCurrentItem({...currentItem, url: e.target.value})}}
+                        onChange={(e) => setCurrentItem({...currentItem, url: e.target.value})}
                         placeholder="url"
                         id="url"
                     />
