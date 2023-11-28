@@ -16,7 +16,7 @@ export default function Languages({languagetems, enabled = true, addItem, toggle
         {
             return (
                 <div className="items-container">
-                    <h2>Edit Skill</h2>
+                    <h2>Edit Language</h2>
                     <TextInput
                         text={currentItem.name}
                         labelText="Skill"
