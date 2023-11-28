@@ -1,6 +1,5 @@
-import githubIcon from "./assets/link_icons/github.svg";
-import behanceIcon from "./assets/link_icons/behance.svg";
 import { v4 as generateId } from 'uuid';
+import linkIcons from "./iconsBarrel";
 
 const sampleInfo = {
     personalInfo: {
@@ -59,13 +58,13 @@ const sampleInfo = {
         {
             id: generateId(),
             link: "github.com/john-doe",
-            icon: githubIcon,
+            icon: linkIcons.gitHub,
             hidden: false,
         },
         {
             id: generateId(),
             link: "behance.com/john-doe",
-            icon: behanceIcon,
+            icon: linkIcons.behance,
             hidden: true,
         }
     ],
