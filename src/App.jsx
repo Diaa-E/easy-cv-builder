@@ -23,6 +23,7 @@ import Education from './components/Education';
 import Experience from './components/Experience';
 import linkIcons from './iconsBarrel';
 import Links from './components/Links';
+import Skills from './components/Skills';
 
 function App() {
 
@@ -76,6 +77,7 @@ function App() {
   const [education, setEducation] = useState(sampleInfo.education);
   const [experience, setExperience] = useState(sampleInfo.experience);
   const [links, setLinks] = useState(sampleInfo.links);
+  const [skills, setSkills] = useState(sampleInfo.skills);
 
   const emptyEducationItem = {
     id: generateId(),
@@ -104,6 +106,14 @@ function App() {
     icon: linkIcons.find(item => item.name === "behance").icon,
     hidden: false,
   };
+
+  const emptySkillsItem = {
+    id: generateId(),
+    name: "Skill",
+    level: 60,
+    hidden: false,
+    showLevel: true,
+  }
 
   function selectTab(id)
   {
@@ -221,6 +231,14 @@ function App() {
           toggleHide={(id) => toggleHide(id, links, setLinks)}
           updateItems={(newItem) => updateItems(newItem, links, setLinks)}
           deleteItem={(targetItem) => deleteItem(targetItem, links, setLinks)}
+        />
+        <Skills
+          enabled={tabs[5].id === currentTab}
+          skillItems={skills}
+          addItem={() => setSkills([...skills, emptySkillsItem])}
+          toggleHide={(id) => {toggleHide(id, skills, setSkills)}}
+          updateItems={(newItem) => updateItems(newItem, skills, setSkills)}
+          deleteItem={(targetItem) => deleteItem(targetItem, skills, setSkills)}
         />
       </div>
     </>

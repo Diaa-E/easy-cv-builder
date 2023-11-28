@@ -68,6 +68,29 @@ const sampleInfo = {
             hidden: true,
         }
     ],
+    skills: [
+        {
+            id: generateId(),
+            name: "HTML",
+            level: 20,
+            hidden: false,
+            showLevel: true,
+        },
+        {
+            id: generateId(),
+            name: "CSS",
+            level: 60,
+            hidden: true,
+            showLevel: true,
+        },
+        {
+            id: generateId(),
+            name: "JavaScript",
+            level: 100,
+            hidden: false,
+            showLevel: false,
+        }
+    ]
 }
 
 export default sampleInfo
