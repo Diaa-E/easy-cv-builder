@@ -1,5 +1,6 @@
 import gitHubIcon from "./assets/link_icons/github.svg";
 import behanceIcon from "./assets/link_icons/behance.svg";
+import otherIcon from "./assets/link_icons/other.svg";
 
 const linkIcons = [
     {
@@ -9,7 +10,7 @@ const linkIcons = [
     {
         name: "behance",
         icon: behanceIcon,
-    }
+    },
 ].sort((a, b) => {
     if (a.name < b.name)
     {
@@ -24,5 +25,12 @@ const linkIcons = [
         return 0;
     }
 });
+
+linkIcons.push(
+    {
+        name: "other",
+        icon: otherIcon,
+    }
+);
 
 export default linkIcons;
