@@ -57,14 +57,14 @@ const sampleInfo = {
     links: [
         {
             id: generateId(),
-            link: "github.com/john-doe",
-            icon: linkIcons.gitHub,
+            url: "github.com/john-doe",
+            icon: linkIcons.find(item => item.name === "github").icon,
             hidden: false,
         },
         {
             id: generateId(),
-            link: "behance.com/john-doe",
-            icon: linkIcons.behance,
+            url: "behance.com/john-doe",
+            icon: linkIcons.find(item => item.name === "behance").icon,
             hidden: true,
         }
     ],

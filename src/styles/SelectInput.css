@@ -1,0 +1,22 @@
+.select-input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.select-input{
+    background-color: var(--main-dark);
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 10px 5px;
+}
+
+.select-input:focus{
+    outline: auto;
+    outline-color: var(--accent);
+}
+
+.select-input-label{
+    font-size: 16px;
+    font-weight: bold;
+}

@@ -21,6 +21,8 @@ import Contact from './components/Contact';
 import sampleInfo from './sampleInfo';
 import Education from './components/Education';
 import Experience from './components/Experience';
+import linkIcons from './iconsBarrel';
+import Links from './components/Links';
 
 function App() {
 
@@ -73,6 +75,7 @@ function App() {
   const [contact, setContact] = useState(sampleInfo.contact);
   const [education, setEducation] = useState(sampleInfo.education);
   const [experience, setExperience] = useState(sampleInfo.experience);
+  const [links, setLinks] = useState(sampleInfo.links);
 
   const emptyEducationItem = {
     id: generateId(),
@@ -92,6 +95,13 @@ function App() {
     start: "",
     end: "",
     details: "",
+    hidden: false,
+  };
+
+  const emptyLinkItem = {
+    id: generateId(),
+    url: "website.com/john-doe",
+    icon: linkIcons.find(item => item.name === "behance").icon,
     hidden: false,
   };
 
@@ -203,6 +213,14 @@ function App() {
           toggleHide={(id) => toggleHide(id, experience, setExperience)}
           updateItems={(newItem) => updateItems(newItem, experience, setExperience)}
           deleteItem={(targetItem) => deleteItem(targetItem, experience, setExperience)}
+        />
+        <Links
+          enabled={tabs[2].id === currentTab}
+          linksItems={links}
+          addItem={() => setLinks([...links, emptyLinkItem])}
+          toggleHide={(id) => toggleHide(id, links, setLinks)}
+          updateItems={(newItem) => updateItems(newItem, links, setLinks)}
+          deleteItem={(targetItem) => deleteItem(targetItem, links, setLinks)}
         />
       </div>
     </>
