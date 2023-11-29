@@ -1,5 +1,6 @@
 .nav{
     display: flex;
+    place-self: flex-start;
     flex-direction: column;
     place-items: stretch;
     place-content: stretch;
