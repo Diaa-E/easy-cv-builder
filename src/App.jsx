@@ -1,15 +1,8 @@
 import { useState } from 'react';
 import { v4 as generateId } from 'uuid';
 
-import personalInfoIcon from "./assets/images/personal_info.svg";
-import educationIcon from "./assets/images/education.svg";
-import linkIcon from "./assets/images/links.svg";
-import contactIcon from "./assets/images/contact.svg";
-import experienceIcon from "./assets/images/experience.svg";
-import skillsIcon from "./assets/images/skills.svg";
-import languagesIcon from "./assets/images/languages.svg";
-import settingsIcon from "./assets/images/settings.svg";
 import logo from "./assets/images/logo.svg";
+import appIcons from './appIconsBarrel';
 
 import NavItem from './components/NavItem';
 import FormButton from './components/FormButton';
@@ -33,42 +26,42 @@ function App() {
   const [tabs, setTabs] = useState([
     {
       title: "Personal Information",
-      icon: personalInfoIcon,
+      icon: appIcons.personalInfo,
       id: generateId(),
     },
     {
       title: "Education",
-      icon: educationIcon,
+      icon: appIcons.education,
       id: generateId(),
     },
     {
       title: "Links",
-      icon: linkIcon,
+      icon: appIcons.link,
       id: generateId(),
     },
     {
       title: "Contact",
-      icon: contactIcon,
+      icon: appIcons.contact,
       id: generateId(),
     },
     {
       title: "Experience",
-      icon: experienceIcon,
+      icon: appIcons.experience,
       id: generateId(),
     },
     {
       title: "Skills",
-      icon: skillsIcon,
+      icon: appIcons.skills,
       id: generateId(),
     },
     {
       title: "Languages",
-      icon: languagesIcon,
+      icon: appIcons.languages,
       id: generateId(),
     },
     {
       title: "Settings",
-      icon: settingsIcon,
+      icon: appIcons.settings,
       id: generateId(),
     }
   ]);
