@@ -1,10 +1,8 @@
 #root {
   background-color: var(--main-dark);
-  min-height: 100vh;
-  min-width: 100vw;
   display: grid;
   grid-template-columns: min-content 1fr 60vw;
-  grid-template-rows: repeat(4, min-content);
+  grid-template-rows: 60px repeat(3, min-content);
   grid-template-areas:
   "logo controls preview"
   "nav edit preview"
