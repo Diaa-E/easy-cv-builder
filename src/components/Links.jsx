@@ -4,7 +4,7 @@ import AddButton from "./AddButton";
 import TextInput from "./TextInput";
 import FormButton from "./FormButton";
 import SelectInput from "./SelectInput";
-import linkIcons from "../iconsBarrel";
+import linkIcons from "../linkIconsBarrel";
 
 export default function Links({linksItems, enabled = true, addItem, toggleHide, updateItems, deleteItem})
 {

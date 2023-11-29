@@ -1,0 +1,6 @@
+.preview{
+    grid-area: preview;
+    height: calc(1.41 * 50vw);
+    background-color: var(--main);
+    box-shadow: var(--shadow);
+}

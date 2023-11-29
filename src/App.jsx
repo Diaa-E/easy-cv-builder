@@ -21,10 +21,11 @@ import Contact from './components/Contact';
 import sampleInfo from './sampleInfo';
 import Education from './components/Education';
 import Experience from './components/Experience';
-import linkIcons from './iconsBarrel';
+import linkIcons from './linkIconsBarrel';
 import Links from './components/Links';
 import Skills from './components/Skills';
 import Languages from './components/Languages';
+import Preview from './components/Preview';
 
 function App() {
 
@@ -80,6 +81,7 @@ function App() {
   const [links, setLinks] = useState(sampleInfo.links);
   const [skills, setSkills] = useState(sampleInfo.skills);
   const [languages, setLanguages] = useState(sampleInfo.languages);
+  const [accentColor, setAccentColor] = useState("#ffb400");
 
   const emptyEducationItem = {
     id: generateId(),
@@ -259,6 +261,14 @@ function App() {
           deleteItem={(targetItem) => deleteItem(targetItem, languages, setLanguages)}
         />
       </div>
+      <Preview
+        accentColor={accentColor}
+        data={{
+          personalInfo: personalInfo,
+          contact: contact,
+          links: links
+        }}
+      />
     </>
   )
 }

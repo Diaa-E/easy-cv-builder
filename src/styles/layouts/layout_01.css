@@ -1,0 +1,62 @@
+.layout-01{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, min-content);
+    grid-template-areas: 
+    "header header"
+    "education education"
+    "experience experience"
+    "skills languages";
+}
+
+.layout-01 .header{
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, min-content);
+    grid-template-areas:
+    "name"
+    "profession"
+    "details";
+    place-items: center;
+    padding: 30px;
+    gap: 10px;
+}
+
+.layout-01 .name{
+    grid-area: name;
+    font-size: 42px;
+}
+
+.layout-01 .profession{
+    grid-area: profession;
+    font-size: 26px;
+}
+
+.layout-01 .header-item-container{
+    grid-area: details;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.layout-01 .header-item{
+    display: flex;
+    place-items: center;
+    gap: 5px;
+}
+
+.layout-01 .header-icon{
+    width: 25px;
+    will-change: filter;
+}
+
+.layout-01 .header-icon-bright{
+    filter: invert(1) ;
+}
+
+.layout-01 .header-item-text{
+    font-size: 16px;
+}

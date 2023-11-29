@@ -30,11 +30,6 @@
   --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, 0.08);
 }
 
-body {
-  min-width: 100vw;
-  min-height: 100vh;
-}
-
 .logo{
   grid-area: logo;
   width: 70px;
@@ -72,7 +67,7 @@ body {
   margin: auto auto 40px 0;
 }
 
-h2{
+.items-container>h2{
   font-size: 20px;
   font-weight: bold;
   margin: auto auto 20px 0;
