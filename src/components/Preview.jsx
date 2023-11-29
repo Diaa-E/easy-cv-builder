@@ -19,7 +19,16 @@ export default function Preview({accentColor, layout = "layout-01", data})
                     <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.contact} text={data.contact.phoneNumber}/>
                     <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.email} text={data.contact.email}/>
                     {
-                        data.links.map(link => <HeaderItem key={link.id} useBrightIcon={!useDarkText} icon={link.icon} text={link.url}/>)
+                        data.links.map(link => {
+                            if (link.hidden)
+                            {
+                                return <></>
+                            }
+                            else
+                            {
+                                return  <HeaderItem key={link.id} useBrightIcon={!useDarkText} icon={link.icon} text={link.url}/>
+                            }
+                        })
                     }
                 </div>
             </div>
