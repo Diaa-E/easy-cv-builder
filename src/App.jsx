@@ -261,6 +261,7 @@ function App() {
           contact: contact,
           links: links,
           education: education,
+          experience: experience,
         }}
       />
     </>

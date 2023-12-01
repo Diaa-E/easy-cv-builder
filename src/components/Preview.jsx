@@ -29,8 +29,14 @@ export default function Preview({accentColor, layout = "layout-01", data})
             <ul className="section education">
                 <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Education</h2>
                 {
-                    data.education.map(item => <EducationItem  key={item.id} hidden={item.hidden} educationItem={item}/>)
+                    data.education.map(item => <EducationItem key={item.id} hidden={item.hidden} educationItem={item}/>)
                 }
+            </ul>
+            <ul className="section experience">
+            <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Experience</h2>
+            {
+                data.experience.map(item => <ExperienceItem key={item.id} hidden={item.hidden} experienceItem={item}/>)
+            }
             </ul>
         </div>
     )
@@ -71,6 +77,32 @@ function EducationItem({educationItem, hidden = false})
                     <p>{educationItem.degree}</p>
                     <p>{educationItem.school}</p>
                 </div>
+            </li>
+        )
+    }
+}
+
+function ExperienceItem({experienceItem, hidden = false})
+{
+    if (hidden)
+    {
+        return <></>
+    }
+    else
+    {
+        return(
+            <li>
+                <div className="vertical-container">
+                    <p>{experienceItem.start}-{experienceItem.end}</p>
+                    <p>{experienceItem.location}</p>
+                </div>
+                <div className="vertical-container">
+                    <p>{experienceItem.company}</p>
+                    <p>{experienceItem.position}</p>
+                </div>
+                <dir className="vertical-container">
+                    <p>{experienceItem.details}</p>
+                </dir>
             </li>
         )
     }
