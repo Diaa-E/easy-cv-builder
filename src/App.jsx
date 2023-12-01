@@ -262,6 +262,7 @@ function App() {
           links: links,
           education: education,
           experience: experience,
+          skills: skills,
         }}
       />
     </>

@@ -33,10 +33,16 @@ export default function Preview({accentColor, layout = "layout-01", data})
                 }
             </ul>
             <ul className="section experience">
-            <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Experience</h2>
-            {
-                data.experience.map(item => <ExperienceItem key={item.id} hidden={item.hidden} experienceItem={item}/>)
-            }
+                <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Experience</h2>
+                {
+                    data.experience.map(item => <ExperienceItem key={item.id} hidden={item.hidden} experienceItem={item}/>)
+                }
+            </ul>
+            <ul className="section skills">
+                 <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Skills</h2>
+                 {
+                    data.skills.map(item => <SkillItem key={item.id} barColor={accentColor} hidden={item.hidden} skillItem={item}/>)
+                 }
             </ul>
         </div>
     )
@@ -104,6 +110,41 @@ function ExperienceItem({experienceItem, hidden = false})
                     <p>{experienceItem.details}</p>
                 </dir>
             </li>
+        )
+    }
+}
+
+function SkillItem({barColor, skillItem, hidden = false})
+{
+    if (hidden)
+    {
+        return <></>
+    }
+    else
+    {
+        return (
+            <li>
+                <div className="horizontal-cotnainer">
+                    <p>{skillItem.name}</p>
+                    <LevelBar barColor={barColor} hidden={!skillItem.showLevel} level={skillItem.level}/>
+                </div>
+            </li>
+        )
+    }
+}
+
+function LevelBar({barColor, level, hidden})
+{
+    if (hidden)
+    {
+        return <></>
+    }
+    else
+    {
+        return (
+            <div className="bar-container">
+                <div style={{width: `${level}px`, backgroundColor: barColor}} className="bar"></div>
+            </div>
         )
     }
 }

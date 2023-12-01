@@ -107,7 +107,28 @@
     flex-direction: column;
 }
 
+.layout-01 .horizontal-cotnainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .layout-01 .section p{
     font-size: 16px;
     text-align: left;
+}
+
+.layout-01 .bar-container{
+    display: flex;
+    place-content: flex-start;
+    place-content: flex-start;
+    border: 1px solid var(--text);
+    width: 100px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.bar{
+    border-radius: 5px;
 }
