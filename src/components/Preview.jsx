@@ -26,12 +26,12 @@ export default function Preview({accentColor, layout = "layout-01", data})
                     }
                 </div>
             </div>
-            <div className="education">
+            <ul className="section education">
                 <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Education</h2>
                 {
                     data.education.map(item => <EducationItem  key={item.id} hidden={item.hidden} educationItem={item}/>)
                 }
-            </div>
+            </ul>
         </div>
     )
 }
@@ -62,16 +62,16 @@ function EducationItem({educationItem, hidden = false})
     else
     {
         return(
-            <div className="section-item-container">
-                <div className="details-container">
-                    <p className="section-details">{educationItem.start}-{educationItem.end}</p>
-                    <p className="section-details">{educationItem.location}</p>
+            <li>
+                <div className="vertical-container">
+                    <p>{educationItem.start}-{educationItem.end}</p>
+                    <p>{educationItem.location}</p>
                 </div>
-                <div className="details-container">
-                    <p className="section-details">{educationItem.degree}</p>
-                    <p className="section-details">{educationItem.school}</p>
+                <div className="vertical-container">
+                    <p>{educationItem.degree}</p>
+                    <p>{educationItem.school}</p>
                 </div>
-            </div>
+            </li>
         )
     }
 }

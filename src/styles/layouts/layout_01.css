@@ -68,18 +68,33 @@
     padding: 5px;
 }
 
-.layout-01 .education{
-    grid-area: education;
+.layout-01 .section{
     padding: 20px;
     display: flex;
     flex-direction: column;
 }
 
-.layout-01 .section-item-container:nth-child(odd){
+.layout-01 .education{
+    grid-area: education;
+}
+
+.layout-01 .experience{
+    grid-area: experience;
+}
+
+.layout-01 .skills{
+    grid-area: skills;
+}
+
+.layout-01 .languages{
+    grid-area: languages;
+}
+
+.layout-01 .section>li:nth-child(odd){
     background-color: var(--main-dark);
 }
 
-.layout-01 .section-item-container{
+.layout-01 .section>li{
     display: grid;
     grid-template-rows: min-content;
     grid-auto-flow: column;
@@ -87,12 +102,12 @@
     padding: 10px;
 }
 
-.layout-01 .details-container{
+.layout-01 .vertical-container{
     display: flex;
     flex-direction: column;
 }
 
-.layout-01 .section-details{
+.layout-01 .section p{
     font-size: 16px;
     text-align: left;
 }
