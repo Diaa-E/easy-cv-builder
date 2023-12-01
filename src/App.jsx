@@ -259,7 +259,8 @@ function App() {
         data={{
           personalInfo: personalInfo,
           contact: contact,
-          links: links
+          links: links,
+          education: education,
         }}
       />
     </>

@@ -60,3 +60,39 @@
 .layout-01 .header-item-text{
     font-size: 16px;
 }
+
+.layout-01 .section-title{
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
+
+.layout-01 .education{
+    grid-area: education;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-01 .section-item-container:nth-child(odd){
+    background-color: var(--main-dark);
+}
+
+.layout-01 .section-item-container{
+    display: grid;
+    grid-template-rows: min-content;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    padding: 10px;
+}
+
+.layout-01 .details-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-01 .section-details{
+    font-size: 16px;
+    text-align: left;
+}

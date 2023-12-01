@@ -8,6 +8,9 @@ export default function Preview({accentColor, layout = "layout-01", data})
 {
     const useDarkText = isBright(accentColor);
     const textColor = useDarkText? "var(--text)" : "var(--main)";
+    const secondaryBackgroundColor = useDarkText? "var(--text)" : "var(--main-dark";
+    const secondaryColor = useDarkText? accentColor : "var(--text)";
+
     return (
         <div className={`preview ${layout}`}>
             <div style={{backgroundColor: accentColor, color: textColor}} className="header">
@@ -22,6 +25,12 @@ export default function Preview({accentColor, layout = "layout-01", data})
                         data.links.map(link => <HeaderItem key={link.id} useBrightIcon={!useDarkText} icon={link.icon} text={link.url} hidden={link.hidden}/>)
                     }
                 </div>
+            </div>
+            <div className="education">
+                <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Education</h2>
+                {
+                    data.education.map(item => <EducationItem  key={item.id} hidden={item.hidden} educationItem={item}/>)
+                }
             </div>
         </div>
     )
@@ -39,6 +48,29 @@ function HeaderItem({icon, text, useBrightIcon, hidden = false})
             <div className="header-item">
                 <img className={`header-icon ${useBrightIcon? "header-icon-bright" : ""}`} src={icon} alt="icon"/>
                 <p className="header-item-text">{text}</p>
+            </div>
+        )
+    }
+}
+
+function EducationItem({educationItem, hidden = false})
+{
+    if (hidden)
+    {
+        return <></>
+    }
+    else
+    {
+        return(
+            <div className="section-item-container">
+                <div className="details-container">
+                    <p className="section-details">{educationItem.start}-{educationItem.end}</p>
+                    <p className="section-details">{educationItem.location}</p>
+                </div>
+                <div className="details-container">
+                    <p className="section-details">{educationItem.degree}</p>
+                    <p className="section-details">{educationItem.school}</p>
+                </div>
             </div>
         )
     }
