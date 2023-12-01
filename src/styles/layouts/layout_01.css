@@ -19,18 +19,18 @@
     "profession"
     "details";
     place-items: center;
-    padding: 30px;
-    gap: 10px;
+    padding: 2vw;
+    gap: 1vw;
 }
 
 .layout-01 .name{
     grid-area: name;
-    font-size: 42px;
+    font-size: 3vw;
 }
 
 .layout-01 .profession{
     grid-area: profession;
-    font-size: 26px;
+    font-size: 2vw;
 }
 
 .layout-01 .header-item-container{
@@ -38,18 +38,18 @@
     display: flex;
     place-items: center;
     place-content: center;
-    gap: 20px;
+    gap: 1.5vw;
     flex-wrap: wrap;
 }
 
 .layout-01 .header-item{
     display: flex;
     place-items: center;
-    gap: 5px;
+    gap: .5vw;
 }
 
 .layout-01 .header-icon{
-    width: 25px;
+    width: 2vw;
     will-change: filter;
 }
 
@@ -58,18 +58,18 @@
 }
 
 .layout-01 .header-item-text{
-    font-size: 16px;
+    font-size: 1vw;
 }
 
 .layout-01 .section-title{
-    font-size: 26px;
+    font-size: 1.5vw;
     font-weight: bold;
     text-align: center;
-    padding: 5px;
+    padding: .5vw;
 }
 
 .layout-01 .section{
-    padding: 20px;
+    padding: 1.5vw;
     display: flex;
     flex-direction: column;
 }
@@ -99,7 +99,7 @@
     grid-template-rows: min-content;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
-    padding: 10px;
+    padding: .5vw;
 }
 
 .layout-01 .vertical-container{
@@ -115,7 +115,7 @@
 }
 
 .layout-01 .section p{
-    font-size: 16px;
+    font-size: 1vw;
     text-align: left;
 }
 
@@ -124,11 +124,11 @@
     place-content: flex-start;
     place-content: flex-start;
     border: 1px solid var(--text);
-    width: 100px;
-    height: 10px;
-    border-radius: 5px;
+    width: 10vw;
+    height: .7vw;
+    border-radius: .7vw;
 }
 
 .bar{
-    border-radius: 5px;
+    border-radius: .7vw;
 }

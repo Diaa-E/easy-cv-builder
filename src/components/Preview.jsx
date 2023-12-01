@@ -168,7 +168,7 @@ function LevelBar({barColor, level, hidden})
     {
         return (
             <div className="bar-container">
-                <div style={{width: `${level}px`, backgroundColor: barColor}} className="bar"></div>
+                <div style={{width: `${+level/10}vw`, backgroundColor: barColor}} className="bar"></div>
             </div>
         )
     }
