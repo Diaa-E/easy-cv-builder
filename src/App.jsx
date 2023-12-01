@@ -263,6 +263,7 @@ function App() {
           education: education,
           experience: experience,
           skills: skills,
+          languages: languages,
         }}
       />
     </>

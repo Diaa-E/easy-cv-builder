@@ -44,6 +44,12 @@ export default function Preview({accentColor, layout = "layout-01", data})
                     data.skills.map(item => <SkillItem key={item.id} barColor={accentColor} hidden={item.hidden} skillItem={item}/>)
                  }
             </ul>
+            <ul className="section languages">
+                 <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Languages</h2>
+                 {
+                    data.languages.map(item => <LanguageItem key={item.id} barColor={accentColor} hidden={item.hidden} languageItem={item}/>)
+                 }
+            </ul>
         </div>
     )
 }
@@ -109,6 +115,25 @@ function ExperienceItem({experienceItem, hidden = false})
                 <dir className="vertical-container">
                     <p>{experienceItem.details}</p>
                 </dir>
+            </li>
+        )
+    }
+}
+
+function LanguageItem({barColor, languageItem, hidden = false})
+{
+    if (hidden)
+    {
+        return <></>
+    }
+    else
+    {
+        return (
+            <li>
+                <div className="horizontal-cotnainer">
+                    <p>{languageItem.name}</p>
+                    <LevelBar barColor={barColor} hidden={!languageItem.showLevel} level={languageItem.level}/>
+                </div>
             </li>
         )
     }
