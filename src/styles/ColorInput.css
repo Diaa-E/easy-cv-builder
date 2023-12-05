@@ -1,0 +1,13 @@
+.color-input{
+    opacity: 0;
+}
+
+.color-input-label, .color-input{
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.color-input-label:focus-within{
+    outline: auto;
+    outline-color: var(--accent);
+}

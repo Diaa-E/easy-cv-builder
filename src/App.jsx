@@ -19,6 +19,7 @@ import Links from './components/Links';
 import Skills from './components/Skills';
 import Languages from './components/Languages';
 import Preview from './components/Preview';
+import Settings from './components/Settings';
 
 function App() {
 
@@ -252,6 +253,11 @@ function App() {
           toggleHide={(id) => {toggleHide(id, languages, setLanguages)}}
           updateItems={(newItem) => updateItems(newItem, languages, setLanguages)}
           deleteItem={(targetItem) => deleteItem(targetItem, languages, setLanguages)}
+        />
+        <Settings
+          enabled={tabs[7].id === currentTab}
+          color={accentColor}
+          updateColor={(e) => setAccentColor(e.target.value)}
         />
       </div>
       <Preview
