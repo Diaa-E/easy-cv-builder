@@ -4,7 +4,7 @@ import appIcons from "../appIconsBarrel";
 
 import { isBright } from "../utility";
 
-export default function Preview({accentColor, layout = "layout-01", data})
+export default function Preview({accentColor, layout = "layout-01", font, data})
 {
     const useDarkText = isBright(accentColor);
     const textColor = useDarkText? "var(--text)" : "var(--main)";
@@ -12,7 +12,7 @@ export default function Preview({accentColor, layout = "layout-01", data})
     const secondaryColor = useDarkText? accentColor : "var(--text)";
 
     return (
-        <div className={`preview ${layout}`}>
+        <div style={{fontFamily: font}} className={`preview ${layout}`}>
             <div style={{backgroundColor: accentColor, color: textColor}} className="header">
                 <h1 className="name">{data.personalInfo.fullName}</h1>
                 <h2 className="profession">{data.personalInfo.profession}</h2>
