@@ -3,8 +3,12 @@
 }
 
 .color-input-label, .color-input{
-    border-radius: 5px;
     cursor: pointer;
+}
+
+.color-input-label{
+    border-radius: 5px;
+    box-shadow: var(--shadow);
 }
 
 .color-input-label:focus-within{
