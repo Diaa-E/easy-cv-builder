@@ -20,7 +20,7 @@
     "details";
     place-items: center;
     padding: 2vw;
-    gap: 1vw;
+    gap: .5vw;
 }
 
 .layout-01 .name{
@@ -38,7 +38,7 @@
     display: flex;
     place-items: center;
     place-content: center;
-    gap: 1.5vw;
+    gap: 1vw;
     flex-wrap: wrap;
 }
 
