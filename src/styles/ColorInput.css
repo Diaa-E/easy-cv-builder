@@ -11,6 +11,11 @@
     box-shadow: var(--shadow);
 }
 
+.color-input-label-text{
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .color-input-label:focus-within{
     outline: auto;
     outline-color: var(--accent);

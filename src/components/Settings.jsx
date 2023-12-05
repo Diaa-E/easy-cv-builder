@@ -6,7 +6,6 @@ export default function Settings({enabled = true, color, updateColor})
     {
         return (
             <div className="items-container">
-                <h2>Color</h2>
                 <ColorInput
                     onChange={updateColor}
                     id={"colorSelector"}
