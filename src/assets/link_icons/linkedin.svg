@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800px"
+   height="800px"
+   viewBox="0 0 256 256"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="linkedin.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.71064232"
+     inkscape:cx="253.29198"
+     inkscape:cy="394.71334"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g6" />
+  <g
+     fill="none"
+     id="g6">
+    <path
+       id="path2"
+       style="fill:#000000"
+       d="M 18.92 0 C 8.4740104 0 0 8.2161351 0 18.338125 L 0 237.66813 C 1.515823e-15 247.79111 8.4750104 256 18.92 256 L 237.08 256 C 247.52999 256 256 247.78999 256 237.665 L 256 18.338125 C 256 8.2161351 247.52999 0 237.08 0 L 18.92 0 z M 58.90375 43.428125 C 72.005737 43.428125 80.07125 52.031136 80.32125 63.343125 C 80.32125 74.403114 72.005987 83.253125 58.65 83.253125 L 58.646875 83.251875 L 58.39875 83.251875 C 45.541763 83.251875 37.23 74.401864 37.23 63.341875 C 37.23 52.030886 45.792763 43.428125 58.90375 43.428125 z M 171.83312 96.28375 C 197.0361 96.28375 215.93187 112.75729 215.93187 148.15625 L 215.93187 214.23812 L 177.62813 214.23812 L 177.62813 152.58812 C 177.62812 137.09314 172.08111 126.525 158.22313 126.525 C 147.63814 126.525 141.33487 133.65188 138.56688 140.53688 C 137.55488 142.99387 137.305 146.44313 137.305 149.88313 L 137.305 214.23812 L 99 214.23812 L 98.99875 214.24187 C 98.99875 214.24187 99.501874 109.80199 99.001875 98.99 L 137.30812 98.99 L 137.30812 115.31063 C 142.39841 107.45838 151.50119 96.28375 171.83312 96.28375 z M 39.488125 98.98625 L 77.79625 98.98625 L 77.79625 214.23812 L 39.488125 214.23812 L 39.488125 98.98625 z " />
+  </g>
+</svg>
