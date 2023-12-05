@@ -6,7 +6,6 @@
     font: inherit;
     border: none;
     list-style: none;
-    transition-duration: 100ms; /*for media query transition"*/
 }
 
 *, *::after, *::before{
