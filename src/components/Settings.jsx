@@ -12,6 +12,22 @@ export default function Settings({enabled = true, color, updateColor, font, upda
             name: "Roboto Slab",
             value: "slab",
         },
+        {
+            name: "Roboto Condensed",
+            value: "condensed"
+        },
+        {
+            name: "Roboto Flex",
+            value: "flex"
+        },
+        {
+            name: "Roboto Mono",
+            value: "mono"
+        },
+        {
+            name: "Roboto Serif",
+            value: "serif"
+        }
     ]
 
     if (enabled)
