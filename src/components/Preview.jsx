@@ -1,4 +1,3 @@
-import "../styles/Preview.css";
 import "../styles/layouts/layout_01.css";
 import appIcons from "../appIconsBarrel";
 
