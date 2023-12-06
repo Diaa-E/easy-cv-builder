@@ -8,8 +8,8 @@ export default function Preview({accentColor, layout = "layout-01", font, data})
 {
     const useDarkText = isBright(accentColor);
     const textColor = useDarkText? "var(--text)" : "var(--main)";
-    const secondaryBackgroundColor = useDarkText? "var(--text)" : "var(--main-dark";
-    const secondaryColor = useDarkText? accentColor : "var(--text)";
+    const secondaryBackgroundColor = useDarkText? "var(--text)" : accentColor;
+    const secondaryColor = useDarkText? accentColor : "var(--main)";
 
     return (
         <div style={{fontFamily: font}} className={`preview ${layout}`}>
