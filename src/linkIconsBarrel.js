@@ -9,31 +9,31 @@ import otherIcon from "./assets/link_icons/other.svg";
 
 const linkIcons = [
     {
-        name: "Github",
+        name: "github",
         icon: gitHubIcon,
     },
     {
-        name: "Behance",
+        name: "behance",
         icon: behanceIcon,
     },
     {
-        name: "Facebook",
+        name: "facebook",
         icon: facebookIcon,
     },
     {
-        name: "YouTube",
+        name: "youtube",
         icon: youtubeIcon
     },
     {
-        name: "LinkedIn",
+        name: "linkedin",
         icon: linkedinIcon
     },
     {
-        name: "Instagram",
+        name: "instagram",
         icon: instagramIcon
     },
     {
-        name: "Art Station",
+        name: "artstation",
         icon: artstationLogo
     }
 ].sort((a, b) => {
