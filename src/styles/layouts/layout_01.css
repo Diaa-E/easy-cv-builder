@@ -91,7 +91,7 @@
 }
 
 .layout-01 .section>li:nth-child(odd){
-    background-color: var(--main-med);
+    background-color: var(--main-dark);
 }
 
 .layout-01 .section>li{
