@@ -1,16 +1,3 @@
-.nav{
-    display: flex;
-    place-self: flex-start;
-    flex-direction: column;
-    place-items: stretch;
-    place-content: stretch;
-    background-color: var(--main);
-    border-radius: 10px;
-    grid-area: nav;
-    width: 70px;
-    gap: 1px;
-}
-
 .nav-item{
     will-change: filter, background-color;
     background-color: var(--main);

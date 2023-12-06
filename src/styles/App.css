@@ -11,3 +11,14 @@
   padding: 20px;
   gap: 20px;
 }
+
+@media print{
+  #root{
+    grid-template-areas: 
+    "preview preview preview"
+    "preview preview preview"
+    "preview preview preview"
+    "preview preview preview";
+    padding: 0;
+  }
+}

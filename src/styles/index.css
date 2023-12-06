@@ -75,6 +75,19 @@
   gap: 10px;
 }
 
+.nav{
+  display: flex;
+  place-self: flex-start;
+  flex-direction: column;
+  place-items: stretch;
+  place-content: stretch;
+  background-color: var(--main);
+  border-radius: 10px;
+  grid-area: nav;
+  width: 70px;
+  gap: 1px;
+}
+
 .editor{
   display: flex;
   flex-direction: column;
@@ -112,4 +125,30 @@
   align-items: center;
   gap: 10px;
   margin: 20px 0 0 0;
+}
+
+.preview{
+  grid-area: preview;
+  height: calc(1.41 * 50vw);
+  background-color: var(--main);
+  box-shadow: var(--shadow);
+}
+
+@media print {
+  .logo, .edit-controls, .editor, .main-controls, .nav {
+    display: none;
+  }
+
+  .preview{
+    box-shadow: none;
+  }
+
+  *{
+    print-color-adjust: exact;
+  }
+}
+
+/*remove page margins in print mode - might not work in all browsers or get overruled*/
+@page{
+  margin: 0;
 }
