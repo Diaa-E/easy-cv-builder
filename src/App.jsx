@@ -77,6 +77,7 @@ function App() {
   const [languages, setLanguages] = useState(sampleInfo.languages);
   const [accentColor, setAccentColor] = useState("#ffb400");
   const [font, setFont] = useState("regular");
+  const [layout, setLayout] = useState("layout-01");
 
   const emptyEducationItem = {
     id: generateId(),
@@ -261,11 +262,14 @@ function App() {
           updateColor={(e) => setAccentColor(e.target.value)}
           font={font}
           updateFont={(e) => setFont(e.target.value)}
+          layout={layout}
+          updateLayout={(e) => setLayout(e.target.value)}
         />
       </div>
       <Preview
         accentColor={accentColor}
         font={font}
+        layout={layout}
         data={{
           personalInfo: personalInfo,
           contact: contact,

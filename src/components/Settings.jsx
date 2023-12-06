@@ -1,7 +1,7 @@
 import ColorInput from "./ColorInput"
 import SelectInput from "./SelectInput"
 
-export default function Settings({enabled = true, color, updateColor, font, updateFont})
+export default function Settings({enabled = true, color, updateColor, font, updateFont, layout, updateLayout})
 {
     const fonts = [
         {
@@ -28,7 +28,14 @@ export default function Settings({enabled = true, color, updateColor, font, upda
             name: "Roboto Serif",
             value: "serif"
         }
-    ]
+    ];
+
+    const layouts = [
+        {
+            name: "Simple",
+            value: "layout-01"
+        },
+    ];
 
     if (enabled)
     {
@@ -48,6 +55,15 @@ export default function Settings({enabled = true, color, updateColor, font, upda
                     onChange={updateFont}
                     labelText={"Font"}
                     id={"fonts"}
+                />
+                <SelectInput
+                    options={layouts}
+                    optionNameKey={"name"}
+                    optionValueKey={"value"}
+                    selected={layout}
+                    onChange={updateLayout}
+                    labelText={"Layout"}
+                    id={"layouts"}
                 />
             </div>
         )

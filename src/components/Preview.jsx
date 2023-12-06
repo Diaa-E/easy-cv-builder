@@ -3,7 +3,7 @@ import appIcons from "../appIconsBarrel";
 
 import { isBright } from "../utility";
 
-export default function Preview({accentColor, layout = "layout-01", font, data})
+export default function Preview({accentColor, layout, font, data})
 {
     const useDarkText = isBright(accentColor);
     const textColor = useDarkText? "var(--text)" : "var(--main)";
