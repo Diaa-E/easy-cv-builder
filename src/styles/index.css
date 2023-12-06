@@ -128,8 +128,10 @@
 }
 
 .preview{
+  --width: 60vw;
   grid-area: preview;
-  height: calc(1.41 * 50vw);
+  width: var(--width);
+  height: calc(1.41 * var(--width));
   background-color: var(--main);
   box-shadow: var(--shadow);
 }
@@ -140,6 +142,7 @@
   }
 
   .preview{
+    --width: 100vw;
     box-shadow: none;
   }
 
