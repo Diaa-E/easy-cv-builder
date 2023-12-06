@@ -1,56 +1,64 @@
-import "../styles/layouts/layout_01.css";
-import appIcons from "../appIconsBarrel";
+import "../../styles/layouts/layout_01.css";
 
-import { isBright } from "../utility";
+import appIcons from "../../appIconsBarrel";
 
-export default function Preview({accentColor, layout, font, data})
+import { isBright } from "../../utility";
+
+export default function Layout_01({enabled = true, accentColor, font, data})
 {
     const useDarkText = isBright(accentColor);
     const textColor = useDarkText? "var(--text)" : "var(--main)";
     const secondaryBackgroundColor = useDarkText? "var(--text)" : accentColor;
     const secondaryColor = useDarkText? accentColor : "var(--main)";
 
-    return (
-        <div style={{fontFamily: font}} className={`preview ${layout}`}>
-            <div style={{backgroundColor: accentColor, color: textColor}} className="header">
-                <h1 className="name">{data.personalInfo.fullName}</h1>
-                <h2 className="profession">{data.personalInfo.profession}</h2>
-                <div className="header-item-container">
-                    <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.address} text={data.personalInfo.address} />
-                    <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.zip} text={data.personalInfo.zip} />
-                    <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.contact} text={data.contact.phoneNumber}/>
-                    <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.email} text={data.contact.email}/>
-                    {
-                        data.links.map(link => <HeaderItem key={link.id} useBrightIcon={!useDarkText} icon={link.icon} text={link.url} hidden={link.hidden}/>)
-                    }
+    if (enabled)
+    {
+        return (
+            <div style={{fontFamily: font}} className={`preview layout-01`}>
+                <div style={{backgroundColor: accentColor, color: textColor}} className="header">
+                    <h1 className="name">{data.personalInfo.fullName}</h1>
+                    <h2 className="profession">{data.personalInfo.profession}</h2>
+                    <div className="header-item-container">
+                        <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.address} text={data.personalInfo.address} />
+                        <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.zip} text={data.personalInfo.zip} />
+                        <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.contact} text={data.contact.phoneNumber}/>
+                        <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.email} text={data.contact.email}/>
+                        {
+                            data.links.map(link => <HeaderItem key={link.id} useBrightIcon={!useDarkText} icon={link.icon} text={link.url} hidden={link.hidden}/>)
+                        }
+                    </div>
                 </div>
+                <ul className="section education">
+                    <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Education</h2>
+                    {
+                        data.education.map(item => <EducationItem key={item.id} hidden={item.hidden} educationItem={item}/>)
+                    }
+                </ul>
+                <ul className="section experience">
+                    <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Experience</h2>
+                    {
+                        data.experience.map(item => <ExperienceItem key={item.id} hidden={item.hidden} experienceItem={item}/>)
+                    }
+                </ul>
+                <ul className="section skills">
+                     <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Skills</h2>
+                     {
+                        data.skills.map(item => <SkillItem key={item.id} barColor={accentColor} hidden={item.hidden} skillItem={item}/>)
+                     }
+                </ul>
+                <ul className="section languages">
+                     <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Languages</h2>
+                     {
+                        data.languages.map(item => <LanguageItem key={item.id} barColor={accentColor} hidden={item.hidden} languageItem={item}/>)
+                     }
+                </ul>
             </div>
-            <ul className="section education">
-                <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Education</h2>
-                {
-                    data.education.map(item => <EducationItem key={item.id} hidden={item.hidden} educationItem={item}/>)
-                }
-            </ul>
-            <ul className="section experience">
-                <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Experience</h2>
-                {
-                    data.experience.map(item => <ExperienceItem key={item.id} hidden={item.hidden} experienceItem={item}/>)
-                }
-            </ul>
-            <ul className="section skills">
-                 <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Skills</h2>
-                 {
-                    data.skills.map(item => <SkillItem key={item.id} barColor={accentColor} hidden={item.hidden} skillItem={item}/>)
-                 }
-            </ul>
-            <ul className="section languages">
-                 <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Languages</h2>
-                 {
-                    data.languages.map(item => <LanguageItem key={item.id} barColor={accentColor} hidden={item.hidden} languageItem={item}/>)
-                 }
-            </ul>
-        </div>
-    )
+        )
+    }
+    else
+    {
+        return <></>
+    }
 }
 
 function HeaderItem({icon, text, useBrightIcon, hidden = false})

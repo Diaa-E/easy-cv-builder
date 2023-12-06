@@ -18,8 +18,9 @@ import linkIcons from './linkIconsBarrel';
 import Links from './components/Links';
 import Skills from './components/Skills';
 import Languages from './components/Languages';
-import Preview from './components/Preview';
 import Settings from './components/Settings';
+
+import Layout_01 from './components/layouts/Layout_01';
 
 function App() {
 
@@ -78,6 +79,16 @@ function App() {
   const [accentColor, setAccentColor] = useState("#ffb400");
   const [font, setFont] = useState("regular");
   const [layout, setLayout] = useState("layout-01");
+
+  const data={
+    personalInfo: personalInfo,
+    contact: contact,
+    links: links,
+    education: education,
+    experience: experience,
+    skills: skills,
+    languages: languages,
+  };
 
   const emptyEducationItem = {
     id: generateId(),
@@ -266,19 +277,11 @@ function App() {
           updateLayout={(e) => setLayout(e.target.value)}
         />
       </div>
-      <Preview
+      <Layout_01
+        enabled={layout === "layout-01"}
         accentColor={accentColor}
         font={font}
-        layout={layout}
-        data={{
-          personalInfo: personalInfo,
-          contact: contact,
-          links: links,
-          education: education,
-          experience: experience,
-          skills: skills,
-          languages: languages,
-        }}
+        data={data}
       />
     </>
   )
