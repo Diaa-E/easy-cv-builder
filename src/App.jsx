@@ -153,7 +153,21 @@ function App() {
 
   function clearAll()
   {
-
+    setPersonalInfo({
+      fullName: "",
+      profession: "",
+      address: "",
+      zip: ""
+    });
+    setContact({
+      phoneNumber: "",
+      email: "",
+    });
+    setEducation([]);
+    setExperience([]);
+    setLinks([]);
+    setSkills([]);
+    setLanguages([]);
   }
 
   function print()
