@@ -35,6 +35,10 @@ export default function Settings({enabled = true, color, updateColor, font, upda
             name: "Simple",
             value: "layout-01"
         },
+        {
+            name: "Modern",
+            value: "layout-02"
+        },
     ];
 
     if (enabled)

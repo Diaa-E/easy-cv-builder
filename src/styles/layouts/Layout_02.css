@@ -1,0 +1,96 @@
+.layout-02{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-auto-rows: 1fr;
+    grid-template-areas: 
+    "header body";
+}
+
+.layout-02 .header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main-dark);
+    grid-area: header;
+    gap: calc(var(--width) * .02);
+}
+
+.layout-02 .header-top{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    border-bottom-left-radius: calc(var(--width) * 1 / 6);
+    border-bottom-right-radius: calc(var(--width) * 1 / 6);
+    padding: calc(var(--width) * .05);
+    padding-bottom: calc(var(--width) * 1 / 6);
+}
+
+.layout-02 .name{
+    font-weight: bold;
+    font-size: calc(var(--width) * .05);
+    text-align: center;
+}
+
+.layout-02 .profession{
+    font-size: calc(var(--width) * .03);
+    text-align: center;
+}
+
+.layout-02 .section-title-container{
+    display: flex;
+    place-items: center;
+    place-content: center;
+    gap: calc(var(--width) * .01);
+    border-bottom: calc(var(--width) * .001) solid;
+    padding-bottom: calc(var(--width) * .02);
+}
+
+.layout-02 .section-title-icon{
+    width: calc(var(--width) * .04);
+    will-change: filter;
+}
+
+.layout-02 .section-title-icon-bright{
+    filter: invert(1);
+}
+
+.layout-02 .section-title-icon-bg{
+    border-radius: calc(var(--width) * .05);
+    padding: calc(var(--width) * .01);
+}
+
+.layout-02 .section-title{
+    font-size: calc(var(--width) * .03);
+    color: var(--text);
+}
+
+.layout-02 .header-item-container{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--width) * .01);
+    flex-wrap: wrap;
+    margin-top: calc(var(--width) * .025);
+    padding-top: calc(var(--width) * .025);
+    border-top: calc(var(--width) * .001) solid;
+}
+
+.layout-02 .header-item{
+    display: flex;
+    place-items: center;
+    gap: calc(var(--width) * .01);
+}
+
+.layout-02 .header-icon{
+    width: calc(var(--width) * .03);
+    will-change: filter;
+}
+
+.layout-02 .header-icon-bright{
+    filter: invert(1) ;
+}
+
+.layout-02 .header-item-text{
+    width: calc(var(--width) * 1 / 5);
+    overflow-wrap: break-word;
+    font-size: calc(var(--width) * .017);
+}

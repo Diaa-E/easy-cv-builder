@@ -1,4 +1,4 @@
-import "../../styles/layouts/layout_01.css";
+import "../../styles/layouts/Layout_01.css";
 
 import appIcons from "../../appIconsBarrel";
 

@@ -21,6 +21,7 @@ import Languages from './components/Languages';
 import Settings from './components/Settings';
 
 import Layout_01 from './components/layouts/Layout_01';
+import Layout_02 from './components/layouts/Layout_02';
 
 function App() {
 
@@ -279,6 +280,12 @@ function App() {
       </div>
       <Layout_01
         enabled={layout === "layout-01"}
+        accentColor={accentColor}
+        font={font}
+        data={data}
+      />
+      <Layout_02
+        enabled={layout === "layout-02"}
         accentColor={accentColor}
         font={font}
         data={data}
