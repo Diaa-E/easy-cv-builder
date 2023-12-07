@@ -24,8 +24,8 @@
 .item-details p{
     font-size: 16px;
     min-width: 0; /*fix flex child not wrapping*/
+    max-width: 200px;
     overflow-wrap: break-word;
-    text-wrap: wrap;
 }
 
 .item-details-column{
