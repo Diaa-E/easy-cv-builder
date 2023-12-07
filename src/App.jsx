@@ -145,6 +145,10 @@ function App() {
     setPersonalInfo(sampleInfo.personalInfo);
     setContact(sampleInfo.contact);
     setEducation(sampleInfo.education);
+    setExperience(sampleInfo.experience);
+    setLanguages(sampleInfo.languages);
+    setSkills(sampleInfo.skills);
+    setLinks(sampleInfo.links);
   }
 
   function clearAll()
