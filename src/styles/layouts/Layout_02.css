@@ -125,7 +125,44 @@
 }
 
 .layout-02 .section-item-text{
+    font-size: calc(var(--width) * .015);
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.layout-02 .language-item-text{
+    font-size: calc(var(--width) * .015);
     min-width: 0;
     max-width: calc(var(--width) * .1);
     overflow-wrap: break-word;
+}
+
+.layout-02 .body{
+    grid-area: body;
+    display: flex;
+    flex-direction: column;
+    padding: calc(var(--width) * .03);
+    gap: calc(var(--width) * .02) ;
+}
+
+.section-item-cell{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--width) * .005);
+}
+
+.section-item-container{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    padding: calc(var(--width) * .005) 0;
+}
+
+.section-item-container:nth-child(even){
+    background-color: var(--main-dark);
+}
+
+.section-container{
+    display: flex;
+    flex-direction: column;
 }

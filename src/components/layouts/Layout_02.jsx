@@ -72,12 +72,55 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                     }
                     </ul>
                 </div>
+                <div className="body">
+                    <SectionTitle
+                        icon={appIcons.education}
+                        iconBg={accentColor}
+                        text={"Education"}
+                        useBrightIcon={!useDarkText}
+                    />
+                    <ul className="section-container">
+                    {
+                        data.education.map(item => {
+                            return (
+                                <EducationItem
+                                    hidden={item.hidden}
+                                    educationItem={item}
+                                />
+                            )
+                        })
+                    }
+                    </ul>
+                </div>
             </div>
         )
     }
     else
     {
         return <></>
+    }
+}
+
+function EducationItem({educationItem, hidden = false})
+{
+    if (hidden)
+    {
+        return <></>
+    }
+    else
+    {
+        return (
+            <li className="section-item-container">
+                <div className="section-item-cell">
+                    <p className="section-item-text">{educationItem.start}-{educationItem.end}</p>
+                    <p className="section-item-text">{educationItem.location}</p>
+                </div>
+                <div className="section-item-cell">
+                    <p className="section-item-text">{educationItem.degree}</p>
+                    <p className="section-item-text">{educationItem.school}</p>
+                </div>
+            </li>
+        )
     }
 }
 
@@ -120,7 +163,7 @@ function LanguageItem({barColor, languageItem, hidden = false})
     {
         return (
             <li className="language-item-container">
-                <p className="section-item-text">{languageItem.name}</p>
+                <p className="language-item-text">{languageItem.name}</p>
                 <LevelBar barColor={barColor} hidden={!languageItem.showLevel} level={languageItem.level}/>
             </li>
         )
