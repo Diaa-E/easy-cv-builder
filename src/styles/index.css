@@ -149,9 +149,10 @@
   *{
     print-color-adjust: exact;
   }
-}
 
-/*remove page margins in print mode - might not work in all browsers or get overruled*/
-@page{
-  margin: 0;
+  /*remove page margins in print mode - might not work in all browsers or get overruled*/
+  @page{
+    margin: 0;
+    size: A4 portrait;
+  }
 }
