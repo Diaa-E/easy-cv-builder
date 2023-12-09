@@ -119,11 +119,9 @@ function LanguageItem({barColor, languageItem, hidden = false})
     else
     {
         return (
-            <li>
-                <div className="language-item-container">
-                    <p className="section-item-text">{languageItem.name}</p>
-                    <LevelBar barColor={barColor} hidden={!languageItem.showLevel} level={languageItem.level}/>
-                </div>
+            <li className="language-item-container">
+                <p className="section-item-text">{languageItem.name}</p>
+                <LevelBar barColor={barColor} hidden={!languageItem.showLevel} level={languageItem.level}/>
             </li>
         )
     }
