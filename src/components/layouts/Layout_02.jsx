@@ -51,6 +51,26 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                             }
                         </div>
                     </div>
+                    <SectionTitle
+                        icon={appIcons.languages}
+                        text={"Languages"}
+                        iconBg={accentColor}
+                        useBrightIcon={!useDarkText}
+                    />
+                    <ul className="language-section-container">
+                    {
+                        data.languages.map(item => {
+                            return (
+                                <LanguageItem
+                                    barColor={accentColor}
+                                    languageItem={item}
+                                    hidden={item.hidden}
+                                    key={item.id}
+                                />
+                            )
+                        })
+                    }
+                    </ul>
                 </div>
             </div>
         )
@@ -85,6 +105,41 @@ function HeaderItem({icon, text, useBrightIcon, hidden = false})
             <div className="header-item">
                 <img className={`header-icon ${useBrightIcon? "header-icon-bright" : ""}`} src={icon} alt="icon"/>
                 <p className="header-item-text">{text}</p>
+            </div>
+        )
+    }
+}
+
+function LanguageItem({barColor, languageItem, hidden = false})
+{
+    if (hidden)
+    {
+        return <></>
+    }
+    else
+    {
+        return (
+            <li>
+                <div className="language-item-container">
+                    <p className="section-item-text">{languageItem.name}</p>
+                    <LevelBar barColor={barColor} hidden={!languageItem.showLevel} level={languageItem.level}/>
+                </div>
+            </li>
+        )
+    }
+}
+
+function LevelBar({barColor, level, hidden})
+{
+    if (hidden)
+    {
+        return <></>
+    }
+    else
+    {
+        return (
+            <div className="bar-container">
+                <div style={{width: `${+level}%`, backgroundColor: barColor}} className="bar"></div>
             </div>
         )
     }

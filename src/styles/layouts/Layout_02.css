@@ -94,3 +94,38 @@
     overflow-wrap: break-word;
     font-size: calc(var(--width) * .017);
 }
+
+.layout-02 .bar-container{
+    display: flex;
+    place-content: flex-start;
+    place-content: flex-start;
+    border: calc(var(--width) * .001) solid var(--text);
+    width: calc(var(--width) * .1);
+    height: calc(var(--width) * .008);
+    border-radius: calc(var(--width) * .012);
+}
+
+.layout-02 .bar{
+    border-radius: calc(var(--width) * .012);
+    border-right: calc(var(--width) * .001) solid var(--text);
+}
+
+.layout-02 .language-section-container{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--width) * .01);
+}
+
+.layout-02 .language-item-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(var(--width) * .01);
+    width: calc(var(--width) * .25);
+}
+
+.layout-02 .section-item-text{
+    min-width: 0;
+    max-width: calc(var(--width) * .1);
+    overflow-wrap: break-word;
+}
