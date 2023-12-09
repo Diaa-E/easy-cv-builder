@@ -1,7 +1,7 @@
 #root {
   background-color: var(--main-dark);
   display: grid;
-  grid-template-columns: min-content 1fr 60vw;
+  grid-template-columns: min-content 1fr 60dvw;
   grid-template-rows: 60px repeat(3, min-content);
   grid-template-areas:
   "logo controls preview"
