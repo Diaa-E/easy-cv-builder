@@ -86,6 +86,7 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                                 <EducationItem
                                     hidden={item.hidden}
                                     educationItem={item}
+                                    key={item.id}
                                 />
                             )
                         })
@@ -102,6 +103,7 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                         data.experience.map(item => {
                             return (
                                 <ExperienceItem
+                                    key={item.id}
                                     experienceItem={item}
                                     hidden={item.hidden}
                                 />
