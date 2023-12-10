@@ -182,6 +182,7 @@ function App() {
     setLanguages(sampleInfo.languages);
     setSkills(sampleInfo.skills);
     setLinks(sampleInfo.links);
+    setLayout("layout-01");
   }
 
   function clearAll()
