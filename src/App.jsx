@@ -23,6 +23,7 @@ import Settings from './components/Settings';
 import Layout_01 from './components/layouts/Layout_01';
 import Layout_02 from './components/layouts/Layout_02';
 import Save from './components/Save';
+import About from './components/About';
 
 function App() {
 
@@ -71,6 +72,11 @@ function App() {
     {
       title: "Save / Load",
       icon: appIcons.save,
+      id: generateId(),
+    },
+    {
+      title: "About",
+      icon: appIcons.about,
       id: generateId(),
     },
   ]);
@@ -328,6 +334,9 @@ function App() {
           enabled={tabs[8].id === currentTab}
           download={downloadDraft}
           upload={uploadDraft}
+        />
+        <About
+          enabled={tabs[9].id === currentTab}
         />
       </div>
 

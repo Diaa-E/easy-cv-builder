@@ -139,6 +139,10 @@
   place-self: center;
 }
 
+a{
+  cursor: pointer;
+}
+
 @media (min-width: 700px) and (orientation: landscape){
   .nav{
     display: flex;
