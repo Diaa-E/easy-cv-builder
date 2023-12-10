@@ -98,7 +98,7 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                         text={"Experience"}
                         useBrightIcon={!useDarkText}
                     />
-                    <ul>
+                    <ul className="section-container">
                     {
                         data.experience.map(item => {
                             return (
