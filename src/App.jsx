@@ -156,12 +156,13 @@ function App() {
     setExperience(draft.experience);
     setLinks(draft.links);
     setLanguages(draft.languages);
+    setLayout(draft.layout);
   }
 
   function downloadDraft()
   {
     const a = document.createElement("a");
-    const downloadData = new Blob([JSON.stringify({...data, accentColor: accentColor, font: font})]);
+    const downloadData = new Blob([JSON.stringify({...data, accentColor: accentColor, font: font, layout: layout})]);
     a.href = window.URL.createObjectURL(downloadData, {type: "application/json"});
     a.download = "CV_draft.json";
     a.click();
