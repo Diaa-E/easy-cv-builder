@@ -163,6 +163,7 @@
 }
 
 .layout-02 .section-container{
+    margin-bottom: calc(var(--width) * .03);
     display: flex;
     flex-direction: column;
 }

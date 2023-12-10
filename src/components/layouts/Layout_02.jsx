@@ -91,6 +91,24 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                         })
                     }
                     </ul>
+                    <SectionTitle
+                        icon={appIcons.experience}
+                        iconBg={accentColor}
+                        text={"Experience"}
+                        useBrightIcon={!useDarkText}
+                    />
+                    <ul>
+                    {
+                        data.experience.map(item => {
+                            return (
+                                <ExperienceItem
+                                    experienceItem={item}
+                                    hidden={item.hidden}
+                                />
+                            )
+                        })
+                    }
+                    </ul>
                 </div>
             </div>
         )
@@ -98,6 +116,32 @@ export default function Layout_02({enabled = true, accentColor, font, data})
     else
     {
         return <></>
+    }
+}
+
+function ExperienceItem({experienceItem, hidden = false})
+{
+    if (hidden)
+    {
+        return <></>
+    }
+    else
+    {
+        return (
+            <li className="section-item-container">
+                <div className="section-item-cell">
+                    <p className="section-item-text">{experienceItem.start}-{experienceItem.end}</p>
+                    <p className="section-item-text">{experienceItem.location}</p>
+                </div>
+                <div className="section-item-cell">
+                    <p className="section-item-text">{experienceItem.company}</p>
+                    <p className="section-item-text">{experienceItem.position}</p>
+                </div>
+                <div className="section-item-cell">
+                    <p className="section-item-text">{experienceItem.details}</p>
+                </div>
+            </li>
+        )
     }
 }
 
