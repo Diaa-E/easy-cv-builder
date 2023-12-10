@@ -8,6 +8,11 @@
     text-align: center;
 }
 
+.form-button:focus{
+    outline: auto;
+    outline-color: var(--accent);
+}
+
 .blue-button{
     background-color: var(--accent);
     color: var(--main);
