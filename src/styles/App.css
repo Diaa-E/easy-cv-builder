@@ -1,15 +1,30 @@
 #root {
   background-color: var(--main-dark);
   display: grid;
-  grid-template-columns: min-content 1fr 60dvw;
-  grid-template-rows: 60px repeat(3, min-content);
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, min-content);
   grid-template-areas:
-  "logo controls preview"
-  "nav edit preview"
-  "save edit preview"
-  "load edit preview";
-  padding: 20px;
-  gap: 20px;
+  "logo"
+  "controls"
+  "nav"
+  "edit"
+  "preview";
+  padding: 15px;
+  gap: 15px;
+}
+
+@media (min-width: 700px) and (orientation: landscape){
+  #root{
+    grid-template-columns: min-content 1fr 60dvw;
+    grid-template-rows: 60px repeat(3, min-content);
+    grid-template-areas:
+    "logo controls preview"
+    "nav edit preview"
+    "save edit preview"
+    "load edit preview";
+    padding: 20px;
+    gap: 20px;
+  }
 }
 
 @media print{

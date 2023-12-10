@@ -57,7 +57,8 @@
 
 .logo{
   grid-area: logo;
-  width: 70px;
+  width: 100px;
+  place-self: center;
 }
 
 .main-controls{
@@ -76,16 +77,17 @@
 }
 
 .nav{
-  display: flex;
-  place-self: flex-start;
-  flex-direction: column;
-  place-items: stretch;
-  place-content: stretch;
+  display: grid;
+  grid-auto-flow: column;
   background-color: var(--main);
   border-radius: 10px;
   grid-area: nav;
-  width: 70px;
   gap: 1px;
+  overflow: scroll;
+}
+
+.nav::-webkit-scrollbar{
+  display: none;
 }
 
 .editor{
@@ -128,12 +130,31 @@
 }
 
 .preview{
-  --width: 60vw;
+  --width: 90dvw;
   grid-area: preview;
   width: var(--width);
   height: calc(1.41 * var(--width));
   background-color: var(--main);
   box-shadow: var(--shadow);
+  place-self: center;
+}
+
+@media (min-width: 700px) and (orientation: landscape){
+  .nav{
+    display: flex;
+    flex-direction: column;
+    place-self: flex-start;
+    width: 70px;
+    overflow: auto;
+  }
+
+  .logo{
+    width: 70px;
+  }
+
+  .preview{
+    --width: 60vw;
+  }
 }
 
 @media print {
