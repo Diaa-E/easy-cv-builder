@@ -10,3 +10,8 @@
 .add-button, .add-button>img{
     cursor: pointer;
 }
+
+.add-button:focus{
+    outline: auto;
+    outline-color: var(--accent);
+}
