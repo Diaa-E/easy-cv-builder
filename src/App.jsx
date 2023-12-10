@@ -183,6 +183,8 @@ function App() {
     setSkills(sampleInfo.skills);
     setLinks(sampleInfo.links);
     setLayout("layout-01");
+    setAccentColor("#ffb400");
+    setFont("regular");
   }
 
   function clearAll()
