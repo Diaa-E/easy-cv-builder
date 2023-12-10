@@ -219,7 +219,7 @@ function App() {
       <div id='mainControls' className='main-controls'>
         <FormButton text='Clear' classes={["form-button", "red-button"]} onClick={clearAll}/>
         <FormButton text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
-        <FormButton text='Print/Download PDF' classes={["form-button", "blue-button"]} onClick={print}/>
+        <FormButton text='Export' classes={["form-button", "blue-button"]} onClick={print}/>
       </div>
 
       <div className="editor">
