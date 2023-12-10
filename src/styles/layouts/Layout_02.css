@@ -145,24 +145,24 @@
     gap: calc(var(--width) * .02) ;
 }
 
-.section-item-cell{
+.layout-02 .section-item-cell{
     display: flex;
     flex-direction: column;
     gap: calc(var(--width) * .005);
 }
 
-.section-item-container{
+.layout-02 .section-item-container{
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     padding: calc(var(--width) * .005) 0;
 }
 
-.section-item-container:nth-child(even){
+.layout-02 .section-item-container:nth-child(even){
     background-color: var(--main-dark);
 }
 
-.section-container{
+.layout-02 .section-container{
     display: flex;
     flex-direction: column;
 }
