@@ -120,7 +120,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: calc(var(--width) * .01);
     width: calc(var(--width) * .25);
 }
 
@@ -166,4 +165,10 @@
     margin-bottom: calc(var(--width) * .03);
     display: flex;
     flex-direction: column;
+}
+
+.layout-02 .skills-items-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(var(--width) * .03);
 }

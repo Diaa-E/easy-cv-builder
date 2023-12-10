@@ -111,6 +111,16 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                         })
                     }
                     </ul>
+                    <SectionTitle
+                        icon={appIcons.skills}
+                        iconBg={accentColor}
+                        text={"Skills"}
+                        useBrightIcon={!useDarkText}
+                    />
+                    <SkillsSection
+                        barColor={accentColor}
+                        skillsItems={data.skills}
+                    />
                 </div>
             </div>
         )
@@ -145,6 +155,26 @@ function ExperienceItem({experienceItem, hidden = false})
             </li>
         )
     }
+}
+
+function SkillsSection({skillsItems, barColor})
+{
+    return (
+        <ul className="skills-items-container">
+        {
+            skillsItems.map(item => {
+                return (
+                    <LanguageItem
+                        key={item.id}
+                        barColor={barColor}
+                        hidden={item.hidden}
+                        languageItem={item}
+                    />
+                )
+            })
+        }
+        </ul>
+    )
 }
 
 function EducationItem({educationItem, hidden = false})
