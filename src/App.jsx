@@ -141,6 +141,23 @@ function App() {
     showLevel: true,
   }
 
+  async function uploadDraft(e)
+  {
+    const file = e.target.files[0]
+    const Jsondraft = await file.text();
+    const draft = JSON.parse(Jsondraft);
+
+    setAccentColor(draft.accentColor);
+    setFont(draft.font);
+    setSkills(draft.skills);
+    setContact(draft.contact);
+    setPersonalInfo(draft.personalInfo);
+    setEducation(draft.education);
+    setExperience(draft.experience);
+    setLinks(draft.links);
+    setLanguages(draft.languages);
+  }
+
   function downloadDraft()
   {
     const a = document.createElement("a");
@@ -306,6 +323,7 @@ function App() {
         <Save
           enabled={tabs[8].id === currentTab}
           download={downloadDraft}
+          upload={uploadDraft}
         />
       </div>
 

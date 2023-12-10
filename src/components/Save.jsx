@@ -1,7 +1,7 @@
 import "../styles/Save.css";
 import "../styles/FormButton.css"
 
-export default function Save({download, enabled})
+export default function Save({upload, download, enabled})
 {
     if (enabled)
     {
@@ -10,9 +10,10 @@ export default function Save({download, enabled})
                 <button onClick={download} className="form-button blue-button">
                     Download Draft
                 </button>
-                <button className="form-button white-button">
+                <label htmlFor="uploadDraft" className="form-button white-button">
+                    <input onChange={upload} className="file-input" id="uploadDraft" type="file" accept=".json"/>
                     Upload Draft
-                </button>
+                </label>
             </div>
         )
     }

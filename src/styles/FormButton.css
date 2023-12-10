@@ -5,6 +5,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition-duration: 200ms;
+    text-align: center;
 }
 
 .blue-button{
