@@ -9,6 +9,7 @@ import skillsIcon from "./assets/images/skills.svg";
 import languagesIcon from "./assets/images/languages.svg";
 import settingsIcon from "./assets/images/settings.svg";
 import emailIcon from "./assets/images/email.svg";
+import saveIcon from "./assets/images/save.svg";
 
 const appIcons = {
     address: addressIcon,
@@ -22,6 +23,7 @@ const appIcons = {
     languages: languagesIcon,
     settings: settingsIcon,
     email: emailIcon,
+    save: saveIcon
 }
 
 export default appIcons;

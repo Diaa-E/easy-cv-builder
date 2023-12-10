@@ -22,6 +22,7 @@ import Settings from './components/Settings';
 
 import Layout_01 from './components/layouts/Layout_01';
 import Layout_02 from './components/layouts/Layout_02';
+import Save from './components/Save';
 
 function App() {
 
@@ -66,7 +67,12 @@ function App() {
       title: "Settings",
       icon: appIcons.settings,
       id: generateId(),
-    }
+    },
+    {
+      title: "Save / Load",
+      icon: appIcons.save,
+      id: generateId(),
+    },
   ]);
 
   const [currentTab, setCurrentTab] = useState(tabs[0].id);
@@ -133,6 +139,15 @@ function App() {
     level: 60,
     hidden: false,
     showLevel: true,
+  }
+
+  function downloadDraft()
+  {
+    const a = document.createElement("a");
+    const downloadData = new Blob([JSON.stringify({...data, accentColor: accentColor, font: font})]);
+    a.href = window.URL.createObjectURL(downloadData, {type: "application/json"});
+    a.download = "CV_draft.json";
+    a.click();
   }
 
   function selectTab(id)
@@ -215,13 +230,6 @@ function App() {
           ))
         }
       </nav>
-
-      <div id='mainControls' className='main-controls'>
-        <FormButton text='Clear' classes={["form-button", "red-button"]} onClick={clearAll}/>
-        <FormButton text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
-        <FormButton text='Export' classes={["form-button", "blue-button"]} onClick={print}/>
-      </div>
-
       <div className="editor">
         <h1 className='editor-title'>{tabs.find(tab => tab.id === currentTab).title}</h1>
         <PersonalInformation
@@ -295,7 +303,18 @@ function App() {
           layout={layout}
           updateLayout={(e) => setLayout(e.target.value)}
         />
+        <Save
+          enabled={tabs[8].id === currentTab}
+          download={downloadDraft}
+        />
       </div>
+
+      <div id='mainControls' className='main-controls'>
+        <FormButton text='Clear' classes={["form-button", "red-button"]} onClick={clearAll}/>
+        <FormButton text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
+        <FormButton text='Export' classes={["form-button", "blue-button"]} onClick={print}/>
+      </div>
+
       <Layout_01
         enabled={layout === "layout-01"}
         accentColor={accentColor}
