@@ -3,99 +3,99 @@ import linkIcons from "./linkIconsBarrel";
 
 const sampleInfo = {
     personalInfo: {
-        fullName: "John Doe",
-        profession: "Graphic Designer",
-        address: "x unknown st., city.",
+        fullName: "Bruce T. Wayne",
+        profession: "CEO",
+        address: "Wayne manor, Gotham city, U.S.A.",
         zip: "xxxxx"
     },
     contact: {
-        phoneNumber: "+xx xxxxxxxx",
-        email: "john_doe@email.com",
+        phoneNumber: "+1 xxxxxxxx",
+        email: "bruce_wayne@mail.waynetech.com",
     },
     education: [
         {
             id: generateId(),
             degree: "B.S in computer science",
-            school: "Unknown university",
-            location: "Unknown city",
-            start: "2000",
-            end: "2004",
+            school: "Gotham University",
+            location: "Gotham city",
+            start: "xxxx",
+            end: "xxxx",
             hidden: false
         },
         {
             id: generateId(),
             degree: "Master's in computer science",
-            school: "Unknown university",
-            location: "Unknown city",
-            start: "2005",
-            end: "2010", 
-            hidden: true
+            school: "Gotham University",
+            location: "Gotham City",
+            start: "xxxx",
+            end: "xxxx", 
+            hidden: false,
+        },
+        {
+            id: generateId(),
+            degree: "B.S in engineering",
+            school: "Gotham University",
+            location: "Gotham City",
+            start: "xxxx",
+            end: "xxxx", 
+            hidden: false,
         },
     ],
     experience: [
         {
             id: generateId(),
-            company: "Unknown INC.",
-            location: "city, Country",
-            position: "Position title",
-            start: "2012",
-            end: "2013",
-            details: "",
-            hidden: true
+            company: "Wayne Tech",
+            location: "Gotham city, U.S.A.",
+            position: "C.E.O",
+            start: "xxxx",
+            end: "xxxx",
+            details: "Managing and growing the family business.",
+            hidden: false
         },
-        {
-            id: generateId(),
-            company: "Known INC.",
-            location: "city, Country",
-            position: "Position title",
-            start: "2013",
-            end: "present",
-            details: "",
-            hidden: false,
-        }
     ],
     links: [
         {
             id: generateId(),
-            url: "github.com/john-doe",
-            icon: linkIcons.find(item => item.name === "github").icon,
+            url: "waynetech.com",
+            icon: linkIcons.find(item => item.name === "other").icon,
             hidden: false,
         },
-        {
-            id: generateId(),
-            url: "behance.com/john-doe",
-            icon: linkIcons.find(item => item.name === "behance").icon,
-            hidden: true,
-        }
     ],
     skills: [
         {
             id: generateId(),
-            name: "HTML",
-            level: 20,
+            name: "Swordsmanship",
+            level: 100,
             hidden: false,
             showLevel: true,
         },
         {
             id: generateId(),
-            name: "CSS",
-            level: 60,
+            name: "Ninjutsu",
+            level: 100,
             hidden: true,
             showLevel: true,
         },
         {
             id: generateId(),
-            name: "JavaScript",
-            level: 100,
+            name: "Manhunting",
+            level: "80",
             hidden: false,
-            showLevel: false,
-        }
+            showLevel: true,
+        },
+        {
+            id: generateId(),
+            name: "Stage Magic",
+            level: 40,
+            hidden: false,
+            showLevel: true,
+        },
     ],
     languages: [
         {
             id: generateId(),
-            name: "English",
-            level: 20,
+            name: "English (Native)",
+            level: 100,
             hidden: false,
             showLevel: true,
         },
@@ -103,15 +103,15 @@ const sampleInfo = {
             id: generateId(),
             name: "Russian",
             level: 60,
-            hidden: true,
+            hidden: false,
             showLevel: true,
         },
         {
             id: generateId(),
-            name: "Arabic",
-            level: 100,
+            name: "Chineese",
+            level: 40,
             hidden: false,
-            showLevel: false,
+            showLevel: true,
         }
     ],
 }
