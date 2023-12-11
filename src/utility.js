@@ -1,3 +1,5 @@
+import fonts from "./fonts";
+
 export function isBright(colorHex)
 {
     //The following code is stolen from stack overflow, it calculates the current color's brightness
@@ -20,6 +22,10 @@ export function testDraftValidity(draft)
           name: "accentColor",
           valid: testColor(draft.accentColor),
         },
+        {
+            name: "font",
+            valid: testFont(draft.font),
+        }
       ];
   
       const errorLog = [];
@@ -38,4 +44,9 @@ export function testDraftValidity(draft)
 function testColor(hexColorString)
 {
     return /^#[0-9A-F]{6}$/i.test(hexColorString);
+}
+
+function testFont(fontValue)
+{
+    return Boolean(fonts.find(font => font.value === fontValue));
 }

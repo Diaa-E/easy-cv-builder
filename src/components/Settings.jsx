@@ -1,35 +1,9 @@
 import ColorInput from "./ColorInput"
 import SelectInput from "./SelectInput"
+import fonts from "../fonts";
 
 export default function Settings({enabled = true, color, updateColor, font, updateFont, layout, updateLayout})
 {
-    const fonts = [
-        {
-            name: "Roboto Regular",
-            value: "regular"
-        },
-        {
-            name: "Roboto Slab",
-            value: "slab",
-        },
-        {
-            name: "Roboto Condensed",
-            value: "condensed"
-        },
-        {
-            name: "Roboto Flex",
-            value: "flex"
-        },
-        {
-            name: "Roboto Mono",
-            value: "mono"
-        },
-        {
-            name: "Roboto Serif",
-            value: "serif"
-        }
-    ];
-
     const layouts = [
         {
             name: "Simple",
