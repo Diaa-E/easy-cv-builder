@@ -345,6 +345,7 @@ function App() {
         />
         <About
           enabled={tabs[9].id === currentTab}
+          version={currentVersion}
         />
       </div>
 
