@@ -1,5 +1,6 @@
 import fonts from "./fonts";
 import layouts from "./layouts";
+import linkIcons from "./linkIconsBarrel";
 
 export function isBright(colorHex)
 {
@@ -30,6 +31,10 @@ export function testDraftValidity(draft)
         {
             name: "layout",
             valid: testLayout(draft.layout),
+        },
+        {
+            name: "links",
+            valid: testLinks(draft.links),
         }
       ];
   
@@ -44,6 +49,19 @@ export function testDraftValidity(draft)
       });
 
       return errorLog;
+}
+
+function testLinks(linksArray)
+{
+    for (const link of linksArray)
+    {
+        if (!Boolean(linkIcons.find(icon => link.icon === icon.name)))
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function testColor(hexColorString)
