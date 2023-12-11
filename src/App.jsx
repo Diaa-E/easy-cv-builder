@@ -93,6 +93,8 @@ function App() {
   const [font, setFont] = useState("regular");
   const [layout, setLayout] = useState("layout-01");
 
+  const currentVersion = "1.0.1";
+
   const data={
     personalInfo: personalInfo,
     contact: contact,
@@ -153,6 +155,12 @@ function App() {
     const Jsondraft = await file.text();
     const draft = JSON.parse(Jsondraft);
 
+    if (draft.version !== currentVersion)
+    {
+      console.error("Draft version is not supported");
+      return;
+    }
+
     setAccentColor(draft.accentColor);
     setFont(draft.font);
     setSkills(draft.skills);
@@ -168,7 +176,7 @@ function App() {
   function downloadDraft()
   {
     const a = document.createElement("a");
-    const downloadData = new Blob([JSON.stringify({...data, accentColor: accentColor, font: font, layout: layout})]);
+    const downloadData = new Blob([JSON.stringify({version: currentVersion, ...data, accentColor: accentColor, font: font, layout: layout})]);
     a.href = window.URL.createObjectURL(downloadData, {type: "application/json"});
     a.download = "CV_draft.json";
     a.click();
