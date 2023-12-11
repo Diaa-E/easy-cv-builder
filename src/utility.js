@@ -35,6 +35,10 @@ export function testDraftValidity(draft)
         {
             name: "links",
             valid: testLinks(draft.links),
+        },
+        {
+            name: "skills",
+            valid: testSkills(draft.skills),
         }
       ];
   
@@ -49,6 +53,19 @@ export function testDraftValidity(draft)
       });
 
       return errorLog;
+}
+
+function testSkills(skillsArray)
+{
+    for (const skill of skillsArray)
+    {
+        if (!(+skill.level % 20 === 0 && +skill.level > 0 && +skill.level <= 100))
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function testLinks(linksArray)
