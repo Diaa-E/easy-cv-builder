@@ -5,18 +5,18 @@ import linkIcons from "../../linkIconsBarrel";
 
 import { isBright } from "../../utility";
 
-export default function Layout_01({enabled = true, accentColor, font, data})
+export default function Layout_01({enabled = true, data})
 {
-    const useDarkText = isBright(accentColor);
+    const useDarkText = isBright(data.accentColor);
     const textColor = useDarkText? "var(--text)" : "var(--main)";
-    const secondaryBackgroundColor = useDarkText? "var(--text)" : accentColor;
-    const secondaryColor = useDarkText? accentColor : "var(--main)";
+    const secondaryBackgroundColor = useDarkText? "var(--text)" : data.accentColor;
+    const secondaryColor = useDarkText? data.accentColor : "var(--main)";
 
     if (enabled)
     {
         return (
-            <div style={{fontFamily: font}} className={`preview layout-01`}>
-                <div style={{backgroundColor: accentColor, color: textColor}} className="header">
+            <div style={{fontFamily: data.font}} className={`preview layout-01`}>
+                <div style={{backgroundColor: data.accentColor, color: textColor}} className="header">
                     <h1 className="name">{data.personalInfo.fullName}</h1>
                     <h2 className="profession">{data.personalInfo.profession}</h2>
                     <div className="header-item-container">
@@ -44,13 +44,13 @@ export default function Layout_01({enabled = true, accentColor, font, data})
                 <ul className="section skills">
                      <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Skills</h2>
                      {
-                        data.skills.map(item => <SkillItem key={item.id} barColor={accentColor} hidden={item.hidden} skillItem={item}/>)
+                        data.skills.map(item => <SkillItem key={item.id} barColor={data.accentColor} hidden={item.hidden} skillItem={item}/>)
                      }
                 </ul>
                 <ul className="section languages">
                      <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Languages</h2>
                      {
-                        data.languages.map(item => <LanguageItem key={item.id} barColor={accentColor} hidden={item.hidden} languageItem={item}/>)
+                        data.languages.map(item => <LanguageItem key={item.id} barColor={data.accentColor} hidden={item.hidden} languageItem={item}/>)
                      }
                 </ul>
             </div>

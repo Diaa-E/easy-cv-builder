@@ -103,6 +103,9 @@ function App() {
     experience: experience,
     skills: skills,
     languages: languages,
+    font: font,
+    accentColor: accentColor,
+    layout: layout,
   };
 
   const emptyEducationItem = {
@@ -176,7 +179,7 @@ function App() {
   function downloadDraft()
   {
     const a = document.createElement("a");
-    const downloadData = new Blob([JSON.stringify({version: currentVersion, ...data, accentColor: accentColor, font: font, layout: layout})]);
+    const downloadData = new Blob([JSON.stringify({version: currentVersion, ...data})]);
     a.href = window.URL.createObjectURL(downloadData, {type: "application/json"});
     a.download = "CV_draft.json";
     a.click();
@@ -357,14 +360,10 @@ function App() {
 
       <Layout_01
         enabled={layout === "layout-01"}
-        accentColor={accentColor}
-        font={font}
         data={data}
       />
       <Layout_02
         enabled={layout === "layout-02"}
-        accentColor={accentColor}
-        font={font}
         data={data}
       />
     </>

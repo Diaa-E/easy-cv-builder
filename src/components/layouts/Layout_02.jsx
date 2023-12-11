@@ -5,17 +5,17 @@ import linkIcons from "../../linkIconsBarrel";
 
 import { isBright } from "../../utility";
 
-export default function Layout_02({enabled = true, accentColor, font, data})
+export default function Layout_02({enabled = true, data})
 {
-    const useDarkText = isBright(accentColor);
+    const useDarkText = isBright(data.accentColor);
     const textColor = useDarkText ? "var(--text)" : "var(--main)"
 
     if (enabled)
     {
         return (
-            <div style={{fontFamily: font}} className="preview layout-02">
+            <div style={{fontFamily: data.font}} className="preview layout-02">
                 <div className="header">
-                    <div style={{backgroundColor: accentColor, color: textColor}} className="header-top">
+                    <div style={{backgroundColor: data.accentColor, color: textColor}} className="header-top">
                         <h1 className="name">{data.personalInfo.fullName}</h1>
                         <h2 className="profession">{data.personalInfo.profession}</h2>
                         <div className="header-item-container">
@@ -55,7 +55,7 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                     <SectionTitle
                         icon={appIcons.languages}
                         text={"Languages"}
-                        iconBg={accentColor}
+                        iconBg={data.accentColor}
                         useBrightIcon={!useDarkText}
                     />
                     <ul className="language-section-container">
@@ -63,7 +63,7 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                         data.languages.map(item => {
                             return (
                                 <LanguageItem
-                                    barColor={accentColor}
+                                    barColor={data.accentColor}
                                     languageItem={item}
                                     hidden={item.hidden}
                                     key={item.id}
@@ -76,7 +76,7 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                 <div className="body">
                     <SectionTitle
                         icon={appIcons.education}
-                        iconBg={accentColor}
+                        iconBg={data.accentColor}
                         text={"Education"}
                         useBrightIcon={!useDarkText}
                     />
@@ -95,7 +95,7 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                     </ul>
                     <SectionTitle
                         icon={appIcons.experience}
-                        iconBg={accentColor}
+                        iconBg={data.accentColor}
                         text={"Experience"}
                         useBrightIcon={!useDarkText}
                     />
@@ -114,12 +114,12 @@ export default function Layout_02({enabled = true, accentColor, font, data})
                     </ul>
                     <SectionTitle
                         icon={appIcons.skills}
-                        iconBg={accentColor}
+                        iconBg={data.accentColor}
                         text={"Skills"}
                         useBrightIcon={!useDarkText}
                     />
                     <SkillsSection
-                        barColor={accentColor}
+                        barColor={data.accentColor}
                         skillsItems={data.skills}
                     />
                 </div>
