@@ -1,4 +1,5 @@
 import fonts from "./fonts";
+import layouts from "./layouts";
 
 export function isBright(colorHex)
 {
@@ -25,6 +26,10 @@ export function testDraftValidity(draft)
         {
             name: "font",
             valid: testFont(draft.font),
+        },
+        {
+            name: "layout",
+            valid: testLayout(draft.layout),
         }
       ];
   
@@ -49,4 +54,9 @@ function testColor(hexColorString)
 function testFont(fontValue)
 {
     return Boolean(fonts.find(font => font.value === fontValue));
+}
+
+function testLayout(layoutValue)
+{
+    return Boolean(layouts.find(layout => layout.value === layoutValue));
 }
