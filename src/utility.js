@@ -39,6 +39,10 @@ export function testDraftValidity(draft)
         {
             name: "skills",
             valid: testSkills(draft.skills),
+        },
+        {
+            name: "languages",
+            valid: testLanguages(draft.languages),
         }
       ];
   
@@ -53,6 +57,19 @@ export function testDraftValidity(draft)
       });
 
       return errorLog;
+}
+
+function testLanguages(languagesArray)
+{
+    for (const language of languagesArray)
+    {
+        if (!(+language.level % 20 === 0 && +language.level > 0 && +language.level <= 100))
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function testSkills(skillsArray)
