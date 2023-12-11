@@ -57,7 +57,7 @@ const sampleInfo = {
         {
             id: generateId(),
             url: "waynetech.com",
-            icon: linkIcons.find(item => item.name === "other").icon,
+            icon: "other",
             hidden: false,
         },
     ],

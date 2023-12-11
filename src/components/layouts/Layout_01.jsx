@@ -1,6 +1,7 @@
 import "../../styles/layouts/Layout_01.css";
 
 import appIcons from "../../appIconsBarrel";
+import linkIcons from "../../linkIconsBarrel";
 
 import { isBright } from "../../utility";
 
@@ -24,7 +25,7 @@ export default function Layout_01({enabled = true, accentColor, font, data})
                         <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.contact} text={data.contact.phoneNumber}/>
                         <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.email} text={data.contact.email}/>
                         {
-                            data.links.map(link => <HeaderItem key={link.id} useBrightIcon={!useDarkText} icon={link.icon} text={link.url} hidden={link.hidden}/>)
+                            data.links.map(link => <HeaderItem key={link.id} useBrightIcon={!useDarkText} icon={linkIcons.find(icon => icon.name === link.icon).icon} text={link.url} hidden={link.hidden}/>)
                         }
                     </div>
                 </div>

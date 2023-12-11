@@ -21,7 +21,7 @@ export default function Links({linksItems, enabled = true, addItem, toggleHide, 
                     <SelectInput
                         options={linkIcons}
                         optionNameKey={"name"}
-                        optionValueKey={"icon"}
+                        optionValueKey={"name"}
                         labelText={"Website"}
                         selected={currentItem.icon}
                         onChange={(e) => setCurrentItem({...currentItem, icon: e.target.value})}
@@ -66,7 +66,7 @@ export default function Links({linksItems, enabled = true, addItem, toggleHide, 
                     {
                         linksItems.map(item => {
                             return <ListItemIcon
-                                        iconPath={item.icon}
+                                        iconPath={linkIcons.find(icon => item.icon === icon.name).icon}
                                         text={item.url}
                                         hidden={item.hidden}
                                         id={item.id}
