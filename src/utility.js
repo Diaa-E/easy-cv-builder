@@ -12,3 +12,8 @@ export function isBright(colorHex)
 
     return (luma > 100);
 }
+
+export function testColor(hexColorString)
+{
+    return /^#[0-9A-F]{6}$/i.test(hexColorString);
+}

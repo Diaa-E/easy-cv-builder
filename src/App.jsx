@@ -19,11 +19,12 @@ import Links from './components/Links';
 import Skills from './components/Skills';
 import Languages from './components/Languages';
 import Settings from './components/Settings';
-
-import Layout_01 from './components/layouts/Layout_01';
-import Layout_02 from './components/layouts/Layout_02';
 import Save from './components/Save';
 import About from './components/About';
+import Layout_01 from './components/layouts/Layout_01';
+import Layout_02 from './components/layouts/Layout_02';
+
+import { testColor } from './utility';
 
 function App() {
 
@@ -158,10 +159,26 @@ function App() {
     const Jsondraft = await file.text();
     const draft = JSON.parse(Jsondraft);
 
-    if (draft.version !== currentVersion)
+    const dataIntegrity = [
+      {
+        name: "accentColor",
+        valid: testColor(draft.accentColor),
+      },
+    ];
+
+    const errorLog = [];
+
+    dataIntegrity.forEach(item => {
+
+      if (!item.valid)
+      {
+        errorLog.push(item.name);
+      }
+    });
+
+    if (errorLog.length > 0)
     {
-      console.error("Draft version is not supported");
-      return;
+      console.error(`Error, invalid data: ${errorLog.toString(", ")}`);
     }
 
     setAccentColor(draft.accentColor);
