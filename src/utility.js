@@ -13,7 +13,29 @@ export function isBright(colorHex)
     return (luma > 100);
 }
 
-export function testColor(hexColorString)
+export function testDraftValidity(draft)
+{
+    const dataIntegrity = [
+        {
+          name: "accentColor",
+          valid: testColor(draft.accentColor),
+        },
+      ];
+  
+      const errorLog = [];
+  
+      dataIntegrity.forEach(item => {
+  
+        if (!item.valid)
+        {
+          errorLog.push(item.name);
+        }
+      });
+
+      return errorLog;
+}
+
+function testColor(hexColorString)
 {
     return /^#[0-9A-F]{6}$/i.test(hexColorString);
 }

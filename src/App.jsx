@@ -24,7 +24,7 @@ import About from './components/About';
 import Layout_01 from './components/layouts/Layout_01';
 import Layout_02 from './components/layouts/Layout_02';
 
-import { testColor } from './utility';
+import { testDraftValidity } from './utility';
 
 function App() {
 
@@ -158,27 +158,12 @@ function App() {
     const file = e.target.files[0]
     const Jsondraft = await file.text();
     const draft = JSON.parse(Jsondraft);
-
-    const dataIntegrity = [
-      {
-        name: "accentColor",
-        valid: testColor(draft.accentColor),
-      },
-    ];
-
-    const errorLog = [];
-
-    dataIntegrity.forEach(item => {
-
-      if (!item.valid)
-      {
-        errorLog.push(item.name);
-      }
-    });
+    const errorLog = testDraftValidity(draft);
 
     if (errorLog.length > 0)
     {
       console.error(`Error, invalid data: ${errorLog.toString(", ")}`);
+      return;
     }
 
     setAccentColor(draft.accentColor);
