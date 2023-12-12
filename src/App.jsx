@@ -95,7 +95,7 @@ function App() {
   const [layout, setLayout] = useState("layout-01");
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []})
 
-  const currentVersion = "1.0.1";
+  const currentVersion = "1.0.2";
 
   const data={
     personalInfo: personalInfo,
