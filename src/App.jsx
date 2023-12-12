@@ -93,6 +93,7 @@ function App() {
   const [accentColor, setAccentColor] = useState("#ffb400");
   const [font, setFont] = useState("regular");
   const [layout, setLayout] = useState("layout-01");
+  const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []})
 
   const currentVersion = "1.0.1";
 
@@ -155,6 +156,7 @@ function App() {
 
   async function uploadDraft(e)
   {
+    setDraftStatus({code: 1, errorLog: []});
     const file = e.target.files[0]
     const Jsondraft = await file.text();
     const draft = JSON.parse(Jsondraft);
@@ -162,9 +164,11 @@ function App() {
 
     if (errorLog.length > 0)
     {
-      console.error(`Error, invalid data: ${errorLog.toString(", ")}`);
+      setDraftStatus({code: 2, errorLog: errorLog});
       return;
     }
+
+    setDraftStatus({code: 0, errorLog: []});
 
     setAccentColor(draft.accentColor);
     setFont(draft.font);
@@ -347,6 +351,7 @@ function App() {
           enabled={tabs[8].id === currentTab}
           download={downloadDraft}
           upload={uploadDraft}
+          status={draftStatus}
         />
         <About
           enabled={tabs[9].id === currentTab}
