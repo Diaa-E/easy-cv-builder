@@ -1,5 +1,4 @@
-![Easy CV builder logo](./src/assets/images/logo.svg)
-# Easy CV Builder
+# <img src="./src/assets/images/logo.svg" alt="Easy CV builder logo" width="30px"/> Easy CV Builder
 
 1. Enter your data.
 2. Choose your style preferences.
