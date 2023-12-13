@@ -123,9 +123,9 @@
   display: flex;
   background-color: var(--main);
   border-radius: 10px;
-  justify-items: flex-end;
+  justify-items: space-between;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
   margin: 20px 0 0 0;
 }
 

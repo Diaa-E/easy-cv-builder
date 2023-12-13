@@ -6,6 +6,10 @@
     cursor: pointer;
 }
 
+.item-button-danger>img{
+    filter: brightness(0) saturate(100%) invert(29%) sepia(54%) saturate(5589%) hue-rotate(349deg) brightness(104%) contrast(100%);
+}
+
 .item-button>img{
     width: 30px;
 }

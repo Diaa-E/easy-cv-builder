@@ -250,9 +250,9 @@ function App() {
     stateSetter(newArray);
   }
 
-  function deleteItem(targetItem, stateArray, stateSetter)
+  function deleteItem(targetItemId, stateArray, stateSetter)
   {
-    const newArray = stateArray.filter(item => item.id !== targetItem.id);
+    const newArray = stateArray.filter(item => item.id !== targetItemId);
     stateSetter(newArray);
   }
 

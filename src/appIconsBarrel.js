@@ -11,6 +11,7 @@ import settingsIcon from "./assets/images/settings.svg";
 import emailIcon from "./assets/images/email.svg";
 import saveIcon from "./assets/images/save.svg";
 import aboutIcon from "./assets/images/about.svg";
+import deleteIcon from "./assets/images/delete.svg";
 
 const appIcons = {
     address: addressIcon,
@@ -25,7 +26,8 @@ const appIcons = {
     settings: settingsIcon,
     email: emailIcon,
     save: saveIcon,
-    about: aboutIcon
+    about: aboutIcon,
+    delete: deleteIcon
 }
 
 export default appIcons;

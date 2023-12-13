@@ -61,14 +61,6 @@ export default function Experience({experienceItems, enabled = true, addItem, to
                     />
                     <div className="edit-controls">
                         <FormButton
-                            text='Delete'
-                            classes={["form-button", "red-button"]}
-                            onClick={() => {
-                                setEditMode(false);
-                                deleteItem(currentItem);
-                            }}
-                        />
-                        <FormButton
                             text='Cancel'
                             classes={["form-button", "white-button"]}
                             onClick={() => {setEditMode(false)}}
@@ -101,6 +93,10 @@ export default function Experience({experienceItems, enabled = true, addItem, to
                                         toggleEdit={(id) => {
                                             setEditMode(true)
                                             setCurrentItem(experienceItems.find(item => item.id === id))
+                                        }}
+                                        deleteItem={(id) => {
+                                            setEditMode(false);
+                                            deleteItem(id);
                                         }}
                                     />
                         })

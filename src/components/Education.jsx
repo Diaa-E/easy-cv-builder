@@ -53,14 +53,6 @@ export default function Education({educationItems, enabled = true, addItem, togg
                     />
                     <div className="edit-controls">
                         <FormButton
-                            text='Delete'
-                            classes={["form-button", "red-button"]}
-                            onClick={() => {
-                                setEditMode(false);
-                                deleteItem(currentItem);
-                            }}
-                        />
-                        <FormButton
                             text='Cancel'
                             classes={["form-button", "white-button"]}
                             onClick={() => {setEditMode(false)}}
@@ -93,6 +85,10 @@ export default function Education({educationItems, enabled = true, addItem, togg
                                         toggleEdit={(id) => {
                                             setEditMode(true)
                                             setCurrentItem(educationItems.find(item => item.id === id))
+                                        }}
+                                        deleteItem={(id) => {
+                                            setEditMode(false);
+                                            deleteItem(id);
                                         }}
                                     />
                         })
