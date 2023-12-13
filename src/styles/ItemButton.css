@@ -1,5 +1,6 @@
 .item-button{
     background-color: var(--none);
+    flex-shrink: 0;
 }
 
 .item-button, .item-button>img{
