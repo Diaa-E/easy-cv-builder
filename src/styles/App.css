@@ -11,6 +11,7 @@
   "preview";
   padding: 15px;
   gap: 15px;
+  overflow: visible;
 }
 
 @media (min-width: 700px) and (orientation: landscape){

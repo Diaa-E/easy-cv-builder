@@ -143,6 +143,10 @@ a{
   cursor: pointer;
 }
 
+body{
+  overflow: visible;
+}
+
 @media (min-width: 700px) and (orientation: landscape){
   .nav{
     display: flex;
