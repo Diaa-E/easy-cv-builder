@@ -6,7 +6,7 @@ import FormButton from "./FormButton";
 import SelectInput from "./SelectInput";
 import linkIcons from "../linkIconsBarrel";
 
-export default function Links({linksItems, enabled = true, addItem, toggleHide, updateItems, deleteItem})
+export default function Links({linksItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -51,6 +51,16 @@ export default function Links({linksItems, enabled = true, addItem, toggleHide, 
                         }}
                     />
                 </div>
+            </div>
+        )
+    }
+
+    if (linksItems.length === 0)
+    {
+        return (
+            <div className="items-container">
+                <h2 className="empty-list-text">{emptyText}</h2>
+                <AddButton onclick={addItem}/>
             </div>
         )
     }

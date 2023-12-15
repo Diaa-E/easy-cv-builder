@@ -96,6 +96,7 @@ function App() {
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []})
 
   const currentVersion = "1.0.4";
+  const emptyListText = "Nothing here yet."
 
   const data={
     personalInfo: personalInfo,
@@ -305,6 +306,7 @@ function App() {
           toggleHide={(id) => toggleHide(id, education, setEducation)}
           updateItems={(newItem) => updateItems(newItem, education, setEducation)}
           deleteItem={(targetItem) => deleteItem(targetItem, education, setEducation)}
+          emptyText={emptyListText}
         />
         <Experience
           enabled={tabs[4].id === currentTab}
@@ -313,6 +315,7 @@ function App() {
           toggleHide={(id) => toggleHide(id, experience, setExperience)}
           updateItems={(newItem) => updateItems(newItem, experience, setExperience)}
           deleteItem={(targetItem) => deleteItem(targetItem, experience, setExperience)}
+          emptyText={emptyListText}
         />
         <Links
           enabled={tabs[2].id === currentTab}
@@ -321,6 +324,7 @@ function App() {
           toggleHide={(id) => toggleHide(id, links, setLinks)}
           updateItems={(newItem) => updateItems(newItem, links, setLinks)}
           deleteItem={(targetItem) => deleteItem(targetItem, links, setLinks)}
+          emptyText={emptyListText}
         />
         <Skills
           enabled={tabs[5].id === currentTab}
@@ -329,6 +333,7 @@ function App() {
           toggleHide={(id) => {toggleHide(id, skills, setSkills)}}
           updateItems={(newItem) => updateItems(newItem, skills, setSkills)}
           deleteItem={(targetItem) => deleteItem(targetItem, skills, setSkills)}
+          emptyText={emptyListText}
         />
         <Languages
           enabled={tabs[6].id === currentTab}
@@ -337,6 +342,7 @@ function App() {
           toggleHide={(id) => {toggleHide(id, languages, setLanguages)}}
           updateItems={(newItem) => updateItems(newItem, languages, setLanguages)}
           deleteItem={(targetItem) => deleteItem(targetItem, languages, setLanguages)}
+          emptyText={emptyListText}
         />
         <Settings
           enabled={tabs[7].id === currentTab}

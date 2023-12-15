@@ -4,7 +4,7 @@ import AddButton from "./AddButton";
 import TextInput from "./TextInput";
 import FormButton from "./FormButton";
 
-export default function Education({educationItems, enabled = true, addItem, toggleHide, updateItems, deleteItem})
+export default function Education({educationItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -69,6 +69,16 @@ export default function Education({educationItems, enabled = true, addItem, togg
                         }}
                     />
                 </div>
+            </div>
+        )
+    }
+
+    if (educationItems.length === 0)
+    {
+        return (
+            <div className="items-container">
+                <h2 className="empty-list-text">{emptyText}</h2>
+                <AddButton onclick={addItem}/>
             </div>
         )
     }
