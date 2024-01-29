@@ -5,7 +5,7 @@ import TextInput from "./TextInput";
 import FormButton from "./FormButton";
 import TextAreaInput from "./TextAreaInput";
 
-export default function Experience({experienceItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, emptyText})
+export default function Experience({experienceItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -110,6 +110,7 @@ export default function Experience({experienceItems, enabled = true, addItem, to
                                     setEditMode(false);
                                     deleteItem(id);
                                 }}
+                                moveItemUp={id => moveItemUp(id)}
                             />
                 })
             }

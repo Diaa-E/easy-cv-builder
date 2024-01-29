@@ -5,7 +5,7 @@ import TextInput from "./TextInput";
 import FormButton from "./FormButton";
 import RangeInput from "./RangeInput";
 
-export default function Languages({languagetems, enabled = true, addItem, toggleHide, updateItems, deleteItem, emptyText})
+export default function Languages({languagetems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -84,6 +84,7 @@ export default function Languages({languagetems, enabled = true, addItem, toggle
                                     setEditMode(false);
                                     deleteItem(id);
                                 }}
+                                moveItemUp={(id => moveItemUp(id))}
                             />
                 })
             }

@@ -257,6 +257,29 @@ function App() {
     stateSetter(newArray);
   }
 
+  function moveItemUp(targetItemId, stateArray, stateSetter)
+  {
+    const targetIndex = getItemIndex(stateArray, targetItemId);
+    
+    if (targetIndex === 0) return;
+    const newArray = [];
+
+    for (let i = 0; i < stateArray.length; i++)
+    {
+      if (i === targetIndex - 1)
+      {
+        newArray.push(stateArray[targetIndex]);
+        newArray.push(stateArray[targetIndex-1]);
+        i += 1; //skip both items - consider incremement at iteration end
+        continue;
+      }
+
+      newArray.push(stateArray[i]);
+    }
+
+    stateSetter(newArray);
+  }
+
   return (
     <>
       <img src={logo} alt="Easy CV builder's logo" className='logo' />
@@ -306,6 +329,7 @@ function App() {
           toggleHide={(id) => toggleHide(id, education, setEducation)}
           updateItems={(newItem) => updateItems(newItem, education, setEducation)}
           deleteItem={(targetItem) => deleteItem(targetItem, education, setEducation)}
+          moveItemUp={(id) => moveItemUp(id, education, setEducation)}
           emptyText={emptyListText}
         />
         <Experience
@@ -315,6 +339,7 @@ function App() {
           toggleHide={(id) => toggleHide(id, experience, setExperience)}
           updateItems={(newItem) => updateItems(newItem, experience, setExperience)}
           deleteItem={(targetItem) => deleteItem(targetItem, experience, setExperience)}
+          moveItemUp={(id) => moveItemUp(id, experience, setExperience)}
           emptyText={emptyListText}
         />
         <Links
@@ -324,6 +349,7 @@ function App() {
           toggleHide={(id) => toggleHide(id, links, setLinks)}
           updateItems={(newItem) => updateItems(newItem, links, setLinks)}
           deleteItem={(targetItem) => deleteItem(targetItem, links, setLinks)}
+          moveItemUp={(id) => moveItemUp(id, links, setLinks)}
           emptyText={emptyListText}
         />
         <Skills
@@ -333,6 +359,7 @@ function App() {
           toggleHide={(id) => {toggleHide(id, skills, setSkills)}}
           updateItems={(newItem) => updateItems(newItem, skills, setSkills)}
           deleteItem={(targetItem) => deleteItem(targetItem, skills, setSkills)}
+          moveItemUp={(id) => moveItemUp(id, skills, setSkills)}
           emptyText={emptyListText}
         />
         <Languages
@@ -342,6 +369,7 @@ function App() {
           toggleHide={(id) => {toggleHide(id, languages, setLanguages)}}
           updateItems={(newItem) => updateItems(newItem, languages, setLanguages)}
           deleteItem={(targetItem) => deleteItem(targetItem, languages, setLanguages)}
+          moveItemUp={(id) => moveItemUp(id, languages, setLanguages)}
           emptyText={emptyListText}
         />
         <Settings

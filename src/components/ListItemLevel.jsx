@@ -4,7 +4,7 @@ import appIcons from "../appIconsBarrel";
 import ItemButton from "./ItemButton";
 
 //All metered values range from 0 to 100 with increments of 20
-export default function ListItemLevel({text, meterValue, showLevel, hidden = false, id, toggleHide, toggleEdit, deleteItem})
+export default function ListItemLevel({text, meterValue, showLevel, hidden = false, id, toggleHide, toggleEdit, deleteItem, moveItemUp})
 {
     return (
         <div className={hidden ? "list-item-hidden" : "list-item"}>
@@ -15,6 +15,7 @@ export default function ListItemLevel({text, meterValue, showLevel, hidden = fal
             </div>
             <ItemButton onClick={() => toggleEdit(id)} text="edit item" imgPath={appIcons.edit}/>
             <ItemButton onClick={() => toggleHide(id)} text="toggle visibility" imgPath={hidden ? appIcons.hidden : appIcons.visible}/>
+            <ItemButton onClick={() => moveItemUp(id)} text="move item up" imgPath={appIcons.moveUp}/>
         </div>
     )
 }

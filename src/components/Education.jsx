@@ -4,7 +4,7 @@ import AddButton from "./AddButton";
 import TextInput from "./TextInput";
 import FormButton from "./FormButton";
 
-export default function Education({educationItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, emptyText})
+export default function Education({educationItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -102,6 +102,7 @@ export default function Education({educationItems, enabled = true, addItem, togg
                                     setEditMode(false);
                                     deleteItem(id);
                                 }}
+                                moveItemUp={id => moveItemUp(id)}
                             />
                 })
             }

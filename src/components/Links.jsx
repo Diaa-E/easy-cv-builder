@@ -6,7 +6,7 @@ import FormButton from "./FormButton";
 import SelectInput from "./SelectInput";
 import linkIcons from "../linkIconsBarrel";
 
-export default function Links({linksItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, emptyText})
+export default function Links({linksItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -84,6 +84,7 @@ export default function Links({linksItems, enabled = true, addItem, toggleHide, 
                                     setEditMode(false);
                                     deleteItem(id);
                                 }}
+                                moveItemUp={(id) => moveItemUp(id)}
                             />
                 })
             }
