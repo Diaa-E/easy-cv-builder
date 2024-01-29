@@ -64,7 +64,7 @@ const sampleInfo = {
     skills: [
         {
             id: generateId(),
-            name: "Swordsmanship",
+            name: "Swords-manship",
             level: 100,
             hidden: false,
             showLevel: true,
