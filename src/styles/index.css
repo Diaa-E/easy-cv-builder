@@ -64,6 +64,7 @@
 
 .main-controls{
   transform: translateZ(0); /*fixes repaint whenever editor title changes*/
+  z-index: 9999;
   position: sticky;
   top: 10px;
   background-color: var(--main);
