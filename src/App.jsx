@@ -135,7 +135,7 @@ function App() {
   const emptyLinkItem = {
     id: generateId(),
     url: "website.com/john-doe",
-    icon: linkIcons.find(item => item.name === "behance").icon,
+    icon: linkIcons.find(item => item.name === "other").name,
     hidden: false,
   };
 
