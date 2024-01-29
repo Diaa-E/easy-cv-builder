@@ -99,7 +99,6 @@ export default function Education({educationItems, enabled = true, addItem, togg
                                     setCurrentItem(educationItems.find(item => item.id === id))
                                 }}
                                 deleteItem={(id) => {
-                                    setEditMode(false);
                                     deleteItem(id);
                                 }}
                                 moveItemUp={id => moveItemUp(id)}

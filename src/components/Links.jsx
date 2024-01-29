@@ -81,7 +81,6 @@ export default function Links({linksItems, enabled = true, addItem, toggleHide, 
                                     setCurrentItem(linksItems.find(item => item.id === id))
                                 }}
                                 deleteItem={(id) => {
-                                    setEditMode(false);
                                     deleteItem(id);
                                 }}
                                 moveItemUp={(id) => moveItemUp(id)}

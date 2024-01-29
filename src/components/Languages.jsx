@@ -81,7 +81,6 @@ export default function Languages({languagetems, enabled = true, addItem, toggle
                                     setCurrentItem(languagetems.find(item => item.id === id))
                                 }}
                                 deleteItem={(id) => {
-                                    setEditMode(false);
                                     deleteItem(id);
                                 }}
                                 moveItemUp={(id => moveItemUp(id))}

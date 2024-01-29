@@ -107,7 +107,6 @@ export default function Experience({experienceItems, enabled = true, addItem, to
                                     setCurrentItem(experienceItems.find(item => item.id === id))
                                 }}
                                 deleteItem={(id) => {
-                                    setEditMode(false);
                                     deleteItem(id);
                                 }}
                                 moveItemUp={id => moveItemUp(id)}

@@ -81,7 +81,6 @@ export default function Skills({skillItems, enabled = true, addItem, toggleHide,
                                     setCurrentItem(skillItems.find(item => item.id === id))
                                 }}
                                 deleteItem={(id) => {
-                                    setEditMode(false);
                                     deleteItem(id);
                                 }}
                                 moveItemUp={(id) => moveItemUp(id)}
