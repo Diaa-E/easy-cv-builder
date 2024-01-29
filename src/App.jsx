@@ -24,7 +24,7 @@ import About from './components/About';
 import Layout_01 from './components/layouts/Layout_01';
 import Layout_02 from './components/layouts/Layout_02';
 
-import { testDraftValidity } from './utility';
+import { getItemIndex, testDraftValidity } from './utility';
 
 function App() {
 
@@ -238,7 +238,7 @@ function App() {
   function toggleHide(id, stateArray, stateSetter)
   {
     const newArray = Array.from(stateArray);
-    const hideTarget = newArray.findIndex(item => item.id === id);
+    const hideTarget = getItemIndex(newArray, id);
     newArray[hideTarget].hidden = !newArray[hideTarget].hidden;
     stateSetter(newArray);
   }
@@ -246,7 +246,7 @@ function App() {
   function updateItems(newItem, stateArray, stateSetter)
   {
     const newArray = Array.from(stateArray);
-    const newItemIndex = newArray.findIndex(item => item.id === newItem.id);
+    const newItemIndex = getItemIndex(newArray, newItem.id);
     newArray[newItemIndex] = newItem;
     stateSetter(newArray);
   }

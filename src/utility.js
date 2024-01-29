@@ -2,6 +2,11 @@ import fonts from "./fonts";
 import layouts from "./layouts";
 import linkIcons from "./linkIconsBarrel";
 
+export function getItemIndex(itemArray, itemId)
+{
+    return itemArray.findIndex(item => item.id === itemId);
+}
+
 export function isBright(colorHex)
 {
     //The following code is stolen from stack overflow, it calculates the current color's brightness
