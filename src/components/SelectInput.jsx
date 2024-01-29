@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../styles/SelectInput.css";
 
 export default function SelectInput({options, optionNameKey, optionValueKey, selected, labelText, id, onChange = () => {}})

@@ -1,6 +1,6 @@
 import "../styles/NavItem.css";
 
-export default function NavItem({iconUrl, title, id, selected = false, onClick = () => {}})
+export default function NavItem({iconUrl, id, selected = false, onClick = () => {}})
 {
     return (
         <>
