@@ -2,6 +2,7 @@ import "../styles/ListItem.css";
 import appIcons from "../appIconsBarrel";
 
 import ItemButton from "./ItemButton";
+import ItemControls from "./ItemControls";
 
 export default function ListItemIcon({iconPath, text, hidden = false, id, toggleHide, toggleEdit, deleteItem, moveItemUp})
 {
@@ -12,9 +13,12 @@ export default function ListItemIcon({iconPath, text, hidden = false, id, toggle
                 <img className="item-icon" src={iconPath} alt="item icon" />
                 <p>{text}</p>
             </div>
-            <ItemButton onClick={() => toggleEdit(id)} text="edit item" imgPath={appIcons.edit}/>
-            <ItemButton onClick={() => toggleHide(id)} text="toggle visibility" imgPath={hidden ? appIcons.hidden : appIcons.visible}/>
-            <ItemButton onClick={() => moveItemUp(id)} text="move item up" imgPath={appIcons.moveUp}/>
+            <ItemControls 
+                moveItemUp={() => moveItemUp(id)}
+                toggleEdit={() => toggleEdit(id)} 
+                toggleHide={() => toggleHide(id)}
+                hidden={hidden}
+            />
         </div>
     )
 }

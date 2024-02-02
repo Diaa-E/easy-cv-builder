@@ -14,3 +14,32 @@
 .item-button>img{
     width: 30px;
 }
+
+.item-menu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main);
+    box-shadow: var(--shadow);
+}
+
+.item-menu-button{
+    background-color: var(--main);
+    font-size: 18px;
+    padding: 10px 20px;
+}
+
+.item-menu-button:hover{
+    cursor: pointer;
+    color: var(--main);
+    background-color: var(--accent);
+}
+
+.item-menu-overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: var(--none);
+}

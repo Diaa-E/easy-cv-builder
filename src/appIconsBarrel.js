@@ -16,6 +16,7 @@ import hiddenIcon from "./assets/images/hidden.svg";
 import visibleIcon from "./assets/images/visible.svg";
 import editIcon from "./assets/images/edit.svg";
 import moveUpIcon from "./assets/images/up.svg";
+import moreIcon from "./assets/images/more.svg";
 
 const appIcons = {
     address: addressIcon,
@@ -36,6 +37,7 @@ const appIcons = {
     hidden: hiddenIcon,
     visible: visibleIcon,
     moveUp: moveUpIcon,
+    more: moreIcon,
 }
 
 export default appIcons;
