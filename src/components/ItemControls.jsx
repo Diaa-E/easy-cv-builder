@@ -16,6 +16,11 @@ export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden
     
     if (screenWidth <= 700)
     {
+        window.addEventListener("scroll", () => {
+
+            setOpen(false);
+        });
+        
         return (
             <>
                 <ItemButton
