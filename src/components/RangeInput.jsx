@@ -3,7 +3,7 @@ import "../styles/RangeInput.css";
 export default function RangeInput({labelText, checked, value, id, onRangeChange, onCheckedChange})
 {
     return (
-        <div className="range-input-container">
+        <div data-testid="range-input" className="range-input-container">
             <label className="range-input-label" htmlFor="checkBox">
                 <input
                     id="checkBox"
