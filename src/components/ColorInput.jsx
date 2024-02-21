@@ -7,9 +7,9 @@ export default function ColorInput({id, name, onChange, value})
     }
 
     return (
-        <>
-            <label className="color-input-label-text">Color</label>
-            <label style={labelStyle} htmlFor={id} className="color-input-label">
+        <div data-testid="color-input-container" className="text-input-container">
+            <label htmlFor={id} className="color-input-label-text">Color</label>
+            <label role="button" style={labelStyle} htmlFor={id} className="color-input-label">
                 <input
                     name={name}
                     id={id}
@@ -20,6 +20,6 @@ export default function ColorInput({id, name, onChange, value})
                 >
                 </input>
             </label>
-        </>
+        </div>
     )
 }
