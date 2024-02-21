@@ -31,7 +31,7 @@ export default function Skills({skillItems, enabled = true, addItem, toggleHide,
                     value={currentItem.level}
                     labelText={"Level"}
                     checked={currentItem.showLevel}
-                    onTextChange={(e) => setCurrentItem({...currentItem, level: e.target.value < 20? 20 : e.target.value})}
+                    onRangeChange={(e) => setCurrentItem({...currentItem, level: e.target.value < 20? 20 : e.target.value})}
                     onCheckedChange={(e) => setCurrentItem({...currentItem, showLevel: e.target.checked})}
                     id="level"
                 />

@@ -1,6 +1,6 @@
 import "../styles/RangeInput.css";
 
-export default function RangeInput({labelText, checked, value, id, onTextChange, onCheckedChange})
+export default function RangeInput({labelText, checked, value, id, onRangeChange, onCheckedChange})
 {
     return (
         <div className="range-input-container">
@@ -21,7 +21,7 @@ export default function RangeInput({labelText, checked, value, id, onTextChange,
                 min={0}
                 step={20}
                 className="range-input"
-                onChange={onTextChange}
+                onChange={onRangeChange}
                 disabled={!checked}
             />
         </div>
