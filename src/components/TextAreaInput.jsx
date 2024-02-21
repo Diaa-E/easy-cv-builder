@@ -3,7 +3,7 @@ import "../styles/TextAreaInput.css";
 export default function TextAreaInput({labelText, text, placeholder, id, onChange = () => {}})
 {
     return (
-        <div className="text-area-input-container">
+        <div data-testid="text-area-input" className="text-area-input-container">
             <label className="text-area-input-label" htmlFor={id}>
                 {labelText}
             </label>
