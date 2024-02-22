@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { testColor, testFont, testLayout } from "../draftTest";
+import { testColor, testFont, testLayout, testLinks } from "../draftTest";
 
 vi.mock("../fonts.js", () => {
 
@@ -31,6 +31,100 @@ vi.mock("../layouts.js", () => {
             }
         ]
     }
+});
+
+vi.mock("../linkIconsBarrel.js", () => {
+
+    return{
+        default: [
+            {
+                name: "icon1",
+                icon: ""
+            },
+            {
+                name: "icon2",
+                icon: ""
+            },
+            {
+                name: "icon3",
+                icon: ""
+            }
+        ]
+    }
+});
+
+describe("Links section validity", () => {
+
+    function setup()
+    {
+        return [
+            {
+                id: 0,
+                url: "website.com",
+                icon: "icon1",
+                hidden: false,
+            },
+            {
+                id: 1,
+                url: "place.com",
+                icon: "icon2",
+                hidden: false,
+            },
+            {
+                id: 2,
+                url: "game.net",
+                icon: "icon3",
+                hidden: true,
+            },
+            {
+                id: 3,
+                url: "organization.org",
+                icon: "icon1",
+                hidden: false,
+            },
+        ];
+    }
+
+    it("Returns true for valid links", () => {
+
+        const validLinks = setup();
+
+        expect(testLinks(validLinks)).toBe(true);
+    });
+
+    it("Returns true for valid links after serialization", () => {
+
+        const validLinks = setup();
+
+        expect(JSON.parse(JSON.stringify(testLinks(validLinks)))).toBe(true);
+    });
+
+    it("Returns false for repetetive IDs", () => {
+
+        const invalidLinks = setup();
+        invalidLinks[0].id = invalidLinks[invalidLinks.length - 1].id;
+
+        expect(testLinks(invalidLinks)).toBe(false);
+        expect(testLinks(invalidLinks.reverse())).toBe(false); //make sure order does not affect result
+    });
+
+    it("Returns false for icons not included in the link icons module", () => {
+
+        const invalidLinks = setup();
+        invalidLinks[0].icon = "text";
+
+        expect(testLinks(invalidLinks)).toBe(false);
+        expect(testLinks(invalidLinks.reverse())).toBe(false);
+    });
+
+    it("Returns false for non boolean hidden value", () => {
+
+        const invalidLinks = setup();
+        invalidLinks[0].hidden = "text";
+
+        expect(testLinks(invalidLinks)).toBe(false);
+        expect(testLinks(invalidLinks.reverse())).toBe(false);
+    });
 });
 
 describe("Accent color validity", () => {
