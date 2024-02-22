@@ -71,12 +71,20 @@ export function testExperience(experienceArray)
 
 export function testEducation(educationArray)
 {
+    const previousIds = [];
+    
     for (const education of educationArray)
     {
         if (typeof education.hidden !== "boolean")
         {
             return false;
         }
+        else if (previousIds.find(id => id === education.id))
+        {
+            return false;
+        }
+
+        previousIds.push(education.id);
     }
 
     return true;
