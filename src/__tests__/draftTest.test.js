@@ -1,12 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { testFont } from "../draftTest";
+import { testFont, testLanguages, testLayout } from "../draftTest";
 
-vi.mock("../fonts.js", async (importOriginal) => {
-
-    const mod = await importOriginal();
+vi.mock("../fonts.js", () => {
 
     return {
-        ...mod,
         default: [
             {
                 name: "",
@@ -18,6 +15,35 @@ vi.mock("../fonts.js", async (importOriginal) => {
             }
         ]
     };
+});
+
+vi.mock("../layouts.js", () => {
+
+    return {
+        default: [
+            {
+                name: "",
+                value: "layout1"
+            },
+            {
+                name: "",
+                value: "layout2"
+            }
+        ]
+    }
+});
+
+describe("Layout validity", () => {
+
+    it("Returns true for a layout included in the layouts module", () => {
+
+        expect(testLayout("layout1")).toBe(true);
+    });
+
+    it("Returns falsee for a layout not included in the layouts module", () => {
+
+        expect(testLayout("text")).toBe(false);
+    });
 });
 
 describe("Font validity", () => {
