@@ -44,20 +44,39 @@ export function testDraftValidity(draft)
       return errorLog;
 }
 
-function testLanguages(languagesArray)
+export function testLanguages(languagesArray)
 {
+    const previousIds = [];
+
     for (const language of languagesArray)
     {
+        //invalid level values
         if (!(+language.level % 20 === 0 && +language.level > 0 && +language.level <= 100))
         {
             return false;
         }
+        //non-boolean values
+        else if (typeof language.hidden !== "boolean")
+        {
+            return false;
+        }
+        else if (typeof language.showLevel !== "boolean")
+        {
+            return false;
+        }
+        //repeating IDs
+        else if (previousIds.find(id => id === language.id))
+        {
+            return false;
+        }
+
+        previousIds.push(language.id);
     }
 
     return true;
 }
 
-function testSkills(skillsArray)
+export function testSkills(skillsArray)
 {
     for (const skill of skillsArray)
     {
@@ -70,7 +89,7 @@ function testSkills(skillsArray)
     return true;
 }
 
-function testLinks(linksArray)
+export function testLinks(linksArray)
 {
     for (const link of linksArray)
     {
@@ -83,17 +102,17 @@ function testLinks(linksArray)
     return true;
 }
 
-function testColor(hexColorString)
+export function testColor(hexColorString)
 {
     return /^#[0-9A-F]{6}$/i.test(hexColorString);
 }
 
-function testFont(fontValue)
+export function testFont(fontValue)
 {
     return Boolean(fonts.find(font => font.value === fontValue));
 }
 
-function testLayout(layoutValue)
+export function testLayout(layoutValue)
 {
     return Boolean(layouts.find(layout => layout.value === layoutValue));
 }
