@@ -218,6 +218,14 @@ describe("Skills section validity", () => {
         expect(testSkills(invalidSkills)).toBe(false);
     });
 
+    it("Returns false for non number level values", () => {
+
+        const invalidSkills = setup();
+        invalidSkills[0].level= "text";
+
+        expect(testSkills(invalidSkills)).toBe(false);
+    });
+
     it("Returns false for level less than 0", () => {
 
         const invalidSkills = setup();

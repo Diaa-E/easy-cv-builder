@@ -87,7 +87,11 @@ export function testSkills(skillsArray)
     for (const skill of skillsArray)
     {
         //invalid level values
-        if (!(+skill.level % 20 === 0 && +skill.level > 0 && +skill.level <= 100))
+        if (typeof skill.level !== "number")
+        {
+            return false;
+        }
+        else if (!(+skill.level % 20 === 0 && +skill.level > 0 && +skill.level <= 100))
         {
             return false;
         }
