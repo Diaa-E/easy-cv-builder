@@ -24,7 +24,8 @@ import About from './components/About';
 import Layout_01 from './components/layouts/Layout_01';
 import Layout_02 from './components/layouts/Layout_02';
 
-import { getItemIndex, testDraftValidity } from './utility';
+import { getItemIndex } from './utility';
+import { testDraftValidity } from './draftTest';
 
 function App() {
 
