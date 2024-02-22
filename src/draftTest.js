@@ -28,6 +28,10 @@ export function testDraftValidity(draft)
         {
             name: "languages",
             valid: testLanguages(draft.languages),
+        },
+        {
+            name: "education",
+            valid: testEducation(draft.education),
         }
       ];
   
@@ -42,6 +46,19 @@ export function testDraftValidity(draft)
       });
 
       return errorLog;
+}
+
+export function testEducation(educationArray)
+{
+    for (const education of educationArray)
+    {
+        if (typeof education.hidden !== "boolean")
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 export function testLanguages(languagesArray)
