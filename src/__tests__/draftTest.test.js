@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { testFont, testLanguages, testLayout } from "../draftTest";
+import { testColor, testFont, testLayout } from "../draftTest";
 
 vi.mock("../fonts.js", () => {
 
@@ -31,6 +31,41 @@ vi.mock("../layouts.js", () => {
             }
         ]
     }
+});
+
+describe("Accent color validity", () => {
+   
+    it("Returns true for a valid Hex color with no alpha channel", () => {
+
+        expect(testColor("#000000")).toBe(true);
+        expect(testColor("#ffffff")).toBe(true);
+        expect(testColor("#abcdef")).toBe(true);
+    });
+
+    it("Returns false for a valid Hex value longer than 6 digits + pound", () => {
+
+        expect(testColor("#0000000")).toBe(false);
+        expect(testColor("#abcdeffecd")).toBe(false);
+    });
+
+    it("Returns false for a valid Hex value shorter than 6 digits + pound", () => {
+
+        expect(testColor("#abc43")).toBe(false);
+        expect(testColor("#f")).toBe(false);
+    });
+
+    it("Returns false for a valid Hex value without pound", () => {
+
+        expect(testColor("ffffff")).toBe(false);
+        expect(testColor("01fc54")).toBe(false);
+    });
+
+    it("Returns false for an invalid Hex value of 6 digits + pound", () => {
+
+        expect(testColor("#zabcde")).toBe(false);
+        expect(testColor("#0abcdg")).toBe(false);
+        expect(testColor("#1azcde")).toBe(false);
+    });
 });
 
 describe("Layout validity", () => {
