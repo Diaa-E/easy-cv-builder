@@ -152,6 +152,14 @@ describe("Education section validity", () => {
         expect(JSON.parse(JSON.stringify(testEducation(validEducation)))).toBe(true);
     });
 
+    it("Returns false for repetitive IDs", () => {
+
+        const invalidEducation = setup();
+        invalidEducation[0].id = invalidEducation[invalidEducation.length - 1].id;
+
+        expect(testEducation(invalidEducation)).toBe(false);
+    });
+
     it("Returns false for non boolean hidden values", () => {
 
         const invalidEducation = setup();
