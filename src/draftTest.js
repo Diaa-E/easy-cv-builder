@@ -48,6 +48,27 @@ export function testDraftValidity(draft)
       return errorLog;
 }
 
+export function testExperience(experienceArray)
+{
+    const previousIds = [];
+
+    for (const experience of experienceArray)
+    {
+        if (typeof experience.hidden !== "boolean")
+        {
+            return false;
+        }
+        else if (previousIds.find(id => id === experience.id))
+        {
+            return false;
+        }
+
+        previousIds.push(experience.id);
+    }
+
+    return true;
+}
+
 export function testEducation(educationArray)
 {
     for (const education of educationArray)
