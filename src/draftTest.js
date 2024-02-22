@@ -78,12 +78,31 @@ export function testLanguages(languagesArray)
 
 export function testSkills(skillsArray)
 {
+    const previousIds = [];
+
     for (const skill of skillsArray)
     {
+        //invalid level values
         if (!(+skill.level % 20 === 0 && +skill.level > 0 && +skill.level <= 100))
         {
             return false;
         }
+        //non-boolean values
+        else if (typeof skill.hidden !== "boolean")
+        {
+            return false;
+        }
+        else if (typeof skill.showLevel !== "boolean")
+        {
+            return false;
+        }
+        //repeating IDs
+        else if (previousIds.find(id => id === skill.id))
+        {
+            return false;
+        }
+
+        previousIds.push(skill.id);
     }
 
     return true;
