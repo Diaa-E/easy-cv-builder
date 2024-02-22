@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { testColor, testEducation, testFont, testLanguages, testLayout, testLinks, testSkills } from "../draftTest";
+import { testColor, testEducation, testExperience, testFont, testLanguages, testLayout, testLinks, testSkills } from "../draftTest";
 
 vi.mock("../fonts.js", () => {
 
@@ -53,6 +53,65 @@ vi.mock("../linkIconsBarrel.js", () => {
     }
 });
 
+describe("Experience section validity", () => {
+
+    function setup()
+    {
+        return [
+            {
+                id: 0,
+                company: "",
+                location: "",
+                position: "",
+                start: "",
+                end: "",
+                details: "",
+                hidden: false
+            },
+            {
+                id: 1,
+                company: "",
+                location: "",
+                position: "",
+                start: "",
+                end: "",
+                details: "",
+                hidden: false
+            },
+        ];
+    }
+
+    it("Returns true for valid experience", () => {
+
+        const validExperience = setup();
+
+        expect(testExperience(validExperience)).toBe(true);
+    });
+
+    it("Returns true for valid experience after serialization", () => {
+
+        const validExperience = setup();
+
+        expect(JSON.parse(JSON.stringify(testExperience(validExperience)))).toBe(true);
+    });
+
+    it("Returns false for repetetive IDs", () => {
+
+        const invalidExperience = setup();
+        invalidExperience[0].id = invalidExperience[invalidExperience.length - 1].id;
+
+        expect(testExperience(invalidExperience)).toBe(false);
+    });
+
+    it("Returns false for non boolean hidden values", () => {
+
+        const invalidExperience = setup();
+        invalidExperience[0].hidden = "text";
+
+        expect(testExperience(invalidExperience)).toBe(false);
+    });
+});
+
 describe("Education section validity", () => {
 
     function setup()
@@ -68,7 +127,7 @@ describe("Education section validity", () => {
                 hidden: false
             },
             {
-                id: 0,
+                id: 1,
                 degree: "",
                 school: "",
                 location: "",
