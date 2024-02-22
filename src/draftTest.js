@@ -19,7 +19,7 @@ export function testDraftValidity(draft)
         },
         {
             name: "links",
-            valid: testLinks(draft.links),
+            valid: testLinks(draft.links, linkIcons),
         },
         {
             name: "skills",
@@ -108,14 +108,26 @@ export function testSkills(skillsArray)
     return true;
 }
 
-export function testLinks(linksArray)
+export function testLinks(linksArray, linkIcons)
 {
+    const previousIds = [];
+
     for (const link of linksArray)
     {
         if (!Boolean(linkIcons.find(icon => link.icon === icon.name)))
         {
             return false;
         }
+        else if (typeof link.hidden !== "boolean")
+        {
+            return false;
+        }
+        else if (previousIds.find(id => id === link.id))
+        {
+            return false;
+        }
+
+        previousIds.push(link.id);
     }
 
     return true;
