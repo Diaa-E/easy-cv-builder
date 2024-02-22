@@ -6,3 +6,7 @@
 
 ## Live Preview
  [Visit Live Preview](https://diaa-e.github.io/easy-cv-builder/)
+
+## Changes
+
+[Change log file](./CHANGELOG.md)
