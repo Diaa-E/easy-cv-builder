@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { testColor, testFont, testLayout, testLinks } from "../draftTest";
+import { testColor, testFont, testLayout, testLinks, testSkills } from "../draftTest";
 
 vi.mock("../fonts.js", () => {
 
@@ -51,6 +51,105 @@ vi.mock("../linkIconsBarrel.js", () => {
             }
         ]
     }
+});
+
+describe("Skills section validity", () => {
+
+    function setup()
+    {
+        return [
+            {
+                id: 0,
+                name: "HTML",
+                level: 100,
+                hidden: false,
+                showLevel: true,
+            },
+            {
+                id: 1,
+                name: "PHP",
+                level: 20,
+                hidden: true,
+                showLevel: false,
+            },
+            {
+                id: 2,
+                name: "Java",
+                level: 40,
+                hidden: false,
+                showLevel: false,
+            },
+            {
+                id: 3,
+                name: "Perl",
+                level: 80,
+                hidden: false,
+                showLevel: true,
+            },
+        ];
+    }
+
+    it("Returns true for valid skills", () => {
+
+        const validSkills = setup();
+
+        expect(testSkills(validSkills)).toBe(true);
+    });
+
+    it("Returns true for valid skills after serialization", () => {
+
+        const validSkills = setup();
+
+        expect(JSON.parse(JSON.stringify(testSkills(validSkills)))).toBe(true);
+    });
+
+    it("Returns false for repetitive IDs", () => {
+
+        const invalidSkills = setup();
+        invalidSkills[0].id = invalidSkills[invalidSkills.length - 1].id;
+
+        expect(testSkills(invalidSkills)).toBe(false);
+    });
+
+    it("Returns false for level less than 0", () => {
+
+        const invalidSkills = setup();
+        invalidSkills[0].level= -20;
+
+        expect(testSkills(invalidSkills)).toBe(false);
+    });
+
+    it("Returns false for level more than 100", () => {
+
+        const invalidSkills = setup();
+        invalidSkills[0].level= 120;
+
+        expect(testSkills(invalidSkills)).toBe(false);
+    });
+
+    it("Returns false for level not divisible by 20", () => {
+
+        const invalidSkills = setup();
+        invalidSkills[0].level= 30;
+
+        expect(testSkills(invalidSkills)).toBe(false);
+    });
+
+    it("Returns false for non boolean hidden value", () => {
+
+        const invalidSkills = setup();
+        invalidSkills[0].hidden= "text";
+
+        expect(testSkills(invalidSkills)).toBe(false);
+    });
+
+    it("Returns false for non boolean showLevel value", () => {
+
+        const invalidSkills = setup();
+        invalidSkills[0].showLevel= "text";
+
+        expect(testSkills(invalidSkills)).toBe(false);
+    });
 });
 
 describe("Links section validity", () => {
