@@ -11,11 +11,11 @@ export function testDraftValidity(draft)
         },
         {
             name: "font",
-            valid: testFont(draft.font),
+            valid: testFont(draft.font, fonts),
         },
         {
             name: "layout",
-            valid: testLayout(draft.layout),
+            valid: testLayout(draft.layout, layouts),
         },
         {
             name: "links",
@@ -138,12 +138,12 @@ export function testColor(hexColorString)
     return /^#[0-9A-F]{6}$/i.test(hexColorString);
 }
 
-export function testFont(fontValue)
+export function testFont(fontValue, fonts)
 {
     return Boolean(fonts.find(font => font.value === fontValue));
 }
 
-export function testLayout(layoutValue)
+export function testLayout(layoutValue, layouts)
 {
     return Boolean(layouts.find(layout => layout.value === layoutValue));
 }
