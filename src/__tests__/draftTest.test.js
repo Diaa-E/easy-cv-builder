@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { testColor, testFont, testLanguages, testLayout, testLinks, testSkills } from "../draftTest";
+import { testColor, testEducation, testFont, testLanguages, testLayout, testLinks, testSkills } from "../draftTest";
 
 vi.mock("../fonts.js", () => {
 
@@ -51,6 +51,55 @@ vi.mock("../linkIconsBarrel.js", () => {
             }
         ]
     }
+});
+
+describe("Education section validity", () => {
+
+    function setup()
+    {
+        return [
+            {
+                id: 0,
+                degree: "",
+                school: "",
+                location: "",
+                start: "",
+                end: "",
+                hidden: false
+            },
+            {
+                id: 0,
+                degree: "",
+                school: "",
+                location: "",
+                start: "",
+                end: "",
+                hidden: true
+            },
+        ];
+    }
+
+    it("Returns true for valid education", () => {
+
+        const validEducation = setup();
+
+        expect(testEducation(validEducation)).toBe(true);
+    });
+
+    it("Returns true for valid education after serialization", () => {
+
+        const validEducation = setup();
+
+        expect(JSON.parse(JSON.stringify(testEducation(validEducation)))).toBe(true);
+    });
+
+    it("Returns false for non boolean hidden values", () => {
+
+        const invalidEducation = setup();
+        invalidEducation[0].hidden = "text";
+
+        expect(testEducation(invalidEducation)).toBe(false);
+    });
 });
 
 describe("Languages section validity", () => {
