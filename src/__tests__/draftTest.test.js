@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { testColor, testFont, testLayout, testLinks, testSkills } from "../draftTest";
+import { testColor, testFont, testLanguages, testLayout, testLinks, testSkills } from "../draftTest";
 
 vi.mock("../fonts.js", () => {
 
@@ -51,6 +51,113 @@ vi.mock("../linkIconsBarrel.js", () => {
             }
         ]
     }
+});
+
+describe("Languages section validity", () => {
+
+    function setup()
+    {
+        return [
+            {
+                id: 0,
+                name: "English",
+                level: 100,
+                hidden: false,
+                showLevel: true,
+            },
+            {
+                id: 1,
+                name: "Spanish",
+                level: 20,
+                hidden: true,
+                showLevel: true,
+            },
+            {
+                id: 2,
+                name: "Arabic",
+                level: 100,
+                hidden: false,
+                showLevel: false,
+            },
+            {
+                id: 3,
+                name: "German",
+                level: 40,
+                hidden: false,
+                showLevel: true,
+            },
+        ];
+    }
+
+    it("Returns true for valid languages", () => {
+
+        const validLanguages = setup();
+
+        expect(testLanguages(validLanguages)).toBe(true);
+    });
+
+    it("Returns true for valid languages after serialization", () => {
+
+        const validLanguages = setup();
+
+        expect(JSON.parse(JSON.stringify(testLanguages(validLanguages)))).toBe(true);
+    });
+
+    it("Returns false for repetitive IDs", () => {
+
+        const invalidLanguages = setup();
+        invalidLanguages[0].id = invalidLanguages[invalidLanguages.length - 1].id;
+
+        expect(testLanguages(invalidLanguages)).toBe(false);
+    });
+
+    it("Returns false for non number level values", () => {
+
+        const invalidLanguages = setup();
+        invalidLanguages[0].level = "text";
+
+        expect(testLanguages(invalidLanguages)).toBe(false);
+    });
+
+    it("Returns false for level less than 0", () => {
+
+        const invalidLanguages = setup();
+        invalidLanguages[0].level = -20;
+
+        expect(testLanguages(invalidLanguages)).toBe(false);
+    });
+
+    it("Returns false for level more than 100", () => {
+
+        const invalidLanguages = setup();
+        invalidLanguages[0].level = 120;
+
+        expect(testLanguages(invalidLanguages)).toBe(false);
+    });
+
+    it("Returns false for level not divisible by 20", () => {
+
+        const invalidLanguages = setup();
+        invalidLanguages[0].level = 30;
+
+        expect(testLanguages(invalidLanguages)).toBe(false);
+    });
+
+    it("Returns false for non boolean hidden values", () => {
+
+        const invalidLanguages = setup();
+        invalidLanguages[0].hidden = "text";
+
+        expect(testLanguages(invalidLanguages)).toBe(false);
+    });
+
+    it("Returns false for non boolean showLevel values", () => {
+
+        const invalidLanguages = setup();
+        invalidLanguages[0].showLevel = "text";
+
+        expect(testLanguages(invalidLanguages)).toBe(false);
+    });
 });
 
 describe("Skills section validity", () => {
