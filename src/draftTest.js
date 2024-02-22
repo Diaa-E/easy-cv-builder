@@ -108,7 +108,7 @@ export function testSkills(skillsArray)
     return true;
 }
 
-export function testLinks(linksArray, linkIcons)
+export function testLinks(linksArray)
 {
     const previousIds = [];
 
@@ -138,12 +138,12 @@ export function testColor(hexColorString)
     return /^#[0-9A-F]{6}$/i.test(hexColorString);
 }
 
-export function testFont(fontValue, fonts)
+export function testFont(fontValue)
 {
     return Boolean(fonts.find(font => font.value === fontValue));
 }
 
-export function testLayout(layoutValue, layouts)
+export function testLayout(layoutValue)
 {
     return Boolean(layouts.find(layout => layout.value === layoutValue));
 }
