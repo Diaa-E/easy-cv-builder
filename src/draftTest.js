@@ -51,7 +51,11 @@ export function testLanguages(languagesArray)
     for (const language of languagesArray)
     {
         //invalid level values
-        if (!(+language.level % 20 === 0 && +language.level > 0 && +language.level <= 100))
+        if (typeof language.level !== "number")
+        {
+            return false;
+        }
+        else if (!(+language.level % 20 === 0 && +language.level > 0 && +language.level <= 100))
         {
             return false;
         }
