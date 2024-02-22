@@ -21,32 +21,32 @@ This change log only highlights important changes (i.e features and refactors).
 - Replace direct icon imports with import barrels.
 - Remove unused code.
 
-### **1.0.5 (Dec 15, 2023 )**
+### **1.0.5 (Dec 15, 2023)**
 
 - Display a text message when a list has no items.
 - Reduce app logo size.
 - Refactor: Use an early return for disabled lists.
 
-### **1.0.4 (Dec 13, 2023 )**
+### **1.0.4 (Dec 13, 2023)**
 
 - Fix list item buttons shrinking when item text grows too long.
 - Fix list item text overflowing.
 
-### **1.0.3 (Dec 13, 2023 )**
+### **1.0.3 (Dec 13, 2023)**
 
 - Fix controls not scrolling down on some devices.
 - List items can now be deleted without having to go to edit mode.
 - Reduce list item buttons size for better space distribution.
 
-### **1.0.2 (Dec 12, 2023 )**
+### **1.0.2 (Dec 12, 2023)**
 
 - Draft compatibility is validated based on structure not version number.
 - Older version drafts can now be used in higher versions.
 
-### **1.0.1 (Dec 11, 2023 )**
+### **1.0.1 (Dec 11, 2023)**
 
 - Draft JSONs created by older versions can no longer be used in higher versions.
 
-### **1.0.0 (Dec 11, 2023 )**
+### **1.0.0 (Dec 11, 2023)**
 
 - First build
