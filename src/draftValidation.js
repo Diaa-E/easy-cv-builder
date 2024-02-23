@@ -64,6 +64,11 @@ export function testExperience(experienceArray)
 {
     if (!Array.isArray(experienceArray)) return false;
 
+    for (const experience of experienceArray)
+    {
+        if (!(experience instanceof Object)) return false;
+    }
+
     const keys = [
         "id",
         "company",
@@ -103,6 +108,11 @@ export function testEducation(educationArray)
 {
     if (!Array.isArray(educationArray)) return false;
 
+    for (const education of educationArray)
+    {
+        if (!(education instanceof Object)) return false;
+    }
+
     const keys = [
         "id",
         "degree",
@@ -140,6 +150,11 @@ export function testEducation(educationArray)
 export function testLanguages(languagesArray)
 {
     if (!Array.isArray(languagesArray)) return false;
+
+    for (const language of languagesArray)
+    {
+        if (!(language instanceof Object)) return false;
+    }
 
     const keys = [
         "id",
@@ -192,6 +207,11 @@ export function testSkills(skillsArray)
 {
     if (!Array.isArray(skillsArray)) return false;
 
+    for (const skill of skillsArray)
+    {
+        if (!(skill instanceof Object)) return false;
+    }
+
     const keys = [
         "id",
         "name",
@@ -242,6 +262,11 @@ export function testSkills(skillsArray)
 export function testLinks(linksArray)
 {
     if (!Array.isArray(linksArray)) return false;
+
+    for (const link of linksArray)
+    {
+        if (!(link instanceof Object)) return false;
+    }
 
     const keys = [
         "id",
