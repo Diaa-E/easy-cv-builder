@@ -4,6 +4,10 @@
 
 This change log only highlights important changes (i.e features and refactors).
 
+### **1.2.1 (Feb 23, 2024)**
+
+- Fix CV preview text not adjusting with accent color's brightness.
+
 ### **1.2.0 (Feb 23, 2024)**
 
 - Add dark mode option.
