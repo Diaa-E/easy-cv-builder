@@ -56,6 +56,22 @@ export function testExperience(experienceArray)
 {
     if (!Array.isArray(experienceArray)) return false;
 
+    const keys = [
+        "id",
+        "company",
+        "location",
+        "position",
+        "start",
+        "end",
+        "details",
+        "hidden",
+    ];
+
+    for (const experience of experienceArray)
+    {
+        if (!testObjectKeys(experience, keys)) return false;
+    }
+
     const previousIds = [];
 
     for (const experience of experienceArray)
@@ -79,6 +95,21 @@ export function testEducation(educationArray)
 {
     if (!Array.isArray(educationArray)) return false;
 
+    const keys = [
+        "id",
+        "degree",
+        "school",
+        "location",
+        "start",
+        "end",
+        "hidden"
+    ];
+
+    for (const education of educationArray)
+    {
+        if (!testObjectKeys(education, keys)) return false;
+    }
+
     const previousIds = [];
     
     for (const education of educationArray)
@@ -101,6 +132,19 @@ export function testEducation(educationArray)
 export function testLanguages(languagesArray)
 {
     if (!Array.isArray(languagesArray)) return false;
+
+    const keys = [
+        "id",
+        "name",
+        "level",
+        "hidden",
+        "showLevel",
+    ];
+
+    for (const language of languagesArray)
+    {
+        if (!testObjectKeys(language, keys)) return false;
+    }
 
     const previousIds = [];
 
@@ -140,6 +184,19 @@ export function testSkills(skillsArray)
 {
     if (!Array.isArray(skillsArray)) return false;
 
+    const keys = [
+        "id",
+        "name",
+        "level",
+        "hidden",
+        "showLevel",
+    ];
+
+    for (const skill of skillsArray)
+    {
+        if (!testObjectKeys(skill, keys)) return false;
+    }
+
     const previousIds = [];
 
     for (const skill of skillsArray)
@@ -177,6 +234,18 @@ export function testSkills(skillsArray)
 export function testLinks(linksArray)
 {
     if (!Array.isArray(linksArray)) return false;
+
+    const keys = [
+        "id",
+        "url",
+        "icon",
+        "hidden",
+    ];
+
+    for (const link of linksArray)
+    {
+        if (!testObjectKeys(link, keys)) return false;
+    }
 
     const previousIds = [];
 
