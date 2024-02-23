@@ -40,6 +40,10 @@ export function testDraftValidity(draft)
         {
             name: "personalInfo",
             valid: testPersonalInfo(draft?.personalInfo),
+        },
+        {
+            name: "contact",
+            valid: testContact(draft?.contact),
         }
       ];
   
@@ -286,6 +290,18 @@ export function testPersonalInfo(personalInfo)
     ];
 
     return testObjectKeys(personalInfo, keys);
+}
+
+export function testContact(contact)
+{
+    if (!(contact instanceof Object)) return false;
+
+    const keys = [
+        "phoneNumber",
+        "email",
+    ];
+
+    return testObjectKeys(contact, keys);
 }
 
 export function testColor(hexColorString)
