@@ -529,6 +529,16 @@ describe("Experience section validity", () => {
             expect(testExperience(invalidExperience)).toBe(false);
         }
     });
+
+    it("Returns false for array of non objects", () => {
+
+        expect(testExperience([null])).toBe(false);
+        expect(testExperience([false])).toBe(false);
+        expect(testExperience(["text"])).toBe(false);
+        expect(testExperience([15])).toBe(false);
+        expect(testExperience([[]])).toBe(false);
+        expect(testExperience([undefined])).toBe(false);
+    });
 });
 
 describe("Education section validity", () => {
@@ -611,6 +621,16 @@ describe("Education section validity", () => {
 
             expect(testEducation(invalidEducation)).toBe(false);
         }
+    });
+
+    it("Returns false for array of non objects", () => {
+
+        expect(testEducation([null])).toBe(false);
+        expect(testEducation([false])).toBe(false);
+        expect(testEducation(["text"])).toBe(false);
+        expect(testEducation([15])).toBe(false);
+        expect(testEducation([[]])).toBe(false);
+        expect(testEducation([undefined])).toBe(false);
     });
 });
 
@@ -743,6 +763,16 @@ describe("Languages section validity", () => {
             expect(testLanguages(invalidLanguage)).toBe(false);
         }
     });
+
+    it("Returns false for array of non objects", () => {
+
+        expect(testLanguages([null])).toBe(false);
+        expect(testLanguages([false])).toBe(false);
+        expect(testLanguages(["text"])).toBe(false);
+        expect(testLanguages([15])).toBe(false);
+        expect(testLanguages([[]])).toBe(false);
+        expect(testLanguages([undefined])).toBe(false);
+    });
 });
 
 describe("Skills section validity", () => {
@@ -874,6 +904,16 @@ describe("Skills section validity", () => {
             expect(testSkills(invalidSkill)).toBe(false);
         }
     });
+
+    it("Returns false for array of non objects", () => {
+
+        expect(testSkills([null])).toBe(false);
+        expect(testSkills([false])).toBe(false);
+        expect(testSkills(["text"])).toBe(false);
+        expect(testSkills([15])).toBe(false);
+        expect(testSkills([[]])).toBe(false);
+        expect(testSkills([undefined])).toBe(false);
+    });
 });
 
 describe("Links section validity", () => {
@@ -970,6 +1010,16 @@ describe("Links section validity", () => {
 
             expect(testLinks(invalidLink)).toBe(false);
         }
+    });
+
+    it("Returns false for array of non objects", () => {
+
+        expect(testLinks([null])).toBe(false);
+        expect(testLinks([false])).toBe(false);
+        expect(testLinks(["text"])).toBe(false);
+        expect(testLinks([15])).toBe(false);
+        expect(testLinks([[]])).toBe(false);
+        expect(testLinks([undefined])).toBe(false);
     });
 });
 
