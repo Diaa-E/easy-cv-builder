@@ -172,6 +172,18 @@ describe("Draft validity", () => {
         };
     }
 
+    const fullErrorLog = [
+
+        "accentColor",
+        "font",
+        "layout",
+        "links",
+        "skills",
+        "languages",
+        "education",
+        "experience"
+    ];
+
     it("Returns an empty array for a valid draft", () => {
 
         const validDraft = setup();
@@ -248,6 +260,18 @@ describe("Draft validity", () => {
         invalidDraft.experience = undefined;
 
         expect(testDraftValidity(invalidDraft)).toEqual(["experience"]);
+    });
+
+    it("Returns all fields in an array if the draft is not a valid object", () => {
+
+        expect(testDraftValidity(undefined)).toEqual(fullErrorLog);
+        expect(testDraftValidity(null)).toEqual(fullErrorLog);
+        expect(testDraftValidity("text")).toEqual(fullErrorLog);
+        expect(testDraftValidity(15)).toEqual(fullErrorLog);
+        expect(testDraftValidity({})).toEqual(fullErrorLog);
+        expect(testDraftValidity([])).toEqual(fullErrorLog);
+        expect(testDraftValidity(false)).toEqual(fullErrorLog);
+        expect(testDraftValidity(() => {})).toEqual(fullErrorLog);
     });
 });
 
