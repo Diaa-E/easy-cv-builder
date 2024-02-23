@@ -9,6 +9,7 @@ import {
     testLayout,
     testLinks,
     testObjectKeys,
+    testPersonalInfo,
     testSkills 
 } from "../draftTest";
 
@@ -108,6 +109,12 @@ describe("Draft validity", () => {
     function setup()
     {
         return {
+            personalInfo: {
+                fullName: "",
+                profession: "",
+                address: "",
+                zip: ""
+            },
             accentColor: "#ffffff",
             layout: "layout2",
             font: "font1",
@@ -231,7 +238,8 @@ describe("Draft validity", () => {
         "skills",
         "languages",
         "education",
-        "experience"
+        "experience",
+        "personalInfo",
     ];
 
     it("Returns an empty array for a valid draft", () => {
@@ -322,6 +330,61 @@ describe("Draft validity", () => {
         expect(testDraftValidity([])).toEqual(fullErrorLog);
         expect(testDraftValidity(false)).toEqual(fullErrorLog);
         expect(testDraftValidity(() => {})).toEqual(fullErrorLog);
+    });
+});
+
+describe("Personal info section validity", () => {
+
+    function setup()
+    {
+        return {
+            fullName: "Bruce T. Wayne",
+            profession: "CEO",
+            address: "Wayne manor, Gotham city, U.S.A.",
+            zip: "xxxxx"
+        }
+    }
+
+    it("Returns true for valid personal info", () => {
+
+        const validPersonalInfo = setup();
+
+        expect(testPersonalInfo(validPersonalInfo)).toBe(true);
+    });
+
+    it("Returns true for valid personal info after serialization", () => {
+
+        const validPersonalInfo = setup();
+
+        expect(JSON.parse(JSON.stringify(testPersonalInfo(validPersonalInfo)))).toBe(true);
+    });
+
+    it("returns false for non Object personal info", () => {
+
+        expect(testPersonalInfo(undefined)).toBe(false);
+        expect(testPersonalInfo(null)).toBe(false);
+        expect(testPersonalInfo([])).toBe(false);
+        expect(testPersonalInfo("text")).toBe(false);
+        expect(testPersonalInfo(15)).toBe(false);
+        expect(testPersonalInfo(false)).toBe(false);
+    });
+
+    it("Returns false for personal info with missing keys", () => {
+
+        const keys = [
+            "fullName",
+            "profession",
+            "address",
+            "zip",
+        ];
+
+        for (const key of keys)
+        {
+            const invalidPersonalInfo = setup();
+            delete invalidPersonalInfo[key];
+
+            expect(testExperience(invalidPersonalInfo)).toBe(false);
+        }
     });
 });
 
