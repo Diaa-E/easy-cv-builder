@@ -191,7 +191,7 @@ describe("Draft validity", () => {
         const invalidDraft = setup();
         invalidDraft.accentColor = "text";
 
-        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["accentColor"]);
+        expect(testDraftValidity(invalidDraft)).toEqual(["accentColor"]);
     });
 
     it("Returns 'font' in an array for invalid font value", () => {
@@ -199,7 +199,7 @@ describe("Draft validity", () => {
         const invalidDraft = setup();
         invalidDraft.font = "text";
 
-        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["font"]);
+        expect(testDraftValidity(invalidDraft)).toEqual(["font"]);
     });
 
     it("Returns 'layout' in an array for invalid layout value", () => {
@@ -207,7 +207,7 @@ describe("Draft validity", () => {
         const invalidDraft = setup();
         invalidDraft.layout = "text";
 
-        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["layout"]);
+        expect(testDraftValidity(invalidDraft)).toEqual(["layout"]);
     });
 
     it("Returns 'links' in an array for invalid links", () => {
@@ -215,7 +215,7 @@ describe("Draft validity", () => {
         const invalidDraft = setup();
         invalidDraft.links = undefined;
 
-        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["links"]);
+        expect(testDraftValidity(invalidDraft)).toEqual(["links"]);
     });
 
     it("Returns 'skills' in an array for invalid skills", () => {
@@ -223,7 +223,7 @@ describe("Draft validity", () => {
         const invalidDraft = setup();
         invalidDraft.skills = undefined;
 
-        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["skills"]);
+        expect(testDraftValidity(invalidDraft)).toEqual(["skills"]);
     });
 
     it("Returns 'languages' in an array for invalid languages", () => {
@@ -231,7 +231,7 @@ describe("Draft validity", () => {
         const invalidDraft = setup();
         invalidDraft.languages = undefined;
 
-        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["languages"]);
+        expect(testDraftValidity(invalidDraft)).toEqual(["languages"]);
     });
 
     it("Returns 'education' in an array for invalid education", () => {
@@ -239,7 +239,7 @@ describe("Draft validity", () => {
         const invalidDraft = setup();
         invalidDraft.education = undefined;
 
-        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["education"]);
+        expect(testDraftValidity(invalidDraft)).toEqual(["education"]);
     });
 
     it("Returns 'experience' in an array for invalid experience", () => {
@@ -247,7 +247,7 @@ describe("Draft validity", () => {
         const invalidDraft = setup();
         invalidDraft.experience = undefined;
 
-        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["experience"]);
+        expect(testDraftValidity(invalidDraft)).toEqual(["experience"]);
     });
 });
 
