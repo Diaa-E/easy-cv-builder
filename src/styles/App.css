@@ -30,6 +30,7 @@
   --icon-filter: invert(0);
   --icon-filter-danger: brightness(0) saturate(100%) invert(29%) sepia(54%) saturate(5589%) hue-rotate(349deg) brightness(104%) contrast(100%);
   --icon-filter-blue: invert(29%) sepia(59%) saturate(3092%) hue-rotate(203deg) brightness(104%) contrast(105%);
+  --logo-filter: none;
 }
 
 .dark{
@@ -45,6 +46,7 @@
   --icon-filter: invert(98%) sepia(0%) saturate(7487%) hue-rotate(214deg) brightness(122%) contrast(78%);;
   --icon-filter-danger: invert(20%) sepia(63%) saturate(2138%) hue-rotate(340deg) brightness(102%) contrast(99%);
   --icon-filter-blue: invert(30%) sepia(100%) saturate(490%) hue-rotate(173deg) brightness(107%) contrast(89%);
+  --logo-filter: contrast(70%) saturate(80%);
 }
 
 @media (min-width: 700px) and (orientation: landscape){

@@ -51,6 +51,7 @@
   grid-area: logo;
   width: 100px;
   place-self: center;
+  filter: var(--logo-filter)
 }
 
 .main-controls{
