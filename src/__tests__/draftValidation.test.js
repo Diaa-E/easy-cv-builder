@@ -12,7 +12,7 @@ import {
     testObjectKeys,
     testPersonalInfo,
     testSkills 
-} from "../draftTest";
+} from "../draftValidation";
 
 vi.mock("../fonts.js", () => {
 
