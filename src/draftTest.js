@@ -36,6 +36,10 @@ export function testDraftValidity(draft)
         {
             name: "experience",
             valid: testExperience(draft?.experience),
+        },
+        {
+            name: "personalInfo",
+            valid: testPersonalInfo(draft?.personalInfo),
         }
       ];
   
@@ -268,6 +272,20 @@ export function testLinks(linksArray)
     }
 
     return true;
+}
+
+export function testPersonalInfo(personalInfo)
+{
+    if (!(personalInfo instanceof Object)) return false;
+
+    const keys = [
+        "fullName",
+        "profession",
+        "address",
+        "zip",
+    ];
+
+    return testObjectKeys(personalInfo, keys);
 }
 
 export function testColor(hexColorString)
