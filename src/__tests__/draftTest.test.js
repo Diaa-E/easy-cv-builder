@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { testColor, testEducation, testExperience, testFont, testLanguages, testLayout, testLinks, testSkills } from "../draftTest";
+import { testColor, testDraftValidity, testEducation, testExperience, testFont, testLanguages, testLayout, testLinks, testSkills } from "../draftTest";
 
 vi.mock("../fonts.js", () => {
 
@@ -51,6 +51,204 @@ vi.mock("../linkIconsBarrel.js", () => {
             }
         ]
     }
+});
+
+describe("Draft validity", () => {
+
+    function setup()
+    {
+        return {
+            accentColor: "#ffffff",
+            layout: "layout2",
+            font: "font1",
+            education: [
+                {
+                    id: 0,
+                    degree: "",
+                    school: "",
+                    location: "",
+                    start: "",
+                    end: "",
+                    hidden: false
+                },
+                {
+                    id: 1,
+                    degree: "",
+                    school: "",
+                    location: "",
+                    start: "",
+                    end: "",
+                    hidden: true
+                },
+            ],
+            experience: [
+                {
+                    id: 0,
+                    company: "",
+                    location: "",
+                    position: "",
+                    start: "",
+                    end: "",
+                    details: "",
+                    hidden: false
+                },
+                {
+                    id: 1,
+                    company: "",
+                    location: "",
+                    position: "",
+                    start: "",
+                    end: "",
+                    details: "",
+                    hidden: true
+                },
+            ],
+            links: [
+                {
+                    id: 0,
+                    url: "website.com",
+                    icon: "icon1",
+                    hidden: false,
+                },
+                {
+                    id: 1,
+                    url: "website.org",
+                    icon: "icon2",
+                    hidden: true,
+                },
+                {
+                    id: 2,
+                    url: "place.net",
+                    icon: "icon3",
+                    hidden: false,
+                },
+            ],
+            skills: [
+                {
+                    id: 0,
+                    name: "",
+                    level: 100,
+                    hidden: false,
+                    showLevel: true,
+                },
+                {
+                    id: 1,
+                    name: "",
+                    level: 40,
+                    hidden: true,
+                    showLevel: true,
+                },
+                {
+                    id: 2,
+                    name: "",
+                    level: 20,
+                    hidden: false,
+                    showLevel: false,
+                },
+            ],
+            languages: [
+                {
+                    id: 0,
+                    name: "",
+                    level: 100,
+                    hidden: false,
+                    showLevel: true,
+                },
+                {
+                    id: 1,
+                    name: "",
+                    level: 40,
+                    hidden: true,
+                    showLevel: true,
+                },
+                {
+                    id: 2,
+                    name: "",
+                    level: 20,
+                    hidden: false,
+                    showLevel: false,
+                },
+            ],
+        };
+    }
+
+    it("Returns an empty array for a valid draft", () => {
+
+        const validDraft = setup();
+
+        expect(testDraftValidity(validDraft)).toEqual([]);
+    });
+
+    it("Returns an empty array for a valid draft after serialization", () => {
+
+        const validDraft = setup();
+
+        expect(JSON.parse(JSON.stringify(testDraftValidity(validDraft)))).toEqual([]);
+    });
+
+    it("Returns 'accentColor' in an array for invalid accent color value", () => {
+
+        const invalidDraft = setup();
+        invalidDraft.accentColor = "text";
+
+        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["accentColor"]);
+    });
+
+    it("Returns 'font' in an array for invalid font value", () => {
+
+        const invalidDraft = setup();
+        invalidDraft.font = "text";
+
+        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["font"]);
+    });
+
+    it("Returns 'layout' in an array for invalid layout value", () => {
+
+        const invalidDraft = setup();
+        invalidDraft.layout = "text";
+
+        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["layout"]);
+    });
+
+    it("Returns 'links' in an array for invalid links", () => {
+
+        const invalidDraft = setup();
+        invalidDraft.links = undefined;
+
+        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["links"]);
+    });
+
+    it("Returns 'skills' in an array for invalid skills", () => {
+
+        const invalidDraft = setup();
+        invalidDraft.skills = undefined;
+
+        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["skills"]);
+    });
+
+    it("Returns 'languages' in an array for invalid languages", () => {
+
+        const invalidDraft = setup();
+        invalidDraft.languages = undefined;
+
+        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["languages"]);
+    });
+
+    it("Returns 'education' in an array for invalid education", () => {
+
+        const invalidDraft = setup();
+        invalidDraft.education = undefined;
+
+        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["education"]);
+    });
+
+    it("Returns 'experience' in an array for invalid experience", () => {
+
+        const invalidDraft = setup();
+        invalidDraft.experience = undefined;
+
+        expect(JSON.parse(JSON.stringify(testDraftValidity(invalidDraft)))).toEqual(["experience"]);
+    });
 });
 
 describe("Experience section validity", () => {
@@ -110,6 +308,11 @@ describe("Experience section validity", () => {
 
         expect(testExperience(invalidExperience)).toBe(false);
     });
+
+    it("Returns false for non array experience", () => {
+
+        expect(testExperience("text")).toBe(false);
+    });
 });
 
 describe("Education section validity", () => {
@@ -166,6 +369,11 @@ describe("Education section validity", () => {
         invalidEducation[0].hidden = "text";
 
         expect(testEducation(invalidEducation)).toBe(false);
+    });
+
+    it("Returns false for non array education", () => {
+
+        expect(testEducation("text")).toBe(false);
     });
 });
 
@@ -274,6 +482,11 @@ describe("Languages section validity", () => {
 
         expect(testLanguages(invalidLanguages)).toBe(false);
     });
+
+    it("Returns false for non array languages", () => {
+
+        expect(testLanguages("text")).toBe(false);
+    });
 });
 
 describe("Skills section validity", () => {
@@ -381,6 +594,11 @@ describe("Skills section validity", () => {
 
         expect(testSkills(invalidSkills)).toBe(false);
     });
+
+    it("Returns false for non array skills", () => {
+
+        expect(testSkills("text")).toBe(false);
+    });
 });
 
 describe("Links section validity", () => {
@@ -454,6 +672,11 @@ describe("Links section validity", () => {
 
         expect(testLinks(invalidLinks)).toBe(false);
         expect(testLinks(invalidLinks.reverse())).toBe(false);
+    });
+
+    it("Returns false for non array links", () => {
+
+        expect(testLinks("text")).toBe(false);
     });
 });
 

@@ -54,6 +54,8 @@ export function testDraftValidity(draft)
 
 export function testExperience(experienceArray)
 {
+    if (!Array.isArray(experienceArray)) return false;
+
     const previousIds = [];
 
     for (const experience of experienceArray)
@@ -75,6 +77,8 @@ export function testExperience(experienceArray)
 
 export function testEducation(educationArray)
 {
+    if (!Array.isArray(educationArray)) return false;
+
     const previousIds = [];
     
     for (const education of educationArray)
@@ -96,6 +100,8 @@ export function testEducation(educationArray)
 
 export function testLanguages(languagesArray)
 {
+    if (!Array.isArray(languagesArray)) return false;
+
     const previousIds = [];
 
     for (const language of languagesArray)
@@ -132,6 +138,8 @@ export function testLanguages(languagesArray)
 
 export function testSkills(skillsArray)
 {
+    if (!Array.isArray(skillsArray)) return false;
+
     const previousIds = [];
 
     for (const skill of skillsArray)
@@ -168,6 +176,8 @@ export function testSkills(skillsArray)
 
 export function testLinks(linksArray)
 {
+    if (!Array.isArray(linksArray)) return false;
+
     const previousIds = [];
 
     for (const link of linksArray)
