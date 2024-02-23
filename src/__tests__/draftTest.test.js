@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { testColor, testDraftValidity, testEducation, testExperience, testFont, testLanguages, testLayout, testLinks, testSkills } from "../draftTest";
+import { testColor, testDraftValidity, testEducation, testExperience, testFont, testLanguages, testLayout, testLinks, testObjectKeys, testSkills } from "../draftTest";
 
 vi.mock("../fonts.js", () => {
 
@@ -51,6 +51,45 @@ vi.mock("../linkIconsBarrel.js", () => {
             }
         ]
     }
+});
+
+describe("Object key validity", () => {
+
+    function setup()
+    {
+        return {
+            key1: 12,
+            key2: 24,
+            key3: 28
+        };
+    }
+
+    it("Returns true if an object has all keys in the array", () => {
+
+        const validObject = setup();
+
+        expect(testObjectKeys(validObject, ["key1", "key2", "key3"])).toBe(true);
+    });
+
+    it("Returns false if an object has a missing key from the array", () => {
+
+        const invalidObject = setup();
+
+        expect(testObjectKeys(invalidObject, ["key1", "key2", "key3", "key4"])).toBe(false);
+    });
+
+    it("Returns false if an object has no keys from the array", () => {
+
+        expect(testObjectKeys({}, ["key1", "key2", "key3", "key4"])).toBe(false);
+    });
+
+    it("Returns true if an object has an extra irrelevant key", () => {
+
+        const validObject = setup();
+        validObject["key4"] = 9;
+
+        expect(testObjectKeys(validObject, ["key1", "key2", "key3"])).toBe(true);
+    });
 });
 
 describe("Draft validity", () => {
