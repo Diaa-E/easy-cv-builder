@@ -79,7 +79,7 @@ const sampleInfo = {
         {
             id: generateId(),
             name: "Manhunting",
-            level: "80",
+            level: 80,
             hidden: false,
             showLevel: true,
         },
