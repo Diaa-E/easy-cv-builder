@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+    color: var(--text);
 }
 
 .text-area-input-field{
@@ -11,6 +12,7 @@
     padding: 5px;
     resize: none;
     cursor: text;
+    color: var(--text);
 }
 
 .text-area-input-field:focus{

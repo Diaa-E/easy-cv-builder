@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 as generateId } from 'uuid';
 
 import logo from "./assets/images/logo.svg";
@@ -83,6 +83,7 @@ function App() {
     },
   ]);
 
+  const [darkMode, setDarkMode] = useState(false);
   const [currentTab, setCurrentTab] = useState(tabs[0].id);
   const [personalInfo, setPersonalInfo] = useState(sampleInfo.personalInfo);
   const [contact, setContact] = useState(sampleInfo.contact);
@@ -94,7 +95,16 @@ function App() {
   const [accentColor, setAccentColor] = useState("#ffb400");
   const [font, setFont] = useState("regular");
   const [layout, setLayout] = useState("layout-01");
-  const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []})
+  const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []});
+
+  useEffect(() => {
+
+    document.body.classList.remove(darkMode ? "light" : "dark");
+    document.body.classList.add(darkMode ? "dark" : "light");
+
+    return () => {};
+
+  }, [darkMode]);
 
   const currentVersion = "1.1.2";
   const emptyListText = "Nothing here yet."

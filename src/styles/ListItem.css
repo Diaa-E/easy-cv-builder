@@ -10,6 +10,7 @@
 .list-item{
     background-color: var(--main);
     box-shadow: var(--shadow);
+    color: var(--text);
 }
 
 .list-item-hidden{
@@ -41,6 +42,7 @@
 
 .item-icon{
     width: 50px;
+    filter: var(--icon-filter);
 }
 
 .level-bar::-webkit-progress-bar{

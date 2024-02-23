@@ -45,15 +45,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-
-  --accent: #0078ff;
-  --danger: #ff3121;
-  --main: #ffffff;
-  --main-dark: #ededed;
-  --text: #000000;
-  --text-light: #b0b0b0;
-  --none: #00000000;
-  --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, 0.08);
 }
 
 .logo{
@@ -107,6 +98,7 @@
   font-size: 24px;
   font-weight: bold;
   margin: auto auto 40px 0;
+  color: var(--text);
 }
 
 .items-container>h2{
@@ -132,6 +124,11 @@
 }
 
 .preview{
+  --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, 0.08);
+  --main: #ffffff;
+  --main-dark: #ededed;
+  --text: #000000;
+  --text-light: #b0b0b0;
   --width: 90dvw;
   grid-area: preview;
   width: var(--width);
@@ -147,6 +144,19 @@
 
 a{
   cursor: pointer;
+  color: var(--link);
+}
+
+a:visited{
+  color: var(--visited);
+}
+
+h2{
+  color: var(--text);
+}
+
+p{
+  color: var(--text);
 }
 
 body{

@@ -11,6 +11,10 @@
     cursor: pointer;
 }
 
+.add-button>img{
+    filter: var(--icon-filter);
+}
+
 .add-button:focus{
     outline: auto;
     outline-color: var(--accent);

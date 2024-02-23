@@ -7,12 +7,17 @@
     cursor: pointer;
 }
 
-.item-button-danger>img{
-    filter: brightness(0) saturate(100%) invert(29%) sepia(54%) saturate(5589%) hue-rotate(349deg) brightness(104%) contrast(100%);
-}
-
 .item-button>img{
     width: 30px;
+    filter: var(--icon-filter);
+}
+
+.item-button-danger>img{
+    filter: var(--icon-filter-danger);
+}
+
+.item-button-blue>img{
+    filter: var(--icon-filter-blue);
 }
 
 .item-menu{
@@ -27,11 +32,12 @@
     background-color: var(--main);
     font-size: 18px;
     padding: 10px 20px;
+    color: var(--text);
 }
 
 .item-menu-button:hover{
     cursor: pointer;
-    color: var(--main);
+    color: var(--white);
     background-color: var(--accent);
 }
 

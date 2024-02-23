@@ -12,6 +12,39 @@
   padding: 15px;
   gap: 15px;
   overflow: visible;
+
+  --none: #00000000;
+  --white: #ffffff;
+}
+
+.light{
+  --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, 0.08);
+  --accent: #0078ff;
+  --danger: #ff3121;
+  --link: #0000EE;
+  --visited: #551A8B;;
+  --main: #ffffff;
+  --main-dark: #ededed;
+  --text: #000000;
+  --text-light: #b0b0b0;
+  --icon-filter: invert(0);
+  --icon-filter-danger: brightness(0) saturate(100%) invert(29%) sepia(54%) saturate(5589%) hue-rotate(349deg) brightness(104%) contrast(100%);
+  --icon-filter-blue: invert(29%) sepia(59%) saturate(3092%) hue-rotate(203deg) brightness(104%) contrast(105%);
+}
+
+.dark{
+  --accent: #2d70bb;
+  --danger: #a72a21;
+  --link: #6767ff;
+  --visited: #9d60d5;;
+  --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, .2);
+  --main: #2e2e2e;
+  --main-dark: #212121;
+  --text: #e3e3e3;
+  --text-light: #787878;
+  --icon-filter: invert(98%) sepia(0%) saturate(7487%) hue-rotate(214deg) brightness(122%) contrast(78%);;
+  --icon-filter-danger: invert(20%) sepia(63%) saturate(2138%) hue-rotate(340deg) brightness(102%) contrast(99%);
+  --icon-filter-blue: invert(30%) sepia(100%) saturate(490%) hue-rotate(173deg) brightness(107%) contrast(89%);
 }
 
 @media (min-width: 700px) and (orientation: landscape){

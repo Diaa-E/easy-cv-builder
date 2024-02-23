@@ -24,6 +24,10 @@
     transition-duration: 300ms;
 }
 
+.nav-item>img{
+    filter: var(--icon-filter);
+}
+
 .selected{
     background-color: var(--accent);
 }

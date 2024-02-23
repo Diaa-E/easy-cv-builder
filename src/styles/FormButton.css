@@ -15,7 +15,7 @@
 
 .blue-button{
     background-color: var(--accent);
-    color: var(--main);
+    color: var(--white);
 }
 
 .blue-button:hover{
@@ -34,7 +34,7 @@
 
 .red-button{
     background-color: var(--danger);
-    color: var(--main);
+    color: var(--white);
     margin: 0 auto 0 0;
 }
 
