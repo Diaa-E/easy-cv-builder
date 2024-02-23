@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { 
     testColor,
+    testContact,
     testDraftValidity,
     testEducation,
     testExperience,
@@ -114,6 +115,10 @@ describe("Draft validity", () => {
                 profession: "",
                 address: "",
                 zip: ""
+            },
+            contact: {
+                phoneNumber: "",
+                email: "",
             },
             accentColor: "#ffffff",
             layout: "layout2",
@@ -240,6 +245,7 @@ describe("Draft validity", () => {
         "education",
         "experience",
         "personalInfo",
+        "contact",
     ];
 
     it("Returns an empty array for a valid draft", () => {
@@ -333,6 +339,57 @@ describe("Draft validity", () => {
     });
 });
 
+describe("Contact section validity", () => {
+
+    function setup()
+    {
+        return {
+            phoneNumber: "",
+            email: "",
+        };
+    }
+
+    it("Returns true for valid contact", () => {
+
+        const validContact = setup();
+
+        expect(testContact(validContact)).toBe(true);
+    });
+
+    it("Returns true for valid personal info after serialization", () => {
+
+        const validContact = setup();
+
+        expect(JSON.parse(JSON.stringify(testContact(validContact)))).toBe(true);
+    });
+
+    it("returns false for non Object personal info", () => {
+
+        expect(testContact(undefined)).toBe(false);
+        expect(testContact(null)).toBe(false);
+        expect(testContact([])).toBe(false);
+        expect(testContact("text")).toBe(false);
+        expect(testContact(15)).toBe(false);
+        expect(testContact(false)).toBe(false);
+    });
+
+    it("Returns false for personal info with missing keys", () => {
+
+        const keys = [
+            "phoneNumber",
+            "email",
+        ];
+
+        for (const key of keys)
+        {
+            const invalidContact = setup();
+            delete invalidContact[key];
+
+            expect(testContact(invalidContact)).toBe(false);
+        }
+    });
+});
+
 describe("Personal info section validity", () => {
 
     function setup()
@@ -383,7 +440,7 @@ describe("Personal info section validity", () => {
             const invalidPersonalInfo = setup();
             delete invalidPersonalInfo[key];
 
-            expect(testExperience(invalidPersonalInfo)).toBe(false);
+            expect(testPersonalInfo(invalidPersonalInfo)).toBe(false);
         }
     });
 });
