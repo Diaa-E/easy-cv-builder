@@ -106,6 +106,11 @@
   font-size: 20px;
   font-weight: bold;
   margin: auto auto 20px 0;
+  color: var(--text);
+}
+
+.items-container>p{
+  color: var(--text);
 }
 
 .items-container{
@@ -150,14 +155,6 @@ a{
 
 a:visited{
   color: var(--visited);
-}
-
-h2{
-  color: var(--text);
-}
-
-p{
-  color: var(--text);
 }
 
 body{
