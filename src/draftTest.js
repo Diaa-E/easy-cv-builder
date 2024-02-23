@@ -7,35 +7,35 @@ export function testDraftValidity(draft)
     const dataIntegrity = [
         {
           name: "accentColor",
-          valid: testColor(draft.accentColor),
+          valid: testColor(draft?.accentColor),
         },
         {
             name: "font",
-            valid: testFont(draft.font, fonts),
+            valid: testFont(draft?.font, fonts),
         },
         {
             name: "layout",
-            valid: testLayout(draft.layout, layouts),
+            valid: testLayout(draft?.layout, layouts),
         },
         {
             name: "links",
-            valid: testLinks(draft.links, linkIcons),
+            valid: testLinks(draft?.links, linkIcons),
         },
         {
             name: "skills",
-            valid: testSkills(draft.skills),
+            valid: testSkills(draft?.skills),
         },
         {
             name: "languages",
-            valid: testLanguages(draft.languages),
+            valid: testLanguages(draft?.languages),
         },
         {
             name: "education",
-            valid: testEducation(draft.education),
+            valid: testEducation(draft?.education),
         },
         {
             name: "experience",
-            valid: testExperience(draft.experience),
+            valid: testExperience(draft?.experience),
         }
       ];
   
