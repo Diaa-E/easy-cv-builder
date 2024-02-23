@@ -4,6 +4,14 @@
 
 This change log only highlights important changes (i.e features and refactors).
 
+### **1.2.0 (Feb 23, 2024)**
+
+- Add dark mode option.
+- Fix typo in sample info.
+- Add more verifications for uploaded drafts.
+- Move draft verification functions from utility to their own module.
+- Write unit tests for low level components.
+
 ### **1.1.2 (Feb 6, 2024)**
 
 - Fix hambruger menu sometimes not closing when user clicks outside it.
