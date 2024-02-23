@@ -215,3 +215,13 @@ export function testLayout(layoutValue)
 {
     return Boolean(layouts.find(layout => layout.value === layoutValue));
 }
+
+export function testObjectKeys(object, keysArray)
+{
+    for (const key of keysArray)
+    {
+        if (!object.hasOwnProperty(key)) return false;
+    }
+
+    return true;
+}
