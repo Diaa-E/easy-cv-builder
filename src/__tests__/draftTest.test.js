@@ -1015,7 +1015,7 @@ describe("Layout validity", () => {
         expect(testLayout("layout1")).toBe(true);
     });
 
-    it("Returns falsee for a layout not included in the layouts module", () => {
+    it("Returns false for a layout not included in the layouts module", () => {
 
         expect(testLayout("text")).toBe(false);
     });
