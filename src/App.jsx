@@ -296,6 +296,13 @@ function App() {
       <img src={logo} alt="Easy CV builder's logo" className='logo' />
 
       <nav className='nav'>
+        <NavItem
+          iconUrl={darkMode? appIcons.light : appIcons.dark}
+          id={"toggle dark mode"}
+          title={"dark mode"}
+          selected={false}
+          onClick={() => setDarkMode(darkMode => !darkMode)}
+        />
         {
           tabs.map(tab => (
             <NavItem 

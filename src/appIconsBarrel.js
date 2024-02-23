@@ -18,6 +18,8 @@ import editIcon from "./assets/images/edit.svg";
 import moveUpIcon from "./assets/images/up.svg";
 import moreIcon from "./assets/images/more.svg";
 import addIcon from "./assets/images/add.svg";
+import darkIcon from "./assets/images/dark.svg";
+import lightIcon from "./assets/images/light.svg";
 
 const appIcons = {
     address: addressIcon,
@@ -40,6 +42,8 @@ const appIcons = {
     moveUp: moveUpIcon,
     more: moreIcon,
     add: addIcon,
+    dark: darkIcon,
+    light: lightIcon,
 }
 
 export default appIcons;
