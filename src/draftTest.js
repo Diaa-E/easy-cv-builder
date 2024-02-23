@@ -32,6 +32,10 @@ export function testDraftValidity(draft)
         {
             name: "education",
             valid: testEducation(draft.education),
+        },
+        {
+            name: "experience",
+            valid: testExperience(draft.experience),
         }
       ];
   
