@@ -1,5 +1,16 @@
 import { describe, expect, it, vi } from "vitest";
-import { testColor, testDraftValidity, testEducation, testExperience, testFont, testLanguages, testLayout, testLinks, testObjectKeys, testSkills } from "../draftTest";
+import { 
+    testColor,
+    testDraftValidity,
+    testEducation,
+    testExperience,
+    testFont,
+    testLanguages,
+    testLayout,
+    testLinks,
+    testObjectKeys,
+    testSkills 
+} from "../draftTest";
 
 vi.mock("../fonts.js", () => {
 
@@ -376,6 +387,28 @@ describe("Experience section validity", () => {
 
         expect(testExperience("text")).toBe(false);
     });
+
+    it("Returns false for experience with missing keys", () => {
+
+        const keys = [
+            "id",
+            "company",
+            "location",
+            "position",
+            "start",
+            "end",
+            "details",
+            "hidden",
+        ];
+
+        for (const key of keys)
+        {
+            const invalidExperience = setup();
+            delete invalidExperience[0][key];
+
+            expect(testExperience(invalidExperience)).toBe(false);
+        }
+    });
 });
 
 describe("Education section validity", () => {
@@ -437,6 +470,27 @@ describe("Education section validity", () => {
     it("Returns false for non array education", () => {
 
         expect(testEducation("text")).toBe(false);
+    });
+
+    it("Returns false for education with missing keys", () => {
+
+        const keys = [
+            "id",
+            "degree",
+            "school",
+            "location",
+            "start",
+            "end",
+            "hidden"
+        ];
+
+        for (const key of keys)
+        {
+            const invalidEducation = setup();
+            delete invalidEducation[0][key];
+
+            expect(testEducation(invalidEducation)).toBe(false);
+        }
     });
 });
 
@@ -550,6 +604,25 @@ describe("Languages section validity", () => {
 
         expect(testLanguages("text")).toBe(false);
     });
+
+    it("Returns false for language with missing keys", () => {
+
+        const keys = [
+            "id",
+            "name",
+            "level",
+            "hidden",
+            "showLevel",
+        ];
+
+        for (const key of keys)
+        {
+            const invalidLanguage = setup();
+            delete invalidLanguage[0][key];
+
+            expect(testLanguages(invalidLanguage)).toBe(false);
+        }
+    });
 });
 
 describe("Skills section validity", () => {
@@ -662,6 +735,25 @@ describe("Skills section validity", () => {
 
         expect(testSkills("text")).toBe(false);
     });
+
+    it("Returns false for skill with missing keys", () => {
+
+        const keys = [
+            "id",
+            "name",
+            "level",
+            "hidden",
+            "showLevel",
+        ];
+
+        for (const key of keys)
+        {
+            const invalidSkill = setup();
+            delete invalidSkill[0][key];
+
+            expect(testSkills(invalidSkill)).toBe(false);
+        }
+    });
 });
 
 describe("Links section validity", () => {
@@ -740,6 +832,24 @@ describe("Links section validity", () => {
     it("Returns false for non array links", () => {
 
         expect(testLinks("text")).toBe(false);
+    });
+
+    it("Returns false for link with missing keys", () => {
+
+        const keys = [
+            "id",
+            "url",
+            "icon",
+            "hidden",
+        ];
+
+        for (const key of keys)
+        {
+            const invalidLink = setup();
+            delete invalidLink[0][key];
+
+            expect(testLinks(invalidLink)).toBe(false);
+        }
     });
 });
 
