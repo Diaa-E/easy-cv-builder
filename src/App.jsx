@@ -297,16 +297,7 @@ function App() {
       <img src={logo} alt="Easy CV builder's logo" className='logo' />
 
       <nav className='nav'>
-        <NavItem
-          iconUrl={darkMode? appIcons.light : appIcons.dark}
-          id={"toggle dark mode"}
-          title={"dark mode"}
-          selected={false}
-          onClick={() => {
-            setDarkMode(darkMode => !darkMode);
-            localStorage.setItem("darkMode", JSON.stringify(!darkMode));
-          }}
-        />
+        <DarkModeButton darkMode={darkMode} onClick={() => setDarkMode(darkMode => !darkMode)}/>
         {
           tabs.map(tab => (
             <NavItem 
@@ -419,7 +410,6 @@ function App() {
         <FormButton text='Clear' classes={["form-button", "red-button"]} onClick={clearAll}/>
         <FormButton text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
         <FormButton text='Export' classes={["form-button", "blue-button"]} onClick={print}/>
-        <DarkModeButton darkMode={darkMode} onClick={() => setDarkMode(darkMode => !darkMode)}/>
       </div>
 
       <Layout_01
