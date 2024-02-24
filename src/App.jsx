@@ -26,6 +26,7 @@ import Layout_02 from './components/layouts/Layout_02';
 
 import { getItemIndex } from './utility';
 import { testDraftValidity } from './draftValidation';
+import DarkModeButton from './components/DarkModeButton';
 
 function App() {
 
@@ -418,6 +419,7 @@ function App() {
         <FormButton text='Clear' classes={["form-button", "red-button"]} onClick={clearAll}/>
         <FormButton text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
         <FormButton text='Export' classes={["form-button", "blue-button"]} onClick={print}/>
+        <DarkModeButton darkMode={darkMode} onClick={() => setDarkMode(darkMode => !darkMode)}/>
       </div>
 
       <Layout_01
