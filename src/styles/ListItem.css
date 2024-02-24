@@ -45,21 +45,3 @@
     width: 50px;
     filter: var(--icon-filter);
 }
-
-.level-bar::-webkit-progress-bar{
-    background-color: var(--main-dark);
-    border-radius: 10px;
-}
-
-.level-bar::-webkit-progress-value{
-    background-color: var(--accent);
-    border-radius: 10px;
-}
-
-.level-bar::-moz-progress-bar{
-    background-color: var(--accent);
-}
-
-.list-item-hidden .level-bar{
-    filter: grayscale(1);
-}

@@ -1,0 +1,17 @@
+.progress-bar-outer{
+    will-change: filter;
+    display: flex;
+    place-items: stretch;
+    min-height: 12px;
+    border-radius: 6px;
+    background-color: var(--main-dark);
+}
+
+.progress-bar-inner{
+    background-color: var(--accent);
+    border-radius: 6px;
+}
+
+.disabled{
+    filter: grayscale(1) brightness(.9);
+}
