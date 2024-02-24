@@ -4,6 +4,14 @@
 
 This change log only highlights important changes (i.e features and refactors).
 
+### **1.2.2 (Feb 24, 2024)**
+
+- Fix hidden list item text color.
+- Save dark mode preference to local storage.
+- Use disctinct colors for dark mode button based on the mode it activates.
+- Animate dark mode button on mode switch.
+- Fix skill/language level bar not adjusting to screen width and casuing overflow
+
 ### **1.2.1 (Feb 23, 2024)**
 
 - Fix CV preview text not adjusting with accent color's brightness.
