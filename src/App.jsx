@@ -83,7 +83,7 @@ function App() {
     },
   ]);
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(Boolean(JSON.parse(localStorage.getItem("darkMode"))));
   const [currentTab, setCurrentTab] = useState(tabs[0].id);
   const [personalInfo, setPersonalInfo] = useState(sampleInfo.personalInfo);
   const [contact, setContact] = useState(sampleInfo.contact);
@@ -301,7 +301,10 @@ function App() {
           id={"toggle dark mode"}
           title={"dark mode"}
           selected={false}
-          onClick={() => setDarkMode(darkMode => !darkMode)}
+          onClick={() => {
+            setDarkMode(darkMode => !darkMode);
+            localStorage.setItem("darkMode", JSON.stringify(!darkMode));
+          }}
         />
         {
           tabs.map(tab => (
