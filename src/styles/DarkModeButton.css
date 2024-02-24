@@ -1,18 +1,26 @@
 .dark-mode-button{
-    display: flex;
+    display: grid;
+    grid-template-areas: "main";
+    flex-direction: column;
     place-items: center;
     place-content: center;
     background-color: var(--none);
     padding: 15px;
     overflow: clip;
+    width: 70px;
+    height: 70px;
 }
 
 .dark-mode-button, .dark-mode-button>img{
+    will-change: transform;
     cursor: pointer;
 }
 
 .dark-mode-button>img{
     width: 40px;
+    transition-duration: .7s;
+    transition-timing-function: ease-in-out;
+    grid-area: main;
 }
 
 .blue{
@@ -21,4 +29,12 @@
 
 .yellow{
     filter: var(--icon-filter-yellow);
+}
+
+.active{
+    transform: translateY(0);
+}
+
+.inactive{
+    transform: translateY(100px);
 }
