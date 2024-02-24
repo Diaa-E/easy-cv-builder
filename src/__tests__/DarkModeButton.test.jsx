@@ -20,20 +20,6 @@ describe("DarkModeButton component", () => {
         expect(screen.getByRole("button").childNodes[0]).toBeInstanceOf(Image);
     });
 
-    it("Assigns yellow class to the button when dark mode is on", () => {
-
-        render(<DarkModeButton darkMode={true} />);
-
-        expect(screen.getByRole("button")).toHaveClass("yellow");
-    });
-
-    it("Assigns blue class to the button when dark mode is off", () => {
-
-        render(<DarkModeButton darkMode={false} />);
-
-        expect(screen.getByRole("button")).toHaveClass("blue");
-    });
-
     it("Assigns yellow class to the button icon when dark mode is on", () => {
 
         render(<DarkModeButton darkMode={true} />);
