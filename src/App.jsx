@@ -297,7 +297,10 @@ function App() {
       <img src={logo} alt="Easy CV builder's logo" className='logo' />
 
       <nav className='nav'>
-        <DarkModeButton darkMode={darkMode} onClick={() => setDarkMode(darkMode => !darkMode)}/>
+        <DarkModeButton darkMode={darkMode} onClick={() => {
+          setDarkMode(darkMode => !darkMode);
+          localStorage.setItem("darkMode", JSON.stringify(!darkMode));
+        }}/>
         {
           tabs.map(tab => (
             <NavItem 
