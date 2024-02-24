@@ -107,7 +107,7 @@ function App() {
 
   }, [darkMode]);
 
-  const currentVersion = "1.2.1";
+  const currentVersion = "1.2.2";
   const emptyListText = "Nothing here yet."
 
   const data={
