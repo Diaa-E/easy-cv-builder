@@ -1,0 +1,24 @@
+.dark-mode-button{
+    display: flex;
+    place-items: center;
+    place-content: center;
+    background-color: var(--none);
+    padding: 15px;
+    overflow: clip;
+}
+
+.dark-mode-button, .dark-mode-button>img{
+    cursor: pointer;
+}
+
+.dark-mode-button>img{
+    width: 40px;
+}
+
+.blue{
+    filter: var(--icon-filter-blue);
+}
+
+.yellow{
+    filter: var(--icon-filter-yellow);
+}

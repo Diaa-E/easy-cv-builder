@@ -46,6 +46,7 @@
   --icon-filter: invert(98%) sepia(0%) saturate(7487%) hue-rotate(214deg) brightness(122%) contrast(78%);;
   --icon-filter-danger: invert(20%) sepia(63%) saturate(2138%) hue-rotate(340deg) brightness(102%) contrast(99%);
   --icon-filter-blue: invert(30%) sepia(100%) saturate(490%) hue-rotate(173deg) brightness(107%) contrast(89%);
+  --icon-filter-yellow: invert(67%) sepia(57%) saturate(1674%) hue-rotate(359deg) brightness(104%) contrast(106%) contrast(70%) saturate(80%);
   --logo-filter: contrast(70%) saturate(80%);
 }
 
