@@ -259,7 +259,16 @@ function App() {
   {
     const newArray = Array.from(stateArray);
     const newItemIndex = getItemIndex(newArray, newItem.id);
-    newArray[newItemIndex] = newItem;
+
+    if (newItemIndex === -1)
+    {
+      newArray.push(newItem)
+    }
+    else
+    {
+      newArray[newItemIndex] = newItem;
+    }
+    
     stateSetter(newArray);
   }
 

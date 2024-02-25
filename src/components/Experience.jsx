@@ -4,6 +4,8 @@ import AddButton from "./AddButton";
 import TextInput from "./TextInput";
 import FormButton from "./FormButton";
 import TextAreaInput from "./TextAreaInput";
+import { v4 as generateId } from "uuid";
+import { getItemIndex } from "../utility";
 
 export default function Experience({experienceItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
@@ -19,7 +21,7 @@ export default function Experience({experienceItems, enabled = true, addItem, to
     {
         return (
             <div className="items-container">
-                <h2>Edit Job</h2>
+                <h2 className="edit-title">{`${getItemIndex(experienceItems, currentItem.id) > -1 ? "Edit" : "Add"} Job`}</h2>
                 <TextInput
                     text={currentItem.company}
                     labelText="Company"
@@ -113,7 +115,19 @@ export default function Experience({experienceItems, enabled = true, addItem, to
                             />
                 })
             }
-            <AddButton onclick={addItem}/>
+            <AddButton onclick={() => {
+                setCurrentItem({
+                    id: generateId(),
+                    company: "",
+                    location: "",
+                    position: "",
+                    start: "",
+                    end: "",
+                    details: "",
+                    hidden: false,
+                });
+                setEditMode(true);
+            }}/>
         </div>
     ) 
 }

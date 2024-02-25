@@ -3,6 +3,8 @@ import ListItemText from "./ListItemText";
 import AddButton from "./AddButton";
 import TextInput from "./TextInput";
 import FormButton from "./FormButton";
+import { getItemIndex } from "../utility";
+import { v4 as generateId } from 'uuid';
 
 export default function Education({educationItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
@@ -18,7 +20,7 @@ export default function Education({educationItems, enabled = true, addItem, togg
     {
         return (
             <div className="items-container">
-                <h2>Edit Degree</h2>
+                <h2 className="edit-title">{`${getItemIndex(educationItems, currentItem.id) > -1 ? "Edit" : "Add"} Degree`}</h2>
                 <TextInput
                     text={currentItem.degree}
                     labelText="Degree"
@@ -105,7 +107,18 @@ export default function Education({educationItems, enabled = true, addItem, togg
                             />
                 })
             }
-            <AddButton onclick={addItem}/>
+            <AddButton onclick={() => {
+                setCurrentItem({
+                    id: generateId(),
+                    degree: "",
+                    school: "",
+                    location: "",
+                    start: "",
+                    end: "",
+                    hidden: false
+                });
+                setEditMode(true);
+            }}/>
         </div>
     )
 }

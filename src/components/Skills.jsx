@@ -4,6 +4,8 @@ import AddButton from "./AddButton";
 import TextInput from "./TextInput";
 import FormButton from "./FormButton";
 import RangeInput from "./RangeInput";
+import { v4 as generateId } from "uuid";
+import { getItemIndex } from "../utility";
 
 export default function Skills({skillItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
@@ -19,7 +21,7 @@ export default function Skills({skillItems, enabled = true, addItem, toggleHide,
     {
         return (
             <div className="items-container">
-                <h2>Edit Skill</h2>
+                <h2 className="edit-title">{`${getItemIndex(skillItems, currentItem.id) > -1 ? "Edit" : "Add"} Skill`}</h2>
                 <TextInput
                     text={currentItem.name}
                     labelText="Skill"
@@ -87,7 +89,16 @@ export default function Skills({skillItems, enabled = true, addItem, toggleHide,
                             />
                 })
             }
-            <AddButton onclick={addItem}/>
+            <AddButton onclick={() => {
+                setCurrentItem({
+                    id: generateId(),
+                    name: "",
+                    level: 60,
+                    hidden: false,
+                    showLevel: true,
+                });
+                setEditMode(true);
+            }}/>
         </div>
     )
 }

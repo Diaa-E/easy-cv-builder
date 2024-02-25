@@ -112,6 +112,10 @@
   color: var(--text);
 }
 
+.edit-title{
+  color: var(--text);
+}
+
 .items-container>p{
   color: var(--text);
 }

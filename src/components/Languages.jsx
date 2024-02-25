@@ -4,6 +4,8 @@ import AddButton from "./AddButton";
 import TextInput from "./TextInput";
 import FormButton from "./FormButton";
 import RangeInput from "./RangeInput";
+import { v4  as generateId} from "uuid";
+import { getItemIndex } from "../utility";
 
 export default function Languages({languagetems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
@@ -19,7 +21,7 @@ export default function Languages({languagetems, enabled = true, addItem, toggle
     {
         return (
             <div className="items-container">
-                <h2>Edit Language</h2>
+                <h2 className="edit-title">{`${getItemIndex(languagetems, currentItem.id) > -1 ? "Edit" : "Add"} Language`}</h2>
                 <TextInput
                     text={currentItem.name}
                     labelText="Language"
@@ -87,7 +89,16 @@ export default function Languages({languagetems, enabled = true, addItem, toggle
                             />
                 })
             }
-            <AddButton onclick={addItem}/>
+            <AddButton onclick={() => {
+                setCurrentItem({
+                    id: generateId(),
+                    name: "",
+                    level: 60,
+                    hidden: false,
+                    showLevel: true,
+                });
+                setEditMode(true);
+            }}/>
         </div>
     )
 }

@@ -5,6 +5,8 @@ import TextInput from "./TextInput";
 import FormButton from "./FormButton";
 import SelectInput from "./SelectInput";
 import linkIcons from "../linkIconsBarrel";
+import { v4 as generateId } from "uuid";
+import { getItemIndex } from "../utility";
 
 export default function Links({linksItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
@@ -20,7 +22,7 @@ export default function Links({linksItems, enabled = true, addItem, toggleHide, 
     {
         return (
             <div className="items-container">
-                <h2>Edit Link</h2>
+                <h2 className="edit-title">{`${getItemIndex(linksItems, currentItem.id) > -1 ? "Edit" : "Add"} Link`}</h2>
                 <SelectInput
                     options={linkIcons}
                     optionNameKey={"name"}
@@ -87,7 +89,15 @@ export default function Links({linksItems, enabled = true, addItem, toggleHide, 
                             />
                 })
             }
-            <AddButton onclick={addItem}/>
+            <AddButton onclick={() => {
+                setCurrentItem({
+                    id: generateId(),
+                    url: "",
+                    icon: linkIcons.find(item => item.name === "other").name,
+                    hidden: false,
+                });
+                setEditMode(true);
+            }}/>
         </div>
     )
 }
