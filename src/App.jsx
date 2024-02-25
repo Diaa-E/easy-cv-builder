@@ -14,7 +14,6 @@ import Contact from './components/Contact';
 import sampleInfo from './sampleInfo';
 import Education from './components/Education';
 import Experience from './components/Experience';
-import linkIcons from './linkIconsBarrel';
 import Links from './components/Links';
 import Skills from './components/Skills';
 import Languages from './components/Languages';
