@@ -13,7 +13,7 @@ export default function ListItemLevel({text, meterValue, showLevel, hidden = fal
             <ItemButton onClick={() => deleteItem(id)} text="edit item" imgPath={appIcons.delete} colorClass="item-button-danger"/>
             <div className="item-details item-details-column">
                 <p>{text}</p>
-                {showLevel? <ProgressBar level={meterValue} disabled={hidden}/> : <></>}
+                {showLevel? <ProgressBar level={meterValue} disabled={hidden} label={text}/> : <></>}
             </div>
             <ItemControls 
                 moveItemUp={() => moveItemUp(id)}
