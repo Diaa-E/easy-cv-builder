@@ -23,11 +23,19 @@
     flex-grow: 1;
 }
 
-.item-details p{
+.list-item p, .list-item-hidden p{
     font-size: 16px;
     min-width: 0; /*fix flex child not wrapping*/
     overflow-wrap: break-word;
+    max-width: 45vw;
+}
+
+.list-item p{
     color: var(--text);
+}
+
+.list-item-hidden p{
+    color: var(--text-light);
 }
 
 .item-details-column{
@@ -44,4 +52,10 @@
 .item-icon{
     width: 50px;
     filter: var(--icon-filter);
+}
+
+@media (min-width: 700px) {
+    .list-item p, .list-item-hidden p{
+        max-width: 10vw;
+    }
 }
