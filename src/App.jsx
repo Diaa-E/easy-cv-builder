@@ -86,16 +86,16 @@ function App() {
 
   const [darkMode, setDarkMode] = useState(Boolean(JSON.parse(localStorage.getItem("darkMode"))));
   const [currentTab, setCurrentTab] = useState(tabs[0].id);
-  const [personalInfo, setPersonalInfo] = useState(hasSessionData() ? getSessionData().personalInfo : sampleInfo.personalInfo);
-  const [contact, setContact] = useState(hasSessionData() ? getSessionData().contact : sampleInfo.contact);
-  const [education, setEducation] = useState(hasSessionData() ? getSessionData().education : sampleInfo.education);
-  const [experience, setExperience] = useState(hasSessionData() ? getSessionData().experience : sampleInfo.experience);
-  const [links, setLinks] = useState(hasSessionData() ? getSessionData().links : sampleInfo.links);
-  const [skills, setSkills] = useState(hasSessionData() ? getSessionData().skills : sampleInfo.skills);
-  const [languages, setLanguages] = useState(hasSessionData() ? getSessionData().languages : sampleInfo.languages);
-  const [accentColor, setAccentColor] = useState(hasSessionData() ? getSessionData().accentColor : "#ffb400");
-  const [font, setFont] = useState(hasSessionData() ? getSessionData().font : "regular");
-  const [layout, setLayout] = useState(hasSessionData() ? getSessionData().layout : "layout-01");
+  const [personalInfo, setPersonalInfo] = useState(getSessionData("personalInfo", sampleInfo.personalInfo));
+  const [contact, setContact] = useState(getSessionData("contact", sampleInfo.contact));
+  const [education, setEducation] = useState(getSessionData("education", sampleInfo.education));
+  const [experience, setExperience] = useState(getSessionData("experience", sampleInfo.experience));
+  const [links, setLinks] = useState(getSessionData("links", sampleInfo.links));
+  const [skills, setSkills] = useState(getSessionData("skills", sampleInfo.skills));
+  const [languages, setLanguages] = useState(getSessionData("languages", sampleInfo.languages));
+  const [accentColor, setAccentColor] = useState(getSessionData("accentColor", "#ffb400"));
+  const [font, setFont] = useState(getSessionData("font", "regular"));
+  const [layout, setLayout] = useState(getSessionData("layout", "layout-01"));
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []});
 
   useEffect(() => {
@@ -131,14 +131,11 @@ function App() {
     layout: layout,
   };
 
-  function hasSessionData()
+  function getSessionData(key, defaultValue)
   {
-    return Boolean(JSON.parse(sessionStorage.getItem("data")));
-  }
+    if (!Boolean(JSON.parse(sessionStorage.getItem("data")))) return defaultValue;
 
-  function getSessionData()
-  {
-    return JSON.parse(sessionStorage.getItem("data"));
+    return JSON.parse(sessionStorage.getItem("data"))[key];
   }
 
   async function uploadDraft(e)
