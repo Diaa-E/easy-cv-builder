@@ -86,17 +86,25 @@ function App() {
 
   const [darkMode, setDarkMode] = useState(Boolean(JSON.parse(localStorage.getItem("darkMode"))));
   const [currentTab, setCurrentTab] = useState(tabs[0].id);
-  const [personalInfo, setPersonalInfo] = useState(sampleInfo.personalInfo);
-  const [contact, setContact] = useState(sampleInfo.contact);
-  const [education, setEducation] = useState(sampleInfo.education);
-  const [experience, setExperience] = useState(sampleInfo.experience);
-  const [links, setLinks] = useState(sampleInfo.links);
-  const [skills, setSkills] = useState(sampleInfo.skills);
-  const [languages, setLanguages] = useState(sampleInfo.languages);
-  const [accentColor, setAccentColor] = useState("#ffb400");
-  const [font, setFont] = useState("regular");
-  const [layout, setLayout] = useState("layout-01");
+  const [personalInfo, setPersonalInfo] = useState(hasSessionData() ? getSessionData().personalInfo : sampleInfo.personalInfo);
+  const [contact, setContact] = useState(hasSessionData() ? getSessionData().contact : sampleInfo.contact);
+  const [education, setEducation] = useState(hasSessionData() ? getSessionData().education : sampleInfo.education);
+  const [experience, setExperience] = useState(hasSessionData() ? getSessionData().experience : sampleInfo.experience);
+  const [links, setLinks] = useState(hasSessionData() ? getSessionData().links : sampleInfo.links);
+  const [skills, setSkills] = useState(hasSessionData() ? getSessionData().skills : sampleInfo.skills);
+  const [languages, setLanguages] = useState(hasSessionData() ? getSessionData().languages : sampleInfo.languages);
+  const [accentColor, setAccentColor] = useState(hasSessionData() ? getSessionData().accentColor : "#ffb400");
+  const [font, setFont] = useState(hasSessionData() ? getSessionData().font : "regular");
+  const [layout, setLayout] = useState(hasSessionData() ? getSessionData().layout : "layout-01");
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []});
+
+  useEffect(() => {
+
+    sessionStorage.setItem("data", JSON.stringify(data));
+
+    return () => {};
+
+  }, [education, personalInfo, contact, experience, links, skills, languages, accentColor, font, layout]);
 
   useEffect(() => {
 
@@ -122,6 +130,16 @@ function App() {
     accentColor: accentColor,
     layout: layout,
   };
+
+  function hasSessionData()
+  {
+    return Boolean(JSON.parse(sessionStorage.getItem("data")));
+  }
+
+  function getSessionData()
+  {
+    return JSON.parse(sessionStorage.getItem("data"));
+  }
 
   async function uploadDraft(e)
   {
