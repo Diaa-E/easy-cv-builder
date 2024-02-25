@@ -83,63 +83,45 @@ export default function Experience({experienceItems, enabled = true, toggleHide,
         )
     }
 
-    if (experienceItems.length === 0)
-    {
-        return (
-            <div className="items-container">
-                <h2 className="empty-list-text">{emptyText}</h2>
-                <AddButton onclick={() => {
-                    setCurrentItem({
-                        id: generateId(),
-                        company: "",
-                        location: "",
-                        position: "",
-                        start: "",
-                        end: "",
-                        details: "",
-                        hidden: false,
-                    });
-                    setEditMode(true);
-                }}/>
-            </div>
-        )
-    }
-
     return (
         <div className="items-container">
-            {
-                experienceItems.map(item => {
-                    return <ListItemText
-                                firstLine={item.company}
-                                secondLine={item.position}
-                                hidden={item.hidden}
-                                id={item.id}
-                                key={item.id}
-                                toggleHide={toggleHide}
-                                toggleEdit={(id) => {
-                                    setEditMode(true)
-                                    setCurrentItem(experienceItems.find(item => item.id === id))
-                                }}
-                                deleteItem={(id) => {
-                                    deleteItem(id);
-                                }}
-                                moveItemUp={id => moveItemUp(id)}
-                            />
-                })
-            }
-            <AddButton onclick={() => {
-                setCurrentItem({
-                    id: generateId(),
-                    company: "",
-                    location: "",
-                    position: "",
-                    start: "",
-                    end: "",
-                    details: "",
-                    hidden: false,
-                });
-                setEditMode(true);
-            }}/>
+        {
+            experienceItems.length === 0 &&
+            <h2 className="empty-list-text">{emptyText}</h2>
+        }
+        {
+            experienceItems.map(item => {
+                return <ListItemText
+                            firstLine={item.company}
+                            secondLine={item.position}
+                            hidden={item.hidden}
+                            id={item.id}
+                            key={item.id}
+                            toggleHide={toggleHide}
+                            toggleEdit={(id) => {
+                                setEditMode(true)
+                                setCurrentItem(experienceItems.find(item => item.id === id))
+                            }}
+                            deleteItem={(id) => {
+                                deleteItem(id);
+                            }}
+                            moveItemUp={id => moveItemUp(id)}
+                        />
+            })
+        }
+        <AddButton onclick={() => {
+            setCurrentItem({
+                id: generateId(),
+                company: "",
+                location: "",
+                position: "",
+                start: "",
+                end: "",
+                details: "",
+                hidden: false,
+            });
+            setEditMode(true);
+        }}/>
         </div>
-    ) 
+    )
 }

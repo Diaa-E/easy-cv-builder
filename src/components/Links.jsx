@@ -57,55 +57,41 @@ export default function Links({linksItems, enabled = true, toggleHide, updateIte
         )
     }
 
-    if (linksItems.length === 0)
-    {
-        return (
-            <div className="items-container">
-                <h2 className="empty-list-text">{emptyText}</h2>
-                <AddButton onclick={() => {
-                    setCurrentItem({
-                        id: generateId(),
-                        url: "",
-                        icon: linkIcons.find(item => item.name === "other").name,
-                        hidden: false,
-                    });
-                    setEditMode(true);
-                }}/>
-            </div>
-        )
-    }
-
     return (
         <div className="items-container">
-            {
-                linksItems.map(item => {
-                    return <ListItemIcon
-                                iconPath={linkIcons.find(icon => item.icon === icon.name).icon}
-                                text={item.url}
-                                hidden={item.hidden}
-                                id={item.id}
-                                key={item.id}
-                                toggleHide={toggleHide}
-                                toggleEdit={(id) => {
-                                    setEditMode(true)
-                                    setCurrentItem(linksItems.find(item => item.id === id))
-                                }}
-                                deleteItem={(id) => {
-                                    deleteItem(id);
-                                }}
-                                moveItemUp={(id) => moveItemUp(id)}
-                            />
-                })
-            }
-            <AddButton onclick={() => {
-                setCurrentItem({
-                    id: generateId(),
-                    url: "",
-                    icon: linkIcons.find(item => item.name === "other").name,
-                    hidden: false,
-                });
-                setEditMode(true);
-            }}/>
+        {
+            linksItems.length === 0 &&
+            <h2 className="empty-list-text">{emptyText}</h2>
+        }
+        {
+            linksItems.map(item => {
+                return <ListItemIcon
+                            iconPath={linkIcons.find(icon => item.icon === icon.name).icon}
+                            text={item.url}
+                            hidden={item.hidden}
+                            id={item.id}
+                            key={item.id}
+                            toggleHide={toggleHide}
+                            toggleEdit={(id) => {
+                                setEditMode(true)
+                                setCurrentItem(linksItems.find(item => item.id === id))
+                            }}
+                            deleteItem={(id) => {
+                                deleteItem(id);
+                            }}
+                            moveItemUp={(id) => moveItemUp(id)}
+                        />
+            })
+        }
+        <AddButton onclick={() => {
+            setCurrentItem({
+                id: generateId(),
+                url: "",
+                icon: linkIcons.find(item => item.name === "other").name,
+                hidden: false,
+            });
+            setEditMode(true);
+        }}/>
         </div>
     )
 }

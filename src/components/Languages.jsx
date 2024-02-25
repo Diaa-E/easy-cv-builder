@@ -56,58 +56,43 @@ export default function Languages({languagetems, enabled = true, toggleHide, upd
         )
     }
 
-    if (languagetems.length === 0)
-    {
-        return (
-            <div className="items-container">
-                <h2 className="empty-list-text">{emptyText}</h2>
-                <AddButton onclick={() => {
-                    setCurrentItem({
-                        id: generateId(),
-                        name: "",
-                        level: 60,
-                        hidden: false,
-                        showLevel: true,
-                    });
-                    setEditMode(true);
-                }}/>
-            </div>
-        )
-    }
-
     return (
         <div className="items-container">
-            {
-                languagetems.map(item => {
-                    return <ListItemLevel
-                                text={item.name}
-                                meterValue={item.level}
-                                showLevel={item.showLevel}
-                                hidden={item.hidden}
-                                id={item.id}
-                                key={item.id}
-                                toggleHide={toggleHide}
-                                toggleEdit={(id) => {
-                                    setEditMode(true)
-                                    setCurrentItem(languagetems.find(item => item.id === id))
-                                }}
-                                deleteItem={(id) => {
-                                    deleteItem(id);
-                                }}
-                                moveItemUp={(id => moveItemUp(id))}
-                            />
-                })
-            }
-            <AddButton onclick={() => {
-                setCurrentItem({
-                    id: generateId(),
-                    name: "",
-                    level: 60,
-                    hidden: false,
-                    showLevel: true,
-                });
-                setEditMode(true);
-            }}/>
+        {
+            languagetems.length === 0 &&
+            <h2 className="empty-list-text">{emptyText}</h2>
+        }
+        {
+            languagetems.map(item => {
+            return <ListItemLevel
+                        text={item.name}
+                        meterValue={item.level}
+                        showLevel={item.showLevel}
+                        hidden={item.hidden}
+                        id={item.id}
+                        key={item.id}
+                        toggleHide={toggleHide}
+                        toggleEdit={(id) => {
+                            setEditMode(true)
+                            setCurrentItem(languagetems.find(item => item.id === id))
+                        }}
+                        deleteItem={(id) => {
+                            deleteItem(id);
+                        }}
+                        moveItemUp={(id => moveItemUp(id))}
+                    />
+            }) 
+        }
+        <AddButton onclick={() => {
+            setCurrentItem({
+                id: generateId(),
+                name: "",
+                level: 60,
+                hidden: false,
+                showLevel: true,
+            });
+            setEditMode(true);
+        }}/>
         </div>
     )
 }

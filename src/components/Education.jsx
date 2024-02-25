@@ -75,49 +75,33 @@ export default function Education({educationItems, enabled = true, toggleHide, u
         )
     }
 
-    if (educationItems.length === 0)
-    {
-        return (
-            <div className="items-container">
-                <h2 className="empty-list-text">{emptyText}</h2>
-                <AddButton onclick={() => {
-                    setCurrentItem({
-                        id: generateId(),
-                        degree: "",
-                        school: "",
-                        location: "",
-                        start: "",
-                        end: "",
-                        hidden: false
-                    });
-                    setEditMode(true);
-                }}/>
-            </div>
-        )
-    }
-
     return (
         <div className="items-container">
-            {
-                educationItems.map(item => {
-                    return <ListItemText
-                                firstLine={item.degree}
-                                secondLine={item.school}
-                                hidden={item.hidden}
-                                id={item.id}
-                                key={item.id}
-                                toggleHide={toggleHide}
-                                toggleEdit={(id) => {
-                                    setEditMode(true)
-                                    setCurrentItem(educationItems.find(item => item.id === id))
-                                }}
-                                deleteItem={(id) => {
-                                    deleteItem(id);
-                                }}
-                                moveItemUp={id => moveItemUp(id)}
-                            />
-                })
-            }
+        {
+            educationItems.length === 0 &&
+            <h2 className="empty-list-text">{emptyText}</h2>
+        }
+        {
+            educationItems.map(item => {
+                return <ListItemText
+                            firstLine={item.degree}
+                            secondLine={item.school}
+                            hidden={item.hidden}
+                            id={item.id}
+                            key={item.id}
+                            toggleHide={toggleHide}
+                            toggleEdit={(id) => {
+                                setEditMode(true)
+                                setCurrentItem(educationItems.find(item => item.id === id))
+                            }}
+                            deleteItem={(id) => {
+                                deleteItem(id);
+                            }}
+                            moveItemUp={id => moveItemUp(id)}
+                        />
+            })
+        }
+        {
             <AddButton onclick={() => {
                 setCurrentItem({
                     id: generateId(),
@@ -130,6 +114,7 @@ export default function Education({educationItems, enabled = true, toggleHide, u
                 });
                 setEditMode(true);
             }}/>
+        }
         </div>
     )
 }

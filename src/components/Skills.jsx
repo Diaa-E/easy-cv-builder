@@ -56,58 +56,43 @@ export default function Skills({skillItems, enabled = true, toggleHide, updateIt
         )
     }
 
-    if (skillItems.length === 0)
-    {
-        return (
-            <div className="items-container">
-                <h2 className="empty-list-text">{emptyText}</h2>
-                <AddButton onclick={() => {
-                    setCurrentItem({
-                        id: generateId(),
-                        name: "",
-                        level: 60,
-                        hidden: false,
-                        showLevel: true,
-                    });
-                    setEditMode(true);
-                }}/>
-            </div>
-        )
-    }
-
     return (
         <div className="items-container">
-            {
-                skillItems.map(item => {
-                    return <ListItemLevel
-                                text={item.name}
-                                meterValue={item.level}
-                                showLevel={item.showLevel}
-                                hidden={item.hidden}
-                                id={item.id}
-                                key={item.id}
-                                toggleHide={toggleHide}
-                                toggleEdit={(id) => {
-                                    setEditMode(true)
-                                    setCurrentItem(skillItems.find(item => item.id === id))
-                                }}
-                                deleteItem={(id) => {
-                                    deleteItem(id);
-                                }}
-                                moveItemUp={(id) => moveItemUp(id)}
-                            />
-                })
-            }
-            <AddButton onclick={() => {
-                setCurrentItem({
-                    id: generateId(),
-                    name: "",
-                    level: 60,
-                    hidden: false,
-                    showLevel: true,
-                });
-                setEditMode(true);
-            }}/>
+        {
+            skillItems.length === 0 &&
+            <h2 className="empty-list-text">{emptyText}</h2>
+        }
+        {
+            skillItems.map(item => {
+                return <ListItemLevel
+                            text={item.name}
+                            meterValue={item.level}
+                            showLevel={item.showLevel}
+                            hidden={item.hidden}
+                            id={item.id}
+                            key={item.id}
+                            toggleHide={toggleHide}
+                            toggleEdit={(id) => {
+                                setEditMode(true)
+                                setCurrentItem(skillItems.find(item => item.id === id))
+                            }}
+                            deleteItem={(id) => {
+                                deleteItem(id);
+                            }}
+                            moveItemUp={(id) => moveItemUp(id)}
+                        />
+            })
+        }
+        <AddButton onclick={() => {
+            setCurrentItem({
+                id: generateId(),
+                name: "",
+                level: 60,
+                hidden: false,
+                showLevel: true,
+            });
+            setEditMode(true);
+        }}/>
         </div>
     )
 }
