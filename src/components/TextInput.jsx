@@ -14,6 +14,7 @@ export default function TextInput({labelText, text, placeholder, id, onChange = 
                 placeholder={placeholder}
                 className="text-input-field"
                 onChange={onChange}
+                name={id}
             />
         </div>
     )

@@ -30,6 +30,7 @@ export default function Links({linksItems, enabled = true, toggleHide, updateIte
                     labelText={"Website"}
                     selected={currentItem.icon}
                     onChange={(e) => setCurrentItem({...currentItem, icon: e.target.value})}
+                    id={"link icon"}
                 />
                 <TextInput
                     text={currentItem.url}

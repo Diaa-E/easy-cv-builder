@@ -18,7 +18,7 @@ export default function Contact({enabled, phoneNumber, updatePhoneNumber, email,
                     labelText="Email"
                     onChange={updateEmail}
                     placeholder="john_doe@email.com"
-                    id="email"
+                    id="e-mail"
                 />
             </>
         )
