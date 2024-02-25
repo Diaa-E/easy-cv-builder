@@ -7,7 +7,7 @@ import TextAreaInput from "./TextAreaInput";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utility";
 
-export default function Experience({experienceItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
+export default function Experience({experienceItems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -88,7 +88,19 @@ export default function Experience({experienceItems, enabled = true, addItem, to
         return (
             <div className="items-container">
                 <h2 className="empty-list-text">{emptyText}</h2>
-                <AddButton onclick={addItem}/>
+                <AddButton onclick={() => {
+                    setCurrentItem({
+                        id: generateId(),
+                        company: "",
+                        location: "",
+                        position: "",
+                        start: "",
+                        end: "",
+                        details: "",
+                        hidden: false,
+                    });
+                    setEditMode(true);
+                }}/>
             </div>
         )
     }

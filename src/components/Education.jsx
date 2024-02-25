@@ -6,7 +6,7 @@ import FormButton from "./FormButton";
 import { getItemIndex } from "../utility";
 import { v4 as generateId } from 'uuid';
 
-export default function Education({educationItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
+export default function Education({educationItems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -80,7 +80,18 @@ export default function Education({educationItems, enabled = true, addItem, togg
         return (
             <div className="items-container">
                 <h2 className="empty-list-text">{emptyText}</h2>
-                <AddButton onclick={addItem}/>
+                <AddButton onclick={() => {
+                    setCurrentItem({
+                        id: generateId(),
+                        degree: "",
+                        school: "",
+                        location: "",
+                        start: "",
+                        end: "",
+                        hidden: false
+                    });
+                    setEditMode(true);
+                }}/>
             </div>
         )
     }

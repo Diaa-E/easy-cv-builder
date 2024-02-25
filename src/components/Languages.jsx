@@ -7,7 +7,7 @@ import RangeInput from "./RangeInput";
 import { v4  as generateId} from "uuid";
 import { getItemIndex } from "../utility";
 
-export default function Languages({languagetems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
+export default function Languages({languagetems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -61,7 +61,16 @@ export default function Languages({languagetems, enabled = true, addItem, toggle
         return (
             <div className="items-container">
                 <h2 className="empty-list-text">{emptyText}</h2>
-                <AddButton onclick={addItem}/>
+                <AddButton onclick={() => {
+                    setCurrentItem({
+                        id: generateId(),
+                        name: "",
+                        level: 60,
+                        hidden: false,
+                        showLevel: true,
+                    });
+                    setEditMode(true);
+                }}/>
             </div>
         )
     }

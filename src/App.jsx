@@ -123,50 +123,6 @@ function App() {
     layout: layout,
   };
 
-  const emptyEducationItem = {
-    id: generateId(),
-    degree: "Degree",
-    school: "School",
-    location: "",
-    start: "",
-    end: "",
-    hidden: false
-  };
-
-  const emptyExperienceItem = {
-    id: generateId(),
-    company: "Unknown INC.",
-    location: "city, Country",
-    position: "Position title",
-    start: "",
-    end: "",
-    details: "",
-    hidden: false,
-  };
-
-  const emptyLinkItem = {
-    id: generateId(),
-    url: "website.com/john-doe",
-    icon: linkIcons.find(item => item.name === "other").name,
-    hidden: false,
-  };
-
-  const emptySkillsItem = {
-    id: generateId(),
-    name: "Skill",
-    level: 60,
-    hidden: false,
-    showLevel: true,
-  }
-
-  const emptyLanguageItem = {
-    id: generateId(),
-    name: "Language",
-    level: 60,
-    hidden: false,
-    showLevel: true,
-  }
-
   async function uploadDraft(e)
   {
     setDraftStatus({code: 1, errorLog: []});
@@ -268,7 +224,7 @@ function App() {
     {
       newArray[newItemIndex] = newItem;
     }
-    
+
     stateSetter(newArray);
   }
 
@@ -350,7 +306,6 @@ function App() {
         <Education
           enabled={tabs[1].id === currentTab}
           educationItems={education}
-          addItem={() => setEducation([...education, emptyEducationItem])}
           toggleHide={(id) => toggleHide(id, education, setEducation)}
           updateItems={(newItem) => updateItems(newItem, education, setEducation)}
           deleteItem={(targetItem) => deleteItem(targetItem, education, setEducation)}
@@ -360,7 +315,6 @@ function App() {
         <Experience
           enabled={tabs[4].id === currentTab}
           experienceItems={experience}
-          addItem={() => setExperience([...experience, emptyExperienceItem])}
           toggleHide={(id) => toggleHide(id, experience, setExperience)}
           updateItems={(newItem) => updateItems(newItem, experience, setExperience)}
           deleteItem={(targetItem) => deleteItem(targetItem, experience, setExperience)}
@@ -370,7 +324,6 @@ function App() {
         <Links
           enabled={tabs[2].id === currentTab}
           linksItems={links}
-          addItem={() => setLinks([...links, emptyLinkItem])}
           toggleHide={(id) => toggleHide(id, links, setLinks)}
           updateItems={(newItem) => updateItems(newItem, links, setLinks)}
           deleteItem={(targetItem) => deleteItem(targetItem, links, setLinks)}
@@ -380,7 +333,6 @@ function App() {
         <Skills
           enabled={tabs[5].id === currentTab}
           skillItems={skills}
-          addItem={() => setSkills([...skills, emptySkillsItem])}
           toggleHide={(id) => {toggleHide(id, skills, setSkills)}}
           updateItems={(newItem) => updateItems(newItem, skills, setSkills)}
           deleteItem={(targetItem) => deleteItem(targetItem, skills, setSkills)}
@@ -390,7 +342,6 @@ function App() {
         <Languages
           enabled={tabs[6].id === currentTab}
           languagetems={languages}
-          addItem={() => setLanguages([...languages, emptyLanguageItem])}
           toggleHide={(id) => {toggleHide(id, languages, setLanguages)}}
           updateItems={(newItem) => updateItems(newItem, languages, setLanguages)}
           deleteItem={(targetItem) => deleteItem(targetItem, languages, setLanguages)}

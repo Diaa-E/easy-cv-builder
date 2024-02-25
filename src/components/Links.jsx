@@ -8,7 +8,7 @@ import linkIcons from "../linkIconsBarrel";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utility";
 
-export default function Links({linksItems, enabled = true, addItem, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
+export default function Links({linksItems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -62,7 +62,15 @@ export default function Links({linksItems, enabled = true, addItem, toggleHide, 
         return (
             <div className="items-container">
                 <h2 className="empty-list-text">{emptyText}</h2>
-                <AddButton onclick={addItem}/>
+                <AddButton onclick={() => {
+                    setCurrentItem({
+                        id: generateId(),
+                        url: "",
+                        icon: linkIcons.find(item => item.name === "other").name,
+                        hidden: false,
+                    });
+                    setEditMode(true);
+                }}/>
             </div>
         )
     }
