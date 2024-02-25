@@ -106,6 +106,9 @@
   font-size: 20px;
   font-weight: bold;
   margin: auto auto 20px 0;
+}
+
+.app-title{
   color: var(--text);
 }
 
