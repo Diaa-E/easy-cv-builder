@@ -8,6 +8,8 @@
 - Adding a new item to a list switches to editing form instead of creating a blank item first.
 - Save draft to session storage with every change.
 - Add the ability to rearrange sections.
+- Improve edit form accessibility.
+- ~~Fix some link icons not turning completely white in dark mode.~~ ✅
 - ~~Fix progress bar width not adjusting to container. Consider replacing semantic HTML with a span inside a div.~~ ✅
 - ~~Save user dark theme preference for the session.~~ ✅
 - ~~Fix list item text color.~~ ✅
