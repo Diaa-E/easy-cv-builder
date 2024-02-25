@@ -93,9 +93,9 @@ function App() {
   const [links, setLinks] = useState(getSessionData("links", sampleInfo.links));
   const [skills, setSkills] = useState(getSessionData("skills", sampleInfo.skills));
   const [languages, setLanguages] = useState(getSessionData("languages", sampleInfo.languages));
-  const [accentColor, setAccentColor] = useState(getSessionData("accentColor", "#ffb400"));
-  const [font, setFont] = useState(getSessionData("font", "regular"));
-  const [layout, setLayout] = useState(getSessionData("layout", "layout-01"));
+  const [accentColor, setAccentColor] = useState(getSessionData("accentColor", sampleInfo.accentColor));
+  const [font, setFont] = useState(getSessionData("font", sampleInfo.font));
+  const [layout, setLayout] = useState(getSessionData("layout", sampleInfo.layout));
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []});
 
   useEffect(() => {

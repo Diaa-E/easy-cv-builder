@@ -114,6 +114,9 @@ const sampleInfo = {
             showLevel: true,
         }
     ],
+    accentColor: "#ffb400",
+    font: "regular",
+    layout: "layout-01",
 }
 
 export default sampleInfo
