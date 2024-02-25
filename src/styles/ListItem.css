@@ -56,6 +56,6 @@
 
 @media (min-width: 700px) {
     .list-item p, .list-item-hidden p{
-        max-width: 10vw;
+        max-width: 8vw;
     }
 }
