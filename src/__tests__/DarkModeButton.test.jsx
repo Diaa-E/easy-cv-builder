@@ -25,16 +25,16 @@ describe("DarkModeButton component", () => {
 
         render(<DarkModeButton darkMode={true} />);
 
-        expect(screen.getAllByRole("img").find(img => img.classList.contains("blue"))).not.toHaveClass("active");
-        expect(screen.getAllByRole("img").find(img => img.classList.contains("yellow"))).toHaveClass("active");
+        expect(screen.getAllByRole("img").find(img => img.classList.contains("blue"))).toHaveClass("active");
+        expect(screen.getAllByRole("img").find(img => img.classList.contains("yellow"))).not.toHaveClass("active");
     });
 
     it("Assigns active class to dark image dark mode is off", () => {
 
         render(<DarkModeButton darkMode={false} />);
 
-        expect(screen.getAllByRole("img").find(img => img.classList.contains("yellow"))).not.toHaveClass("active");
-        expect(screen.getAllByRole("img").find(img => img.classList.contains("blue"))).toHaveClass("active");
+        expect(screen.getAllByRole("img").find(img => img.classList.contains("yellow"))).toHaveClass("active");
+        expect(screen.getAllByRole("img").find(img => img.classList.contains("blue"))).not.toHaveClass("active");
     });
 
     it("Calls onClick function when clicked", async () => {
