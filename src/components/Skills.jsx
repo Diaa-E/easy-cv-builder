@@ -45,7 +45,7 @@ export default function Skills({skillItems, enabled = true, toggleHide, updateIt
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
-                        text='Save'
+                        text={getItemIndex(skillItems, currentItem.id) > -1 ? "Save" : "Add"}
                         classes={["form-button", "blue-button"]}
                         onClick={() => {
                             setEditMode(false);

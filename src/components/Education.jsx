@@ -68,7 +68,7 @@ export default function Education({educationItems, enabled = true, toggleHide, u
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
-                        text='Save'
+                        text={getItemIndex(educationItems, currentItem.id) > -1 ? "Save" : "Add"}
                         classes={["form-button", "blue-button"]}
                         onClick={() => {
                             setEditMode(false);

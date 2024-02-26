@@ -47,7 +47,7 @@ export default function Links({linksItems, enabled = true, toggleHide, updateIte
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
-                        text='Save'
+                        text={getItemIndex(linksItems, currentItem.id) > -1 ? "Save" : "Add"}
                         classes={["form-button", "blue-button"]}
                         onClick={() => {
                             setEditMode(false);

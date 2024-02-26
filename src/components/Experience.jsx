@@ -76,7 +76,7 @@ export default function Experience({experienceItems, enabled = true, toggleHide,
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
-                        text='Save'
+                        text={getItemIndex(experienceItems, currentItem.id) > -1 ? "Save" : "Add"}
                         classes={["form-button", "blue-button"]}
                         onClick={() => {
                             setEditMode(false);

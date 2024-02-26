@@ -45,7 +45,7 @@ export default function Languages({languagetems, enabled = true, toggleHide, upd
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
-                        text='Save'
+                        text={getItemIndex(languagetems, currentItem.id) > -1 ? "Save" : "Add"}
                         classes={["form-button", "blue-button"]}
                         onClick={() => {
                             setEditMode(false);
