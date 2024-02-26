@@ -5,10 +5,12 @@
 - Add link to change log in the about section.
 - Remove empty sections from the CV preview.
 - Fix icon lag by loading all resources before opening app main page.
-- Adding a new item to a list switches to editing form instead of creating a blank item first.
-- Save draft to session storage with every change.
 - Add the ability to rearrange sections.
-- Improve edit form accessibility.
+- ~~Add a clear button to form fields.~~ ✅
+- ~~Save draft to session storage with every change.~~ ✅
+- ~~Improve edit form accessibility.~~ ✅
+- ~~Fix link item text not wrapping and causing overflow.~~ ✅
+- ~~Adding a new item to a list switches to editing form instead of creating a blank item first.~~ ✅
 - ~~Fix some link icons not turning completely white in dark mode.~~ ✅
 - ~~Fix progress bar width not adjusting to container. Consider replacing semantic HTML with a span inside a div.~~ ✅
 - ~~Save user dark theme preference for the session.~~ ✅
