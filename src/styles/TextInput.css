@@ -25,6 +25,7 @@
 }
 
 .clear-button{
+    will-change: filter;
     position: absolute;
     right: 2%;
     top: 50%;
@@ -41,4 +42,8 @@
 
 .clear-button, .clear-button>img{
     cursor: pointer;
+}
+
+.clear-button:hover{
+    filter: brightness(80%);
 }
