@@ -1,6 +1,7 @@
 import "../styles/TextInput.css";
+import appIcons from "../appIconsBarrel";
 
-export default function TextInput({labelText, text, placeholder, id, onChange = () => {}})
+export default function TextInput({labelText, text, placeholder, id, onChange = () => {}, clearField})
 {
     return (
         <div data-testid="text-input" className="text-input-container">
@@ -16,6 +17,12 @@ export default function TextInput({labelText, text, placeholder, id, onChange = 
                 onChange={onChange}
                 name={id}
             />
+            {
+                !(text === "") &&
+                <button title="Clear field" onClick={clearField} className="clear-button">
+                    <img src={appIcons.clear} alt="Clear field button icon" />
+                </button>
+            }
         </div>
     )
 }

@@ -25,6 +25,7 @@ export default function Education({educationItems, enabled = true, toggleHide, u
                     text={currentItem.degree}
                     labelText="Degree"
                     onChange={(e) => {setCurrentItem({...currentItem, degree: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, degree: ""})}}
                     placeholder="degree"
                     id="degree"
                 />
@@ -32,6 +33,7 @@ export default function Education({educationItems, enabled = true, toggleHide, u
                     text={currentItem.school}
                     labelText="School"
                     onChange={(e) => {setCurrentItem({...currentItem, school: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, school: ""})}}
                     placeholder="school"
                     id="school"
                 />
@@ -39,6 +41,7 @@ export default function Education({educationItems, enabled = true, toggleHide, u
                     text={currentItem.location}
                     labelText="Location"
                     onChange={(e) => {setCurrentItem({...currentItem, location: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, location: ""})}}
                     placeholder="location"
                     id="location"
                 />
@@ -46,6 +49,7 @@ export default function Education({educationItems, enabled = true, toggleHide, u
                     text={currentItem.start}
                     labelText="Start"
                     onChange={(e) => {setCurrentItem({...currentItem, start: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, start: ""})}}
                     placeholder="start"
                     id="start"
                 />
@@ -53,6 +57,7 @@ export default function Education({educationItems, enabled = true, toggleHide, u
                     text={currentItem.end}
                     labelText="End"
                     onChange={(e) => {setCurrentItem({...currentItem, end: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, end: ""})}}
                     placeholder="end"
                     id="end"
                 />

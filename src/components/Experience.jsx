@@ -26,6 +26,7 @@ export default function Experience({experienceItems, enabled = true, toggleHide,
                     text={currentItem.company}
                     labelText="Company"
                     onChange={(e) => {setCurrentItem({...currentItem, company: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, company: ""})}}
                     placeholder="company"
                     id="company"
                 />
@@ -33,6 +34,7 @@ export default function Experience({experienceItems, enabled = true, toggleHide,
                     text={currentItem.position}
                     labelText="Position"
                     onChange={(e) => {setCurrentItem({...currentItem, position: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, position: ""})}}
                     placeholder="position"
                     id="position"
                 />
@@ -40,6 +42,7 @@ export default function Experience({experienceItems, enabled = true, toggleHide,
                     text={currentItem.location}
                     labelText="Location"
                     onChange={(e) => {setCurrentItem({...currentItem, location: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, location: ""})}}
                     placeholder="location"
                     id="location"
                 />
@@ -47,6 +50,7 @@ export default function Experience({experienceItems, enabled = true, toggleHide,
                     text={currentItem.start}
                     labelText="Start"
                     onChange={(e) => {setCurrentItem({...currentItem, start: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, start: ""})}}
                     placeholder="start"
                     id="start"
                 />
@@ -54,6 +58,7 @@ export default function Experience({experienceItems, enabled = true, toggleHide,
                     text={currentItem.end}
                     labelText="End"
                     onChange={(e) => {setCurrentItem({...currentItem, end: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, end: ""})}}
                     placeholder="end"
                     id="end"
                 />

@@ -1,36 +1,40 @@
 import TextInput from "./TextInput";
 
-export default function PersonalInformation({enabled, fullName, updateFullName, profession, updateProfession, address, updateAddress, zip, updateZip})
+export default function PersonalInformation({enabled, personalInfo, setPersonalInfo})
 {
     if (enabled)
     {
         return (
             <>
                 <TextInput
-                    text={fullName}
+                    text={personalInfo.fullName}
                     labelText="Full Name"
-                    onChange={updateFullName}
+                    onChange={(e) => {setPersonalInfo({...personalInfo, fullName: e.target.value})}}
+                    clearField={() => {setPersonalInfo({...personalInfo, fullName: ""})}}
                     placeholder="John Doe"
                     id="fullName"
                 />
                 <TextInput
-                    text={profession}
+                    text={personalInfo.profession}
                     labelText="Profession"
-                    onChange={updateProfession}
+                    onChange={(e) => {setPersonalInfo({...personalInfo, profession: e.target.value})}}
+                    clearField={() => {setPersonalInfo({...personalInfo, profession: ""})}}
                     placeholder="Graphic Designer"
                     id="profession"
                 />
                 <TextInput
-                    text={address}
+                    text={personalInfo.address}
                     labelText="Address"
-                    onChange={updateAddress}
+                    onChange={(e) => {setPersonalInfo({...personalInfo, address: e.target.value})}}
+                    clearField={() => {setPersonalInfo({...personalInfo, address: ""})}}
                     placeholder="x unknown st., city"
                     id="address"
                 />
                 <TextInput
-                    text={zip}
+                    text={personalInfo.zip}
                     labelText="Zipcode"
-                    onChange={updateZip}
+                    onChange={(e) => {setPersonalInfo({...personalInfo, zip: e.target.value})}}
+                    clearField={() => {setPersonalInfo({...personalInfo, zip: ""})}}
                     placeholder="19872"
                     id="zip"
                 />

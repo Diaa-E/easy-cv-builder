@@ -26,6 +26,7 @@ export default function Languages({languagetems, enabled = true, toggleHide, upd
                     text={currentItem.name}
                     labelText="Language"
                     onChange={(e) => {setCurrentItem({...currentItem, name: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, name: ""})}}
                     placeholder="language"
                     id="language"
                 />

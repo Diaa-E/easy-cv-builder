@@ -26,6 +26,7 @@ export default function Skills({skillItems, enabled = true, toggleHide, updateIt
                     text={currentItem.name}
                     labelText="Skill"
                     onChange={(e) => {setCurrentItem({...currentItem, name: e.target.value})}}
+                    clearField={() => {setCurrentItem({...currentItem, name: ""})}}
                     placeholder="skill"
                     id="skill"
                 />

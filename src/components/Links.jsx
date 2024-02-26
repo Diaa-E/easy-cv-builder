@@ -36,6 +36,7 @@ export default function Links({linksItems, enabled = true, toggleHide, updateIte
                     text={currentItem.url}
                     labelText="URL"
                     onChange={(e) => setCurrentItem({...currentItem, url: e.target.value})}
+                    clearField={() => {setCurrentItem({...currentItem, url: ""})}}
                     placeholder="url"
                     id="url"
                 />

@@ -20,6 +20,7 @@ import moreIcon from "./assets/images/more.svg";
 import addIcon from "./assets/images/add.svg";
 import darkIcon from "./assets/images/dark.svg";
 import lightIcon from "./assets/images/light.svg";
+import clearIcon from "./assets/images/clear.svg";
 
 const appIcons = {
     address: addressIcon,
@@ -44,6 +45,7 @@ const appIcons = {
     add: addIcon,
     dark: darkIcon,
     light: lightIcon,
+    clear: clearIcon,
 }
 
 export default appIcons;

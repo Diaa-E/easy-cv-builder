@@ -1,22 +1,24 @@
 import TextInput from "./TextInput";
 
-export default function Contact({enabled, phoneNumber, updatePhoneNumber, email, updateEmail})
+export default function Contact({enabled, contact, setContact})
 {
     if (enabled)
     {
         return (
             <>
                 <TextInput
-                    text={phoneNumber}
+                    text={contact.phoneNumber}
                     labelText="Phone Number"
-                    onChange={updatePhoneNumber}
+                    onChange={(e) => {setContact({...contact, phoneNumber: e.target.value})}}
+                    clearField={() => {setContact({...contact, phoneNumber: ""})}}
                     placeholder="+xx xxxxxxxxx"
                     id="phoneNumber"
                 />
                 <TextInput
-                    text={email}
+                    text={contact.email}
                     labelText="Email"
-                    onChange={updateEmail}
+                    onChange={(e) => {setContact({...contact, email: e.target.value})}}
+                    clearField={() => {setContact({...contact, email: ""})}}
                     placeholder="john_doe@email.com"
                     id="e-mail"
                 />
