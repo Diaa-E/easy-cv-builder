@@ -8,7 +8,7 @@ export default function ListItemIcon({iconPath, text, hidden = false, id, toggle
 {
     return (
         <div className={hidden ? "list-item-hidden" : "list-item"}>
-            <ItemButton onClick={() => deleteItem(id)} text="edit item" imgPath={appIcons.delete} colorClass="item-button-danger"/>
+            <ItemButton onClick={() => deleteItem(id)} text="delete item" imgPath={appIcons.delete} colorClass="item-button-danger"/>
             <div className="item-details item-details-row">
                 <img className="item-icon" src={iconPath} alt="item icon" />
                 <p>{text}</p>

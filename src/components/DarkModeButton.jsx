@@ -4,7 +4,7 @@ import appIcons from "../appIconsBarrel";
 export default function DarkModeButton({darkMode, onClick})
 {
     return (
-        <button onClick={onClick} className={`dark-mode-button`}>
+        <button title="Dark mode" onClick={onClick} className={`dark-mode-button`}>
             <img
                 className={`dark-mode-icon yellow ${darkMode ? "inactive" : "active"}`}
                 src={appIcons.light}

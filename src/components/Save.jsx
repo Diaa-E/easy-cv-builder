@@ -7,10 +7,10 @@ export default function Save({upload, download, status, enabled})
     {
         return (
             <div className="items-container">
-                <button onClick={download} className="form-button blue-button">
+                <button title="Download a copy of your data" onClick={download} className="form-button blue-button">
                     Download Draft
                 </button>
-                <label htmlFor="uploadDraft" className="form-button white-button">
+                <label title="Upload a saved copy of your data" role="button" htmlFor="uploadDraft" className="form-button white-button">
                     <input onChange={upload} className="file-input" id="uploadDraft" type="file" accept=".json"/>
                     Upload Draft
                 </label>

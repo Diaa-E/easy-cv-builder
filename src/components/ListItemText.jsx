@@ -8,7 +8,7 @@ export default function ListItemText({firstLine, secondLine, hidden = false, id,
 {
     return (
         <div className={hidden ? "list-item-hidden" : "list-item"}>
-            <ItemButton onClick={() => deleteItem(id)} text="edit item" imgPath={appIcons.delete} colorClass="item-button-danger"/>
+            <ItemButton onClick={() => deleteItem(id)} text="delete item" imgPath={appIcons.delete} colorClass="item-button-danger"/>
             <div className="item-details item-details-column">
                 <p>{firstLine}</p>
                 <p>{secondLine}</p>

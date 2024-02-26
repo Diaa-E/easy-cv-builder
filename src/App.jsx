@@ -372,9 +372,9 @@ function App() {
       </div>
 
       <div id='mainControls' className='main-controls'>
-        <FormButton text='Clear' classes={["form-button", "red-button"]} onClick={clearAll}/>
-        <FormButton text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
-        <FormButton text='Export' classes={["form-button", "blue-button"]} onClick={print}/>
+        <FormButton toolTip='Clear all data' text='Clear' classes={["form-button", "red-button"]} onClick={clearAll}/>
+        <FormButton toolTip='Reset data to sample template' text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
+        <FormButton toolTip='Export as PDF/print CV' text='Export' classes={["form-button", "blue-button"]} onClick={print}/>
       </div>
 
       <Layout_01
