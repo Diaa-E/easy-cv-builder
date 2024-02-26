@@ -4,6 +4,20 @@
 
 This change log only highlights important changes (i.e features and refactors).
 
+### **1.3.0 (Feb 26, 2024)**
+
+- ➕ Hovering over buttons now shows a tool tip.
+- ➕ Edit/Add item form submit button text now reflects form's prupose.
+- ➕ Add a clear field button to text boxes.
+- ➕ New list items can now be added through a form instead of adding a placeholder item.
+- ➕ Reloading page no longer resets draft's data.
+- 🛠️ Fix List item text not wrapping and causing buttons to overflow.
+- 🛠️ Fix edit/add item forms accessibility issues.
+- #️⃣ Simplified personal info and contact components state setters.
+- #️⃣ Add accent color, font and layout to sample info object.
+- #️⃣ Merge list items return statements to avoid duplicating common code.
+- #️⃣ Remove empty item templates.
+
 ### **1.2.3 (Feb 25, 2024)**
 
 - ➕ Dark mode button now shows current active theme instead of the one it activates on the next click.
