@@ -48,7 +48,7 @@ function EducationSection({brightAccent, accentColor, educationItems})
     if (educationItems.length === 0) return <></>;
 
     return (
-        <div className="education-items-wrapper">
+        <div className="section-wrapper wide">
             <h3 style={{backgroundColor: accentColor, color: brightAccent ? "var(--black" : "var(--white"}} className="section-title">Education</h3>
             {
                 educationItems.map(item => {

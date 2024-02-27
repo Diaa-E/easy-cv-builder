@@ -67,14 +67,17 @@
     width: calc(var(--width) * .03);
 }
 
-.layout-01 .education-items-wrapper{
+.layout-01 .section-wrapper{
     display: flex;
     flex-direction: column;
-    grid-column-start: 1;
-    grid-column-end: -1;
     place-items: center;
     width: calc(var(--width) * .9);
     gap: calc(var(--width) * .005);
+}
+
+.wide{
+    grid-column-start: 1;
+    grid-column-end: -1;
 }
 
 .layout-01 .section-title{
