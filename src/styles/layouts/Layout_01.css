@@ -5,7 +5,7 @@
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, min-content);
+    grid-auto-rows: min-content;
     width: var(--width);
     background-color: var(--white);
 }
