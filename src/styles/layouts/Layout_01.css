@@ -87,16 +87,17 @@
     padding: calc(var(--width) * .005);
 }
 
-.layout-01 .education-item{
+.layout-01 .section-item{
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     padding: calc(var(--width) * .005) 0;
+    gap: calc(var(--width) * .005);
     place-self: stretch;
     text-align: center;
 }
 
-.layout-01 .education-item:nth-child(odd){
+.layout-01 .section-item:nth-child(odd){
     background-color: var(--grey);
 }
 

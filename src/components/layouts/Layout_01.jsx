@@ -39,6 +39,45 @@ export default function Layout_01({enabled = true, data})
                 </div>
             </div>
             <EducationSection accentColor={data.accentColor} brightAccent={brightAccent} educationItems={data.education}/>
+            <ExperienceSection accentColor={data.accentColor} brightAccent={brightAccent} experienceItems={data.experience}/>
+        </div>
+    )
+}
+
+function ExperienceSection({brightAccent, accentColor, experienceItems})
+{
+    if (experienceItems.length === 0) return <></>
+
+    return (
+        <div className="section-wrapper wide">
+            <h3 
+                style={{backgroundColor: accentColor, color: brightAccent ? "var(--black" : "var(--white"}}
+                className="section-title"
+            >Experience</h3>
+            {
+                experienceItems.map(item => {
+                    return (
+                        <div key={item.id} className="section-item">
+                        {
+                            (item.end !== "" || item.start !== "") &&
+                            <p className="section-text">{[item.start, item.end].filter(key => key !== "").join("-")}</p>
+                        }
+                        {
+                            (item.position !== "")&&
+                            <p className="section-text">{item.position}</p>
+                        }
+                        {
+                            (item.location !== "" || item.company !== "" ) &&
+                            <p className="section-text">{[item.company, item.location].filter(key => key !== "").join(", ")}</p>
+                        }
+                        {
+                            (item.details !== "") &&
+                            <p className="section-text">{item.details}</p>
+                        }
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }
@@ -49,14 +88,17 @@ function EducationSection({brightAccent, accentColor, educationItems})
 
     return (
         <div className="section-wrapper wide">
-            <h3 style={{backgroundColor: accentColor, color: brightAccent ? "var(--black" : "var(--white"}} className="section-title">Education</h3>
+            <h3
+                style={{backgroundColor: accentColor, color: brightAccent ? "var(--black" : "var(--white"}}
+                className="section-title"
+            >Education</h3>
             {
                 educationItems.map(item => {
                     return (
-                        <div key={item.id} className="education-item">
+                        <div key={item.id} className="section-item">
                         {
                             (item.end !== "" || item.start !== "") &&
-                            <p className="section-text">{item.start}-{item.end}</p>
+                            <p className="section-text">{[item.start, item.end].filter(key => key !== "").join("-")}</p>
                         }
                         {
                             (item.degree !== "") &&
@@ -64,7 +106,7 @@ function EducationSection({brightAccent, accentColor, educationItems})
                         }
                         {
                             (item.school !== "" || item.location !== "") &&
-                            <p className="section-text">{item.school}, {item.location}</p>
+                            <p className="section-text">{[item.school, item.location].filter(key => key !== "").join(", ")}</p>
                         }
                         </div>
                     )
