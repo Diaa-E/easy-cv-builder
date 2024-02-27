@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import TextInput from "../components/TextInput";
+import userEvent from "@testing-library/user-event";
 
 describe("TextInput component", () => {
 
@@ -56,5 +57,38 @@ describe("TextInput component", () => {
         render(<TextInput onChange={onChange}/>);
 
         expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it("Render clear field button when textbox is not empty", () => {
+
+        render(<TextInput text={"text"} />);
+
+        expect(screen.getByTestId("clear-field-button")).toBeInTheDocument();
+    });
+
+    it("Does not render clear field button when textbox is empty", () => {
+
+        render(<TextInput text={""}/>);
+
+        expect(screen.queryByTestId("clear-field-button")).not.toBeInTheDocument();
+    });
+
+    it("Calls clearField function when clear field button is clicked", async () => {
+
+        const user = userEvent.setup();
+        const clearField = vi.fn();
+        render(<TextInput text={"text"} clearField={clearField}/>);
+        const button = screen.getByTestId("clear-field-button");
+        await user.click(button);
+
+        expect(clearField).toHaveBeenCalledOnce();
+    });
+
+    it("Does not call clearField function when clear field button is not clicked", () => {
+
+        const clearField = vi.fn();
+        render(<TextInput text={"text"} clearField={clearField}/>);
+
+        expect(clearField).not.toHaveBeenCalled();
     });
 });

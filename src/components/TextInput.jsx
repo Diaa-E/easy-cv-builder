@@ -19,7 +19,7 @@ export default function TextInput({labelText, text, placeholder, id, onChange = 
             />
             {
                 !(text === "") &&
-                <button title="Clear field" onClick={clearField} className="clear-button">
+                <button data-testid="clear-field-button" title="Clear field" onClick={clearField} className="clear-button">
                     <img src={appIcons.clear} alt="Clear field button icon" />
                 </button>
             }
