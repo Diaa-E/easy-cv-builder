@@ -47,3 +47,8 @@
 .clear-button:hover{
     filter: brightness(80%);
 }
+
+.clear-button:focus{
+    outline: auto;
+    outline-color: var(--accent);
+}
