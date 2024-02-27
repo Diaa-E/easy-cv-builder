@@ -95,7 +95,7 @@ function App() {
   const [accentColor, setAccentColor] = useState(getSessionData("accentColor", sampleInfo.accentColor));
   const [font, setFont] = useState(getSessionData("font", sampleInfo.font));
   const [layout, setLayout] = useState(getSessionData("layout", sampleInfo.layout));
-  const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []});
+  const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []}); //code key is used to determine error panel text and color in Save component
 
   useEffect(() => {
 
