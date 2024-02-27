@@ -72,6 +72,7 @@ export default function Layout_01({enabled = true, data})
 function LanguagesSection({accentColor, backgroundColor, secondaryColor, languageItems})
 {
     if (languageItems.length === 0) return <></>
+    if (languageItems.filter(item => !item.hidden).length === 0) return <></>
 
     return (
         <div className="section-wrapper">
@@ -102,6 +103,7 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, languag
 function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItems})
 {
     if (skillsItems.length === 0) return <></>
+    if (skillsItems.filter(item => !item.hidden).length === 0) return <></>
 
     return (
         <div className="section-wrapper">
@@ -141,6 +143,7 @@ function LevelBar({level, accentColor})
 function ExperienceSection({backgroundColor, secondaryColor, experienceItems})
 {
     if (experienceItems.length === 0) return <></>
+    if (experienceItems.filter(item => !item.hidden).length === 0) return <></>
 
     return (
         <div className="section-wrapper wide">
@@ -182,6 +185,7 @@ function ExperienceSection({backgroundColor, secondaryColor, experienceItems})
 function EducationSection({backgroundColor, secondaryColor, educationItems})
 {
     if (educationItems.length === 0) return <></>;
+    if (educationItems.filter(item => !item.hidden).length === 0) return <></>
 
     return (
         <div className="section-wrapper wide">
