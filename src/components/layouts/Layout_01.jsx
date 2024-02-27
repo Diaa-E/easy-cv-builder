@@ -78,13 +78,14 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, languag
                 style={{backgroundColor: backgroundColor, color: secondaryColor}}
                 className="section-title"
             >Languages</h3>
+            <div className="flow-wrapper">
             {
                 languageItems.map(item => {
-
+                    
                     if (item.hidden) return <></>
-
+                    
                     return (
-                        <div key={item.id} className="section-item">
+                        <div key={item.id} className="flow-item">
                             <p className="section-text">{item.name}</p>
                             {
                                 item.showLevel &&
@@ -94,6 +95,7 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, languag
                     )
                 })
             }
+            </div>
         </div>
     )
 }
@@ -109,13 +111,14 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItem
                 style={{backgroundColor: backgroundColor, color: secondaryColor}}
                 className="section-title"
             >Skills</h3>
+            <div className="flow-wrapper">
             {
                 skillsItems.map(item => {
-
+                    
                     if (item.hidden) return <></>
-
+                    
                     return (
-                        <div key={item.id} className="section-item">
+                        <div key={item.id} className="flow-item">
                             <p className="section-text">{item.name}</p>
                             {
                                 item.showLevel &&
@@ -125,6 +128,7 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItem
                     )
                 })
             }
+            </div>
         </div>
     )
 }

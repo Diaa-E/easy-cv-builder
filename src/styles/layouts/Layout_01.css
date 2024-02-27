@@ -127,6 +127,27 @@
     border-radius: calc(var(--width) * 0.005);
 }
 
+.layout-01 .flow-item{
+    display: flex;
+    place-items: center;
+    gap: calc(var(--width) * .005);
+    padding: calc(var(--width) * .005) calc(var(--width) * .02);
+}
+
+.layout-01 .flow-item:nth-child(even){
+    background-color: var(--grey);
+    border-radius: calc(var(--width) * .02);
+}
+
+.layout-01 .flow-wrapper{
+    display: flex;
+    width: 100%;
+    gap: calc(var(--width) * .01);
+    flex-wrap: wrap;
+    place-items: center;
+    place-content: center;
+}
+
 /* .layout-01{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
