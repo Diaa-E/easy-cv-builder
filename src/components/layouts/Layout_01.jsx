@@ -5,10 +5,8 @@ import linkIcons from "../../linkIconsBarrel";
 
 import { isBright } from "../../utility";
 
-export default function Layout_01({enabled = true, data})
+export default function Layout_01({data})
 {
-    if (!enabled) return <></>;
-
     const brightAccent = isBright(data.accentColor);
     const textColor = brightAccent? "var(--black)" : "var(--white)";
     const secondaryBackgroundColor = brightAccent? "var(--black)" : data.accentColor;

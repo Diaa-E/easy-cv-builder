@@ -376,11 +376,12 @@ function App() {
         <FormButton toolTip='Reset data to sample template' text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
         <FormButton toolTip='Export as PDF/print CV' text='Export' classes={["form-button", "blue-button"]} onClick={print}/>
       </div>
-
-      <Layout_01
-        enabled={layout === "layout-01"}
-        data={data}
-      />
+      {
+        layout === "layout-01" &&
+        <Layout_01
+          data={data}
+        />
+      }
       <Layout_02
         enabled={layout === "layout-02"}
         data={data}
