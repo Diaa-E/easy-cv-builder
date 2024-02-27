@@ -7,177 +7,46 @@ import { isBright } from "../../utility";
 
 export default function Layout_01({enabled = true, data})
 {
-    const useDarkText = isBright(data.accentColor);
-    const textColor = useDarkText? "var(--text)" : "var(--main)";
-    const secondaryBackgroundColor = useDarkText? "var(--text)" : data.accentColor;
-    const secondaryColor = useDarkText? data.accentColor : "var(--main)";
+    if (!enabled) return <></>;
 
-    if (enabled)
-    {
-        return (
-            <div style={{fontFamily: data.font}} className={`preview layout-01`}>
-                <div style={{backgroundColor: data.accentColor, color: textColor}} className="header">
-                    <h1 className="name">{data.personalInfo.fullName}</h1>
-                    <h2 className="profession">{data.personalInfo.profession}</h2>
-                    <div className="header-item-container">
-                        <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.address} text={data.personalInfo.address} />
-                        <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.zip} text={data.personalInfo.zip} />
-                        <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.contact} text={data.contact.phoneNumber}/>
-                        <HeaderItem useBrightIcon={!useDarkText} icon={appIcons.email} text={data.contact.email}/>
-                        {
-                            data.links.map(link => <HeaderItem key={link.id} useBrightIcon={!useDarkText} icon={linkIcons.find(icon => icon.name === link.icon).icon} text={link.url} hidden={link.hidden}/>)
-                        }
-                    </div>
-                </div>
-                <ul className="section education">
-                    <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Education</h2>
+    const brightAccent = isBright(data.accentColor);
+    const textColor = brightAccent? "var(--black)" : "var(--white)";
+    const secondaryBackgroundColor = brightAccent? "var(--black)" : data.accentColor;
+    const secondaryColor = brightAccent? data.accentColor : "var(--white)";
+   
+    return (
+        <div style={{fontFamily: data.font}} className="preview layout-01">
+            <div style={{backgroundColor: data.accentColor}} className="header-wrapper">
+                <h1 style={{color: textColor}} className="name">{data.personalInfo.fullName}</h1>
+                <h2 style={{color: textColor}} className="profession">{data.personalInfo.profession}</h2>
+                <div className="header-items-wrapper">
+                    <HeaderItem brightAccent={brightAccent} text={data.personalInfo.address} icon={appIcons.address}/>
+                    <HeaderItem brightAccent={brightAccent} text={data.contact.phoneNumber} icon={appIcons.contact}/>
+                    <HeaderItem brightAccent={brightAccent} text={data.contact.email} icon={appIcons.email}/>
+                    <HeaderItem brightAccent={brightAccent} text={data.personalInfo.zip} icon={appIcons.zip}/>
                     {
-                        data.education.map(item => <EducationItem key={item.id} hidden={item.hidden} educationItem={item}/>)
+                        data.links.map(link => {
+                            return (
+                                <HeaderItem 
+                                    brightAccent={brightAccent}
+                                    text={link.url}
+                                    icon={linkIcons.find(icon => icon.name === link.icon).icon}
+                                />
+                            )
+                        })
                     }
-                </ul>
-                <ul className="section experience">
-                    <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Experience</h2>
-                    {
-                        data.experience.map(item => <ExperienceItem key={item.id} hidden={item.hidden} experienceItem={item}/>)
-                    }
-                </ul>
-                <ul className="section skills">
-                     <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Skills</h2>
-                     {
-                        data.skills.map(item => <SkillItem key={item.id} barColor={data.accentColor} hidden={item.hidden} skillItem={item}/>)
-                     }
-                </ul>
-                <ul className="section languages">
-                     <h2 style={{backgroundColor: secondaryBackgroundColor, color: secondaryColor}} className="section-title">Languages</h2>
-                     {
-                        data.languages.map(item => <LanguageItem key={item.id} barColor={data.accentColor} hidden={item.hidden} languageItem={item}/>)
-                     }
-                </ul>
+                </div>
             </div>
-        )
-    }
-    else
-    {
-        return <></>
-    }
+        </div>
+    )
 }
 
-function HeaderItem({icon, text, useBrightIcon, hidden = false})
+function HeaderItem({icon, text, brightAccent})
 {
-    if (text === "" || hidden)
-    {
-        return <></>
-    }
-    else
-    {
-        return (
-            <div className="header-item">
-                <img className={`header-icon ${useBrightIcon? "header-icon-bright" : ""}`} src={icon} alt="icon"/>
-                <p className="header-item-text">{text}</p>
-            </div>
-        )
-    }
-}
-
-function EducationItem({educationItem, hidden = false})
-{
-    if (hidden)
-    {
-        return <></>
-    }
-    else
-    {
-        return(
-            <li>
-                <div className="vertical-container">
-                    <p>{educationItem.start}-{educationItem.end}</p>
-                    <p>{educationItem.location}</p>
-                </div>
-                <div className="vertical-container">
-                    <p>{educationItem.degree}</p>
-                    <p>{educationItem.school}</p>
-                </div>
-            </li>
-        )
-    }
-}
-
-function ExperienceItem({experienceItem, hidden = false})
-{
-    if (hidden)
-    {
-        return <></>
-    }
-    else
-    {
-        return(
-            <li>
-                <div className="vertical-container">
-                    <p>{experienceItem.start}-{experienceItem.end}</p>
-                    <p>{experienceItem.location}</p>
-                </div>
-                <div className="vertical-container">
-                    <p>{experienceItem.company}</p>
-                    <p>{experienceItem.position}</p>
-                </div>
-                <dir className="vertical-container">
-                    <p>{experienceItem.details}</p>
-                </dir>
-            </li>
-        )
-    }
-}
-
-function LanguageItem({barColor, languageItem, hidden = false})
-{
-    if (hidden)
-    {
-        return <></>
-    }
-    else
-    {
-        return (
-            <li>
-                <div className="horizontal-cotnainer">
-                    <p>{languageItem.name}</p>
-                    <LevelBar barColor={barColor} hidden={!languageItem.showLevel} level={languageItem.level}/>
-                </div>
-            </li>
-        )
-    }
-}
-
-function SkillItem({barColor, skillItem, hidden = false})
-{
-    if (hidden)
-    {
-        return <></>
-    }
-    else
-    {
-        return (
-            <li>
-                <div className="horizontal-cotnainer">
-                    <p>{skillItem.name}</p>
-                    <LevelBar barColor={barColor} hidden={!skillItem.showLevel} level={skillItem.level}/>
-                </div>
-            </li>
-        )
-    }
-}
-
-function LevelBar({barColor, level, hidden})
-{
-    if (hidden)
-    {
-        return <></>
-    }
-    else
-    {
-        return (
-            <div className="bar-container">
-                <div style={{width: `${+level/10}vw`, backgroundColor: barColor}} className="bar"></div>
-            </div>
-        )
-    }
+    return (
+        <div className="header-item">
+            <img style={{filter: brightAccent ? "" : "invert(1)"}} className="header-item-icon" src={icon} alt="" />
+            <p style={{color: brightAccent ? "var(--black)" : "var(--white)"}} className="header-item-text">{text}</p>
+        </div>
+    )
 }

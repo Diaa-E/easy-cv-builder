@@ -1,4 +1,71 @@
 .layout-01{
+    --black: #000000;
+    --white: #ffffff;
+    --grey: #808080;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, min-content);
+    width: var(--width);
+    background-color: var(--white);
+}
+
+.layout-01 .header-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    max-width: var(--width);
+    grid-column-start: 1;
+    grid-column-end: -1;
+    gap: calc(var(--width) * .01);
+    padding: calc(var(--width) * .02);
+}
+
+.layout-01 .name{
+    text-align: center;
+    font-size: calc(var(--width) * 0.06);
+    max-width: var(--width * .9);
+    word-wrap: break-word;
+    text-wrap: wrap;
+}
+
+.layout-01 .profession{
+    text-align: center;
+    font-size: calc(var(--width) * .04);
+    max-width: var(--width * .9);
+    word-wrap: break-word;
+    text-wrap: wrap;
+}
+
+.layout-01 .header-items-wrapper{
+    display: flex;
+    max-width: calc(var(--width) * .9);
+    place-items: center;
+    place-content: center;
+    flex-wrap: wrap;
+    gap: calc(var(--width) * .02);
+}
+
+.layout-01 .header-item{
+    display: flex;
+    max-width: calc(var(--width) * .9);
+    place-items: center;
+    gap: calc(var(--width) * .005);
+}
+
+.layout-01 .header-item-text{
+    font-size: calc(var(--width) * .02);
+    max-width: calc(var(--width) * .8);
+    word-wrap: break-word;
+    text-wrap: wrap;
+}
+
+.layout-01 .header-item-icon{
+    width: calc(var(--width) * .03);
+}
+
+/* .layout-01{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, min-content);
@@ -132,4 +199,4 @@
 .layout-01 .bar{
     border-radius: calc(var(--width) * .012);
     border-right: calc(var(--width) * .001) solid var(--text);
-}
+} */
