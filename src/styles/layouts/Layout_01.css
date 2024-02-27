@@ -96,10 +96,33 @@
     gap: calc(var(--width) * .005);
     place-self: stretch;
     text-align: center;
+    place-items: center;
 }
 
 .layout-01 .section-item:nth-child(odd){
     background-color: var(--grey);
+}
+
+.layout-01 .bottom-wrapper{
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-auto-columns: 1fr;
+    width: calc(var(--width) * .9);
+}
+
+.layout-01 .level-container{
+    position: relative;
+    display: flex;
+    border-radius: calc(var(--width) * 0.005);
+    height: calc(var(--width) * 0.01);
+    border: solid calc(var(--width) * 0.001) var(--black);
+    width: calc(var(--width) * .1);
+}
+
+.layout-01 .level{
+    border-radius: calc(var(--width) * 0.005);
 }
 
 /* .layout-01{

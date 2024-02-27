@@ -41,15 +41,54 @@ export default function Layout_01({enabled = true, data})
             <EducationSection
                 secondaryColor={secondaryColor}
                 backgroundColor={secondaryBackgroundColor}
-                brightAccent={brightAccent}
                 educationItems={data.education}
             />
             <ExperienceSection
                 secondaryColor={secondaryColor}
                 backgroundColor={secondaryBackgroundColor}
-                brightAccent={brightAccent}
                 experienceItems={data.experience}
             />
+            <div className="bottom-wrapper">
+                <SkillsSection
+                    accentColor={data.accentColor}
+                    secondaryColor={secondaryColor}
+                    backgroundColor={secondaryBackgroundColor}
+                    skillsItems={data.skills}
+                />
+            </div>
+        </div>
+    )
+}
+
+function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItems})
+{
+    if (skillsItems.length === 0) return <></>
+
+    return (
+        <div className="section-wrapper">
+            <h3 
+                style={{backgroundColor: backgroundColor, color: secondaryColor}}
+                className="section-title"
+            >Skills</h3>
+            {
+                skillsItems.map(item => {
+                    return (
+                        <div key={item.id} className="section-item">
+                            <p>{item.name}</p>
+                            <LevelBar accentColor={accentColor} level={item.level}/>
+                        </div>
+                    )
+                })
+            }
+        </div>
+    )
+}
+
+function LevelBar({level, accentColor})
+{
+    return (
+        <div className="level-container">
+            <span style={{width: level + "%", backgroundColor: accentColor}} className="level"></span>
         </div>
     )
 }
