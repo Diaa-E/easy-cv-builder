@@ -46,7 +46,7 @@
     place-items: center;
     place-content: center;
     flex-wrap: wrap;
-    gap: calc(var(--width) * .02);
+    gap: calc(var(--width) * .005);
 }
 
 .layout-01 .header-item{
@@ -54,6 +54,7 @@
     max-width: calc(var(--width) * .9);
     place-items: center;
     gap: calc(var(--width) * .005);
+    margin-right: calc(var(--width) * .015);
 }
 
 .layout-01 .header-item-text{
