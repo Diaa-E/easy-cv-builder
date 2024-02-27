@@ -75,7 +75,7 @@
     margin: 0 calc(var(--width) * .02);
 }
 
-.wide{
+.layout-01 .wide{
     grid-column-start: 1;
     grid-column-end: -1;
 }
@@ -85,6 +85,10 @@
     place-self: stretch;
     font-size: calc(var(--width) * .03);
     padding: calc(var(--width) * .005);
+}
+
+.layout-01 .section-text{
+    font-size: calc(var(--width) * .017);
 }
 
 .layout-01 .section-item{

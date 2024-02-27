@@ -85,7 +85,7 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, languag
 
                     return (
                         <div key={item.id} className="section-item">
-                            <p>{item.name}</p>
+                            <p className="section-text">{item.name}</p>
                             {
                                 item.showLevel &&
                                 <LevelBar accentColor={accentColor} level={item.level}/>
@@ -116,7 +116,7 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItem
 
                     return (
                         <div key={item.id} className="section-item">
-                            <p>{item.name}</p>
+                            <p className="section-text">{item.name}</p>
                             {
                                 item.showLevel &&
                                 <LevelBar accentColor={accentColor} level={item.level}/>
