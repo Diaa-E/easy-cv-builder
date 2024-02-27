@@ -81,7 +81,10 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, languag
                     return (
                         <div key={item.id} className="section-item">
                             <p>{item.name}</p>
-                            <LevelBar accentColor={accentColor} level={item.level}/>
+                            {
+                                item.showLevel &&
+                                <LevelBar accentColor={accentColor} level={item.level}/>
+                            }
                         </div>
                     )
                 })
@@ -105,7 +108,10 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItem
                     return (
                         <div key={item.id} className="section-item">
                             <p>{item.name}</p>
-                            <LevelBar accentColor={accentColor} level={item.level}/>
+                            {
+                                item.showLevel &&
+                                <LevelBar accentColor={accentColor} level={item.level}/>
+                            }
                         </div>
                     )
                 })
