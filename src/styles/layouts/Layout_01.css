@@ -9,7 +9,7 @@
     width: var(--width);
     background-color: var(--white);
     gap: calc(var(--width) * .02);
-    justify-items: center;
+    justify-items: stretch;
 }
 
 .layout-01 .header-wrapper{
@@ -17,7 +17,6 @@
     display: flex;
     flex-direction: column;
     place-items: center;
-    width: var(--width);
     grid-column-start: 1;
     grid-column-end: -1;
     gap: calc(var(--width) * .01);
@@ -72,8 +71,8 @@
     display: flex;
     flex-direction: column;
     place-items: center;
-    width: calc(var(--width) * .9);
     gap: calc(var(--width) * .005);
+    margin: 0 calc(var(--width) * .02);
 }
 
 .wide{
@@ -109,7 +108,6 @@
     grid-column-start: 1;
     grid-column-end: -1;
     grid-auto-columns: 1fr;
-    width: calc(var(--width) * .9);
 }
 
 .layout-01 .level-container{

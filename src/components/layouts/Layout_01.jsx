@@ -55,7 +55,37 @@ export default function Layout_01({enabled = true, data})
                     backgroundColor={secondaryBackgroundColor}
                     skillsItems={data.skills}
                 />
+                <LanguagesSection
+                    accentColor={data.accentColor}
+                    secondaryColor={secondaryColor}
+                    backgroundColor={secondaryBackgroundColor}
+                    languageItems={data.languages}
+                />
             </div>
+        </div>
+    )
+}
+
+function LanguagesSection({accentColor, backgroundColor, secondaryColor, languageItems})
+{
+    if (languageItems.length === 0) return <></>
+
+    return (
+        <div className="section-wrapper">
+            <h3 
+                style={{backgroundColor: backgroundColor, color: secondaryColor}}
+                className="section-title"
+            >Languages</h3>
+            {
+                languageItems.map(item => {
+                    return (
+                        <div key={item.id} className="section-item">
+                            <p>{item.name}</p>
+                            <LevelBar accentColor={accentColor} level={item.level}/>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }
