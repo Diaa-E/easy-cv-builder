@@ -28,6 +28,7 @@ export default function Layout_01({enabled = true, data})
                         data.links.map(link => {
                             return (
                                 <HeaderItem 
+                                    key={link.id}
                                     brightAccent={brightAccent}
                                     text={link.url}
                                     icon={linkIcons.find(icon => icon.name === link.icon).icon}
@@ -37,6 +38,38 @@ export default function Layout_01({enabled = true, data})
                     }
                 </div>
             </div>
+            <EducationSection accentColor={data.accentColor} brightAccent={brightAccent} educationItems={data.education}/>
+        </div>
+    )
+}
+
+function EducationSection({brightAccent, accentColor, educationItems})
+{
+    if (educationItems.length === 0) return <></>;
+
+    return (
+        <div className="education-items-wrapper">
+            <h3 style={{backgroundColor: accentColor, color: brightAccent ? "var(--black" : "var(--white"}} className="section-title">Education</h3>
+            {
+                educationItems.map(item => {
+                    return (
+                        <div key={item.id} className="education-item">
+                        {
+                            (item.end !== "" || item.start !== "") &&
+                            <p className="section-text">{item.start}-{item.end}</p>
+                        }
+                        {
+                            (item.degree !== "") &&
+                            <p className="section-text">{item.degree}</p>
+                        }
+                        {
+                            (item.school !== "" || item.location !== "") &&
+                            <p className="section-text">{item.school}, {item.location}</p>
+                        }
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }

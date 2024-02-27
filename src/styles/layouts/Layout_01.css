@@ -1,13 +1,15 @@
 .layout-01{
     --black: #000000;
     --white: #ffffff;
-    --grey: #808080;
+    --grey: #dedede;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: min-content;
     width: var(--width);
     background-color: var(--white);
+    gap: calc(var(--width) * .02);
+    justify-items: center;
 }
 
 .layout-01 .header-wrapper{
@@ -15,7 +17,7 @@
     display: flex;
     flex-direction: column;
     place-items: center;
-    max-width: var(--width);
+    width: var(--width);
     grid-column-start: 1;
     grid-column-end: -1;
     gap: calc(var(--width) * .01);
@@ -63,6 +65,36 @@
 
 .layout-01 .header-item-icon{
     width: calc(var(--width) * .03);
+}
+
+.layout-01 .education-items-wrapper{
+    display: flex;
+    flex-direction: column;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    place-items: center;
+    width: calc(var(--width) * .9);
+    gap: calc(var(--width) * .005);
+}
+
+.layout-01 .section-title{
+    text-align: center;
+    place-self: stretch;
+    font-size: calc(var(--width) * .03);
+    padding: calc(var(--width) * .005);
+}
+
+.layout-01 .education-item{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    padding: calc(var(--width) * .005) 0;
+    place-self: stretch;
+    text-align: center;
+}
+
+.layout-01 .education-item:nth-child(odd){
+    background-color: var(--grey);
 }
 
 /* .layout-01{
