@@ -2,6 +2,7 @@
 
 ## To do list
 
+- Add hide all and delete all button to each section.
 - Add link to change log in the about section.
 - Remove empty sections from the CV preview.
 - Fix icon lag by loading all resources before opening app main page.
