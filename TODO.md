@@ -5,6 +5,8 @@
 - Add link to change log in the about section.
 - Remove empty sections from the CV preview.
 - Fix icon lag by loading all resources before opening app main page.
+- Add a focus effect to clear field button.
+- Ask user to confirm before clearing/resetting all data.
 - Add the ability to rearrange sections.
 - ~~Add a clear button to form fields.~~ ✅
 - ~~Save draft to session storage with every change.~~ ✅
