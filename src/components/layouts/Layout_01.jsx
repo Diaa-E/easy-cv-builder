@@ -26,6 +26,9 @@ export default function Layout_01({enabled = true, data})
                     <HeaderItem brightAccent={brightAccent} text={data.personalInfo.zip} icon={appIcons.zip}/>
                     {
                         data.links.map(link => {
+
+                            if (link.hidden) return <></>
+
                             return (
                                 <HeaderItem 
                                     key={link.id}
@@ -78,6 +81,9 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, languag
             >Languages</h3>
             {
                 languageItems.map(item => {
+
+                    if (item.hidden) return <></>
+
                     return (
                         <div key={item.id} className="section-item">
                             <p>{item.name}</p>
@@ -105,6 +111,9 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItem
             >Skills</h3>
             {
                 skillsItems.map(item => {
+
+                    if (item.hidden) return <></>
+
                     return (
                         <div key={item.id} className="section-item">
                             <p>{item.name}</p>
@@ -141,6 +150,9 @@ function ExperienceSection({backgroundColor, secondaryColor, experienceItems})
             >Experience</h3>
             {
                 experienceItems.map(item => {
+
+                    if (item.hidden) return <></>
+
                     return (
                         <div key={item.id} className="section-item">
                         {
@@ -179,6 +191,9 @@ function EducationSection({backgroundColor, secondaryColor, educationItems})
             >Education</h3>
             {
                 educationItems.map(item => {
+
+                    if (item.hidden) return <></>
+
                     return (
                         <div key={item.id} className="section-item">
                         {
