@@ -38,20 +38,30 @@ export default function Layout_01({enabled = true, data})
                     }
                 </div>
             </div>
-            <EducationSection accentColor={data.accentColor} brightAccent={brightAccent} educationItems={data.education}/>
-            <ExperienceSection accentColor={data.accentColor} brightAccent={brightAccent} experienceItems={data.experience}/>
+            <EducationSection
+                secondaryColor={secondaryColor}
+                backgroundColor={secondaryBackgroundColor}
+                brightAccent={brightAccent}
+                educationItems={data.education}
+            />
+            <ExperienceSection
+                secondaryColor={secondaryColor}
+                backgroundColor={secondaryBackgroundColor}
+                brightAccent={brightAccent}
+                experienceItems={data.experience}
+            />
         </div>
     )
 }
 
-function ExperienceSection({brightAccent, accentColor, experienceItems})
+function ExperienceSection({backgroundColor, secondaryColor, experienceItems})
 {
     if (experienceItems.length === 0) return <></>
 
     return (
         <div className="section-wrapper wide">
             <h3 
-                style={{backgroundColor: accentColor, color: brightAccent ? "var(--black" : "var(--white"}}
+                style={{backgroundColor: backgroundColor, color: secondaryColor}}
                 className="section-title"
             >Experience</h3>
             {
@@ -82,14 +92,14 @@ function ExperienceSection({brightAccent, accentColor, experienceItems})
     )
 }
 
-function EducationSection({brightAccent, accentColor, educationItems})
+function EducationSection({backgroundColor, secondaryColor, educationItems})
 {
     if (educationItems.length === 0) return <></>;
 
     return (
         <div className="section-wrapper wide">
-            <h3
-                style={{backgroundColor: accentColor, color: brightAccent ? "var(--black" : "var(--white"}}
+            <h3 
+                style={{backgroundColor: backgroundColor, color: secondaryColor}}
                 className="section-title"
             >Education</h3>
             {
