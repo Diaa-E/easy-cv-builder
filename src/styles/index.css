@@ -148,7 +148,7 @@
   height: calc(1.41 * var(--width));
   background-color: var(--main);
   box-shadow: var(--shadow);
-  place-self: center;
+  place-self: flex-start;
 }
 
 .empty-list-text{
@@ -192,7 +192,7 @@ body{
 
 @media print {
   .logo, .edit-controls, .editor, .main-controls, .nav {
-    display: none;
+    display: none !important;
   }
 
   .preview{
