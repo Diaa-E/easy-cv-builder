@@ -73,5 +73,6 @@
     "preview preview preview"
     "preview preview preview";
     padding: 0;
+    gap: 0;
   }
 }

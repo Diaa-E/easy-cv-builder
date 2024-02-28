@@ -191,7 +191,7 @@ body{
 }
 
 @media print {
-  .logo, .edit-controls, .editor, .main-controls, .nav {
+  .logo, .editor, .main-controls, .nav {
     display: none !important;
   }
 
