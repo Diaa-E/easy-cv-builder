@@ -115,6 +115,7 @@
 }
 
 .layout-01 .level-container{
+    background-color: var(--white);
     position: relative;
     display: flex;
     border-radius: calc(var(--width) * 0.005);
