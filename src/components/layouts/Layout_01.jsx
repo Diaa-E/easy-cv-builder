@@ -26,9 +26,8 @@ export default function Layout_01({data})
                     {
                         data.links.map(link => {
 
-                            if (link.hidden) return <></>
-
                             return (
+                                !link.hidden &&
                                 <HeaderItem 
                                     key={link.id}
                                     brightAccent={brightAccent}
@@ -82,9 +81,8 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, languag
             {
                 languageItems.map(item => {
                     
-                    if (item.hidden) return <></>
-                    
                     return (
+                        !item.hidden &&
                         <div key={item.id} className="flow-item">
                             <p className="section-text">{item.name}</p>
                             {
@@ -114,9 +112,8 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItem
             {
                 skillsItems.map(item => {
                     
-                    if (item.hidden) return <></>
-                    
                     return (
+                        !item.hidden &&
                         <div key={item.id} className="flow-item">
                             <p className="section-text">{item.name}</p>
                             {
@@ -154,9 +151,8 @@ function ExperienceSection({backgroundColor, secondaryColor, experienceItems})
             {
                 experienceItems.map(item => {
 
-                    if (item.hidden) return <></>
-
                     return (
+                        !item.hidden &&
                         <div key={item.id} className="section-item">
                         {
                             (item.end !== "" || item.start !== "") &&
@@ -195,9 +191,8 @@ function EducationSection({backgroundColor, secondaryColor, educationItems})
             {
                 educationItems.map(item => {
 
-                    if (item.hidden) return <></>
-
                     return (
+                        !item.hidden &&
                         <div key={item.id} className="section-item">
                         {
                             (item.end !== "" || item.start !== "") &&
