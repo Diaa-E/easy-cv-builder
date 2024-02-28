@@ -6,7 +6,8 @@ This change log only highlights important changes (i.e features and refactors).
 
 ### **1.3.1 (not released)**
 
-- ➕ Add focus effect to clear field button
+- ➕ Add focus effect to clear field button.
+- ➕ Add a link to the change log in the About section.
 
 ### **1.3.0 (Feb 26, 2024)**
 
