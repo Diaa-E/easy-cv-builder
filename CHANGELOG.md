@@ -8,6 +8,10 @@ This change log only highlights important changes (i.e features and refactors).
 
 - ➕ Add focus effect to clear field button.
 - ➕ Add a link to the change log in the About section.
+- ➕ Improve space management of skill items and language items in the simple layout (layout_01).
+- 🛠️ Fix CV preview shrinking to the center of the page instead of sticking to the top on narrower screens.
+- 🛠️ Fix page overflow in print/export mode.
+- #️⃣ Add reusable function to detect empty CV sections.
 
 ### **1.3.0 (Feb 26, 2024)**
 
