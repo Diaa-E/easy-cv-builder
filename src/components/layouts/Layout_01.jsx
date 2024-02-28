@@ -5,6 +5,7 @@ import linkIcons from "../../linkIconsBarrel";
 
 import { isBright } from "../../utility";
 import { isEmptySection } from "../../emptySectionDetector";
+import { joinString } from "../../stringJoiner";
 
 export default function Layout_01({data})
 {
@@ -156,7 +157,7 @@ function ExperienceSection({backgroundColor, secondaryColor, experienceItems})
                         <div key={item.id} className="section-item">
                         {
                             (item.end !== "" || item.start !== "") &&
-                            <p className="section-text">{[item.start, item.end].filter(key => key !== "").join("-")}</p>
+                            <p className="section-text">{joinString([item.start, item.end], "-")}</p>
                         }
                         {
                             (item.position !== "")&&
@@ -164,7 +165,7 @@ function ExperienceSection({backgroundColor, secondaryColor, experienceItems})
                         }
                         {
                             (item.location !== "" || item.company !== "" ) &&
-                            <p className="section-text">{[item.company, item.location].filter(key => key !== "").join(", ")}</p>
+                            <p className="section-text">{joinString([item.company, item.location], ", ")}</p>
                         }
                         {
                             (item.details !== "") &&
@@ -196,7 +197,7 @@ function EducationSection({backgroundColor, secondaryColor, educationItems})
                         <div key={item.id} className="section-item">
                         {
                             (item.end !== "" || item.start !== "") &&
-                            <p className="section-text">{[item.start, item.end].filter(key => key !== "").join("-")}</p>
+                            <p className="section-text">{joinString([item.start, item.end], ", ")}</p>
                         }
                         {
                             (item.degree !== "") &&
@@ -204,7 +205,7 @@ function EducationSection({backgroundColor, secondaryColor, educationItems})
                         }
                         {
                             (item.school !== "" || item.location !== "") &&
-                            <p className="section-text">{[item.school, item.location].filter(key => key !== "").join(", ")}</p>
+                            <p className="section-text">{joinString([item.school, item.location], ", ")}</p>
                         }
                         </div>
                     )

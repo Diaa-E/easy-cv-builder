@@ -1,4 +1,4 @@
-export function stringJoiner(stringAray, joiner)
+export function joinString(stringAray, joiner)
 {
     const filteredArray = stringAray.filter(item => item !== "");
 
