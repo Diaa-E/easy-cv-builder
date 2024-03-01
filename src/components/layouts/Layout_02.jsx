@@ -47,9 +47,43 @@ export default function Layout_02({data})
             <div className="right">
                 <EducationSection accentColor={data.accentColor} iconColor={iconColor} educationITems={data.education}/>
                 <ExperienceSection accentColor={data.accentColor} iconColor={iconColor} experienceItems={data.experience}/>
+                <SkillsSection accentColor={data.accentColor} iconColor={iconColor} skillsItems={data.skills}/>
             </div>
         </div>
     )
+
+    function SkillsSection({accentColor, iconColor, skillsItems})
+    {
+        return (
+            !isEmptySection(skillsItems) &&
+            <div className="section-wrapper">
+                <h3 className="section-title">
+                    <div className="section-icon-wrapper" style={{backgroundColor: accentColor}}>
+                        <img style={{filter: iconColor}} className="section-icon" src={appIcons.skills} alt="" />
+                    </div>
+                    Skills
+                </h3>
+                <div className="seperator"></div>
+                <div className="flow-wrapper">
+                {
+                    skillsItems.map(item => {
+                        
+                        return (
+                            !item.hidden &&
+                            <div key={item.id} className="flow-item">
+                                <p className="section-text">{item.name}</p>
+                                {
+                                    item.showLevel &&
+                                    <LevelBar level={item.level} accentColor={accentColor}/>
+                                }
+                            </div>
+                        )
+                    })
+                }
+                </div>
+            </div>
+        )
+    }
 
     function ExperienceSection({accentColor, iconColor, experienceItems})
     {
