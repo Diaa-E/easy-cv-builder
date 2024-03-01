@@ -100,6 +100,9 @@
 .layout-02 .section-icon{
     width: calc(var(--width) * .06);
     padding: calc(var(--width) * .007);
+}
+
+.layout-02 .section-icon-wrapper{
     border-radius: 50%;
 }
 

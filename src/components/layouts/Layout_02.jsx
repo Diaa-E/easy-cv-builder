@@ -56,7 +56,9 @@ export default function Layout_02({data})
             !isEmptySection(educationITems) &&
             <div className="section-wrapper">
                 <h3 className="section-title">
-                    <img style={{filter: iconColor, backgroundColor: accentColor}} className="section-icon" src={appIcons.education} alt="" />
+                    <div className="section-icon-wrapper" style={{backgroundColor: accentColor}}>
+                        <img style={{filter: iconColor}} className="section-icon" src={appIcons.education} alt="" />
+                    </div>
                     Education
                 </h3>
                 <div className="seperator"></div>
@@ -97,7 +99,9 @@ export default function Layout_02({data})
             !isEmptySection(languageItems) &&
             <div className="section-wrapper">
                 <h3 className="section-title">
-                    <img style={{filter: iconColor, backgroundColor: accentColor}} className="section-icon" src={appIcons.languages} alt="" />
+                    <div className="section-icon-wrapper" style={{backgroundColor: accentColor}}>
+                        <img style={{filter: iconColor}} className="section-icon" src={appIcons.languages} alt="" />
+                    </div>
                     Languages
                 </h3>
                 <div className="seperator"></div>
