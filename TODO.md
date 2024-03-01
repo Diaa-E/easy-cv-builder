@@ -3,10 +3,11 @@
 ## To do list
 
 - Add hide all and delete all button to each section.
-- Remove empty sections from the CV preview.
 - Fix icon lag by loading all resources before opening app main page.
 - Ask user to confirm before clearing/resetting all data.
 - Add the ability to rearrange sections (education and experience order)
+- Add a website icon to link icon options.
+- ~~Remove empty sections from the CV preview.~~ ✅
 - ~~Add link to change log in the about section.~~ ✅
 - ~~Add a focus effect to clear field button.~~ ✅
 - ~~Add a clear button to form fields.~~ ✅
