@@ -98,6 +98,7 @@
 }
 
 .layout-02 .section-icon{
+    width: calc(var(--width) * .06);
     padding: calc(var(--width) * .007);
     border-radius: 50%;
 }
@@ -140,6 +141,7 @@
     word-wrap: break-word;
     max-width: calc(var(--width) * 1 / 4);
     text-align: center;
+    font-size: calc(var(--width) * .017);
 }
 
 .layout-02 .section-item{
