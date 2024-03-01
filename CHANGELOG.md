@@ -6,6 +6,7 @@ This change log only highlights important changes (i.e features and refactors).
 
 ### **1.3.1 (not released)**
 
+- ➕ Empty sections or sections full with hidden items will now be removed from CV preview.
 - ➕ Add focus effect to clear field button.
 - ➕ Add a link to the change log in the About section.
 - ➕ Improve space management of skill items and language items in the simple layout (layout_01).
