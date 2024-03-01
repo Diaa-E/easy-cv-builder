@@ -45,7 +45,7 @@
     font-size: calc(var(--width) * .04);
 }
 
-.layout-02 .seperator{
+.layout-02 .seperator-small{
     width: calc(var(--width) * 1 / 4);
     height: calc(var(--width) * .02);
     margin-bottom: calc(var(--width) * .02);
