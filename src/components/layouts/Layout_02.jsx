@@ -18,7 +18,7 @@ export default function Layout_02({data})
                 <div style={{backgroundColor: data.accentColor}} className="header-wrapper">
                     <h1 style={{color: textColor}} className="name">{data.personalInfo.fullName}</h1>
                     <h2 style={{color: textColor}} className="profession">{data.personalInfo.profession}</h2>
-                    <div style={{borderBottom: `solid calc(var(--width) * .002) ${textColor}`}} className="seperator-small"></div>
+                    <div style={{borderBottom: `solid calc(var(--width) * .002) ${textColor}`}} className="seperator"></div>
                     <div className="header-items-wrapper">
                         <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.address} text={data.personalInfo.address}/>
                         <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.contact} text={data.contact.phoneNumber}/>
@@ -55,7 +55,7 @@ export default function Layout_02({data})
                     <img style={{filter: iconColor, backgroundColor: accentColor}} className="section-icon" src={appIcons.languages} alt="" />
                     Languages
                 </h3>
-                <div style={{borderBottom: `solid calc(var(--width) * .002) ${textColor}`}} className="seperator-small"></div>
+                <div style={{borderBottom: `solid calc(var(--width) * .002) ${textColor}`}} className="seperator"></div>
                 <div className="flow-wrapper">
                 {
                     languageItems.map(item => {

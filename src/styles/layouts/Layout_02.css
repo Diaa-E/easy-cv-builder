@@ -47,8 +47,8 @@
     font-size: calc(var(--width) * .04);
 }
 
-.layout-02 .seperator-small{
-    width: calc(var(--width) * 1 / 4);
+.layout-02 .seperator{
+    width: 80%;
     height: calc(var(--width) * .02);
     margin-bottom: calc(var(--width) * .02);
 }
@@ -93,7 +93,7 @@
 .layout-02 .flow-wrapper{
     display: flex;
     flex-wrap: wrap;
-    width: calc(var(--width) * 1 / 4);
+    width: 80%;
     place-items: center;
     place-content: center;
     gap: calc(var(--width) * .01);
@@ -105,7 +105,7 @@
     place-items: center;
     gap: calc(var(--width) * .002);
     margin-right: calc(var(--width) * .01);
-    max-width: calc(var(--width) * 1 / 4);
+    max-width: 100%;
 }
 
 .layout-02 .level-container{
