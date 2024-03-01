@@ -46,9 +46,55 @@ export default function Layout_02({data})
             </div>
             <div className="right">
                 <EducationSection accentColor={data.accentColor} iconColor={iconColor} educationITems={data.education}/>
+                <ExperienceSection accentColor={data.accentColor} iconColor={iconColor} experienceItems={data.experience}/>
             </div>
         </div>
     )
+
+    function ExperienceSection({accentColor, iconColor, experienceItems})
+    {
+        return (
+            !isEmptySection(experienceItems) &&
+            <div className="section-wrapper">
+                <h3 className="section-title">
+                    <div className="section-icon-wrapper" style={{backgroundColor: accentColor}}>
+                        <img style={{filter: iconColor}} className="section-icon" src={appIcons.experience} alt="" />
+                    </div>
+                    Experience
+                </h3>
+                <div className="seperator"></div>
+                {
+                    experienceItems.map(item => {
+                        return(
+                            !item.hidden &&
+                            <div key={item.id} className="section-item">
+                            {
+                                (item.start !== "" || item.end !== "" || item.position !== "" || item.company) &&
+                                <p className="section-text">
+                                    {joinString([item.position, item.company], ", ")}
+                                    <br></br>
+                                    {joinString([item.start, item.end], "-")}
+                                </p>
+                            }
+                            {
+                                (item.location !== "") &&
+                                <p className="section-text">
+                                    {item.location}
+                                </p>
+                            }
+                            {
+                                (item.details !== "") &&
+                                <p className="section-text">
+                                    {item.details}
+                                </p>
+                            }
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        )
+    }
 
     function EducationSection({accentColor, iconColor, educationITems})
     {
