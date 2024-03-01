@@ -4,7 +4,7 @@
 
 This change log only highlights important changes (i.e features and refactors).
 
-### **1.3.1 (not released)**
+### **1.3.1 (Mar 1, 2024)**
 
 - ➕ Empty sections or sections full with hidden items will now be removed from CV preview.
 - ➕ Add focus effect to clear field button.
