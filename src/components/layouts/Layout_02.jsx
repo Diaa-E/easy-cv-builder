@@ -5,6 +5,7 @@ import linkIcons from "../../linkIconsBarrel";
 
 import { isBright } from "../../utility";
 import { isEmptySection } from "../../emptySectionDetector";
+import { joinString } from "../../stringJoiner";
 
 export default function Layout_02({data})
 {
@@ -43,8 +44,52 @@ export default function Layout_02({data})
                 </div>
                     <LanguagesSection accentColor={data.accentColor} iconColor={iconColor} languageItems={data.languages}/>
             </div>
+            <div className="right">
+                <EducationSection accentColor={data.accentColor} iconColor={iconColor} educationITems={data.education}/>
+            </div>
         </div>
     )
+
+    function EducationSection({accentColor, iconColor, educationITems})
+    {
+        return (
+            !isEmptySection(educationITems) &&
+            <div className="section-wrapper">
+                <h3 className="section-title">
+                    <img style={{filter: iconColor, backgroundColor: accentColor}} className="section-icon" src={appIcons.education} alt="" />
+                    Education
+                </h3>
+                <div className="seperator"></div>
+                {
+                    educationITems.map(item => {
+                        return(
+                            !item.hidden &&
+                            <div key={item.id} className="section-item">
+                            {
+                                (item.start !== "" || item.end !== "") &&
+                                <p className="section-text">
+                                    {joinString([item.start, item.end], "-")}
+                                </p>
+                            }
+                            {
+                                (item.degree !== "") &&
+                                <p className="section-text">
+                                    {item.degree}
+                                </p>
+                            }
+                            {
+                                (item.location !== "" || item.school !== "") &&
+                                <p className="section-text">
+                                    {joinString([item.school, item.location], ", ")}
+                                </p>
+                            }
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        )
+    }
 
     function LanguagesSection({accentColor, iconColor, languageItems})
     {
