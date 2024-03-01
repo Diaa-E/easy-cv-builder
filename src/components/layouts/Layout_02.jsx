@@ -100,7 +100,7 @@ export default function Layout_02({data})
                     <img style={{filter: iconColor, backgroundColor: accentColor}} className="section-icon" src={appIcons.languages} alt="" />
                     Languages
                 </h3>
-                <div style={{borderBottom: `solid calc(var(--width) * .002) ${textColor}`}} className="seperator"></div>
+                <div className="seperator"></div>
                 <div className="flow-wrapper">
                 {
                     languageItems.map(item => {
