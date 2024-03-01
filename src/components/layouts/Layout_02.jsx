@@ -4,6 +4,7 @@ import appIcons from "../../appIconsBarrel";
 import linkIcons from "../../linkIconsBarrel";
 
 import { isBright } from "../../utility";
+import { isEmptySection } from "../../emptySectionDetector";
 
 export default function Layout_02({data})
 {
@@ -40,9 +41,50 @@ export default function Layout_02({data})
                         }
                     </div>
                 </div>
+                    <LanguagesSection accentColor={data.accentColor} iconColor={iconColor} languageItems={data.languages}/>
             </div>
         </div>
     )
+
+    function LanguagesSection({accentColor, iconColor, languageItems})
+    {
+        return (
+            !isEmptySection(languageItems) &&
+            <div className="section-wrapper">
+                <h3 className="section-title">
+                    <img style={{filter: iconColor, backgroundColor: accentColor}} className="section-icon" src={appIcons.languages} alt="" />
+                    Languages
+                </h3>
+                <div style={{borderBottom: `solid calc(var(--width) * .002) ${textColor}`}} className="seperator-small"></div>
+                <div className="flow-wrapper">
+                {
+                    languageItems.map(item => {
+                        
+                        return (
+                            !item.hidden &&
+                            <div key={item.id} className="flow-item">
+                                <p className="section-text">{item.name}</p>
+                                {
+                                    item.showLevel &&
+                                    <LevelBar level={item.level} accentColor={accentColor}/>
+                                }
+                            </div>
+                        )
+                    })
+                }
+                </div>
+            </div>
+        )
+    }
+
+    function LevelBar({level, accentColor})
+{
+    return (
+        <div className="level-container">
+            <span style={{width: level + "%", backgroundColor: accentColor}} className="level"></span>
+        </div>
+    )
+}
 
     function HeaderItem({textColor, iconColor, text, icon})
     {

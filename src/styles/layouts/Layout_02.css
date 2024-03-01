@@ -2,6 +2,7 @@
     --white: white;
     --black: black;
     --grey: #dedede;
+    --light-grey: #eeeeee;
 
     display: grid;
     grid-auto-flow: column;
@@ -12,8 +13,9 @@
 .layout-02 .left{
     display: flex;
     flex-direction: column;
-    background-color: var(--grey);
+    background-color: var(--light-grey);
     width: calc(var(--width) * 1 / 3);
+    gap: calc(var(--width) * .02);
 }
 
 .layout-02 .header-wrapper{
@@ -70,6 +72,63 @@
     word-wrap: break-word;
 }
 
+.layout-02 .section-wrapper{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+
+.layout-02 .section-title{
+    display: flex;
+    place-items: center;
+    font-size: calc(var(--width) * .03);
+    gap: calc(var(--width) * .017);
+}
+
+.layout-02 .section-icon{
+    padding: calc(var(--width) * .007);
+    border-radius: 50%;
+}
+
+.layout-02 .flow-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(var(--width) * 1 / 4);
+    place-items: center;
+    place-content: center;
+    gap: calc(var(--width) * .01);
+}
+
+.layout-02 .flow-item{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    gap: calc(var(--width) * .002);
+    margin-right: calc(var(--width) * .01);
+    max-width: calc(var(--width) * 1 / 4);
+}
+
+.layout-02 .level-container{
+    background-color: var(--white);
+    position: relative;
+    display: flex;
+    border-top-right-radius: calc(var(--width) * 0.005);
+    border-bottom-right-radius: calc(var(--width) * 0.005);
+    height: calc(var(--width) * 0.01);
+    border: solid calc(var(--width) * 0.001) var(--black);
+    width: calc(var(--width) * .1);
+}
+
+.layout-02 .level{
+    border-top-right-radius: calc(var(--width) * 0.005);
+    border-bottom-right-radius: calc(var(--width) * 0.005);
+}
+
+.layout-02 .section-text{
+    word-wrap: break-word;
+    max-width: calc(var(--width) * 1 / 4);
+    text-align: center;
+}
 /* .layout-02{
     display: grid;
     grid-template-columns: calc(var(--width) * 1 / 3) calc(var(--width) * 2 / 3);
