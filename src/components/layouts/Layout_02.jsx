@@ -71,7 +71,7 @@ export default function Layout_02({data})
                             {
                                 (item.start !== "" || item.end !== "" || item.position !== "" || item.company) &&
                                 <p className="section-text">
-                                    {joinString([item.position, item.company], ", ")}
+                                    <span className="bold">{joinString([item.position, item.company], ", ")}</span>
                                     <br></br>
                                     {joinString([item.start, item.end], "-")}
                                 </p>
@@ -122,7 +122,7 @@ export default function Layout_02({data})
                             {
                                 (item.degree !== "") &&
                                 <p className="section-text">
-                                    {item.degree}
+                                    <span className="bold">{item.degree}</span>
                                 </p>
                             }
                             {

@@ -106,6 +106,10 @@
     border-radius: 50%;
 }
 
+.layout-02 .bold{
+    font-weight: bold;
+}
+
 .layout-02 .flow-wrapper{
     display: flex;
     flex-wrap: wrap;
