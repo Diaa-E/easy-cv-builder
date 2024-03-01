@@ -382,10 +382,12 @@ function App() {
           data={data}
         />
       }
-      <Layout_02
-        enabled={layout === "layout-02"}
-        data={data}
-      />
+      {
+        layout === "layout-02" &&
+        <Layout_02
+          data={data}
+        />
+      }
     </>
   )
 }
