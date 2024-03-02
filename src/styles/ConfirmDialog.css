@@ -15,14 +15,14 @@
 .dialog-box{
     background-color: var(--main);
     border-radius: 10px;
-    padding: 50px;
+    padding: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 70px;
-    column-gap: 50px;
+    row-gap: 20px;
+    column-gap: 30px;
     box-shadow: var(--shadow);
     place-items: stretch;
-    width: 400px;
+    width: 80vw;
 }
 
 .prompt{
@@ -31,4 +31,13 @@
     grid-column-end: -1;
     color: var(--text);
     font-size: 16px;
+}
+
+@media (min-width: 700px){
+    .dialog-box{
+        padding: 50px;
+        width: 400px;
+        row-gap: 70px;
+        column-gap: 50px;
+    }
 }
