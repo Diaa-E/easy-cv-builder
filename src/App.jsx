@@ -335,6 +335,7 @@ function App() {
           deleteItem={(targetItem) => deleteItem(targetItem, experience, setExperience)}
           moveItemUp={(id) => moveItemUp(id, experience, setExperience)}
           emptyText={emptyListText}
+          setDialogState={setDialogState}
         />
         <Links
           enabled={tabs[2].id === currentTab}
