@@ -4,7 +4,7 @@
 
 This change log only highlights important changes (i.e features and refactors).
 
-### **1.3.2 (unreleased)**
+### **1.3.2 (Mar 3, 2024)**
 
 - ➕ Fix mobile display styles appearing on some wide screens.
 - ➕ Show a confirm message before deleting/reseting data.
