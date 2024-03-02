@@ -7,7 +7,7 @@ import RangeInput from "./RangeInput";
 import { v4  as generateId} from "uuid";
 import { getItemIndex } from "../utility";
 
-export default function Languages({languagetems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText})
+export default function Languages({languagetems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText, setDialogState})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -78,7 +78,14 @@ export default function Languages({languagetems, enabled = true, toggleHide, upd
                             setCurrentItem(languagetems.find(item => item.id === id))
                         }}
                         deleteItem={(id) => {
-                            deleteItem(id);
+                            setDialogState({
+                                open: true,
+                                actionText: "Delete",
+                                prompt: "Are you sure you want to premenantly delete this item from the languages section??",
+                                onConfirm: () => {
+                                    deleteItem(id);
+                                }
+                            });
                         }}
                         moveItemUp={(id => moveItemUp(id))}
                     />

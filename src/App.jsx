@@ -365,6 +365,7 @@ function App() {
           deleteItem={(targetItem) => deleteItem(targetItem, languages, setLanguages)}
           moveItemUp={(id) => moveItemUp(id, languages, setLanguages)}
           emptyText={emptyListText}
+          setDialogState={setDialogState}
         />
         <Settings
           enabled={tabs[7].id === currentTab}
