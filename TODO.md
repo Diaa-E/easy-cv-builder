@@ -4,8 +4,9 @@
 
 - Add hide all and delete all button to each section.
 - Fix icon lag by loading all resources before opening app main page.
-- Add the ability to rearrange sections (education and experience order)
+- Add the ability to rearrange sections (education and experience order).
 - Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.
+- Disable scroll when confirm dialog is open or close dialog when the user scrolls.
 - ~~Add a website icon to link icon options.~~ ✅
 - ~~Keep textbox in focus when clear field button is clicked.~~ ✅
 - ~~Auto capitalize first letter in each word in name field.~~ ✅
