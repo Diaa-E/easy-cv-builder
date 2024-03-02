@@ -35,7 +35,6 @@
 .red-button{
     background-color: var(--danger);
     color: var(--white);
-    margin: 0 auto 0 0;
 }
 
 .red-button:hover{
