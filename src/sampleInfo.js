@@ -57,7 +57,7 @@ const sampleInfo = {
         {
             id: generateId(),
             url: "waynetech.com",
-            icon: "other",
+            icon: "website",
             hidden: false,
         },
     ],
