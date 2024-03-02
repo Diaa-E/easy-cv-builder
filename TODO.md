@@ -6,8 +6,7 @@
 - Fix icon lag by loading all resources before opening app main page.
 - Ask user to confirm before clearing/resetting all data.
 - Add the ability to rearrange sections (education and experience order)
-- Add a website icon to link icon options.
-- Show clear field button only when textbox is in focus.
+- ~~Add a website icon to link icon options.~~ ✅
 - ~~Keep textbox in focus when clear field button is clicked.~~ ✅
 - ~~Auto capitalize first letter in each word in name field.~~ ✅
 - Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.
@@ -24,4 +23,5 @@
 - ~~Save user dark theme preference for the session.~~ ✅
 - ~~Fix list item text color.~~ ✅
 - ~~Create a unique component for dark mode button with changing colors based on active mode.~~ ✅
+- ~~Show clear field button only when textbox is in focus.~~ ❌ -> disabling/removing the button cancels ongoing click handler
 - ~~move dark mode button to main controls box for better accessibility, putting it inside nav might be confusing.~~ ❌ -> Not enough space in main controls.
