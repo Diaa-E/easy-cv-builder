@@ -40,7 +40,7 @@
     filter: invert(1);
 }
 
-@media (min-width: 700px) and (orientation: landscape){
+@media (min-width: 700px){
     .nav-item{
         width: 70px;
         height: 70px;

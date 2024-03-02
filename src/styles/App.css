@@ -53,7 +53,7 @@
   --logo-filter: contrast(70%) saturate(80%);
 }
 
-@media (min-width: 700px) and (orientation: landscape){
+@media (min-width: 700px){
   #root{
     grid-template-columns: min-content 1fr 60dvw;
     grid-template-rows: 60px repeat(3, min-content);

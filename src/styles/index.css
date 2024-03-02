@@ -168,7 +168,7 @@ body{
   overflow: visible;
 }
 
-@media (min-width: 700px) and (orientation: landscape){
+@media (min-width: 700px){
   .nav{
     display: flex;
     flex-direction: column;
