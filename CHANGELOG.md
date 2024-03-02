@@ -6,6 +6,7 @@ This change log only highlights important changes (i.e features and refactors).
 
 ### **1.3.2 (unreleased)**
 
+- ➕ Fix mobile display styles appearing on some wide screens.
 - ➕ Show a confirm message before deleting/reseting data.
 - ➕ Add a website category to link types.
 - ➕ Auto-capitalize the start of each word in the full name field as the user types.
