@@ -4,6 +4,10 @@
 
 This change log only highlights important changes (i.e features and refactors).
 
+### **1.3.2 (unreleased)**
+
+- ➕ Auto-capitalize the start of each word in the full name field as the user types.
+
 ### **1.3.1 (Mar 1, 2024)**
 
 - ➕ Empty sections or sections full with hidden items will now be removed from CV preview.
