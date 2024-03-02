@@ -5,8 +5,14 @@ export function getStartCase(string)
 
     for (const word of words)
     {
-        if (!Boolean(word)) continue;
-        capitalizedWords.push(word.at(0).toUpperCase() + word.substring(1));
+        if (Boolean(word)) 
+        {
+            capitalizedWords.push(word.at(0).toUpperCase() + word.substring(1));
+        }
+        else
+        {
+            capitalizedWords.push(word);
+        }
     }
     
 
