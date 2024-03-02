@@ -325,6 +325,7 @@ function App() {
           deleteItem={(targetItem) => deleteItem(targetItem, education, setEducation)}
           moveItemUp={(id) => moveItemUp(id, education, setEducation)}
           emptyText={emptyListText}
+          setDialogState={setDialogState}
         />
         <Experience
           enabled={tabs[4].id === currentTab}
