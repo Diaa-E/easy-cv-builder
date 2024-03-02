@@ -6,6 +6,7 @@ import linkedinIcon from "./assets/link_icons/linkedin.svg";
 import instagramIcon from "./assets/link_icons/instagram.svg";
 import artstationLogo from "./assets/link_icons/artstation.svg";
 import otherIcon from "./assets/link_icons/other.svg";
+import websiteIcon from "./assets/link_icons/website.svg";
 
 const linkIcons = [
     {
@@ -35,6 +36,10 @@ const linkIcons = [
     {
         name: "artstation",
         icon: artstationLogo
+    },
+    {
+        name: "website",
+        icon: websiteIcon
     }
 ].sort((a, b) => {
     if (a.name < b.name)
