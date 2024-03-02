@@ -18,9 +18,14 @@ describe("Start case converter function", () => {
         expect(getStartCase("this_is_text")).toBe("This_is_text");
     });
 
-    it("Removes multiple consecutive white spaces", () => {
+    it("ignores multiple consecutive white spaces", () => {
 
-        expect(getStartCase("this  is text")).toBe("This Is Text");
+        expect(getStartCase("this  is text")).toBe("This  Is Text");
+    });
+
+    it("Ignores white space at the end - user is still typing case", () => {
+
+        expect(getStartCase("this ")).toBe("This ");
     });
 
     it("Capitalizes a name initial followed by a dot", () => {
