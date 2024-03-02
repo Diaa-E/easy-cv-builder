@@ -22,11 +22,13 @@
     column-gap: 50px;
     box-shadow: var(--shadow);
     place-items: stretch;
+    width: 400px;
 }
 
 .prompt{
+    text-align: center;
     grid-column-start: 1;
     grid-column-end: -1;
     color: var(--text);
-    font-size: 20px;
+    font-size: 16px;
 }

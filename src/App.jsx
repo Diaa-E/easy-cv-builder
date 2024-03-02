@@ -26,6 +26,7 @@ import Layout_02 from './components/layouts/Layout_02';
 import { getItemIndex } from './utility';
 import { testDraftValidity } from './draftValidation';
 import DarkModeButton from './components/DarkModeButton';
+import ConfirmDialog from './components/ConfirmDialog';
 
 function App() {
 
@@ -96,6 +97,7 @@ function App() {
   const [font, setFont] = useState(getSessionData("font", sampleInfo.font));
   const [layout, setLayout] = useState(getSessionData("layout", sampleInfo.layout));
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []}); //code key is used to determine error panel text and color in Save component
+  const [dialogState, setDialogState] = useState({open: false, actionText: "", prompt: "", onConfirm: () => {}});
 
   useEffect(() => {
 
@@ -271,6 +273,16 @@ function App() {
     stateSetter(newArray);
   }
 
+  function closeDialog()
+  {
+    setDialogState({
+      open: false,
+      actionText: "",
+      prompt: "",
+      onConfirm: () => {},
+    })
+  }
+
   return (
     <>
       <img src={logo} alt="Easy CV builder's logo" className='logo' />
@@ -372,8 +384,36 @@ function App() {
       </div>
 
       <div id='mainControls' className='main-controls'>
-        <FormButton toolTip='Clear all data' text='Clear' classes={["form-button", "red-button"]} onClick={clearAll}/>
-        <FormButton toolTip='Reset data to sample template' text='Reset' classes={["form-button", "white-button"]} onClick={resetAll}/>
+        <FormButton
+          toolTip='Clear all data'
+          text='Clear'
+          classes={["form-button", "red-button"]}
+          onClick={() => {
+            setDialogState({
+              open: true,
+              prompt: "Are you sure you want to clear ALL DATA in this draft? This action is irreversible.",
+              actionText: "Yes",
+              onConfirm: () => {
+                clearAll();
+              }
+            });
+          }}
+        />
+        <FormButton
+          toolTip='Reset data to sample template'
+          text='Reset'
+          classes={["form-button", "white-button"]}
+          onClick={() => {
+            setDialogState({
+              open: true,
+              actionText: "Yes",
+              prompt: "Are you sure you want to reset ALL DATA to default values? This action is irreversible.",
+              onConfirm: () => {
+                resetAll();
+              }
+            })
+          }}
+        />
         <FormButton toolTip='Export as PDF/print CV' text='Export' classes={["form-button", "blue-button"]} onClick={print}/>
       </div>
       {
@@ -386,6 +426,18 @@ function App() {
         layout === "layout-02" &&
         <Layout_02
           data={data}
+        />
+      }
+      {
+        dialogState.open &&
+        <ConfirmDialog
+          actionText={dialogState.actionText}
+          onConfirm={() => {
+            dialogState.onConfirm();
+            closeDialog();
+          }}
+          prompt={dialogState.prompt}
+          onCancel={closeDialog}
         />
       }
     </>
