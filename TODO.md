@@ -9,7 +9,7 @@
 - Add a website icon to link icon options.
 - Show clear field button only when textbox is in focus.
 - Keep textbox in focus when clear field button is clicked.
-- Auto capitalize first letter in each word in name field.
+- ~~Auto capitalize first letter in each word in name field.~~ ✅
 - Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.
 - ~~Remove empty sections from the CV preview.~~ ✅
 - ~~Add link to change log in the about section.~~ ✅
