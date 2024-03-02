@@ -28,6 +28,12 @@ describe("Start case converter function", () => {
         expect(getStartCase("this ")).toBe("This ");
     });
 
+    it("Ignores characters that have no upper case", () => {
+
+        expect(getStartCase("12")).toBe("12");
+        expect(getStartCase("#h")).toBe("#h");
+    });
+
     it("Capitalizes a name initial followed by a dot", () => {
 
         expect(getStartCase("thomas h. johnson")).toBe("Thomas H. Johnson");
