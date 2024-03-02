@@ -4,12 +4,12 @@
 
 - Add hide all and delete all button to each section.
 - Fix icon lag by loading all resources before opening app main page.
-- Ask user to confirm before clearing/resetting all data.
 - Add the ability to rearrange sections (education and experience order)
+- Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.
 - ~~Add a website icon to link icon options.~~ ✅
 - ~~Keep textbox in focus when clear field button is clicked.~~ ✅
 - ~~Auto capitalize first letter in each word in name field.~~ ✅
-- Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.
+- ~~Ask user to confirm before clearing/resetting all data.~~ ✅
 - ~~Remove empty sections from the CV preview.~~ ✅
 - ~~Add link to change log in the about section.~~ ✅
 - ~~Add a focus effect to clear field button.~~ ✅
