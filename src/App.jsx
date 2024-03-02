@@ -345,6 +345,7 @@ function App() {
           deleteItem={(targetItem) => deleteItem(targetItem, links, setLinks)}
           moveItemUp={(id) => moveItemUp(id, links, setLinks)}
           emptyText={emptyListText}
+          setDialogState={setDialogState}
         />
         <Skills
           enabled={tabs[5].id === currentTab}
