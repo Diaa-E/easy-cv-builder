@@ -4,6 +4,11 @@
 
 This change log only highlights important changes (i.e features and refactors).
 
+### **1.3.3 (unreleased)**
+
+- 🛠️ Fix performance hit when resizing screen due to duplicating event listeners.
+- #️⃣ Restructure src folder hierarchy for easier navigation.
+
 ### **1.3.2 (Mar 3, 2024)**
 
 - ➕ Fix mobile display styles appearing on some wide screens.
