@@ -4,7 +4,7 @@
 
 This change log only highlights important changes (i.e features and refactors).
 
-### **1.3.3 (unreleased)**
+### **1.3.3 (Mar 6, 2024)**
 
 - 🛠️ Fix warning dialog backdrop resizing visibly on narrow screens when scrolling due to dynamic viewport height.
 - 🛠️ Fix main controls buttons stack on the left side.
