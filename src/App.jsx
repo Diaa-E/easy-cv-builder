@@ -109,9 +109,15 @@ function App() {
       setScreenWidth(window.innerWidth);
     });
 
+    window.addEventListener("scroll", () => {
+      
+      setDialogState({...dialogState, open: false});
+    });
+
     return () => {
 
       removeEventListener("resize", window);
+      removeEventListener("scroll", window);
     }
   }, []);
 
