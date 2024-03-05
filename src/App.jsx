@@ -108,12 +108,10 @@ function App() {
       
       setScreenWidth(window.innerWidth);
     });
-    console.log("added");
 
     return () => {
 
       removeEventListener("resize", window);
-      console.log("removed");
     }
   }, []);
 
