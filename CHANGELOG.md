@@ -9,6 +9,7 @@ This change log only highlights important changes (i.e features and refactors).
 - 🛠️ Fix warning dialog backdrop resizing visibly on narrow screens when scrolling due to dynamic viewport height.
 - 🛠️ Fix main controls buttons stack on the left side.
 - 🛠️ Fix performance hit when resizing screen due to duplicating event listeners.
+- #️⃣ Reduce amount of functions passed to each section.
 - #️⃣ Restructure src folder hierarchy for easier navigation.
 
 ### **1.3.2 (Mar 3, 2024)**
