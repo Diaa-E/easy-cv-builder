@@ -26,9 +26,9 @@ export function updateItems(newItem, dataArray)
   return newArray;
 }
 
-export function deleteItem(targetItemId, dataArray)
+export function deleteItem(targetId, dataArray)
 {
-  const newArray = dataArray.filter(item => item.id !== targetItemId);
+  const newArray = dataArray.filter(item => item.id !== targetId);
 
   return newArray;
 }
@@ -37,7 +37,7 @@ export function moveItemUp(targetId, dataArray)
 {
   const targetIndex = getItemIndex(dataArray, targetId);
   
-  if (targetIndex === 0) return;
+  if (targetIndex === 0) return Array.from(dataArray);
   const newArray = [];
 
   for (let i = 0; i < dataArray.length; i++)
