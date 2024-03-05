@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { v4 as generateId } from 'uuid';
 
 import logo from "./assets/images/logo.svg";
@@ -27,6 +27,8 @@ import { getItemIndex } from './utility';
 import { testDraftValidity } from './draftValidation';
 import DarkModeButton from './components/DarkModeButton';
 import ConfirmDialog from './components/ConfirmDialog';
+
+export const ScreenWidthContext = createContext(null);
 
 function App() {
 
@@ -98,6 +100,22 @@ function App() {
   const [layout, setLayout] = useState(getSessionData("layout", sampleInfo.layout));
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []}); //code key is used to determine error panel text and color in Save component
   const [dialogState, setDialogState] = useState({open: false, actionText: "", prompt: "", onConfirm: () => {}});
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+
+    window.addEventListener("resize", () => {
+      
+      setScreenWidth(window.innerWidth);
+    });
+    console.log("added");
+
+    return () => {
+
+      removeEventListener("resize", window);
+      console.log("removed");
+    }
+  }, []);
 
   useEffect(() => {
 
@@ -317,56 +335,58 @@ function App() {
           contact={contact}
           setContact={setContact}
         />
-        <Education
-          enabled={tabs[1].id === currentTab}
-          educationItems={education}
-          toggleHide={(id) => toggleHide(id, education, setEducation)}
-          updateItems={(newItem) => updateItems(newItem, education, setEducation)}
-          deleteItem={(targetItem) => deleteItem(targetItem, education, setEducation)}
-          moveItemUp={(id) => moveItemUp(id, education, setEducation)}
-          emptyText={emptyListText}
-          setDialogState={setDialogState}
-        />
-        <Experience
-          enabled={tabs[4].id === currentTab}
-          experienceItems={experience}
-          toggleHide={(id) => toggleHide(id, experience, setExperience)}
-          updateItems={(newItem) => updateItems(newItem, experience, setExperience)}
-          deleteItem={(targetItem) => deleteItem(targetItem, experience, setExperience)}
-          moveItemUp={(id) => moveItemUp(id, experience, setExperience)}
-          emptyText={emptyListText}
-          setDialogState={setDialogState}
-        />
-        <Links
-          enabled={tabs[2].id === currentTab}
-          linksItems={links}
-          toggleHide={(id) => toggleHide(id, links, setLinks)}
-          updateItems={(newItem) => updateItems(newItem, links, setLinks)}
-          deleteItem={(targetItem) => deleteItem(targetItem, links, setLinks)}
-          moveItemUp={(id) => moveItemUp(id, links, setLinks)}
-          emptyText={emptyListText}
-          setDialogState={setDialogState}
-        />
-        <Skills
-          enabled={tabs[5].id === currentTab}
-          skillItems={skills}
-          toggleHide={(id) => {toggleHide(id, skills, setSkills)}}
-          updateItems={(newItem) => updateItems(newItem, skills, setSkills)}
-          deleteItem={(targetItem) => deleteItem(targetItem, skills, setSkills)}
-          moveItemUp={(id) => moveItemUp(id, skills, setSkills)}
-          emptyText={emptyListText}
-          setDialogState={setDialogState}
-        />
-        <Languages
-          enabled={tabs[6].id === currentTab}
-          languagetems={languages}
-          toggleHide={(id) => {toggleHide(id, languages, setLanguages)}}
-          updateItems={(newItem) => updateItems(newItem, languages, setLanguages)}
-          deleteItem={(targetItem) => deleteItem(targetItem, languages, setLanguages)}
-          moveItemUp={(id) => moveItemUp(id, languages, setLanguages)}
-          emptyText={emptyListText}
-          setDialogState={setDialogState}
-        />
+        <ScreenWidthContext.Provider value={{screenWidth: screenWidth}}>
+          <Education
+            enabled={tabs[1].id === currentTab}
+            educationItems={education}
+            toggleHide={(id) => toggleHide(id, education, setEducation)}
+            updateItems={(newItem) => updateItems(newItem, education, setEducation)}
+            deleteItem={(targetItem) => deleteItem(targetItem, education, setEducation)}
+            moveItemUp={(id) => moveItemUp(id, education, setEducation)}
+            emptyText={emptyListText}
+            setDialogState={setDialogState}
+          />
+          <Experience
+            enabled={tabs[4].id === currentTab}
+            experienceItems={experience}
+            toggleHide={(id) => toggleHide(id, experience, setExperience)}
+            updateItems={(newItem) => updateItems(newItem, experience, setExperience)}
+            deleteItem={(targetItem) => deleteItem(targetItem, experience, setExperience)}
+            moveItemUp={(id) => moveItemUp(id, experience, setExperience)}
+            emptyText={emptyListText}
+            setDialogState={setDialogState}
+          />
+          <Links
+            enabled={tabs[2].id === currentTab}
+            linksItems={links}
+            toggleHide={(id) => toggleHide(id, links, setLinks)}
+            updateItems={(newItem) => updateItems(newItem, links, setLinks)}
+            deleteItem={(targetItem) => deleteItem(targetItem, links, setLinks)}
+            moveItemUp={(id) => moveItemUp(id, links, setLinks)}
+            emptyText={emptyListText}
+            setDialogState={setDialogState}
+          />
+          <Skills
+            enabled={tabs[5].id === currentTab}
+            skillItems={skills}
+            toggleHide={(id) => {toggleHide(id, skills, setSkills)}}
+            updateItems={(newItem) => updateItems(newItem, skills, setSkills)}
+            deleteItem={(targetItem) => deleteItem(targetItem, skills, setSkills)}
+            moveItemUp={(id) => moveItemUp(id, skills, setSkills)}
+            emptyText={emptyListText}
+            setDialogState={setDialogState}
+          />
+          <Languages
+            enabled={tabs[6].id === currentTab}
+            languagetems={languages}
+            toggleHide={(id) => {toggleHide(id, languages, setLanguages)}}
+            updateItems={(newItem) => updateItems(newItem, languages, setLanguages)}
+            deleteItem={(targetItem) => deleteItem(targetItem, languages, setLanguages)}
+            moveItemUp={(id) => moveItemUp(id, languages, setLanguages)}
+            emptyText={emptyListText}
+            setDialogState={setDialogState}
+          />
+        </ScreenWidthContext.Provider>
         <Settings
           enabled={tabs[7].id === currentTab}
           color={accentColor}

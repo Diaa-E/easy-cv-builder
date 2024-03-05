@@ -1,18 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import appIcons from "../appIconsBarrel";
 import ItemButton from "./ItemButton";
+import { ScreenWidthContext } from "../App";
 
 export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden})
 {
+    const screenWidth = useContext(ScreenWidthContext).screenWidth;
+
     const [open, setOpen] = useState(false);
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-    const [cursorPosition, setCursorPosition] = useState([0, 0])
-
-    window.addEventListener("resize", () => {
-
-        setOpen(false);
-        setScreenWidth(window.innerWidth);
-    });
+    const [cursorPosition, setCursorPosition] = useState([0, 0]);
     
     if (screenWidth <= 700)
     {
