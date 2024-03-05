@@ -241,60 +241,6 @@ function App() {
     window.print()
   }
 
-  function toggleHide(id, stateArray, stateSetter)
-  {
-    const newArray = Array.from(stateArray);
-    const hideTarget = getItemIndex(newArray, id);
-    newArray[hideTarget].hidden = !newArray[hideTarget].hidden;
-    stateSetter(newArray);
-  }
-
-  function updateItems(newItem, stateArray, stateSetter)
-  {
-    const newArray = Array.from(stateArray);
-    const newItemIndex = getItemIndex(newArray, newItem.id);
-
-    if (newItemIndex === -1)
-    {
-      newArray.push(newItem)
-    }
-    else
-    {
-      newArray[newItemIndex] = newItem;
-    }
-
-    stateSetter(newArray);
-  }
-
-  function deleteItem(targetItemId, stateArray, stateSetter)
-  {
-    const newArray = stateArray.filter(item => item.id !== targetItemId);
-    stateSetter(newArray);
-  }
-
-  function moveItemUp(targetItemId, stateArray, stateSetter)
-  {
-    const targetIndex = getItemIndex(stateArray, targetItemId);
-    
-    if (targetIndex === 0) return;
-    const newArray = [];
-
-    for (let i = 0; i < stateArray.length; i++)
-    {
-      if (i === targetIndex - 1)
-      {
-        newArray.push(stateArray[targetIndex]);
-        newArray.push(stateArray[targetIndex-1]);
-        i += 1; //skip both items - consider incremement at iteration end
-        continue;
-      }
-
-      newArray.push(stateArray[i]);
-    }
-
-    stateSetter(newArray);
-  }
-
   function closeDialog()
   {
     setDialogState({
@@ -343,52 +289,37 @@ function App() {
           <Education
             enabled={tabs[1].id === currentTab}
             educationItems={education}
-            toggleHide={(id) => toggleHide(id, education, setEducation)}
-            updateItems={(newItem) => updateItems(newItem, education, setEducation)}
-            deleteItem={(targetItem) => deleteItem(targetItem, education, setEducation)}
-            moveItemUp={(id) => moveItemUp(id, education, setEducation)}
-            emptyText={emptyListText}
+            setEducationItems = {setEducation}
             setDialogState={setDialogState}
+            emptyText={emptyListText}
           />
           <Experience
             enabled={tabs[4].id === currentTab}
             experienceItems={experience}
-            toggleHide={(id) => toggleHide(id, experience, setExperience)}
-            updateItems={(newItem) => updateItems(newItem, experience, setExperience)}
-            deleteItem={(targetItem) => deleteItem(targetItem, experience, setExperience)}
-            moveItemUp={(id) => moveItemUp(id, experience, setExperience)}
-            emptyText={emptyListText}
+            setExperienceItems={setExperience}
             setDialogState={setDialogState}
+            emptyText={emptyListText}
           />
           <Links
             enabled={tabs[2].id === currentTab}
             linksItems={links}
-            toggleHide={(id) => toggleHide(id, links, setLinks)}
-            updateItems={(newItem) => updateItems(newItem, links, setLinks)}
-            deleteItem={(targetItem) => deleteItem(targetItem, links, setLinks)}
-            moveItemUp={(id) => moveItemUp(id, links, setLinks)}
-            emptyText={emptyListText}
+            setLinksItems={setLinks}
             setDialogState={setDialogState}
+            emptyText={emptyListText}
           />
           <Skills
             enabled={tabs[5].id === currentTab}
-            skillItems={skills}
-            toggleHide={(id) => {toggleHide(id, skills, setSkills)}}
-            updateItems={(newItem) => updateItems(newItem, skills, setSkills)}
-            deleteItem={(targetItem) => deleteItem(targetItem, skills, setSkills)}
-            moveItemUp={(id) => moveItemUp(id, skills, setSkills)}
-            emptyText={emptyListText}
+            skillsItems={skills}
+            setSkillsItems={setSkills}
             setDialogState={setDialogState}
+            emptyText={emptyListText}
           />
           <Languages
             enabled={tabs[6].id === currentTab}
-            languagetems={languages}
-            toggleHide={(id) => {toggleHide(id, languages, setLanguages)}}
-            updateItems={(newItem) => updateItems(newItem, languages, setLanguages)}
-            deleteItem={(targetItem) => deleteItem(targetItem, languages, setLanguages)}
-            moveItemUp={(id) => moveItemUp(id, languages, setLanguages)}
-            emptyText={emptyListText}
+            languagesItems={languages}
+            setLanguagesItems={setLanguages}
             setDialogState={setDialogState}
+            emptyText={emptyListText}
           />
         </ScreenWidthContext.Provider>
         <Settings

@@ -6,8 +6,9 @@ import FormButton from "../components/FormButton";
 import RangeInput from "../components/RangeInput";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
+import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
 
-export default function Skills({skillItems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText, setDialogState})
+export default function Skills({skillsItems, setSkillsItems, setDialogState, enabled = true, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -21,7 +22,7 @@ export default function Skills({skillItems, enabled = true, toggleHide, updateIt
     {
         return (
             <div className="items-container">
-                <h2 className="edit-title">{`${getItemIndex(skillItems, currentItem.id) > -1 ? "Edit" : "Add"} Skill`}</h2>
+                <h2 className="edit-title">{`${getItemIndex(skillsItems, currentItem.id) > -1 ? "Edit" : "Add"} Skill`}</h2>
                 <TextInput
                     text={currentItem.name}
                     labelText="Skill"
@@ -45,11 +46,11 @@ export default function Skills({skillItems, enabled = true, toggleHide, updateIt
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
-                        text={getItemIndex(skillItems, currentItem.id) > -1 ? "Save" : "Add"}
+                        text={getItemIndex(skillsItems, currentItem.id) > -1 ? "Save" : "Add"}
                         classes={["form-button", "blue-button"]}
                         onClick={() => {
                             setEditMode(false);
-                            updateItems(currentItem);
+                            setSkillsItems(updateItems(currentItem, skillsItems));
                         }}
                     />
                 </div>
@@ -60,11 +61,11 @@ export default function Skills({skillItems, enabled = true, toggleHide, updateIt
     return (
         <div className="items-container">
         {
-            skillItems.length === 0 &&
+            skillsItems.length === 0 &&
             <h2 className="empty-list-text">{emptyText}</h2>
         }
         {
-            skillItems.map(item => {
+            skillsItems.map(item => {
                 return <ListItemLevel
                             text={item.name}
                             meterValue={item.level}
@@ -72,10 +73,10 @@ export default function Skills({skillItems, enabled = true, toggleHide, updateIt
                             hidden={item.hidden}
                             id={item.id}
                             key={item.id}
-                            toggleHide={toggleHide}
+                            toggleHide={(id) => setSkillsItems(toggleHide(id, skillsItems))}
                             toggleEdit={(id) => {
-                                setEditMode(true)
-                                setCurrentItem(skillItems.find(item => item.id === id))
+                                setEditMode(true);
+                                setCurrentItem(skillsItems[getItemIndex(skillsItems, id)]);
                             }}
                             deleteItem={(id) => {
                                 setDialogState({
@@ -83,11 +84,11 @@ export default function Skills({skillItems, enabled = true, toggleHide, updateIt
                                     actionText: "Delete",
                                     prompt: "Are you sure you want to premenantly delete this item from the skills section??",
                                     onConfirm: () => {
-                                        deleteItem(id);
+                                        setSkillsItems(deleteItem(id, skillsItems));
                                     }
                                 });
                             }}
-                            moveItemUp={(id) => moveItemUp(id)}
+                            moveItemUp={(id) => setSkillsItems(moveItemUp(id, skillsItems))}
                         />
             })
         }

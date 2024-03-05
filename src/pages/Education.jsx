@@ -4,9 +4,10 @@ import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
 import FormButton from "../components/FormButton";
 import { getItemIndex } from "../utils/utility";
+import { toggleHide, deleteItem, moveItemUp, updateItems } from "../utils/arrayFunctions";
 import { v4 as generateId } from 'uuid';
 
-export default function Education({educationItems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText, setDialogState})
+export default function Education({educationItems, setEducationItems, setDialogState, enabled = true, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -72,7 +73,7 @@ export default function Education({educationItems, enabled = true, toggleHide, u
                         classes={["form-button", "blue-button"]}
                         onClick={() => {
                             setEditMode(false);
-                            updateItems(currentItem);
+                            setEducationItems(updateItems(currentItem, educationItems));
                         }}
                     />
                 </div>
@@ -94,10 +95,10 @@ export default function Education({educationItems, enabled = true, toggleHide, u
                             hidden={item.hidden}
                             id={item.id}
                             key={item.id}
-                            toggleHide={toggleHide}
+                            toggleHide={(id) => setEducationItems(toggleHide(id, educationItems))}
                             toggleEdit={(id) => {
-                                setEditMode(true)
-                                setCurrentItem(educationItems.find(item => item.id === id))
+                                setEditMode(true);
+                                setCurrentItem(educationItems[getItemIndex(educationItems, id)]);
                             }}
                             deleteItem={(id) => {
                                 setDialogState({
@@ -105,11 +106,11 @@ export default function Education({educationItems, enabled = true, toggleHide, u
                                     actionText: "Delete",
                                     prompt: "Are you sure you want to premenantly delete this item from the education section??",
                                     onConfirm: () => {
-                                        deleteItem(id)
+                                        setEducationItems(deleteItem(id, educationItems));
                                     }
                                 });
                             }}
-                            moveItemUp={id => moveItemUp(id)}
+                            moveItemUp={id => setEducationItems(moveItemUp(id, educationItems))}
                         />
             })
         }

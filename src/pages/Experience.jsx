@@ -6,8 +6,9 @@ import FormButton from "../components/FormButton";
 import TextAreaInput from "../components/TextAreaInput";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
+import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
 
-export default function Experience({experienceItems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText, setDialogState})
+export default function Experience({experienceItems, setExperienceItems, setDialogState, enabled = true, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -80,7 +81,7 @@ export default function Experience({experienceItems, enabled = true, toggleHide,
                         classes={["form-button", "blue-button"]}
                         onClick={() => {
                             setEditMode(false);
-                            updateItems(currentItem);
+                            setExperienceItems(updateItems(currentItem, experienceItems));
                         }}
                     />
                 </div>
@@ -102,10 +103,10 @@ export default function Experience({experienceItems, enabled = true, toggleHide,
                             hidden={item.hidden}
                             id={item.id}
                             key={item.id}
-                            toggleHide={toggleHide}
+                            toggleHide={(id) => setExperienceItems(toggleHide(id, experienceItems))}
                             toggleEdit={(id) => {
-                                setEditMode(true)
-                                setCurrentItem(experienceItems.find(item => item.id === id))
+                                setEditMode(true);
+                                setCurrentItem(experienceItems[getItemIndex(experienceItems, id)]);
                             }}
                             deleteItem={(id) => {
                                 setDialogState({
@@ -113,11 +114,11 @@ export default function Experience({experienceItems, enabled = true, toggleHide,
                                     actionText: "Delete",
                                     prompt: "Are you sure you want to premenantly delete this item from the experience section??",
                                     onConfirm: () => {
-                                        deleteItem(id);
+                                        setExperienceItems(deleteItem(id, experienceItems));
                                     }
                                 })
                             }}
-                            moveItemUp={id => moveItemUp(id)}
+                            moveItemUp={id => setExperienceItems(moveItemUp(id, experienceItems))}
                         />
             })
         }

@@ -7,8 +7,9 @@ import SelectInput from "../components/SelectInput";
 import linkIcons from "../data/linkIconsBarrel";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
+import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
 
-export default function Links({linksItems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText, setDialogState})
+export default function Links({linksItems, setLinksItems, setDialogState, enabled = true,  emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -51,7 +52,7 @@ export default function Links({linksItems, enabled = true, toggleHide, updateIte
                         classes={["form-button", "blue-button"]}
                         onClick={() => {
                             setEditMode(false);
-                            updateItems(currentItem);
+                            setLinksItems(updateItems(currentItem, linksItems));
                         }}
                     />
                 </div>
@@ -73,10 +74,10 @@ export default function Links({linksItems, enabled = true, toggleHide, updateIte
                             hidden={item.hidden}
                             id={item.id}
                             key={item.id}
-                            toggleHide={toggleHide}
+                            toggleHide={(id) => setLinksItems(toggleHide(id, linksItems))}
                             toggleEdit={(id) => {
-                                setEditMode(true)
-                                setCurrentItem(linksItems.find(item => item.id === id))
+                                setEditMode(true);
+                                setCurrentItem(linksItems[getItemIndex(linksItems, id)]);
                             }}
                             deleteItem={(id) => {
                                 setDialogState({
@@ -84,11 +85,11 @@ export default function Links({linksItems, enabled = true, toggleHide, updateIte
                                     actionText: "Delete",
                                     prompt: "Are you sure you want to premenantly delete this item from the links section??",
                                     onConfirm: () => {
-                                        deleteItem(id)
+                                        setLinksItems(deleteItem(id, linksItems))
                                     }
                                 })
                             }}
-                            moveItemUp={(id) => moveItemUp(id)}
+                            moveItemUp={(id) => setLinksItems(moveItemUp(id, linksItems))}
                         />
             })
         }

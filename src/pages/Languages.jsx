@@ -6,8 +6,9 @@ import FormButton from "../components/FormButton";
 import RangeInput from "../components/RangeInput";
 import { v4  as generateId} from "uuid";
 import { getItemIndex } from "../utils/utility";
+import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
 
-export default function Languages({languagetems, enabled = true, toggleHide, updateItems, deleteItem, moveItemUp, emptyText, setDialogState})
+export default function Languages({languagesItems, setLanguagesItems, setDialogState, enabled = true, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -21,7 +22,7 @@ export default function Languages({languagetems, enabled = true, toggleHide, upd
     {
         return (
             <div className="items-container">
-                <h2 className="edit-title">{`${getItemIndex(languagetems, currentItem.id) > -1 ? "Edit" : "Add"} Language`}</h2>
+                <h2 className="edit-title">{`${getItemIndex(languagesItems, currentItem.id) > -1 ? "Edit" : "Add"} Language`}</h2>
                 <TextInput
                     text={currentItem.name}
                     labelText="Language"
@@ -45,11 +46,11 @@ export default function Languages({languagetems, enabled = true, toggleHide, upd
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
-                        text={getItemIndex(languagetems, currentItem.id) > -1 ? "Save" : "Add"}
+                        text={getItemIndex(languagesItems, currentItem.id) > -1 ? "Save" : "Add"}
                         classes={["form-button", "blue-button"]}
                         onClick={() => {
                             setEditMode(false);
-                            updateItems(currentItem);
+                            setLanguagesItems(updateItems(currentItem, languagesItems));
                         }}
                     />
                 </div>
@@ -60,11 +61,11 @@ export default function Languages({languagetems, enabled = true, toggleHide, upd
     return (
         <div className="items-container">
         {
-            languagetems.length === 0 &&
+            languagesItems.length === 0 &&
             <h2 className="empty-list-text">{emptyText}</h2>
         }
         {
-            languagetems.map(item => {
+            languagesItems.map(item => {
             return <ListItemLevel
                         text={item.name}
                         meterValue={item.level}
@@ -72,10 +73,10 @@ export default function Languages({languagetems, enabled = true, toggleHide, upd
                         hidden={item.hidden}
                         id={item.id}
                         key={item.id}
-                        toggleHide={toggleHide}
+                        toggleHide={(id) => setLanguagesItems(toggleHide(id, languagesItems))}
                         toggleEdit={(id) => {
-                            setEditMode(true)
-                            setCurrentItem(languagetems.find(item => item.id === id))
+                            setEditMode(true);
+                            setCurrentItem(languagesItems[getItemIndex(languagesItems, id)]);
                         }}
                         deleteItem={(id) => {
                             setDialogState({
@@ -83,11 +84,11 @@ export default function Languages({languagetems, enabled = true, toggleHide, upd
                                 actionText: "Delete",
                                 prompt: "Are you sure you want to premenantly delete this item from the languages section??",
                                 onConfirm: () => {
-                                    deleteItem(id);
+                                    setLanguagesItems(deleteItem(id, languagesItems));
                                 }
                             });
                         }}
-                        moveItemUp={(id => moveItemUp(id))}
+                        moveItemUp={(id => setLanguagesItems(moveItemUp(id, languagesItems)))}
                     />
             }) 
         }
