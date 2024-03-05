@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import appIcons from "../appIconsBarrel";
+import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import { ScreenWidthContext } from "../App";
 

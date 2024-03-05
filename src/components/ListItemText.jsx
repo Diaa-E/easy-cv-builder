@@ -1,5 +1,5 @@
 import "../styles/ListItem.css";
-import appIcons from "../appIconsBarrel";
+import appIcons from "../data/appIconsBarrel";
 
 import ItemButton from "./ItemButton";
 import ItemControls from "./ItemControls";

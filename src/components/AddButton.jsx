@@ -1,5 +1,5 @@
 import "../styles/AddButton.css";
-import appIcons from "../appIconsBarrel";
+import appIcons from "../data/appIconsBarrel";
 
 export default function AddButton({onclick = () => {}})
 {

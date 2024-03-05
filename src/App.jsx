@@ -2,29 +2,29 @@ import { createContext, useEffect, useState } from 'react';
 import { v4 as generateId } from 'uuid';
 
 import logo from "./assets/images/logo.svg";
-import appIcons from './appIconsBarrel';
+import appIcons from './data/appIconsBarrel';
 
 import NavItem from './components/NavItem';
 import FormButton from './components/FormButton';
 
 import './styles/reset.css';
 import './styles/App.css';
-import PersonalInformation from './components/PersonalInformation';
-import Contact from './components/Contact';
-import sampleInfo from './sampleInfo';
-import Education from './components/Education';
-import Experience from './components/Experience';
-import Links from './components/Links';
-import Skills from './components/Skills';
-import Languages from './components/Languages';
-import Settings from './components/Settings';
-import Save from './components/Save';
-import About from './components/About';
-import Layout_01 from './components/layouts/Layout_01';
-import Layout_02 from './components/layouts/Layout_02';
+import PersonalInformation from './pages/PersonalInformation';
+import Contact from './pages/Contact';
+import sampleInfo from './utils/sampleInfo';
+import Education from './pages/Education';
+import Experience from './pages/Experience';
+import Links from './pages/Links';
+import Skills from './pages/Skills';
+import Languages from './pages/Languages';
+import Settings from './pages/Settings';
+import Save from './pages/Save';
+import About from './pages/About';
+import Layout_01 from './layouts/Layout_01';
+import Layout_02 from './layouts/Layout_02';
 
-import { getItemIndex } from './utility';
-import { testDraftValidity } from './draftValidation';
+import { getItemIndex } from './utils/utility';
+import { testDraftValidity } from './utils/draftValidation';
 import DarkModeButton from './components/DarkModeButton';
 import ConfirmDialog from './components/ConfirmDialog';
 

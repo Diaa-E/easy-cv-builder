@@ -1,5 +1,5 @@
 import "../styles/TextInput.css";
-import appIcons from "../appIconsBarrel";
+import appIcons from "../data/appIconsBarrel";
 import { useRef } from "react";
 
 export default function TextInput({labelText, text, placeholder, id, onChange = () => {}, clearField})
