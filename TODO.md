@@ -7,6 +7,9 @@
 - Add the ability to rearrange sections (education and experience order).
 - Add the ability to rearrange sections (education and experience order).
 - Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.
+- Fix typos in dialog message
+- Stress critical sections in dialog message.
+- center preview container in mobile mode.
 - ~~Disable scroll when confirm dialog is open or close dialog when the user scrolls.~~ ✅
 - ~~Fix main controls buttons stacking at the left.~~ ✅
 - ~~Fix item controls event listener being re-added with every render (Move them to app component)~~ ✅
