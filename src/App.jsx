@@ -410,7 +410,7 @@ function App() {
         <FormButton
           toolTip='Clear all data'
           text='Clear'
-          classes={["form-button", "red-button"]}
+          classes={["form-button", "red-button", "push-left"]}
           onClick={() => {
             setDialogState({
               open: true,

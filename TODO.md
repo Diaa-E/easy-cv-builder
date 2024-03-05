@@ -8,7 +8,7 @@
 - Add the ability to rearrange sections (education and experience order).
 - Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.
 - Disable scroll when confirm dialog is open or close dialog when the user scrolls.
-- Fix main controls buttons stacking at the left.
+- ~~Fix main controls buttons stacking at the left.~~ ✅
 - ~~Fix item controls event listener being re-added with every render (Move them to app component)~~ ✅
 - ~~Add a website icon to link icon options.~~ ✅
 - ~~Keep textbox in focus when clear field button is clicked.~~ ✅

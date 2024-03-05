@@ -40,3 +40,7 @@
 .red-button:hover{
     filter:  saturate(90%) brightness(150%);
 }
+
+.push-left{
+    margin: 0 auto 0 0;
+}

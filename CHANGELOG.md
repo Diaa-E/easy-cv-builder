@@ -6,6 +6,7 @@ This change log only highlights important changes (i.e features and refactors).
 
 ### **1.3.3 (unreleased)**
 
+- 🛠️ Fix main controls buttons stack on the left side.
 - 🛠️ Fix performance hit when resizing screen due to duplicating event listeners.
 - #️⃣ Restructure src folder hierarchy for easier navigation.
 
