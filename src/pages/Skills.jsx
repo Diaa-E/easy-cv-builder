@@ -8,15 +8,10 @@ import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
 import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
 
-export default function Skills({skillsItems, setSkillsItems, setDialogState, enabled = true, emptyText})
+export default function Skills({skillsItems, setSkillsItems, setDialogState, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
-
-    if (!enabled)
-    {
-        return <></>
-    }
 
     if (editMode)
     {

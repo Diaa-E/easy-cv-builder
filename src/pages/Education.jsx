@@ -7,15 +7,10 @@ import { getItemIndex } from "../utils/utility";
 import { toggleHide, deleteItem, moveItemUp, updateItems } from "../utils/arrayFunctions";
 import { v4 as generateId } from 'uuid';
 
-export default function Education({educationItems, setEducationItems, setDialogState, enabled = true, emptyText})
+export default function Education({educationItems, setEducationItems, setDialogState, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
-
-    if (!enabled)
-    {
-        return <></>
-    }
 
     if (editMode)
     {

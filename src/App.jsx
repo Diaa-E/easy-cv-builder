@@ -12,6 +12,7 @@ import './styles/App.css';
 import PersonalInformation from './pages/PersonalInformation';
 import Contact from './pages/Contact';
 import sampleInfo from './data/sampleInfo';
+import { tabs } from './data/tabs';
 import Education from './pages/Education';
 import Experience from './pages/Experience';
 import Links from './pages/Links';
@@ -31,62 +32,8 @@ export const ScreenWidthContext = createContext(null);
 
 function App() {
 
-  //Using state to preserve id's, a regular variable regenerates all id's with every render
-  const [tabs, setTabs] = useState([
-    {
-      title: "Personal Information",
-      icon: appIcons.personalInfo,
-      id: generateId(),
-    },
-    {
-      title: "Education",
-      icon: appIcons.education,
-      id: generateId(),
-    },
-    {
-      title: "Links",
-      icon: appIcons.link,
-      id: generateId(),
-    },
-    {
-      title: "Contact",
-      icon: appIcons.contact,
-      id: generateId(),
-    },
-    {
-      title: "Experience",
-      icon: appIcons.experience,
-      id: generateId(),
-    },
-    {
-      title: "Skills",
-      icon: appIcons.skills,
-      id: generateId(),
-    },
-    {
-      title: "Languages",
-      icon: appIcons.languages,
-      id: generateId(),
-    },
-    {
-      title: "Settings",
-      icon: appIcons.settings,
-      id: generateId(),
-    },
-    {
-      title: "Save / Load",
-      icon: appIcons.save,
-      id: generateId(),
-    },
-    {
-      title: "About",
-      icon: appIcons.about,
-      id: generateId(),
-    },
-  ]);
-
   const [darkMode, setDarkMode] = useState(Boolean(JSON.parse(localStorage.getItem("darkMode"))));
-  const [currentTab, setCurrentTab] = useState(tabs[0].id);
+  const [currentTab, setCurrentTab] = useState(tabs.personalInfo);
   const [personalInfo, setPersonalInfo] = useState(getSessionData("personalInfo", sampleInfo.personalInfo));
   const [contact, setContact] = useState(getSessionData("contact", sampleInfo.contact));
   const [education, setEducation] = useState(getSessionData("education", sampleInfo.education));
@@ -259,87 +206,155 @@ function App() {
           setDarkMode(darkMode => !darkMode);
           localStorage.setItem("darkMode", JSON.stringify(!darkMode));
         }}/>
-        {
-          tabs.map(tab => (
-            <NavItem 
-              key={tab.id}
-              id={tab.id}
-              title={tab.title}
-              iconUrl={tab.icon}
-              selected={tab.id === currentTab}
-              onClick={selectTab}
-            />
-          ))
-        }
+        <NavItem
+          iconUrl={appIcons.personalInfo}
+          title={currentTab}
+          selected={currentTab === tabs.personalInfo}
+          onClick={() => setCurrentTab(tabs.personalInfo)}
+        />
+        <NavItem
+          iconUrl={appIcons.contact}
+          title={currentTab}
+          selected={currentTab === tabs.contact}
+          onClick={() => setCurrentTab(tabs.contact)}
+        />
+        <NavItem
+          iconUrl={appIcons.link}
+          title={currentTab}
+          selected={currentTab === tabs.links}
+          onClick={() => setCurrentTab(tabs.links)}
+        />
+        <NavItem
+          iconUrl={appIcons.education}
+          title={currentTab}
+          selected={currentTab === tabs.education}
+          onClick={() => setCurrentTab(tabs.education)}
+        />
+        <NavItem
+          iconUrl={appIcons.experience}
+          title={currentTab}
+          selected={currentTab === tabs.experience}
+          onClick={() => setCurrentTab(tabs.experience)}
+        />
+        <NavItem
+          iconUrl={appIcons.skills}
+          title={currentTab}
+          selected={currentTab === tabs.skills}
+          onClick={() => setCurrentTab(tabs.skills)}
+        />
+        <NavItem
+          iconUrl={appIcons.languages}
+          title={currentTab}
+          selected={currentTab === tabs.languages}
+          onClick={() => setCurrentTab(tabs.languages)}
+        />
+        <NavItem
+          iconUrl={appIcons.settings}
+          title={currentTab}
+          selected={currentTab === tabs.settings}
+          onClick={() => setCurrentTab(tabs.settings)}
+        />
+        <NavItem
+          iconUrl={appIcons.save}
+          title={currentTab}
+          selected={currentTab === tabs.save}
+          onClick={() => setCurrentTab(tabs.save)}
+        />
+        <NavItem
+          iconUrl={appIcons.about}
+          title={currentTab}
+          selected={currentTab === tabs.about}
+          onClick={() => setCurrentTab(tabs.about)}
+        />
       </nav>
       <div className="editor">
-        <h1 className='editor-title'>{tabs.find(tab => tab.id === currentTab).title}</h1>
-        <PersonalInformation
-          enabled={tabs[0].id === currentTab}
-          personalInfo={personalInfo}
-          setPersonalInfo={setPersonalInfo}
-        />
-        <Contact
-          enabled={tabs[3].id === currentTab}
-          contact={contact}
-          setContact={setContact}
-        />
+        <h1 className='editor-title'>{currentTab}</h1>
+        {
+          currentTab === tabs.personalInfo &&
+          <PersonalInformation
+            personalInfo={personalInfo}
+            setPersonalInfo={setPersonalInfo}
+          />
+        }
+        {
+          currentTab === tabs.contact &&
+          <Contact
+            contact={contact}
+            setContact={setContact}
+          />
+        }
         <ScreenWidthContext.Provider value={{screenWidth: screenWidth}}>
-          <Education
-            enabled={tabs[1].id === currentTab}
-            educationItems={education}
-            setEducationItems = {setEducation}
-            setDialogState={setDialogState}
-            emptyText={emptyListText}
-          />
-          <Experience
-            enabled={tabs[4].id === currentTab}
-            experienceItems={experience}
-            setExperienceItems={setExperience}
-            setDialogState={setDialogState}
-            emptyText={emptyListText}
-          />
-          <Links
-            enabled={tabs[2].id === currentTab}
-            linksItems={links}
-            setLinksItems={setLinks}
-            setDialogState={setDialogState}
-            emptyText={emptyListText}
-          />
-          <Skills
-            enabled={tabs[5].id === currentTab}
-            skillsItems={skills}
-            setSkillsItems={setSkills}
-            setDialogState={setDialogState}
-            emptyText={emptyListText}
-          />
-          <Languages
-            enabled={tabs[6].id === currentTab}
-            languagesItems={languages}
-            setLanguagesItems={setLanguages}
-            setDialogState={setDialogState}
-            emptyText={emptyListText}
-          />
+          {
+            currentTab === tabs.education &&
+            <Education
+              educationItems={education}
+              setEducationItems = {setEducation}
+              setDialogState={setDialogState}
+              emptyText={emptyListText}
+            />
+          }
+          {
+            currentTab === tabs.experience &&
+            <Experience
+              experienceItems={experience}
+              setExperienceItems={setExperience}
+              setDialogState={setDialogState}
+              emptyText={emptyListText}
+            />
+          }
+          {
+            currentTab === tabs.links &&
+            <Links
+              linksItems={links}
+              setLinksItems={setLinks}
+              setDialogState={setDialogState}
+              emptyText={emptyListText}
+            />
+          }
+          {
+            currentTab === tabs.skills &&
+            <Skills
+              skillsItems={skills}
+              setSkillsItems={setSkills}
+              setDialogState={setDialogState}
+              emptyText={emptyListText}
+            />
+          }
+          {
+            currentTab === tabs.languages &&
+            <Languages
+              languagesItems={languages}
+              setLanguagesItems={setLanguages}
+              setDialogState={setDialogState}
+              emptyText={emptyListText}
+            />
+          }
         </ScreenWidthContext.Provider>
-        <Settings
-          enabled={tabs[7].id === currentTab}
-          color={accentColor}
-          updateColor={(e) => setAccentColor(e.target.value)}
-          font={font}
-          updateFont={(e) => setFont(e.target.value)}
-          layout={layout}
-          updateLayout={(e) => setLayout(e.target.value)}
-        />
-        <Save
-          enabled={tabs[8].id === currentTab}
-          download={downloadDraft}
-          upload={uploadDraft}
-          status={draftStatus}
-        />
-        <About
-          enabled={tabs[9].id === currentTab}
-          version={currentVersion}
-        />
+        {
+          currentTab === tabs.settings &&
+          <Settings
+            color={accentColor}
+            updateColor={(e) => setAccentColor(e.target.value)}
+            font={font}
+            updateFont={(e) => setFont(e.target.value)}
+            layout={layout}
+            updateLayout={(e) => setLayout(e.target.value)}
+          />
+        }
+        {
+          currentTab === tabs.save &&
+          <Save
+            download={downloadDraft}
+            upload={uploadDraft}
+            status={draftStatus}
+          />
+        }
+        {
+          currentTab === tabs.about &&
+          <About
+            version={currentVersion}
+          />
+        }
       </div>
 
       <div id='mainControls' className='main-controls'>

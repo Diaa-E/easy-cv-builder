@@ -9,15 +9,10 @@ import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
 import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
 
-export default function Links({linksItems, setLinksItems, setDialogState, enabled = true,  emptyText})
+export default function Links({linksItems, setLinksItems, setDialogState,  emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
-
-    if (!enabled)
-    {
-        return <></>
-    }
 
     if (editMode)
     {

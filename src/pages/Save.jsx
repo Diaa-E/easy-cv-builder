@@ -1,29 +1,22 @@
 import "../styles/Save.css";
 import "../styles/FormButton.css"
 
-export default function Save({upload, download, status, enabled})
+export default function Save({upload, download, status})
 {
-    if (enabled)
-    {
-        return (
-            <div className="items-container">
-                <button title="Download a copy of your data" onClick={download} className="form-button blue-button">
-                    Download Draft
-                </button>
-                <label title="Upload a saved copy of your data" role="button" htmlFor="uploadDraft" className="form-button white-button">
-                    <input onChange={upload} className="file-input" id="uploadDraft" type="file" accept=".json"/>
-                    Upload Draft
-                </label>
-                <StatusPanel
-                    status={status}
-                />
-            </div>
-        )
-    }
-    else
-    {
-        return <></>
-    }
+    return (
+        <div className="items-container">
+            <button title="Download a copy of your data" onClick={download} className="form-button blue-button">
+                Download Draft
+            </button>
+            <label title="Upload a saved copy of your data" role="button" htmlFor="uploadDraft" className="form-button white-button">
+                <input onChange={upload} className="file-input" id="uploadDraft" type="file" accept=".json"/>
+                Upload Draft
+            </label>
+            <StatusPanel
+                status={status}
+            />
+        </div>
+    )
 }
 
 function StatusPanel({status})
