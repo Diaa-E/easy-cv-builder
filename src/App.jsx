@@ -23,7 +23,6 @@ import About from './pages/About';
 import Layout_01 from './layouts/Layout_01';
 import Layout_02 from './layouts/Layout_02';
 
-import { getItemIndex } from './utils/utility';
 import { testDraftValidity } from './utils/draftValidation';
 import DarkModeButton from './components/DarkModeButton';
 import ConfirmDialog from './components/ConfirmDialog';
