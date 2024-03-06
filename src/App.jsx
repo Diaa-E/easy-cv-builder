@@ -11,7 +11,7 @@ import './styles/reset.css';
 import './styles/App.css';
 import PersonalInformation from './pages/PersonalInformation';
 import Contact from './pages/Contact';
-import sampleInfo from './utils/sampleInfo';
+import sampleInfo from './data/sampleInfo';
 import Education from './pages/Education';
 import Experience from './pages/Experience';
 import Links from './pages/Links';
