@@ -6,6 +6,7 @@ This change log only highlights important changes (i.e features and refactors).
 
 ### **1.3.4 (unreleased)**
 
+- 🛠️ Fix double question mark in confirm message prompt.
 - #️⃣ Move sample info file to correct folder.
 
 ### **1.3.3 (Mar 6, 2024)**

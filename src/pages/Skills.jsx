@@ -82,7 +82,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, ena
                                 setDialogState({
                                     open: true,
                                     actionText: "Delete",
-                                    prompt: "Are you sure you want to premenantly delete this item from the skills section??",
+                                    prompt: "Are you sure you want to premenantly delete this item from the skills section?",
                                     onConfirm: () => {
                                         setSkillsItems(deleteItem(id, skillsItems));
                                     }

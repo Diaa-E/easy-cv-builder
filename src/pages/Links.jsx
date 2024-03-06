@@ -83,7 +83,7 @@ export default function Links({linksItems, setLinksItems, setDialogState, enable
                                 setDialogState({
                                     open: true,
                                     actionText: "Delete",
-                                    prompt: "Are you sure you want to premenantly delete this item from the links section??",
+                                    prompt: "Are you sure you want to premenantly delete this item from the links section?",
                                     onConfirm: () => {
                                         setLinksItems(deleteItem(id, linksItems))
                                     }
