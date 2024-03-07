@@ -2,7 +2,13 @@
 
 ## Change Log
 
-This change log only highlights important changes (i.e features and refactors).
+This change log only highlights important changes.
+
+- ➕ : New feature
+- 🛠️ : Fix
+- ⚙️ : Code change with no impact on the user experience.
+
+### **1.4.0 (unreleased)**
 
 ### **1.3.4 (Mar 7, 2024)**
 
@@ -10,23 +16,23 @@ This change log only highlights important changes (i.e features and refactors).
 - 🛠️ Contact and personal information that are left empty are now removed from the preview.
 - 🛠️ Move contact info tab higher up the navigation bar.
 - 🛠️ Fix double question mark in confirm message prompt.
-- #️⃣ Refactor navigation tabs and pages to completely unmount inactive pages instead of returning an empty fragment while maintaining child's states.
-- #️⃣ Move sample info file to correct folder.
+- ⚙️ Refactor navigation tabs and pages to completely unmount inactive pages instead of returning an empty fragment while maintaining child's states.
+- ⚙️ Move sample info file to correct folder.
 
 ### **1.3.3 (Mar 6, 2024)**
 
 - 🛠️ Fix warning dialog backdrop resizing visibly on narrow screens when scrolling due to dynamic viewport height.
 - 🛠️ Fix main controls buttons stack on the left side.
 - 🛠️ Fix performance hit when resizing screen due to duplicating event listeners.
-- #️⃣ Reduce amount of functions passed to each section.
-- #️⃣ Restructure src folder hierarchy for easier navigation.
+- ⚙️ Reduce amount of functions passed to each section.
+- ⚙️ Restructure src folder hierarchy for easier navigation.
 
 ### **1.3.2 (Mar 3, 2024)**
 
-- ➕ Fix mobile display styles appearing on some wide screens.
 - ➕ Show a confirm message before deleting/reseting data.
 - ➕ Add a website category to link types.
 - ➕ Auto-capitalize the start of each word in the full name field as the user types.
+- 🛠️ Fix mobile display styles appearing on some wide screens.
 - 🛠️ Fix textbox losing focus after clicking clear field button. This is most visible on mobile devices as it closes the keypad when the textbox loses focus.
 
 ### **1.3.1 (Mar 1, 2024)**
@@ -37,7 +43,7 @@ This change log only highlights important changes (i.e features and refactors).
 - ➕ Improve space management of skill items and language items in the simple layout (layout_01).
 - 🛠️ Fix CV preview shrinking to the center of the page instead of sticking to the top on narrower screens.
 - 🛠️ Fix page overflow in print/export mode.
-- #️⃣ Add reusable function to detect empty CV sections.
+- ⚙️ Add reusable function to detect empty CV sections.
 
 ### **1.3.0 (Feb 26, 2024)**
 
@@ -48,10 +54,10 @@ This change log only highlights important changes (i.e features and refactors).
 - ➕ Reloading page no longer resets draft's data.
 - 🛠️ Fix List item text not wrapping and causing buttons to overflow.
 - 🛠️ Fix edit/add item forms accessibility issues.
-- #️⃣ Simplified personal info and contact components state setters.
-- #️⃣ Add accent color, font and layout to sample info object.
-- #️⃣ Merge list items return statements to avoid duplicating common code.
-- #️⃣ Remove empty item templates.
+- ⚙️ Simplified personal info and contact components state setters.
+- ⚙️ Add accent color, font and layout to sample info object.
+- ⚙️ Merge list items return statements to avoid duplicating common code.
+- ⚙️ Remove empty item templates.
 
 ### **1.2.3 (Feb 25, 2024)**
 
@@ -77,8 +83,8 @@ This change log only highlights important changes (i.e features and refactors).
 - ➕ Add dark mode option.
 - ➕ Add more verifications for uploaded drafts.
 - 🛠️ Fix typo in sample info.
-- #️⃣ Move draft verification functions from utility to their own module.
-- #️⃣ Write unit tests for low level components.
+- ⚙️ Move draft verification functions from utility to their own module.
+- ⚙️ Write unit tests for low level components.
 
 ### **1.1.2 (Feb 6, 2024)**
 
@@ -94,14 +100,14 @@ This change log only highlights important changes (i.e features and refactors).
 - ➕ List items can now be moved up the list.
 - 🛠️ Fix broken link icons.
 - 🛠️ Fix a typo in sample data.
-- #️⃣ Replace direct icon imports with import barrels.
-- #️⃣ Remove unused code.
+- ⚙️ Replace direct icon imports with import barrels.
+- ⚙️ Remove unused code.
 
 ### **1.0.5 (Dec 15, 2023)**
 
 - ➕ Display a text message when a list has no items.
 - 🛠️ Reduce app logo size.
-- #️⃣ Use an early return for disabled lists.
+- ⚙️ Use an early return for disabled lists.
 
 ### **1.0.4 (Dec 13, 2023)**
 
@@ -125,4 +131,4 @@ This change log only highlights important changes (i.e features and refactors).
 
 ### **1.0.0 (Dec 11, 2023)**
 
-- 1️⃣ First build
+- 🚀 First build
