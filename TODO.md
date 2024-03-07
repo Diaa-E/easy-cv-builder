@@ -8,7 +8,7 @@
 - Add the ability to rearrange sections (education and experience order).
 - Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.
 - center preview container in mobile mode.
-- Remove empty contact information from the preview.
+- ~~Remove empty contact information from the preview.~~ ✅
 - ~~Stress critical sections in dialog message.~~ ✅
 - ~~Fix typos in dialog message.~~ ✅
 - ~~Disable scroll when confirm dialog is open or close dialog when the user scrolls.~~ ✅

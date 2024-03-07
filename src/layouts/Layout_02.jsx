@@ -21,10 +21,22 @@ export default function Layout_02({data})
                     <h2 style={{color: textColor}} className="profession">{data.personalInfo.profession}</h2>
                     <div style={{borderBottom: `solid calc(var(--width) * .002) ${textColor}`}} className="seperator"></div>
                     <div className="header-items-wrapper">
-                        <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.address} text={data.personalInfo.address}/>
-                        <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.contact} text={data.contact.phoneNumber}/>
-                        <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.email} text={data.contact.email}/>
-                        <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.zip} text={data.personalInfo.zip}/>
+                        {
+                            data.personalInfo.address !== "" &&
+                            <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.address} text={data.personalInfo.address}/>
+                        }
+                        {
+                            data.contact.phoneNumber !== "" &&
+                            <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.contact} text={data.contact.phoneNumber}/>
+                        }
+                        {
+                            data.contact.email !== "" &&
+                            <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.email} text={data.contact.email}/>
+                        }
+                        {
+                            data.personalInfo.zip !== "" &&
+                            <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.zip} text={data.personalInfo.zip}/>
+                        }
                         {
                             data.links.map(item => {
 

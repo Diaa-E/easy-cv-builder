@@ -20,10 +20,22 @@ export default function Layout_01({data})
                 <h1 style={{color: textColor}} className="name">{data.personalInfo.fullName}</h1>
                 <h2 style={{color: textColor}} className="profession">{data.personalInfo.profession}</h2>
                 <div className="header-items-wrapper">
-                    <HeaderItem brightAccent={brightAccent} text={data.personalInfo.address} icon={appIcons.address}/>
-                    <HeaderItem brightAccent={brightAccent} text={data.contact.phoneNumber} icon={appIcons.contact}/>
-                    <HeaderItem brightAccent={brightAccent} text={data.contact.email} icon={appIcons.email}/>
-                    <HeaderItem brightAccent={brightAccent} text={data.personalInfo.zip} icon={appIcons.zip}/>
+                    {
+                        data.personalInfo.address !== "" &&
+                        <HeaderItem brightAccent={brightAccent} text={data.personalInfo.address} icon={appIcons.address}/>
+                    }
+                    {
+                        data.contact.phoneNumber !== "" &&
+                        <HeaderItem brightAccent={brightAccent} text={data.contact.phoneNumber} icon={appIcons.contact}/>
+                    }
+                    {
+                        data.contact.email !== "" &&
+                        <HeaderItem brightAccent={brightAccent} text={data.contact.email} icon={appIcons.email}/>
+                    }
+                    {
+                        data.personalInfo.zip !== "" &&
+                        <HeaderItem brightAccent={brightAccent} text={data.personalInfo.zip} icon={appIcons.zip}/>
+                    }
                     {
                         data.links.map(link => {
 
