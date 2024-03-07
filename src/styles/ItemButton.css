@@ -50,3 +50,9 @@
     background-color: var(--none);
     z-index: 9999;
 }
+
+@media (min-width: 700px) {
+    .item-button{
+        width: 2dvw;
+    }
+}

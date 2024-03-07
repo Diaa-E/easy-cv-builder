@@ -14,6 +14,7 @@ This change log only highlights important changes.
 - ➕ External links now open in a new tab.
 - 🛠️ Tab buttons no longer have distorted/broken borders when in focus.
 - 🛠️ CV preview in mobile view is now centered instead of being shifted to the left.
+- 🛠️ Fix list items controls and text overflowing when zooming into page.
 
 ### **1.3.4 (Mar 7, 2024)**
 

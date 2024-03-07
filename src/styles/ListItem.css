@@ -27,7 +27,7 @@
     font-size: 16px;
     min-width: 0; /*fix flex child not wrapping*/
     overflow-wrap: break-word;
-    max-width: 45vw;
+    max-width: 60vw;
 }
 
 .list-item p{
@@ -55,7 +55,17 @@
 }
 
 @media (min-width: 700px) {
+
+    .list-item{
+        gap: .5dvw;
+        padding: 1dvw;
+    }
+
     .list-item p, .list-item-hidden p{
-        max-width: 8vw;
+        max-width: 13dvw;
+    }
+
+    .item-icon{
+        width: 2dvw;
     }
 }
