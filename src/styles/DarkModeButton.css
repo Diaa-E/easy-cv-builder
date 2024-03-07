@@ -9,6 +9,13 @@
     overflow: clip;
     width: 70px;
     height: 70px;
+    border-radius: 10px;
+}
+
+.dark-mode-button:focus{
+    outline: auto;
+    outline-style: solid;
+    outline-color: var(--accent);
 }
 
 .dark-mode-button, .dark-mode-button>img{
@@ -37,4 +44,13 @@
 
 .inactive{
     transform: translateY(100px);
+}
+
+@media (min-width: 700px) {
+    .dark-mode-button{
+        width: 3dvw;
+        height: 3dvw;
+        padding: .5dvw;
+        border-radius: 50%;
+    }
 }

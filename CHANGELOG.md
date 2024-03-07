@@ -10,6 +10,9 @@ This change log only highlights important changes.
 
 ### **1.4.0 (unreleased)**
 
+- ➕ Tab buttons are now smaller so the user does not need to scroll to reach some tabs.
+- 🛠️ Tab buttons no longer have distorted/broken borders when in focus.
+
 ### **1.3.4 (Mar 7, 2024)**
 
 - ➕ Critical information in the confirm action dialog is now highlighted in red.

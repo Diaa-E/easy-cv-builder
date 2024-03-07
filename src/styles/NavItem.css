@@ -12,6 +12,7 @@
 
 .nav-item:focus{
     outline: auto;
+    outline-style: solid;
     outline-color: var(--accent);
 }
 
@@ -42,7 +43,9 @@
 
 @media (min-width: 700px){
     .nav-item{
-        width: 70px;
-        height: 70px;
+        width: 3dvw;
+        height: 3dvw;
+        padding: .5dvw;
+        border-radius: 50%;
     }
 }

@@ -55,15 +55,15 @@
 
 @media (min-width: 700px){
   #root{
-    grid-template-columns: min-content 1fr 60dvw;
+    grid-template-columns: 3dvw 32dvw 60dvw;
     grid-template-rows: 60px repeat(3, min-content);
     grid-template-areas:
     "logo controls preview"
     "nav edit preview"
     "nav edit preview"
     "nav edit preview";
-    padding: 20px;
-    gap: 20px;
+    padding: 1dvw;
+    gap: 1dvw;
   }
 }
 

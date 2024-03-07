@@ -76,7 +76,7 @@
   background-color: var(--main);
   border-radius: 10px;
   grid-area: nav;
-  gap: 1px;
+  gap: 2px;
   overflow: scroll;
 }
 
@@ -173,12 +173,16 @@ body{
     display: flex;
     flex-direction: column;
     place-self: flex-start;
-    width: 70px;
+    width: 3dvw;
     overflow: auto;
+    gap: .2dvw;
+    border-radius: 1.5dvw;
+    overflow: visible;
   }
 
   .logo{
-    width: 70px;
+    width: 3dvw;
+    place-self: center;
   }
 
   .preview{
@@ -186,7 +190,7 @@ body{
   }
 
   .main-controls{
-    top: 20px;
+    top: 1dvw;
   }
 }
 
