@@ -15,21 +15,21 @@ describe("Confirm dialog component", () => {
 
     it("Renders in the DOM", () => {
 
-        render(<ConfirmDialog/>);
+        render(<ConfirmDialog prompt={"text"}/>);
 
         expect(screen.getByRole("dialog")).toBeInTheDocument();
     });
 
     it("Renders 2 buttons", () => {
 
-        render(<ConfirmDialog/>);
+        render(<ConfirmDialog prompt={"text"} />);
 
         expect(screen.getAllByRole("button").length).toBe(2);
     });
 
     it("Renders a prompt paragraph at the top", () => {
 
-        render(<ConfirmDialog/>);
+        render(<ConfirmDialog prompt={"text"} />);
 
         expect(screen.getByRole("dialog").childNodes[0].nodeName).toBe("P");
     });
@@ -43,14 +43,14 @@ describe("Confirm dialog component", () => {
 
     it("Uses prop text for confirm button text", () => {
 
-        render(<ConfirmDialog actionText={"confirm"}/>);
+        render(<ConfirmDialog prompt={"text"} actionText={"confirm"}/>);
 
         expect(screen.getByRole("button", {name: "confirm"})).toBeInTheDocument();
     });
 
     it("Renders a cancel button independant of props", () => {
 
-        render(<ConfirmDialog/>);
+        render(<ConfirmDialog prompt={"text"} />);
 
         expect(screen.getByRole("button", {name: "Cancel"})).toBeInTheDocument();
     });
@@ -59,7 +59,7 @@ describe("Confirm dialog component", () => {
 
         const onCancel = vi.fn();
         const onConfirm = vi.fn();
-        const {user} = setup(<ConfirmDialog onCancel={onCancel} onConfirm={onConfirm}/>);
+        const {user} = setup(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={onConfirm}/>);
         const button = screen.getByRole("button", {name: "Cancel"});
         await user.click(button);
 
@@ -71,7 +71,7 @@ describe("Confirm dialog component", () => {
 
         const onConfirm = vi.fn();
         const onCancel = vi.fn();
-        const {user} = setup(<ConfirmDialog onCancel={onCancel} onConfirm={onConfirm}/>);
+        const {user} = setup(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={onConfirm}/>);
         const backdrop = screen.getByTestId("backdrop");
         await user.click(backdrop);
         
@@ -83,7 +83,7 @@ describe("Confirm dialog component", () => {
 
         const onConfirm = vi.fn();
         const onCancel = vi.fn();
-        const {user} = setup(<ConfirmDialog onCancel={onCancel} onConfirm={onConfirm}/>);
+        const {user} = setup(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={onConfirm}/>);
 
         expect(onCancel).not.toHaveBeenCalled();
         expect(onConfirm).not.toHaveBeenCalled();
@@ -93,7 +93,7 @@ describe("Confirm dialog component", () => {
 
         const onConfirm = vi.fn();
         const onCancel = vi.fn();
-        const {user} = setup(<ConfirmDialog actionText={"confirm"} onCancel={onCancel} onConfirm={onConfirm}/>);
+        const {user} = setup(<ConfirmDialog prompt={"text"} actionText={"confirm"} onCancel={onCancel} onConfirm={onConfirm}/>);
         const button = screen.getByRole("button", {name: "confirm"});
         await user.click(button);
 
@@ -105,7 +105,7 @@ describe("Confirm dialog component", () => {
 
         const onConfirm = vi.fn();
         const onCancel = vi.fn();
-        const {user} = setup(<ConfirmDialog actionText={"confirm"} onCancel={onCancel} onConfirm={onConfirm}/>);
+        const {user} = setup(<ConfirmDialog prompt={"text"} actionText={"confirm"} onCancel={onCancel} onConfirm={onConfirm}/>);
 
         expect(onConfirm).not.toHaveBeenCalled();
         expect(onCancel).not.toHaveBeenCalled();
