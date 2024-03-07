@@ -142,13 +142,13 @@
   --main-dark: #ededed;
   --text: #000000;
   --text-light: #b0b0b0;
-  --width: 90dvw;
+  --width: 92dvw;
   grid-area: preview;
   width: var(--width);
   height: calc(1.41 * var(--width));
   background-color: var(--main);
   box-shadow: var(--shadow);
-  place-self: flex-start;
+  place-self: center;
 }
 
 .empty-list-text{
@@ -188,6 +188,7 @@ body{
 
   .preview{
     --width: 60vw;
+    place-self: flex-start;
   }
 
   .main-controls{
