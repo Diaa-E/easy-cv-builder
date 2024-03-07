@@ -7,6 +7,7 @@ This change log only highlights important changes (i.e features and refactors).
 ### **1.3.4 (unreleased)**
 
 - ➕ Critical information in the confirm action dialog is now highlighted in red.
+- 🛠️ Move contact info tab higher up the navigation bar.
 - 🛠️ Fix double question mark in confirm message prompt.
 - #️⃣ Refactor navigation tabs and pages to completely unmount inactive pages instead of returning an empty fragment while maintaining child's states.
 - #️⃣ Move sample info file to correct folder.
