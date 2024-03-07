@@ -4,7 +4,7 @@
 
 This change log only highlights important changes (i.e features and refactors).
 
-### **1.3.4 (unreleased)**
+### **1.3.4 (Mar 7, 2024)**
 
 - ➕ Critical information in the confirm action dialog is now highlighted in red.
 - 🛠️ Contact and personal information that are left empty are now removed from the preview.
