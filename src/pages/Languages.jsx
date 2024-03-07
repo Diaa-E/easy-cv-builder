@@ -77,7 +77,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
                             setDialogState({
                                 open: true,
                                 actionText: "Delete",
-                                prompt: "Are you sure you want to premenantly delete this item from the languages section?",
+                                prompt: "Are you sure you want to *premenantly delete* this item from the languages section?",
                                 onConfirm: () => {
                                     setLanguagesItems(deleteItem(id, languagesItems));
                                 }

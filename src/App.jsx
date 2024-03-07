@@ -365,7 +365,7 @@ function App() {
           onClick={() => {
             setDialogState({
               open: true,
-              prompt: "Are you sure you want to clear ALL DATA in this draft? This action is irreversible.",
+              prompt: "Are you sure you want to *clear all data* in this draft? *This action is irreversible.*",
               actionText: "Clear all",
               onConfirm: () => {
                 clearAll();
@@ -381,7 +381,7 @@ function App() {
             setDialogState({
               open: true,
               actionText: "Reset all",
-              prompt: "Are you sure you want to reset ALL DATA to default values? This action is irreversible.",
+              prompt: "Are you sure you want to *reset all data* to default values? *This action is irreversible.*",
               onConfirm: () => {
                 resetAll();
               }

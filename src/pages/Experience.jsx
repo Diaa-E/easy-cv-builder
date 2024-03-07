@@ -107,7 +107,7 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                                 setDialogState({
                                     open: true,
                                     actionText: "Delete",
-                                    prompt: "Are you sure you want to premenantly delete this item from the experience section?",
+                                    prompt: "Are you sure you want to *premenantly delete* this item from the experience section?",
                                     onConfirm: () => {
                                         setExperienceItems(deleteItem(id, experienceItems));
                                     }

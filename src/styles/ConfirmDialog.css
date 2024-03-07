@@ -33,6 +33,11 @@
     font-size: 16px;
 }
 
+.red-highlight{
+    color: var(--danger);
+    font-weight: bold;
+}
+
 @media (min-width: 700px){
     .dialog-box{
         padding: 50px;

@@ -99,7 +99,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
                                 setDialogState({
                                     open: true,
                                     actionText: "Delete",
-                                    prompt: "Are you sure you want to premenantly delete this item from the education section?",
+                                    prompt: "Are you sure you want to *premenantly delete* this item from the education section?",
                                     onConfirm: () => {
                                         setEducationItems(deleteItem(id, educationItems));
                                     }
