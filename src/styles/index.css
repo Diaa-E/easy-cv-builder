@@ -181,6 +181,7 @@ body{
   }
 
   .logo{
+    height: 3dvw;
     width: 3dvw;
     place-self: center;
   }
@@ -190,6 +191,7 @@ body{
   }
 
   .main-controls{
+    max-width: 32dvw;
     top: 1dvw;
   }
 }
