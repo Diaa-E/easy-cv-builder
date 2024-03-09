@@ -8,6 +8,10 @@ import linkIcons from "../data/linkIconsBarrel";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
 import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
+import appIcons from "../data/appIconsBarrel";
+import ToggleAllButton from "../components/ToggleAllButton";
+import { isEmptySection } from "../utils/emptySectionDetector";
+import { toggleHideSection } from "../utils/toggleHideSection";
 
 export default function Links({linksItems, setLinksItems, setDialogState,  emptyText})
 {
@@ -60,6 +64,30 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
         {
             linksItems.length === 0 &&
             <h2 className="empty-list-text">{emptyText}</h2>
+        }
+        {
+            linksItems.length !== 0 &&
+            <div className="list-controls">
+                <ToggleAllButton
+                    icon={appIcons.delete}
+                    toolTip={"Delete all links items"}
+                    colorClasses={["toggle-all-button-red"]}
+                    onClick={() => setDialogState({
+                        open: true,
+                        actionText: "Delete All",
+                        prompt: "Are you sure you want to *premenantly delete all items* the links section?",
+                        onConfirm: () => {
+                            setLinksItems([]);
+                        }
+                    })}
+                />
+                <ToggleAllButton
+                    icon={isEmptySection(linksItems) ? appIcons.hidden : appIcons.visible}
+                    toolTip={"Hide all links items"}
+                    colorClasses={["toggle-all-button-white"]}
+                    onClick={() => setLinksItems(toggleHideSection(linksItems, !isEmptySection(linksItems)))}
+                />
+            </div>
         }
         {
             linksItems.map(item => {
