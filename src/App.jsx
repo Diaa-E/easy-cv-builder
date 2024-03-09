@@ -208,61 +208,61 @@ function App() {
         }}/>
         <NavItem
           iconUrl={appIcons.personalInfo}
-          title={currentTab}
+          title={tabs.personalInfo}
           selected={currentTab === tabs.personalInfo}
           onClick={() => setCurrentTab(tabs.personalInfo)}
         />
         <NavItem
           iconUrl={appIcons.contact}
-          title={currentTab}
+          title={tabs.contact}
           selected={currentTab === tabs.contact}
           onClick={() => setCurrentTab(tabs.contact)}
         />
         <NavItem
           iconUrl={appIcons.link}
-          title={currentTab}
+          title={tabs.links}
           selected={currentTab === tabs.links}
           onClick={() => setCurrentTab(tabs.links)}
         />
         <NavItem
           iconUrl={appIcons.education}
-          title={currentTab}
+          title={tabs.education}
           selected={currentTab === tabs.education}
           onClick={() => setCurrentTab(tabs.education)}
         />
         <NavItem
           iconUrl={appIcons.experience}
-          title={currentTab}
+          title={tabs.experience}
           selected={currentTab === tabs.experience}
           onClick={() => setCurrentTab(tabs.experience)}
         />
         <NavItem
           iconUrl={appIcons.skills}
-          title={currentTab}
+          title={tabs.skills}
           selected={currentTab === tabs.skills}
           onClick={() => setCurrentTab(tabs.skills)}
         />
         <NavItem
           iconUrl={appIcons.languages}
-          title={currentTab}
+          title={tabs.languages}
           selected={currentTab === tabs.languages}
           onClick={() => setCurrentTab(tabs.languages)}
         />
         <NavItem
           iconUrl={appIcons.settings}
-          title={currentTab}
+          title={tabs.settings}
           selected={currentTab === tabs.settings}
           onClick={() => setCurrentTab(tabs.settings)}
         />
         <NavItem
           iconUrl={appIcons.save}
-          title={currentTab}
+          title={tabs.save}
           selected={currentTab === tabs.save}
           onClick={() => setCurrentTab(tabs.save)}
         />
         <NavItem
           iconUrl={appIcons.about}
-          title={currentTab}
+          title={tabs.about}
           selected={currentTab === tabs.about}
           onClick={() => setCurrentTab(tabs.about)}
         />
