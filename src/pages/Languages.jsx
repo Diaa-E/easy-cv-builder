@@ -7,6 +7,10 @@ import RangeInput from "../components/RangeInput";
 import { v4  as generateId} from "uuid";
 import { getItemIndex } from "../utils/utility";
 import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
+import appIcons from "../data/appIconsBarrel";
+import ToggleAllButton from "../components/ToggleAllButton";
+import { isEmptySection } from "../utils/emptySectionDetector";
+import { toggleHideSection } from "../utils/toggleHideSection";
 
 export default function Languages({languagesItems, setLanguagesItems, setDialogState, emptyText})
 {
@@ -58,6 +62,30 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
         {
             languagesItems.length === 0 &&
             <h2 className="empty-list-text">{emptyText}</h2>
+        }
+        {
+            languagesItems.length !== 0 &&
+            <div className="list-controls">
+                <ToggleAllButton
+                    icon={appIcons.delete}
+                    toolTip={"Delete all language items"}
+                    colorClasses={["toggle-all-button-red"]}
+                    onClick={() => setDialogState({
+                        open: true,
+                        actionText: "Delete All",
+                        prompt: "Are you sure you want to *premenantly delete all items* the languages section?",
+                        onConfirm: () => {
+                            setLanguagesItems([]);
+                        }
+                    })}
+                />
+                <ToggleAllButton
+                    icon={isEmptySection(languagesItems) ? appIcons.hidden : appIcons.visible}
+                    toolTip={"Hide all language items"}
+                    colorClasses={["toggle-all-button-white"]}
+                    onClick={() => setLanguagesItems(toggleHideSection(languagesItems, !isEmptySection(languagesItems)))}
+                />
+            </div>
         }
         {
             languagesItems.map(item => {
