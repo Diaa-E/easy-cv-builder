@@ -1,3 +1,5 @@
+import "../styles/ToggleAllButton.css";
+
 export default function ToggleAllButton({icon, onClick, toolTip, colorClasses = []})
 {
     return (

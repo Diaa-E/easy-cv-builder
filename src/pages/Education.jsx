@@ -3,9 +3,11 @@ import ListItemText from "../components/ListItemText";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
 import FormButton from "../components/FormButton";
+import ToggleAllButton from "../components/ToggleAllButton";
 import { getItemIndex } from "../utils/utility";
 import { toggleHide, deleteItem, moveItemUp, updateItems } from "../utils/arrayFunctions";
 import { v4 as generateId } from 'uuid';
+import appIcons from "../data/appIconsBarrel";
 
 export default function Education({educationItems, setEducationItems, setDialogState, emptyText})
 {
@@ -81,6 +83,24 @@ export default function Education({educationItems, setEducationItems, setDialogS
         {
             educationItems.length === 0 &&
             <h2 className="empty-list-text">{emptyText}</h2>
+        }
+        {
+            educationItems.length !== 0 &&
+            <div className="list-controls">
+                <ToggleAllButton
+                    icon={appIcons.delete}
+                    toolTip={"Delete all education items"}
+                    colorClasses={["toggle-all-button-red"]}
+                    onClick={() => setDialogState({
+                        open: true,
+                        actionText: "Delete All",
+                        prompt: "Are you sure you want to *premenantly delete all items* the education section?",
+                        onConfirm: () => {
+                            setEducationItems([]);
+                        }
+                    })}
+                />
+            </div>
         }
         {
             educationItems.map(item => {

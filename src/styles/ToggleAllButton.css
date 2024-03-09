@@ -1,0 +1,19 @@
+.toggle-all-button{
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+.toggle-all-button-red{
+    background-color: var(--none);
+}
+
+.toggle-all-button-red>img{
+    filter: var(--icon-filter-danger);
+}
+
+@media (min-width: 700px) {
+    .toggle-all-button{
+        width: 4dvw;
+    }
+}
