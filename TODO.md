@@ -2,12 +2,11 @@
 
 ## To do list
 
-- Add hide all and delete all button to each section.
 - Fix icon lag by loading all resources before opening app main page.
-- Add the ability to rearrange sections (education and experience order).
 - Add the ability to rearrange sections (education and experience order).
 - Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.
 - Add option to fix bad sections in a draft using default/sample values.
+- ~~Add hide all and delete all button to each section.~~ ✅
 - ~~center preview container in mobile mode.~~ ✅
 - ~~open change log in a new tab.~~ ✅
 - ~~Fix background width on narrow screen.~~ ✅
