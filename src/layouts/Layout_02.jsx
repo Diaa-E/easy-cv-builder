@@ -14,7 +14,7 @@ export default function Layout_02({data})
     const iconColor = useDarkText ? "invert(0)" : "invert(1)";
 
     return (
-        <div className="preview layout-02">
+        <div style={{fontFamily: data.font}} className="preview layout-02">
             <div className="left">
                 <div style={{backgroundColor: data.accentColor}} className="header-wrapper">
                     <h1 style={{color: textColor}} className="name">{data.personalInfo.fullName}</h1>
