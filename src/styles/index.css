@@ -168,6 +168,12 @@ body{
   overflow: visible;
 }
 
+.list-controls{
+  display: flex;
+  place-items: space-between;
+  place-content: space-between;
+}
+
 @media (min-width: 700px){
   .nav{
     display: flex;

@@ -2,18 +2,26 @@
     display: flex;
     place-items: center;
     place-content: center;
+    background-color: var(--main-dark);
+    padding: 10px;
+    width: 50px;
 }
 
-.toggle-all-button-red{
-    background-color: var(--none);
+.toggle-all-button, .toggle-all-button>img{
+    cursor: pointer;
 }
 
 .toggle-all-button-red>img{
     filter: var(--icon-filter-danger);
 }
 
+.toggle-all-button-white>img{
+    filter: var(--icon-filter);
+}
+
 @media (min-width: 700px) {
     .toggle-all-button{
-        width: 4dvw;
+        width: 3dvw;
+        padding: .5dvw;
     }
 }

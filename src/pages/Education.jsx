@@ -8,6 +8,8 @@ import { getItemIndex } from "../utils/utility";
 import { toggleHide, deleteItem, moveItemUp, updateItems } from "../utils/arrayFunctions";
 import { v4 as generateId } from 'uuid';
 import appIcons from "../data/appIconsBarrel";
+import { isEmptySection } from "../utils/emptySectionDetector";
+import { toggleHideSection } from "../utils/toggleHideSection";
 
 export default function Education({educationItems, setEducationItems, setDialogState, emptyText})
 {
@@ -99,6 +101,12 @@ export default function Education({educationItems, setEducationItems, setDialogS
                             setEducationItems([]);
                         }
                     })}
+                />
+                <ToggleAllButton
+                    icon={isEmptySection(educationItems) ? appIcons.hidden : appIcons.visible}
+                    toolTip={"Hide all education items"}
+                    colorClasses={["toggle-all-button-white"]}
+                    onClick={() => setEducationItems(toggleHideSection(educationItems, !isEmptySection(educationItems)))}
                 />
             </div>
         }
