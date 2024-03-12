@@ -161,9 +161,9 @@ function App() {
     setLanguages(sampleInfo.languages);
     setSkills(sampleInfo.skills);
     setLinks(sampleInfo.links);
-    setLayout("layout-01");
-    setAccentColor("#ffb400");
-    setFont("regular");
+    setLayout(sampleInfo.layout);
+    setAccentColor(sampleInfo.accentColor);
+    setFont(sampleInfo.font);
     setOrder(sampleInfo.order);
   }
 
