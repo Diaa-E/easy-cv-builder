@@ -44,6 +44,7 @@ function App() {
   const [accentColor, setAccentColor] = useState(getSessionData("accentColor", sampleInfo.accentColor));
   const [font, setFont] = useState(getSessionData("font", sampleInfo.font));
   const [layout, setLayout] = useState(getSessionData("layout", sampleInfo.layout));
+  const [order, setOrder] = useState(getSessionData("order", sampleInfo.order));
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []}); //code key is used to determine error panel text and color in Save component
   const [dialogState, setDialogState] = useState({open: false, actionText: "", prompt: "", onConfirm: () => {}});
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -73,7 +74,7 @@ function App() {
 
     return () => {};
 
-  }, [education, personalInfo, contact, experience, links, skills, languages, accentColor, font, layout]);
+  }, [education, personalInfo, contact, experience, links, skills, languages, accentColor, font, layout, order]);
 
   useEffect(() => {
 
@@ -98,6 +99,7 @@ function App() {
     font: font,
     accentColor: accentColor,
     layout: layout,
+    order: order
   };
 
   function getSessionData(key, defaultValue)
@@ -133,6 +135,7 @@ function App() {
     setLinks(draft.links);
     setLanguages(draft.languages);
     setLayout(draft.layout);
+    setOrder(draft.order);
   }
 
   function downloadDraft()
@@ -161,6 +164,7 @@ function App() {
     setLayout("layout-01");
     setAccentColor("#ffb400");
     setFont("regular");
+    setOrder(sampleInfo.order);
   }
 
   function clearAll()
@@ -339,6 +343,8 @@ function App() {
             updateFont={(e) => setFont(e.target.value)}
             layout={layout}
             updateLayout={(e) => setLayout(e.target.value)}
+            order={order}
+            setOrder={(e) => setOrder(e.target.value)}
           />
         }
         {

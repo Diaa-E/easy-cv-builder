@@ -117,6 +117,7 @@ const sampleInfo = {
     accentColor: "#ffb400",
     font: "regular",
     layout: "layout-01",
+    order: "educationFirst",
 }
 
 export default sampleInfo

@@ -52,16 +52,35 @@ export default function Layout_01({data})
                     }
                 </div>
             </div>
-            <EducationSection
-                secondaryColor={secondaryColor}
-                backgroundColor={secondaryBackgroundColor}
-                educationItems={data.education}
-            />
-            <ExperienceSection
-                secondaryColor={secondaryColor}
-                backgroundColor={secondaryBackgroundColor}
-                experienceItems={data.experience}
-            />
+            {
+                data.order === "educationFirst" ? (
+                    <>
+                        <EducationSection
+                            secondaryColor={secondaryColor}
+                            backgroundColor={secondaryBackgroundColor}
+                            educationItems={data.education}
+                        />
+                        <ExperienceSection
+                            secondaryColor={secondaryColor}
+                            backgroundColor={secondaryBackgroundColor}
+                            experienceItems={data.experience}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <ExperienceSection
+                            secondaryColor={secondaryColor}
+                            backgroundColor={secondaryBackgroundColor}
+                            experienceItems={data.experience}
+                        />
+                        <EducationSection
+                            secondaryColor={secondaryColor}
+                            backgroundColor={secondaryBackgroundColor}
+                            educationItems={data.education}
+                        />
+                    </>
+                )
+            }
             <div className="bottom-wrapper">
                 <SkillsSection
                     accentColor={data.accentColor}

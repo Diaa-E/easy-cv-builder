@@ -57,8 +57,19 @@ export default function Layout_02({data})
                     <LanguagesSection accentColor={data.accentColor} iconColor={iconColor} languageItems={data.languages}/>
             </div>
             <div className="right">
-                <EducationSection accentColor={data.accentColor} iconColor={iconColor} educationITems={data.education}/>
-                <ExperienceSection accentColor={data.accentColor} iconColor={iconColor} experienceItems={data.experience}/>
+                {
+                    data.order === "educationFirst" ? (
+                        <>
+                            <EducationSection accentColor={data.accentColor} iconColor={iconColor} educationITems={data.education}/>
+                            <ExperienceSection accentColor={data.accentColor} iconColor={iconColor} experienceItems={data.experience}/>
+                        </>
+                    ) : (
+                        <>
+                            <ExperienceSection accentColor={data.accentColor} iconColor={iconColor} experienceItems={data.experience}/>
+                            <EducationSection accentColor={data.accentColor} iconColor={iconColor} educationITems={data.education}/>
+                        </>
+                    )
+                }
                 <SkillsSection accentColor={data.accentColor} iconColor={iconColor} skillsItems={data.skills}/>
             </div>
         </div>

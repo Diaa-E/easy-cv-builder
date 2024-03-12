@@ -13,6 +13,7 @@ This change log only highlights important changes.
 - ➕ Tab buttons are now smaller so the user does not need to scroll to reach some tabs.
 - ➕ External links now open in a new tab.
 - ➕ Add "delete all" and "hide/show all" buttons to all list sections.
+- ➕ Education and Experience sections' order can now be swapped (i.e education then experience or experience then education)
 - 🛠️ Tab buttons no longer have distorted/broken borders when in focus.
 - 🛠️ CV preview in mobile view is now centered instead of being shifted to the left.
 - 🛠️ Fix list items controls and text overflowing when zooming into page.

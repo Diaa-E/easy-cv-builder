@@ -3,7 +3,7 @@ import SelectInput from "../components/SelectInput"
 import fonts from "../data/fonts";
 import layouts from "../data/layouts";
 
-export default function Settings({color, updateColor, font, updateFont, layout, updateLayout})
+export default function Settings({color, updateColor, font, updateFont, layout, updateLayout, order, setOrder})
 {
     return (
         <div className="items-container">
@@ -30,6 +30,15 @@ export default function Settings({color, updateColor, font, updateFont, layout, 
                 onChange={updateLayout}
                 labelText={"Layout"}
                 id={"layouts"}
+            />
+            <SelectInput
+                options={[{name: "Education first", value: "educationFirst"}, {name: "Experience first", value: "experienceFirst"}]}
+                optionNameKey={"name"}
+                optionValueKey={"value"}
+                selected={order}
+                onChange={setOrder}
+                labelText={"Order"}
+                id={"order"}
             />
         </div>
         )
