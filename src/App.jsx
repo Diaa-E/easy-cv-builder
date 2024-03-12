@@ -147,11 +147,6 @@ function App() {
     a.click();
   }
 
-  function selectTab(id)
-  {
-    setCurrentTab(id)
-  }
-
   function resetAll()
   {
     setPersonalInfo(sampleInfo.personalInfo);
