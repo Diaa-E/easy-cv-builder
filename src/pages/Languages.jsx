@@ -91,11 +91,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
         {
             languagesItems.map(item => {
             return <ListItemLevel
-                        text={item.name}
-                        meterValue={item.level}
-                        showLevel={item.showLevel}
-                        hidden={item.hidden}
-                        id={item.id}
+                        itemData={item}
                         key={item.id}
                         toggleHide={(id) => setLanguagesItems(toggleHide(id, languagesItems))}
                         toggleEdit={(id) => {

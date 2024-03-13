@@ -91,11 +91,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
         {
             skillsItems.map(item => {
                 return <ListItemLevel
-                            text={item.name}
-                            meterValue={item.level}
-                            showLevel={item.showLevel}
-                            hidden={item.hidden}
-                            id={item.id}
+                            itemData={item}
                             key={item.id}
                             toggleHide={(id) => setSkillsItems(toggleHide(id, skillsItems))}
                             toggleEdit={(id) => {
