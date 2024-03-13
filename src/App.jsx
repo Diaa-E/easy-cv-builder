@@ -76,7 +76,7 @@ function App() {
 
     return () => {};
 
-  }, [education, personalInfo, contact, experience, links, skills, languages, accentColor, font, layout, order]);
+  }, [education, personalInfo, contact, experience, links, skills, languages, accentColor, font, layout, order, levelMode]);
 
   useEffect(() => {
 
