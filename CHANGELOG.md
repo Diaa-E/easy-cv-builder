@@ -8,7 +8,7 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
-### **1.4.0 (unreleased)**
+### **1.4.0 (Mar 13, 2024)**
 
 - ➕ User can now choose text rating for skills and languages (i.e strong vs. familiar)
 - ➕ Level slider now displays level value based on proficiency level mode.
