@@ -7,7 +7,7 @@ import { isBright } from "../utils/utility";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { joinString } from "../utils/stringJoiner";
 import { calculateTextLevel } from "../utils/calculateTextLevel";
-import { languageLevels } from "../data/textLevelTemplates";
+import { languageLevels, skillLevels } from "../data/textLevelTemplates";
 
 export default function Layout_02({data})
 {
@@ -106,7 +106,7 @@ export default function Layout_02({data})
                                         }
                                         {
                                             data.levelMode === "text" &&
-                                            <p className="section-text level-text" >{`(${calculateTextLevel(languageLevels, item.level)})`}</p>
+                                            <p className="section-text level-text" >{`(${calculateTextLevel(skillLevels, item.level)})`}</p>
                                         }
                                     </>
                                 }
