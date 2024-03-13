@@ -27,6 +27,7 @@ import Layout_02 from './layouts/Layout_02';
 import { testDraftValidity } from './utils/draftValidation';
 import DarkModeButton from './components/DarkModeButton';
 import ConfirmDialog from './components/ConfirmDialog';
+import { fixDraft } from './utils/fixDraft';
 
 export const ScreenWidthContext = createContext(null);
 
@@ -120,9 +121,28 @@ function App() {
     if (errorLog.length > 0)
     {
       setDraftStatus({code: 2, errorLog: errorLog});
+      setDialogState({
+        open: true,
+        prompt: `The *${errorLog.join(", ")}* section${errorLog.length > 1 ? "s" : ""} 
+        of the draft ${errorLog.length > 1 ? "are" : "is"} *invalid*, do you want to 
+        replace ${errorLog.length > 1 ? "them" : "it"} with default values?`,
+        actionText: "Fix Draft",
+        dangerAction: false,
+        onConfirm: () => {
+
+          fixDraft(draft, errorLog, sampleInfo);
+          loadDraft(draft);
+          closeDialog();
+        }
+      })
       return;
     }
 
+    loadDraft(draft)
+  }
+
+  function loadDraft(draft)
+  {
     setDraftStatus({code: 0, errorLog: []});
 
     setAccentColor(draft.accentColor);
