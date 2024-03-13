@@ -1,4 +1,5 @@
 import "../styles/LevelText.css";
+import { calculateTextLevel } from "../utils/calculateTextLevel";
 
 export default function LevelText({itemData, textLevels = [{name: "High", min: 100}, {name: "Medium", min: 50}, {name: "Low", min: 0}]})
 {
@@ -7,7 +8,7 @@ export default function LevelText({itemData, textLevels = [{name: "High", min: 1
         <>
             <p className="level-text">
             {
-                textLevels.find(item => +itemData.level >= +item.min).name
+                calculateTextLevel(textLevels, itemData.level)
             }
             </p>    
         </>

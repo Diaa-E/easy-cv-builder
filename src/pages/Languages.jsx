@@ -38,6 +38,8 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
                     onRangeChange={(e) => setCurrentItem({...currentItem, level: e.target.value < 20? 20 : e.target.value})}
                     onCheckedChange={(e) => setCurrentItem({...currentItem, showLevel: e.target.checked})}
                     id="level"
+                    textLevels={languageLevels}
+                    levelMode={levelMode}
                 />
                 <div className="edit-controls">
                     <FormButton

@@ -38,6 +38,8 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                     onRangeChange={(e) => setCurrentItem({...currentItem, level: e.target.value < 20? 20 : e.target.value})}
                     onCheckedChange={(e) => setCurrentItem({...currentItem, showLevel: e.target.checked})}
                     id="level"
+                    textLevels={skillLevels}
+                    levelMode={levelMode}
                 />
                 <div className="edit-controls">
                     <FormButton

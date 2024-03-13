@@ -1,6 +1,7 @@
 import "../styles/RangeInput.css";
+import { calculateTextLevel } from "../utils/calculateTextLevel";
 
-export default function RangeInput({labelText, checked, value, id, onRangeChange, onCheckedChange})
+export default function RangeInput({labelText, checked, value, id, onRangeChange, onCheckedChange, levelMode, textLevels})
 {
     return (
         <div data-testid="range-input" className="range-input-container">
@@ -24,6 +25,16 @@ export default function RangeInput({labelText, checked, value, id, onRangeChange
                 onChange={onRangeChange}
                 disabled={!checked}
             />
+            <p className="level-text">
+            {
+                levelMode === "bar" &&
+                value + "%"
+            }
+            {
+                levelMode === "text" &&
+                calculateTextLevel(textLevels, value)
+            }
+            </p>
         </div>
     )
 }
