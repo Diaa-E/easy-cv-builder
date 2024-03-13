@@ -118,6 +118,7 @@ const sampleInfo = {
     font: "regular",
     layout: "layout-01",
     order: "educationFirst",
+    levelMode: "bar"
 }
 
 export default sampleInfo

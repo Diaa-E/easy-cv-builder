@@ -3,7 +3,7 @@ import SelectInput from "../components/SelectInput"
 import fonts from "../data/fonts";
 import layouts from "../data/layouts";
 
-export default function Settings({color, updateColor, font, updateFont, layout, updateLayout, order, setOrder})
+export default function Settings({color, updateColor, font, updateFont, layout, updateLayout, order, setOrder, levelMode, setLevelMode})
 {
     return (
         <div className="items-container">
@@ -39,6 +39,15 @@ export default function Settings({color, updateColor, font, updateFont, layout, 
                 onChange={setOrder}
                 labelText={"Order"}
                 id={"order"}
+            />
+            <SelectInput
+                options={[{name: "Text", value: "text"}, {name: "Bar", value: "bar"}]}
+                optionNameKey={"name"}
+                optionValueKey={"value"}
+                selected={levelMode}
+                onChange={setLevelMode}
+                labelText={"Proproficiency Level Style"}
+                id={"proficiency level style"}
             />
         </div>
         )

@@ -46,6 +46,7 @@ function App() {
   const [font, setFont] = useState(getSessionData("font", sampleInfo.font));
   const [layout, setLayout] = useState(getSessionData("layout", sampleInfo.layout));
   const [order, setOrder] = useState(getSessionData("order", sampleInfo.order));
+  const [levelMode, setLevelMOde] = useState(getSessionData("levelMode", sampleInfo.levelMode));
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []}); //code key is used to determine error panel text and color in Save component
   const [dialogState, setDialogState] = useState({open: false, actionText: "", prompt: "", onConfirm: () => {}, dangerAction: false});
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -100,7 +101,8 @@ function App() {
     font: font,
     accentColor: accentColor,
     layout: layout,
-    order: order
+    order: order,
+    levelMode: levelMode
   };
 
   function getSessionData(key, defaultValue)
@@ -157,6 +159,7 @@ function App() {
     setLanguages(draft.languages);
     setLayout(draft.layout);
     setOrder(draft.order);
+    setLevelMOde(draft.levelMode);
   }
 
   function downloadDraft()
@@ -181,6 +184,7 @@ function App() {
     setAccentColor(sampleInfo.accentColor);
     setFont(sampleInfo.font);
     setOrder(sampleInfo.order);
+    setLevelMOde(sampleInfo.levelMode);
   }
 
   function clearAll()
@@ -361,6 +365,8 @@ function App() {
             updateLayout={(e) => setLayout(e.target.value)}
             order={order}
             setOrder={(e) => setOrder(e.target.value)}
+            levelMode={levelMode}
+            setLevelMode={(e) => setLevelMOde(e.target.value)}
           />
         }
         {
