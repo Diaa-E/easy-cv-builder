@@ -6,6 +6,8 @@ import linkIcons from "../data/linkIconsBarrel";
 import { isBright } from "../utils/utility";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { joinString } from "../utils/stringJoiner";
+import { calculateTextLevel } from "../utils/calculateTextLevel";
+import { languageLevels } from "../data/textLevelTemplates";
 
 export default function Layout_02({data})
 {
@@ -54,7 +56,7 @@ export default function Layout_02({data})
                         }
                     </div>
                 </div>
-                    <LanguagesSection accentColor={data.accentColor} iconColor={iconColor} languageItems={data.languages}/>
+                    <LanguagesSection accentColor={data.accentColor} iconColor={iconColor} data={data}/>
             </div>
             <div className="right">
                 {
@@ -70,15 +72,15 @@ export default function Layout_02({data})
                         </>
                     )
                 }
-                <SkillsSection accentColor={data.accentColor} iconColor={iconColor} skillsItems={data.skills}/>
+                <SkillsSection accentColor={data.accentColor} iconColor={iconColor} data={data}/>
             </div>
         </div>
     )
 
-    function SkillsSection({accentColor, iconColor, skillsItems})
+    function SkillsSection({accentColor, iconColor, data})
     {
         return (
-            !isEmptySection(skillsItems) &&
+            !isEmptySection(data.skills) &&
             <div className="section-wrapper">
                 <h3 className="section-title">
                     <div className="section-icon-wrapper" style={{backgroundColor: accentColor}}>
@@ -89,7 +91,7 @@ export default function Layout_02({data})
                 <div className="seperator"></div>
                 <div className="flow-wrapper">
                 {
-                    skillsItems.map(item => {
+                    data.skills.map(item => {
                         
                         return (
                             !item.hidden &&
@@ -97,7 +99,16 @@ export default function Layout_02({data})
                                 <p className="section-text">{item.name}</p>
                                 {
                                     item.showLevel &&
-                                    <LevelBar level={item.level} accentColor={accentColor}/>
+                                    <>
+                                        {
+                                            data.levelMode === "bar" &&
+                                            <LevelBar level={item.level} accentColor={accentColor}/>
+                                        }
+                                        {
+                                            data.levelMode === "text" &&
+                                            <p className="section-text level-text" >{`(${calculateTextLevel(languageLevels, item.level)})`}</p>
+                                        }
+                                    </>
                                 }
                             </div>
                         )
@@ -196,10 +207,10 @@ export default function Layout_02({data})
         )
     }
 
-    function LanguagesSection({accentColor, iconColor, languageItems})
+    function LanguagesSection({accentColor, iconColor, data})
     {
         return (
-            !isEmptySection(languageItems) &&
+            !isEmptySection(data.languages) &&
             <div className="section-wrapper">
                 <h3 className="section-title">
                     <div className="section-icon-wrapper" style={{backgroundColor: accentColor}}>
@@ -210,7 +221,7 @@ export default function Layout_02({data})
                 <div className="seperator"></div>
                 <div className="flow-wrapper">
                 {
-                    languageItems.map(item => {
+                    data.languages.map(item => {
                         
                         return (
                             !item.hidden &&
@@ -218,7 +229,16 @@ export default function Layout_02({data})
                                 <p className="section-text">{item.name}</p>
                                 {
                                     item.showLevel &&
-                                    <LevelBar level={item.level} accentColor={accentColor}/>
+                                    <>
+                                        {
+                                            data.levelMode === "bar" &&
+                                            <LevelBar level={item.level} accentColor={accentColor}/>
+                                        }
+                                        {
+                                            data.levelMode === "text" &&
+                                            <p className="section-text level-text" >{`(${calculateTextLevel(languageLevels, item.level)})`}</p>
+                                        }
+                                    </>
                                 }
                             </div>
                         )

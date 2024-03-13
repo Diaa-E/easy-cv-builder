@@ -10,6 +10,8 @@ This change log only highlights important changes.
 
 ### **1.4.0 (unreleased)**
 
+- ➕ User can now choose text rating for skills and languages (i.e strong vs. familiar)
+- ➕ Level slider now displays level value based on proficiency level mode.
 - ➕ Invalid drafts can now be fixed by replacing invalid sections with default values.
 - ➕ Tab buttons are now smaller so the user does not need to scroll to reach some tabs.
 - ➕ External links now open in a new tab.

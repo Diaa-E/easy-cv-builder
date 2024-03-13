@@ -3,6 +3,7 @@
     --black: black;
     --grey: #dedede;
     --light-grey: #eeeeee;
+    --dark-grey: #8b8b8b;
 
     display: grid;
     grid-auto-flow: column;
@@ -149,6 +150,10 @@
     max-width: calc(var(--width) * 1 / 4);
     text-align: center;
     font-size: calc(var(--width) * .017);
+}
+
+.layout-02 .level-text{
+    color: var(--dark-grey) !important;
 }
 
 .layout-02 .section-item{
