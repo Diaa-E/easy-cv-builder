@@ -6,6 +6,8 @@ import linkIcons from "../data/linkIconsBarrel";
 import { isBright } from "../utils/utility";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { joinString } from "../utils/stringJoiner";
+import { calculateTextLevel } from "../utils/calculateTextLevel";
+import { languageLevels, skillLevels } from "../data/textLevelTemplates";
 
 export default function Layout_01({data})
 {
@@ -86,22 +88,22 @@ export default function Layout_01({data})
                     accentColor={data.accentColor}
                     secondaryColor={secondaryColor}
                     backgroundColor={secondaryBackgroundColor}
-                    skillsItems={data.skills}
+                    data={data}
                 />
                 <LanguagesSection
                     accentColor={data.accentColor}
                     secondaryColor={secondaryColor}
                     backgroundColor={secondaryBackgroundColor}
-                    languageItems={data.languages}
+                    data={data}
                 />
             </div>
         </div>
     )
 }
 
-function LanguagesSection({accentColor, backgroundColor, secondaryColor, languageItems})
+function LanguagesSection({accentColor, backgroundColor, secondaryColor, data})
 {
-    if (isEmptySection(languageItems)) return <></>
+    if (isEmptySection(data.languages)) return <></>
 
     return (
         <div className="section-wrapper">
@@ -111,7 +113,7 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, languag
             >Languages</h3>
             <div className="flow-wrapper">
             {
-                languageItems.map(item => {
+                data.languages.map(item => {
                     
                     return (
                         !item.hidden &&
@@ -119,7 +121,16 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, languag
                             <p className="section-text">{item.name}</p>
                             {
                                 item.showLevel &&
-                                <LevelBar accentColor={accentColor} level={item.level}/>
+                                <>
+                                    {
+                                        data.levelMode === "bar" &&
+                                        <LevelBar accentColor={accentColor} level={item.level}/>
+                                    }
+                                    {
+                                        data.levelMode === "text" &&
+                                        <p className="section-text level-text">{`(${calculateTextLevel(languageLevels, item.level)})`}</p>
+                                    }
+                                </>
                             }
                         </div>
                     )
@@ -130,9 +141,9 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, languag
     )
 }
 
-function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItems})
+function SkillsSection({accentColor, backgroundColor, secondaryColor, data})
 {
-    if (isEmptySection(skillsItems)) return <></>
+    if (isEmptySection(data.skills)) return <></>
 
     return (
         <div className="section-wrapper">
@@ -142,7 +153,7 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItem
             >Skills</h3>
             <div className="flow-wrapper">
             {
-                skillsItems.map(item => {
+                data.skills.map(item => {
                     
                     return (
                         !item.hidden &&
@@ -150,7 +161,16 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, skillsItem
                             <p className="section-text">{item.name}</p>
                             {
                                 item.showLevel &&
-                                <LevelBar accentColor={accentColor} level={item.level}/>
+                                <>
+                                    {
+                                        data.levelMode === "bar" &&
+                                        <LevelBar accentColor={accentColor} level={item.level}/>
+                                    }
+                                    {
+                                        data.levelMode === "text" &&
+                                        <p className="section-text level-text">{`(${calculateTextLevel(skillLevels, item.level)})`}</p>
+                                    }
+                                </>
                             }
                         </div>
                     )

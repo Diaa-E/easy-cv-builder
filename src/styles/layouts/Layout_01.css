@@ -2,6 +2,7 @@
     --black: #000000;
     --white: #ffffff;
     --grey: #dedede;
+    --dark-grey: #8a8a8a;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -88,6 +89,11 @@
 
 .layout-01 .section-text{
     font-size: calc(var(--width) * .017);
+}
+
+.layout-01 .level-text{
+    font-weight: bold;
+    color: var(--dark-grey) !important;
 }
 
 .layout-01 .section-item{
