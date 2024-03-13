@@ -11,6 +11,7 @@ import appIcons from "../data/appIconsBarrel";
 import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { toggleHideSection } from "../utils/toggleHideSection";
+import { skillLevels } from "../data/textLevelTemplates";
 
 export default function Skills({skillsItems, setSkillsItems, setDialogState, emptyText, levelMode})
 {
@@ -91,7 +92,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
         {
             skillsItems.map(item => {
                 return <ListItemLevel
-                textLevels={[{name: "Strong", min: 50}, {name: "Familiar", min: 0}]}
+                            textLevels={skillLevels}
                             levelMode={levelMode}
                             itemData={item}
                             key={item.id}

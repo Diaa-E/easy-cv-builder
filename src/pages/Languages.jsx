@@ -11,6 +11,7 @@ import appIcons from "../data/appIconsBarrel";
 import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { toggleHideSection } from "../utils/toggleHideSection";
+import { languageLevels } from "../data/textLevelTemplates";
 
 export default function Languages({languagesItems, setLanguagesItems, setDialogState, emptyText, levelMode})
 {
@@ -91,7 +92,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
         {
             languagesItems.map(item => {
             return <ListItemLevel
-                        textLevels={[{name: "Native", min: 100}, {name: "Strong", min: 50}, {name: "Familiar", min: 0}]}
+                        textLevels={languageLevels}
                         levelMode={levelMode}
                         itemData={item}
                         key={item.id}
