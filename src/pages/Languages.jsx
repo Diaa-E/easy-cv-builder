@@ -91,7 +91,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
         {
             languagesItems.map(item => {
             return <ListItemLevel
-                        textLevels={["Familiar", "Strong", "Native"]}
+                        textLevels={[{name: "Native", min: 100}, {name: "Strong", min: 50}, {name: "Familiar", min: 0}]}
                         levelMode={levelMode}
                         itemData={item}
                         key={item.id}

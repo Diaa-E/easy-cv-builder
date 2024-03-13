@@ -1,20 +1,13 @@
 import "../styles/LevelText.css";
 
-export default function LevelText({itemData, textLevels = ["Low", "Medium", "High"]})
+export default function LevelText({itemData, textLevels = [{name: "High", min: 100}, {name: "Medium", min: 50}, {name: "Low", min: 0}]})
 {
+    /* textLevels must be passed in decending order for the matching to work */
     return (
         <>
             <p className="level-text">
             {
-                +itemData.level === 100 ? (
-                    textLevels[2]
-                ) : (
-                    +itemData.level > 50 ? (
-                        textLevels[1]
-                    ) : (
-                        textLevels[0]
-                    )
-                )
+                textLevels.find(item => +itemData.level >= +item.min).name
             }
             </p>    
         </>

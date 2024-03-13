@@ -91,7 +91,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
         {
             skillsItems.map(item => {
                 return <ListItemLevel
-                            textLevels={["Familiar", "Strong", "Strong"]}
+                textLevels={[{name: "Strong", min: 50}, {name: "Familiar", min: 0}]}
                             levelMode={levelMode}
                             itemData={item}
                             key={item.id}
