@@ -94,7 +94,7 @@ const sampleInfo = {
     languages: [
         {
             id: generateId(),
-            name: "English (Native)",
+            name: "English",
             level: 100,
             hidden: false,
             showLevel: true,
