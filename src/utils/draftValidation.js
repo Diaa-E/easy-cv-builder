@@ -6,8 +6,12 @@ export function testDraftValidity(draft)
 {
     const dataIntegrity = [
         {
-          name: "accentColor",
-          valid: testColor(draft?.accentColor),
+            name: "accentColor",
+            valid: testColor(draft?.accentColor),
+        },
+        {
+            name: "order",
+            valid: testOrder(draft?.order),
         },
         {
             name: "font",
@@ -58,6 +62,13 @@ export function testDraftValidity(draft)
       });
 
       return errorLog;
+}
+
+export function testOrder(order)
+{
+    if (order !== "educationFirst" && order !== "experienceFirst") return false;
+
+    return true;
 }
 
 export function testExperience(experienceArray)

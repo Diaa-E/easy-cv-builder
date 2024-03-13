@@ -11,7 +11,8 @@ import {
     testLinks,
     testObjectKeys,
     testPersonalInfo,
-    testSkills 
+    testSkills,
+    testOrder
 } from "../draftValidation";
 
 vi.mock("../../data/fonts.js", () => {
@@ -123,6 +124,7 @@ describe("Draft validity", () => {
             accentColor: "#ffffff",
             layout: "layout2",
             font: "font1",
+            order: "educationFirst",
             education: [
                 {
                     id: 0,
@@ -237,6 +239,7 @@ describe("Draft validity", () => {
     const fullErrorLog = [
 
         "accentColor",
+        "order",
         "font",
         "layout",
         "links",
@@ -1083,3 +1086,21 @@ describe("Font validity", () => {
         expect(testFont("text")).toBe(false);
     });
 });
+
+describe("Order validity", () => {
+
+    it("Returns true for educationFirst", () => {
+
+        expect(testOrder("educationFirst")).toBe(true);
+    });
+
+    it("Returns true for experienceFirst", () => {
+
+        expect(testOrder("experienceFirst")).toBe(true);
+    });
+
+    it("Returns false for any other string", () => {
+
+        expect(testOrder("string")).toBe(false);
+    })
+})
