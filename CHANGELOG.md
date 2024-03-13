@@ -21,6 +21,7 @@ This change log only highlights important changes.
 - 🛠️ Fix navigation tabs tooltips showing current active tab instead of the title of the tab it activates.
 - 🛠️ Fix modern layout (layout_02) not changing fonts.
 - ⚙️ Reset accent color, font and layout using sample info values instead of hardcoded ones.
+- ⚙️ Reduce number of props passed to language and skill list item component.
 
 ### **1.3.4 (Mar 7, 2024)**
 

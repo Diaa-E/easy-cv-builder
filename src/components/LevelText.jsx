@@ -1,6 +1,6 @@
 import "../styles/LevelText.css";
 
-export default function LevelText({itemData, textLevels})
+export default function LevelText({itemData, textLevels = ["Low", "Medium", "High"]})
 {
     return (
         <>
