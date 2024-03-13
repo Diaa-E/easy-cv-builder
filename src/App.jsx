@@ -338,6 +338,7 @@ function App() {
           {
             currentTab === tabs.skills &&
             <Skills
+              levelMode={levelMode}
               skillsItems={skills}
               setSkillsItems={setSkills}
               setDialogState={setDialogState}
@@ -347,6 +348,7 @@ function App() {
           {
             currentTab === tabs.languages &&
             <Languages
+              levelMode={levelMode}
               languagesItems={languages}
               setLanguagesItems={setLanguages}
               setDialogState={setDialogState}

@@ -12,7 +12,7 @@ import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { toggleHideSection } from "../utils/toggleHideSection";
 
-export default function Skills({skillsItems, setSkillsItems, setDialogState, emptyText})
+export default function Skills({skillsItems, setSkillsItems, setDialogState, emptyText, levelMode})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -91,6 +91,8 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
         {
             skillsItems.map(item => {
                 return <ListItemLevel
+                            textLevels={["Familiar", "Strong", "Strong"]}
+                            levelMode={levelMode}
                             itemData={item}
                             key={item.id}
                             toggleHide={(id) => setSkillsItems(toggleHide(id, skillsItems))}

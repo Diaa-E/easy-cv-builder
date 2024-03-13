@@ -12,7 +12,7 @@ import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { toggleHideSection } from "../utils/toggleHideSection";
 
-export default function Languages({languagesItems, setLanguagesItems, setDialogState, emptyText})
+export default function Languages({languagesItems, setLanguagesItems, setDialogState, emptyText, levelMode})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -91,6 +91,8 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
         {
             languagesItems.map(item => {
             return <ListItemLevel
+                        textLevels={["Familiar", "Strong", "Native"]}
+                        levelMode={levelMode}
                         itemData={item}
                         key={item.id}
                         toggleHide={(id) => setLanguagesItems(toggleHide(id, languagesItems))}
