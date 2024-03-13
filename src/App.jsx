@@ -46,7 +46,7 @@ function App() {
   const [layout, setLayout] = useState(getSessionData("layout", sampleInfo.layout));
   const [order, setOrder] = useState(getSessionData("order", sampleInfo.order));
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []}); //code key is used to determine error panel text and color in Save component
-  const [dialogState, setDialogState] = useState({open: false, actionText: "", prompt: "", onConfirm: () => {}});
+  const [dialogState, setDialogState] = useState({open: false, actionText: "", prompt: "", onConfirm: () => {}, dangerAction: false});
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -368,6 +368,7 @@ function App() {
               open: true,
               prompt: "Are you sure you want to *clear all data* in this draft? *This action is irreversible.*",
               actionText: "Clear all",
+              dangerAction: true,
               onConfirm: () => {
                 clearAll();
               }
@@ -382,6 +383,7 @@ function App() {
             setDialogState({
               open: true,
               actionText: "Reset all",
+              dangerAction: true,
               prompt: "Are you sure you want to *reset all data* to default values? *This action is irreversible.*",
               onConfirm: () => {
                 resetAll();
@@ -407,6 +409,7 @@ function App() {
         dialogState.open &&
         <ConfirmDialog
           actionText={dialogState.actionText}
+          dangerAction={dialogState.dangerAction}
           onConfirm={() => {
             dialogState.onConfirm();
             closeDialog();

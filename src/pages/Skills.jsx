@@ -73,6 +73,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                     onClick={() => setDialogState({
                         open: true,
                         actionText: "Delete All",
+                        dangerAction: true,
                         prompt: "Are you sure you want to *premenantly delete all items* the skills section?",
                         onConfirm: () => {
                             setSkillsItems([]);
@@ -105,6 +106,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                                 setDialogState({
                                     open: true,
                                     actionText: "Delete",
+                                    dangerAction: true,
                                     prompt: "Are you sure you want to *premenantly delete* this item from the skills section?",
                                     onConfirm: () => {
                                         setSkillsItems(deleteItem(id, skillsItems));
