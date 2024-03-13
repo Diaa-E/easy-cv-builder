@@ -114,6 +114,7 @@ function App() {
   {
     setDraftStatus({code: 1, errorLog: []});
     const file = e.target.files[0]
+    e.target.value = null;
     const Jsondraft = await file.text();
     const draft = JSON.parse(Jsondraft);
     const errorLog = testDraftValidity(draft);
