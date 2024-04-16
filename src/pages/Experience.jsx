@@ -147,7 +147,7 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                         />
             })
         }
-        <AddButton onclick={() => {
+        <AddButton itemType="experience" onclick={() => {
             setCurrentItem({
                 id: generateId(),
                 company: "",

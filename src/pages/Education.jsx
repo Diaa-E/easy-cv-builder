@@ -140,7 +140,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
             })
         }
         {
-            <AddButton onclick={() => {
+            <AddButton itemType="education" onclick={() => {
                 setCurrentItem({
                     id: generateId(),
                     degree: "",

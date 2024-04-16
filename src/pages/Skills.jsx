@@ -118,7 +118,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                         />
             })
         }
-        <AddButton onclick={() => {
+        <AddButton itemType="skill" onclick={() => {
             setCurrentItem({
                 id: generateId(),
                 name: "",

@@ -118,7 +118,7 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
                         />
             })
         }
-        <AddButton onclick={() => {
+        <AddButton itemType="link" onclick={() => {
             setCurrentItem({
                 id: generateId(),
                 url: "",

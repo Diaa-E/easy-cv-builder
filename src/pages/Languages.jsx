@@ -118,7 +118,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
                     />
             }) 
         }
-        <AddButton onclick={() => {
+        <AddButton itemType="language" onclick={() => {
             setCurrentItem({
                 id: generateId(),
                 name: "",

@@ -1,12 +1,17 @@
 import "../styles/AddButton.css";
 import appIcons from "../data/appIconsBarrel";
 
-export default function AddButton({onclick = () => {}})
+export default function AddButton({onclick = () => {}, itemType = ""})
 {
     return (
         <>
-            <button title="Add a new item" onClick={onclick} className="add-button">
-                <img src={appIcons.add} alt="add a new item icon" />
+            <button
+                aria-label={`add a new ${itemType}`}
+                title={`add a new ${itemType}`}
+                onClick={onclick}
+                className="add-button"
+            >
+                <img src={appIcons.add} alt={`add a new ${itemType}`} />
             </button>
         </>
     )
