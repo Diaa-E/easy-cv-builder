@@ -3,6 +3,17 @@
 ## To do list
 
 - Fix icon lag by loading all resources before opening app main page.
+- Switch to css modules.
+- Make CV preview affected by zoom.
+- Add a magnifying glass for CV preview.
+- Make unit tests more implementation agnostic.
+- Reduce/eliminate use of viewport units.
+- Animate view transition.
+- remove dummy tests.
+- Use reducers for complex states.
+- Improve accessibility button prompts.
+- Show clear field button only when field is in focus.
+- Add a bubble layout template.
 - ~~Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.~~ ✅
 - ~~Add option to fix bad sections in a draft using default/sample values.~~ ✅
 - ~~Use sampleinfo in reset all instead of hardcoded values.~~ ✅
