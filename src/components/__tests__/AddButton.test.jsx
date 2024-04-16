@@ -1,43 +1,31 @@
 import { describe, it, expect, vi } from "vitest";
-import { screen, render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { screen, render, fireEvent } from "@testing-library/react";
 
 import AddButton from "../AddButton";
 
 describe("AddButton component", () => {
-   
-    it("Renders in the DOM", () => {
 
-        render(<AddButton/>);
+    it("Contains the add keyword", () => {
 
-        expect(screen.getByRole("button")).toBeInTheDocument();
+        render(<AddButton />);
+
+        expect(screen.getByRole("button", {name: /add/i})).toBeInTheDocument();
     });
 
-    it("Contains an add icon", () => {
+    it("Adds itemType props to button name", () => {
 
-        render(<AddButton/>);
+        render(<AddButton itemType="test"/>);
 
-        expect(screen.getByRole("button").childNodes.length).toBe(1);
-        expect(screen.getByRole("button").childNodes[0]).toBeInstanceOf(Image);
+        expect(screen.getByRole("button", {name: /test/i})).toBeInTheDocument();
     });
 
-    it("Calls onClick function when clicked", async () => {
+    it("Calls onClick function once when clicked", () => {
 
-        const user = userEvent.setup();
         const onClick = vi.fn();
         render(<AddButton onclick={onClick}/>)
-        const button = screen.getByRole("button");
-        await user.click(button);
+        const button = screen.getByRole("button", {name: /add/i});
+        fireEvent.click(button);
 
         expect(onClick).toHaveBeenCalledOnce();
-    });
-
-    it("Does not call onClick function when not clicked", () => {
-
-        const onClick = vi.fn();
-        render(<AddButton onclick={onClick}/>)
-        const button = screen.getByRole("button");
-
-        expect(onClick).not.toHaveBeenCalled();
     });
 });
