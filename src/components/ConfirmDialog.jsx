@@ -12,10 +12,10 @@ export default function ConfirmDialog({prompt, actionText, dangerAction, onConfi
                 onCancel();
             }} 
             className="backdrop"
-            data-testid="backdrop"
+            id="dialog-backdrop"
         >
-            <div role="dialog" className="dialog-box">
-                <p className="prompt">
+            <div aria-label="confirm action" aria-describedby="prompt" role="dialog" className="dialog-box">
+                <p id="prompt" className="prompt">
                 {
                     highlightText(prompt, "*").map(segment => {
 
