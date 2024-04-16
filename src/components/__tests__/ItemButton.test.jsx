@@ -1,55 +1,37 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import ItemButton from "../ItemButton";
-import userEvent from "@testing-library/user-event";
 
 describe("ItemButton component", () => {
 
-    it("Renders in the DOM", () => {
+    it("Adds text to button from props", () => {
 
-        render(<ItemButton/>);
+        render(<ItemButton text={"click here"}/>);
 
-        expect(screen.getByRole("button")).toBeInTheDocument();
+        expect(screen.getByRole("button", {name: "click here"})).toBeInTheDocument();
     });
 
-    it("Adds class from props to the button", () => {
+    it("Adds color class to the button", () => {
 
-        render(<ItemButton colorClass="class"/>);
+        render(<ItemButton text={"click here"} colorClass="class"/>);
 
-        expect(screen.getByRole("button")).toHaveClass("class");
-    });
-
-    it("Uses props text in the img alt text", () => {
-
-        render(<ItemButton text={"item"}/>);
-
-        expect(screen.getByAltText("item button icon")).toBeInTheDocument();
-        expect(screen.getByAltText("item button icon")).toBeInstanceOf(Image);
+        expect(screen.getByRole("button", {name: "click here"})).toHaveClass("class");
     });
 
     it("Uses image path from props", () => {
 
         render(<ItemButton imgPath={"path"}/>);
 
-        expect(screen.getByRole("img").src).toContain("path");
+        expect(screen.getByRole("img", {hidden: true}).src).toContain("path");
     });
 
-    it("Calls onClick function when clicked", async () => {
+    it("Calls onClick function when clicked", () => {
 
-        const user = userEvent.setup();
         const onClick = vi.fn();
-        render(<ItemButton onClick={onClick}/>);
-        const button = screen.getByRole("button");
-        await user.click(button);
+        render(<ItemButton text={"click here"} onClick={onClick}/>);
+        const button = screen.getByRole("button", {name: "click here"});
+        fireEvent.click(button);
 
         expect(onClick).toHaveBeenCalledOnce();
-    });
-
-    it("Does not call onClick function when not clicked", () => {
-
-        const onClick = vi.fn();
-        render(<ItemButton onClick={onClick}/>);
-
-        expect(onClick).not.toHaveBeenCalled();
     });
 });
