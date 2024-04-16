@@ -1,25 +1,35 @@
-import "../styles/ColorInput.css"
+import "../styles/ColorInput.css";
+import { useRef } from "react";
 
 export default function ColorInput({id, name, onChange, value})
 {
+    const colorInputRef = useRef(null);
+
     const labelStyle = {
         backgroundColor: value,
     }
 
     return (
-        <div data-testid="color-input-container" className="text-input-container">
+        <div className="text-input-container">
             <label htmlFor={id} className="color-input-label-text">Color</label>
-            <label role="button" style={labelStyle} htmlFor={id} className="color-input-label">
+            <button
+                onClick={() => colorInputRef.current.click()}
+                style={labelStyle}
+                className="color-input-label"
+                aria-hidden
+            >
                 <input
-                    name={name}
+                    aria-label="change CV accent color"
                     id={id}
+                    ref={colorInputRef}
+                    name={name}
                     type="color"
                     onChange={onChange}
                     className="color-input"
                     value={value}
                 >
                 </input>
-            </label>
+            </button>
         </div>
     )
 }
