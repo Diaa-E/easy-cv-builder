@@ -44,7 +44,7 @@ export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden
     return (
         <>
             <ItemButton onClick={toggleEdit} text="edit item" imgPath={appIcons.edit}/>
-            <ItemButton onClick={toggleHide} text="toggle visibility" imgPath={hidden ? appIcons.hidden : appIcons.visible}/>
+            <ItemButton onClick={toggleHide} text={hidden ? "show item" : "hide item"} imgPath={hidden ? appIcons.hidden : appIcons.visible}/>
             <ItemButton onClick={moveItemUp} text="move item up" colorClass="item-button-blue" imgPath={appIcons.moveUp}/>
         </>
     )
