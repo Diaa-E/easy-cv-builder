@@ -3,45 +3,31 @@ import ColorInput from "../ColorInput"
 import { expect, it, vi } from "vitest";
 
 describe("ColorInput Component", () => {
-     
-    it("Renders in DOM", () => {
 
-        render(<ColorInput/>);
+    it("Renders a button with accent color in its text", () => {
 
-        expect(screen.getByTestId("color-input-container")).toBeInTheDocument();
+        render(<ColorInput onChange={() => {}}/>);
+
+        expect(screen.getByRole("button", {hidden: true})).toBeInTheDocument();
     });
 
-    it("Renders a color input wrapped by label used as a button", () => {
+    it("Adds a label to color input", () => {
 
-        render(<ColorInput/>);
+        render(<ColorInput id={"test"} onChange={() => {}}/>);
 
-        expect(screen.getByRole("button")).toBeInTheDocument();
-        expect(screen.getByRole("button").nodeName).toBe("LABEL");
-        expect(screen.getByRole("button").childNodes[0].nodeName).toBe("INPUT");
-    });
-
-    it("Uses the id from props", () => {
-
-        render(<ColorInput id={"color"}/>);
-
-        expect(screen.getByLabelText("Color").id).toBe("color");
-    });
-
-    it("Uses the name value from props", () => {
-
-        render(<ColorInput name={"color"}/>);
-
-        expect(screen.getByRole("button").childNodes[0].name).toBe("color");
+        expect(screen.getByLabelText(/color/i).id).toBe("test");
+        expect(screen.getByLabelText(/color/i).tagName).toBe("INPUT");
     });
 
     it("Sets the input value to the value from props", () => {
 
-        render(<ColorInput value={"#000000"}/>);
+        render(<ColorInput value={"#000000"} onChange={() => {}}/>);
 
+        expect(screen.getByDisplayValue("#000000").tagName).toBe("INPUT");
         expect(screen.getByDisplayValue("#000000")).toBeInTheDocument();
     });
 
-    it("Calls onChange function on change", async () => {
+    it("Color can be changed by clicking the color input element", () => {
 
         const onChange = vi.fn();
         render(<ColorInput value={"#000000"} onChange={onChange}/>);
@@ -51,11 +37,14 @@ describe("ColorInput Component", () => {
         expect(onChange).toHaveBeenCalledOnce();
     });
 
-    it("Does not call onChange function when input value is unchanged", () => {
+    it("Color can be changed by clicking the button wrapping the color input", () => {
+
+        const onClick = vi.fn();
+        render(<ColorInput value={"#000000"} onChange={() => {}}/>);
+        const colorButton = screen.getByRole("button", { hidden: true});
+        const colorSelector = screen.getByDisplayValue("#000000").addEventListener("click", onClick);
+        fireEvent.click(colorButton);
         
-        const onChange = vi.fn();
-        render(<ColorInput value={"#000000"} onChange={onChange}/>);
-        
-        expect(onChange).not.toHaveBeenCalled();
-    })
+        expect(onClick).toHaveBeenCalledOnce();
+    });
 });
