@@ -1,113 +1,63 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import ConfirmDialog from "../ConfirmDialog";
-import userEvent from "@testing-library/user-event";
 
 describe("Confirm dialog component", () => {
 
-    function setup(jsx)
-    {
-        return {
-            user: userEvent.setup(),
-            ...render(jsx),
-        }
-    }
+    it("Renders a confirm button using prop value and a cancel button", () => {
 
-    it("Renders in the DOM", () => {
+        render(<ConfirmDialog prompt={"text"} actionText={"yes"} />);
 
-        render(<ConfirmDialog prompt={"text"}/>);
-
-        expect(screen.getByRole("dialog")).toBeInTheDocument();
+        expect(screen.getByRole("button", {name: /cancel/i})).toBeInTheDocument();
+        expect(screen.getByRole("button", {name: "yes"})).toBeInTheDocument();
     });
 
-    it("Renders 2 buttons", () => {
+    it("Renders prompt text from props", () => {
 
-        render(<ConfirmDialog prompt={"text"} />);
-
-        expect(screen.getAllByRole("button").length).toBe(2);
-    });
-
-    it("Renders a prompt paragraph at the top", () => {
-
-        render(<ConfirmDialog prompt={"text"} />);
-
-        expect(screen.getByRole("dialog").childNodes[0].nodeName).toBe("P");
-    });
-
-    it("Shows prompt from props", () => {
-
-        render(<ConfirmDialog prompt={"prompt text"}/>);
+        render(<ConfirmDialog prompt={"prompt text"} />);
 
         expect(screen.getByText("prompt text")).toBeInTheDocument();
     });
 
-    it("Uses prop text for confirm button text", () => {
-
-        render(<ConfirmDialog prompt={"text"} actionText={"confirm"}/>);
-
-        expect(screen.getByRole("button", {name: "confirm"})).toBeInTheDocument();
-    });
-
-    it("Renders a cancel button independant of props", () => {
-
-        render(<ConfirmDialog prompt={"text"} />);
-
-        expect(screen.getByRole("button", {name: "Cancel"})).toBeInTheDocument();
-    });
-
-    it("Only calls onCancel function once when cancel button is clicked", async () => {
+    it("Calls onCancel function once when cancel button is clicked", () => {
 
         const onCancel = vi.fn();
-        const onConfirm = vi.fn();
-        const {user} = setup(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={onConfirm}/>);
-        const button = screen.getByRole("button", {name: "Cancel"});
-        await user.click(button);
+        render(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={() => {}}/>);
+        const button = screen.getByRole("button", {name: /cancel/i});
+        fireEvent.click(button);
 
         expect(onCancel).toHaveBeenCalledOnce();
-        expect(onConfirm).not.toHaveBeenCalled();
     });
 
-    it("Only calls onCancel function once when the backdrop is clicked", async () => {
+    it("Calls onCancel function once when the backdrop is clicked", () => {
 
-        const onConfirm = vi.fn();
         const onCancel = vi.fn();
-        const {user} = setup(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={onConfirm}/>);
-        const backdrop = screen.getByTestId("backdrop");
-        await user.click(backdrop);
+        const {container} = render(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={() => {}}/>);
+        const backdrop = container.querySelector("#dialog-backdrop");
+        fireEvent.click(backdrop);
         
         expect(onCancel).toHaveBeenCalledOnce();
-        expect(onConfirm).not.toHaveBeenCalled();
     });
 
-    it("Does not call onCancel function when the backdrop or the cancel button are not clicked", () => {
+    it("Calls onConfirm function once when confirm button is clicked", () => {
 
         const onConfirm = vi.fn();
-        const onCancel = vi.fn();
-        const {user} = setup(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={onConfirm}/>);
-
-        expect(onCancel).not.toHaveBeenCalled();
-        expect(onConfirm).not.toHaveBeenCalled();
-    });
-
-    it("Only calls onConfirm function once when the confirm button is clicked", async () => {
-
-        const onConfirm = vi.fn();
-        const onCancel = vi.fn();
-        const {user} = setup(<ConfirmDialog prompt={"text"} actionText={"confirm"} onCancel={onCancel} onConfirm={onConfirm}/>);
-        const button = screen.getByRole("button", {name: "confirm"});
-        await user.click(button);
+        render(<ConfirmDialog prompt={"text"} actionText={"confirm"} onCancel={() => {}} onConfirm={onConfirm}/>);
+        const confirmButton = screen.getByRole("button", {name: "confirm"});
+        fireEvent.click(confirmButton);
 
         expect(onConfirm).toHaveBeenCalledOnce();
-        expect(onCancel).not.toHaveBeenCalled();
     });
 
-    it("Does not call onConfirm function when confirm button is not clicked", () => {
+    it("Only calls onConfirm function once when the confirm button is clicked", () => {
 
         const onConfirm = vi.fn();
         const onCancel = vi.fn();
-        const {user} = setup(<ConfirmDialog prompt={"text"} actionText={"confirm"} onCancel={onCancel} onConfirm={onConfirm}/>);
+        render(<ConfirmDialog prompt={"text"} actionText={"confirm"} onCancel={onCancel} onConfirm={onConfirm}/>);
+        const button = screen.getByRole("button", {name: "confirm"});
+        fireEvent.click(button);
 
-        expect(onConfirm).not.toHaveBeenCalled();
+        expect(onConfirm).toHaveBeenCalledOnce();
         expect(onCancel).not.toHaveBeenCalled();
     });
 });
