@@ -1,58 +1,40 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import DarkModeButton from "../DarkModeButton";
-import userEvent from "@testing-library/user-event";
 
 describe("DarkModeButton component", () => {
 
-    it("Renders in the DOM", () => {
+    it("Prompts user to use light theme when dark theme is active", () => {
 
-        render(<DarkModeButton/>);
+        render(<DarkModeButton darkMode={true} onClick={() => {}}/>);
 
-        expect(screen.getByRole("button")).toBeInTheDocument();
+        expect(screen.getByRole("button", {name: /light/i})).toBeInTheDocument();
     });
 
-    it("Renders an image inside the button", () => {
+    it("Prompts user to use dark theme when light theme is active", () => {
 
-        render(<DarkModeButton />);
+        render(<DarkModeButton darkMode={false} onClick={() => {}}/>);
 
-        expect(screen.getByRole("button").childNodes.length).toBe(2);
-        expect(screen.getByRole("button").childNodes[0]).toBeInstanceOf(Image);
-        expect(screen.getByRole("button").childNodes[1]).toBeInstanceOf(Image);
+        expect(screen.getByRole("button", {name: /dark/i})).toBeInTheDocument();
     });
 
-    it("Assigns active class to light image dark mode is on", () => {
-
-        render(<DarkModeButton darkMode={true} />);
-
-        expect(screen.getAllByRole("img").find(img => img.classList.contains("blue"))).toHaveClass("active");
-        expect(screen.getAllByRole("img").find(img => img.classList.contains("yellow"))).not.toHaveClass("active");
-    });
-
-    it("Assigns active class to dark image dark mode is off", () => {
-
-        render(<DarkModeButton darkMode={false} />);
-
-        expect(screen.getAllByRole("img").find(img => img.classList.contains("yellow"))).toHaveClass("active");
-        expect(screen.getAllByRole("img").find(img => img.classList.contains("blue"))).not.toHaveClass("active");
-    });
-
-    it("Calls onClick function when clicked", async () => {
+    it("Calls onClick function when button is clicked", async () => {
 
         const onClick = vi.fn();
-        const user = userEvent.setup();
         render(<DarkModeButton onClick={onClick}/>);
-        const button = screen.getByRole("button");
-        await user.click(button);
+        const button = screen.getByRole("button", {name: /theme/i});
+        fireEvent.click(button);
 
         expect(onClick).toHaveBeenCalledOnce();
     });
 
-    it("Does not call onClick function when not clicked", () => {
+    it("Calls onClick function when button icon is clicked", () => {
 
         const onClick = vi.fn();
         render(<DarkModeButton onClick={onClick}/>);
+        const icon = screen.getAllByRole("img", {hidden: true});
+        fireEvent.click(icon[0]);
 
-        expect(onClick).not.toHaveBeenCalled();
+        expect(onClick).toHaveBeenCalledOnce();
     });
 });
