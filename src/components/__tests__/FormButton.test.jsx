@@ -1,47 +1,37 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import FormButton from "../FormButton";
-import userEvent from "@testing-library/user-event";
 
 describe("FormButton component", () => {
-
-    it("Renders in DOM", () => {
-
-        render(<FormButton/>);
-
-        expect(screen.getByRole("button")).toBeInTheDocument();
-    });
 
     it("Renders text from props", () => {
 
         render(<FormButton text="click here"/>);
 
-        expect(screen.getByRole("button").textContent).toBe("click here");
+        expect(screen.getByRole("button", {name: "click here"})).toBeInTheDocument();
     });
 
-    it("Calls onClick function when clicked", async () => {
+    it("Calls onClick function when clicked", () => {
 
-        const user = userEvent.setup();
         const onClick = vi.fn();
-        render(<FormButton onClick={onClick}/>);
-        const button = screen.getByRole("button");
-        await user.click(button);
+        render(<FormButton onClick={onClick} text="click here"/>);
+        const button = screen.getByRole("button", {name: "click here"});
+        fireEvent.click(button);
 
         expect(onClick).toHaveBeenCalledOnce();
     });
 
-    it("Does not call onClick function when not clicked", () => {
+    it("Adds a title from props", () => {
 
-        const onClick = vi.fn();
-        render(<FormButton onClick={onClick}/>);
+        render(<FormButton text="click here" toolTip="tip" />);
 
-        expect(onClick).not.toHaveBeenCalled();
+        expect(screen.getByRole("button", {name: "click here"}).title).toBe("tip");
     });
 
     it("Adds classes from props to the button", () => {
 
-        render(<FormButton classes={["class1", "class2"]}/>);
+        render(<FormButton text="click here" classes={["class1", "class2"]}/>);
 
-        expect(screen.getByRole("button")).toHaveClass("class1", "class2")
+        expect(screen.getByRole("button", {name: "click here"})).toHaveClass("class1", "class2")
     });
 });
