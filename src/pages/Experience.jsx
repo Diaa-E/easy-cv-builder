@@ -122,6 +122,7 @@ export default function Experience({experienceItems, setExperienceItems, setDial
         {
             experienceItems.map(item => {
                 return <ListItemText
+                            title={item.company}
                             firstLine={item.company}
                             secondLine={item.position}
                             hidden={item.hidden}

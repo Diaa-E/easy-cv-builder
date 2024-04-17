@@ -4,10 +4,13 @@ import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import ItemControls from "./ItemControls";
 
-export default function ListItemText({firstLine, secondLine, hidden = false, id, toggleHide, toggleEdit, deleteItem, moveItemUp})
+export default function ListItemText({title, firstLine, secondLine, hidden = false, id, toggleHide, toggleEdit, deleteItem, moveItemUp})
 {
     return (
-        <div className={hidden ? "list-item-hidden" : "list-item"}>
+        <li
+            aria-label={`${title} (${hidden ? "hidden" : "visible"})`}
+            className={hidden ? "list-item-hidden" : "list-item"}
+        >
             <ItemButton onClick={() => deleteItem(id)} text="delete item" imgPath={appIcons.delete} colorClass="item-button-danger"/>
             <div className="item-details item-details-column">
                 <p>{firstLine}</p>
@@ -19,6 +22,6 @@ export default function ListItemText({firstLine, secondLine, hidden = false, id,
                 toggleHide={() => toggleHide(id)}
                 hidden={hidden}
             />
-        </div>
+        </li>
     )
 }

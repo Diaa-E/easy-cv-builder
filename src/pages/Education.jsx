@@ -114,6 +114,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
         {
             educationItems.map(item => {
                 return <ListItemText
+                            title={item.degree}
                             firstLine={item.degree}
                             secondLine={item.school}
                             hidden={item.hidden}
