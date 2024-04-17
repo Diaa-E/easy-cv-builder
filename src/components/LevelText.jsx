@@ -6,7 +6,7 @@ export default function LevelText({itemData, textLevels = [{name: "High", min: 1
     /* textLevels must be passed in decending order for the matching to work */
     return (
         <>
-            <p className="level-text">
+            <p aria-label="proficiency level" className="level-text">
             {
                 calculateTextLevel(textLevels, itemData.level)
             }
