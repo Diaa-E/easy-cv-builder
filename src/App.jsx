@@ -225,71 +225,73 @@ function App() {
     <>
       <img src={logo} alt="Easy CV builder's logo" className='logo' />
 
-      <nav className='nav'>
-        <DarkModeButton darkMode={darkMode} onClick={() => {
-          setDarkMode(darkMode => !darkMode);
-          localStorage.setItem("darkMode", JSON.stringify(!darkMode));
-        }}/>
-        <NavItem
-          iconUrl={appIcons.personalInfo}
-          title={tabs.personalInfo}
-          selected={currentTab === tabs.personalInfo}
-          onClick={() => setCurrentTab(tabs.personalInfo)}
-        />
-        <NavItem
-          iconUrl={appIcons.contact}
-          title={tabs.contact}
-          selected={currentTab === tabs.contact}
-          onClick={() => setCurrentTab(tabs.contact)}
-        />
-        <NavItem
-          iconUrl={appIcons.link}
-          title={tabs.links}
-          selected={currentTab === tabs.links}
-          onClick={() => setCurrentTab(tabs.links)}
-        />
-        <NavItem
-          iconUrl={appIcons.education}
-          title={tabs.education}
-          selected={currentTab === tabs.education}
-          onClick={() => setCurrentTab(tabs.education)}
-        />
-        <NavItem
-          iconUrl={appIcons.experience}
-          title={tabs.experience}
-          selected={currentTab === tabs.experience}
-          onClick={() => setCurrentTab(tabs.experience)}
-        />
-        <NavItem
-          iconUrl={appIcons.skills}
-          title={tabs.skills}
-          selected={currentTab === tabs.skills}
-          onClick={() => setCurrentTab(tabs.skills)}
-        />
-        <NavItem
-          iconUrl={appIcons.languages}
-          title={tabs.languages}
-          selected={currentTab === tabs.languages}
-          onClick={() => setCurrentTab(tabs.languages)}
-        />
-        <NavItem
-          iconUrl={appIcons.settings}
-          title={tabs.settings}
-          selected={currentTab === tabs.settings}
-          onClick={() => setCurrentTab(tabs.settings)}
-        />
-        <NavItem
-          iconUrl={appIcons.save}
-          title={tabs.save}
-          selected={currentTab === tabs.save}
-          onClick={() => setCurrentTab(tabs.save)}
-        />
-        <NavItem
-          iconUrl={appIcons.about}
-          title={tabs.about}
-          selected={currentTab === tabs.about}
-          onClick={() => setCurrentTab(tabs.about)}
-        />
+      <nav>
+        <ul className='nav'>
+          <DarkModeButton darkMode={darkMode} onClick={() => {
+            setDarkMode(darkMode => !darkMode);
+            localStorage.setItem("darkMode", JSON.stringify(!darkMode));
+          }}/>
+          <NavItem
+            iconUrl={appIcons.personalInfo}
+            title={tabs.personalInfo}
+            selected={currentTab === tabs.personalInfo}
+            onClick={() => setCurrentTab(tabs.personalInfo)}
+          />
+          <NavItem
+            iconUrl={appIcons.contact}
+            title={tabs.contact}
+            selected={currentTab === tabs.contact}
+            onClick={() => setCurrentTab(tabs.contact)}
+          />
+          <NavItem
+            iconUrl={appIcons.link}
+            title={tabs.links}
+            selected={currentTab === tabs.links}
+            onClick={() => setCurrentTab(tabs.links)}
+          />
+          <NavItem
+            iconUrl={appIcons.education}
+            title={tabs.education}
+            selected={currentTab === tabs.education}
+            onClick={() => setCurrentTab(tabs.education)}
+          />
+          <NavItem
+            iconUrl={appIcons.experience}
+            title={tabs.experience}
+            selected={currentTab === tabs.experience}
+            onClick={() => setCurrentTab(tabs.experience)}
+          />
+          <NavItem
+            iconUrl={appIcons.skills}
+            title={tabs.skills}
+            selected={currentTab === tabs.skills}
+            onClick={() => setCurrentTab(tabs.skills)}
+          />
+          <NavItem
+            iconUrl={appIcons.languages}
+            title={tabs.languages}
+            selected={currentTab === tabs.languages}
+            onClick={() => setCurrentTab(tabs.languages)}
+          />
+          <NavItem
+            iconUrl={appIcons.settings}
+            title={tabs.settings}
+            selected={currentTab === tabs.settings}
+            onClick={() => setCurrentTab(tabs.settings)}
+          />
+          <NavItem
+            iconUrl={appIcons.save}
+            title={tabs.save}
+            selected={currentTab === tabs.save}
+            onClick={() => setCurrentTab(tabs.save)}
+          />
+          <NavItem
+            iconUrl={appIcons.about}
+            title={tabs.about}
+            selected={currentTab === tabs.about}
+            onClick={() => setCurrentTab(tabs.about)}
+          />
+        </ul>
       </nav>
       <div className="editor">
         <h1 className='editor-title'>{currentTab}</h1>
