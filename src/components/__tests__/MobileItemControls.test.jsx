@@ -117,4 +117,25 @@ describe("Mobile Item Controls component", () => {
 
         expect(screen.queryByRole("button", {name: /show/i})).toBeInTheDocument();
     });
+
+    it("Renders a close menu button", () => {
+
+        setup(<MobileItemControls />, {providerProps});
+        openMenu();
+
+        expect(screen.queryByRole("button", {name: /close/i})).toBeInTheDocument();
+    });
+
+    it("Closes menu when close menu button is clicked", () => {
+
+        setup(<MobileItemControls />, {providerProps});
+        openMenu();
+        const closeButton = screen.queryByRole("button", {name: /close/i});
+
+        expect(screen.queryByRole("menu")).toBeInTheDocument();
+
+        fireEvent.click(closeButton);
+
+        expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    });
 });

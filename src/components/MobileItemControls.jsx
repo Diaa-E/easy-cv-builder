@@ -40,6 +40,13 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
                         className="item-menu"
                         style={{ right: cursorPositionRef.current[0], top: cursorPositionRef.current[1] }}
                     >
+                        <ItemButton
+                            imgPath={appIcons.clear}
+                            text={"close menu"}
+                            onClick={() => setOpen(false)}
+                            toolTip="Close menu"
+                            colorClass="close-menu"
+                        />
                         <button
                             onClick={() => {
                                 toggleEdit();

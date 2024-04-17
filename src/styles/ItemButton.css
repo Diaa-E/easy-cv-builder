@@ -28,6 +28,10 @@
     box-shadow: var(--shadow);
 }
 
+.close-menu{
+    align-self: flex-end;
+}
+
 .item-menu-button{
     background-color: var(--main);
     font-size: 18px;
