@@ -91,6 +91,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                 />
             </div>
         }
+        <ul>
         {
             skillsItems.map(item => {
                 return <ListItemLevel
@@ -118,6 +119,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                         />
             })
         }
+        </ul>
         <AddButton itemType="skill" onclick={() => {
             setCurrentItem({
                 id: generateId(),

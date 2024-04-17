@@ -91,6 +91,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
                 />
             </div>
         }
+        <ul>
         {
             languagesItems.map(item => {
             return <ListItemLevel
@@ -118,6 +119,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
                     />
             }) 
         }
+        </ul>
         <AddButton itemType="language" onclick={() => {
             setCurrentItem({
                 id: generateId(),

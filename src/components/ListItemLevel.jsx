@@ -10,16 +10,19 @@ import LevelText from "./LevelText";
 export default function ListItemLevel({itemData, levelMode, textLevels, toggleHide, toggleEdit, deleteItem, moveItemUp})
 {
     return (
-        <div className={itemData.hidden ? "list-item-hidden" : "list-item"}>
+        <li
+            aria-label={`${itemData.name} (${itemData.hidden ? "hidden" : "visible"})`}
+            className={itemData.hidden ? "list-item-hidden" : "list-item"}
+        >
             <ItemButton onClick={() => deleteItem(itemData.id)} text="delete item" imgPath={appIcons.delete} colorClass="item-button-danger"/>
             <div className="item-details item-details-column">
-                <p>{itemData.name}</p>
+                <p id="name">{itemData.name}</p>
                 {
                     itemData.showLevel &&
                     <>
                         {
                             levelMode === "bar" &&
-                            <ProgressBar level={itemData.level} disabled={itemData.hidden} label={itemData.name}/>
+                            <ProgressBar level={itemData.level} disabled={itemData.hidden}/>
                         }
                         {
                             levelMode === "text" &&
@@ -34,6 +37,6 @@ export default function ListItemLevel({itemData, levelMode, textLevels, toggleHi
                 toggleHide={() => toggleHide(itemData.id)}
                 hidden={itemData.hidden}
             />
-        </div>
+        </li>
     )
 }
