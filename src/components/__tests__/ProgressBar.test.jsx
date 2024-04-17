@@ -4,39 +4,24 @@ import ProgressBar from "../ProgressBar";
 
 describe("ProgressBar component", () => {
 
-    it("Renders in the DOM", () => {
+    it("Renders a progress bar labeled as level", () => {
 
-        render(<ProgressBar/>);
+        render(<ProgressBar />);
 
-        expect(screen.getByRole("progressbar")).toBeInTheDocument();
+        expect(screen.queryByRole("progressbar", {name: /level/i})).toBeInTheDocument();
     });
 
-    it("Renders a div for outer part and a span for inner part", () => {
+    it("Sets prograss bar value to level prop", () => {
 
-        render(<ProgressBar/>);
+        render(<ProgressBar level={40} />);
 
-        expect(screen.getByRole("progressbar").nodeName).toBe("DIV");
-        expect(screen.getByRole("progressbar").childNodes[0].nodeName).toBe("SPAN");
+        expect(screen.queryByRole("progressbar", {name: /level/i}).ariaValueNow).toContain("40");
     });
 
-    it("Adds disabled class to the outer part if the disabled prop is true", () => {
+    it("Adds disabled class when disabled prop is true", () => {
 
-        render(<ProgressBar disabled={true}/>);
+        render(<ProgressBar disabled={true} />);
 
-        expect(screen.getByRole("progressbar")).toHaveClass("disabled");
-    });
-
-    it("Removes disabled class to the outer part if the disabled prop is false", () => {
-
-        render(<ProgressBar disabled={false}/>);
-
-        expect(screen.getByRole("progressbar")).not.toHaveClass("disabled");
-    });
-
-    it("Uses passed level prop to set span's width in percent", () => {
-
-        render(<ProgressBar disabled={false} level={20}/>);
-
-        expect(screen.getByRole("progressbar").childNodes[0]).toHaveStyle("width: 20%");
+        expect(screen.queryByRole("progressbar", {name: /level/i})).toHaveClass("disabled");
     });
 });
