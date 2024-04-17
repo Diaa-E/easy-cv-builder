@@ -119,6 +119,7 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                 />
             </div>
         }
+        <ul>
         {
             experienceItems.map(item => {
                 return <ListItemText
@@ -148,6 +149,7 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                         />
             })
         }
+        </ul>
         <AddButton itemType="experience" onclick={() => {
             setCurrentItem({
                 id: generateId(),

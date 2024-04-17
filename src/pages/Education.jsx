@@ -111,6 +111,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
                 />
             </div>
         }
+        <ul>
         {
             educationItems.map(item => {
                 return <ListItemText
@@ -140,6 +141,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
                         />
             })
         }
+        </ul>
         {
             <AddButton itemType="education" onclick={() => {
                 setCurrentItem({
