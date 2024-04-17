@@ -6,10 +6,10 @@ export default function ProgressBar({level, disabled})
         <div
             role="progressbar"
             aria-label="proficiency level"
-            aria-valuenow={`${level}%`}
+            aria-valuenow={`${level} percent`}
             className={`progress-bar-outer ${disabled ? "disabled" : ""}`}
         >
-            <span className="progress-bar-inner" style={{width: `${level}%`}}></span>
+            <span aria-hidden className="progress-bar-inner" style={{width: `${level}%`}}></span>
         </div>
     )
 }
