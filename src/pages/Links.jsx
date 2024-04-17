@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ListItemIcon from "../components/ListItemIcon";
+import LinkItem from "../components/LinkItem";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
 import FormButton from "../components/FormButton";
@@ -90,9 +90,11 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
                 />
             </div>
         }
+        <ul aria-label="links list">
         {
             linksItems.map(item => {
-                return <ListItemIcon
+                return <LinkItem
+                            website={item.icon}
                             iconPath={linkIcons.find(icon => item.icon === icon.name).icon}
                             text={item.url}
                             hidden={item.hidden}
@@ -117,7 +119,8 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
                             moveItemUp={(id) => setLinksItems(moveItemUp(id, linksItems))}
                         />
             })
-        }
+        }       
+        </ul>
         <AddButton itemType="link" onclick={() => {
             setCurrentItem({
                 id: generateId(),
