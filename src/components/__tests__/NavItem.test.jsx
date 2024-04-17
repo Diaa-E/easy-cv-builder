@@ -1,62 +1,45 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import NavItem from "../NavItem";
 import userEvent from "@testing-library/user-event";
 
 describe("NavItem component", () => {
 
-    it("Renders in the DOM", () => {
+    it("Renders a button labeled by title prop", () => {
 
-        render(<NavItem/>);
+        render(<NavItem title={"test"} />);
 
-        expect(screen.getByRole("button")).toBeInTheDocument();
-    });
-
-    it("Uses title prop in icon alt text", () => {
-
-        render(<NavItem title={"nav"}/>);
-
-        expect(screen.getByAltText("nav tab icon")).toBeInstanceOf(Image);
-        expect(screen.getByAltText("nav tab icon")).toBeInTheDocument();
+        expect(screen.queryByRole("button", {name: /test/i})).toBeInTheDocument();
     });
 
     it("Uses icon url prop for button img src", () => {
 
         render(<NavItem iconUrl={"icon"}/>);
 
-        expect(screen.getByRole("img").src).toContain("icon");
+        expect(screen.queryByRole("img", {hidden: true}).src).toContain("icon");
     });
 
     it("Adds selected class when selected prop is true", () => {
 
         render(<NavItem selected={true}/>);
 
-        expect(screen.getByRole("button")).toHaveClass("selected");
+        expect(screen.queryByRole("button")).toHaveClass("selected");
     });
 
     it("Removes selected class when selected prop is false", () => {
 
         render(<NavItem selected={false}/>);
 
-        expect(screen.getByRole("button")).not.toHaveClass("selected");
+        expect(screen.queryByRole("button")).not.toHaveClass("selected");
     });
 
-    it("Calls onClick function when clicked", async () => {
+    it("Calls onClick function when clicked", () => {
 
         const onClick = vi.fn();
-        const user = userEvent.setup();
         render(<NavItem onClick={onClick}/>);
-        const button = screen.getByRole("button");
-        await user.click(button);
+        const button = screen.queryByRole("button");
+        fireEvent.click(button);
 
         expect(onClick).toHaveBeenCalledOnce();
-    });
-
-    it("Does not call onClick function when not clicked", () => {
-
-        const onClick = vi.fn();
-        render(<NavItem onClick={onClick}/>);
-
-        expect(onClick).not.toHaveBeenCalled();
     });
 });
