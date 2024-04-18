@@ -1,13 +1,25 @@
 import "../styles/SelectInput.css";
 
-export default function SelectInput({options, optionNameKey, optionValueKey, selected, labelText, id, onChange = () => {}})
+export default function SelectInput({options, selected, labelText, id, onChange = () => {}})
 {
     return (
-        <div data-testid="select-input" className="select-input-container">
-            <label className="select-input-label" htmlFor={id}>{labelText}</label>
-            <select role="listbox" value={selected} onChange={onChange} className="select-input" name={id} id={id}>
+        <div className="select-input-container">
+            <label
+                id={id + "-label"}
+                className="select-input-label"
+                htmlFor={id}
+            >{labelText}</label>
+            <select
+                aria-labelledby={id + "-label"}
+                role="select"
+                value={selected}
+                onChange={onChange}
+                className="select-input"
+                name={id}
+                id={id}
+            >
             {
-                options.map(item => <option key={item[optionNameKey]} value={item[optionValueKey]}>{item[optionNameKey]}</option>)
+                options.map(item => <option key={item["name"]} value={item["value"]}>{item["name"]}</option>)
             }
             </select>
         </div>   
