@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from 'react';
-import { v4 as generateId } from 'uuid';
 
 import logo from "./assets/images/logo.svg";
 import appIcons from './data/appIconsBarrel';
@@ -28,6 +27,7 @@ import { testDraftValidity } from './utils/draftValidation';
 import DarkModeButton from './components/DarkModeButton';
 import ConfirmDialog from './components/ConfirmDialog';
 import { fixDraft } from './utils/fixDraft';
+import { meta } from './data/meta';
 
 export const ScreenWidthContext = createContext(null);
 
@@ -87,7 +87,6 @@ function App() {
 
   }, [darkMode]);
 
-  const currentVersion = "1.4.1";
   const emptyListText = "Nothing here yet."
 
   const data={
@@ -165,7 +164,7 @@ function App() {
   function downloadDraft()
   {
     const a = document.createElement("a");
-    const downloadData = new Blob([JSON.stringify({version: currentVersion, ...data})]);
+    const downloadData = new Blob([JSON.stringify({version: meta.version, ...data})]);
     a.href = window.URL.createObjectURL(downloadData, {type: "application/json"});
     a.download = "CV_draft.json";
     a.click();
@@ -383,9 +382,7 @@ function App() {
         }
         {
           currentTab === tabs.about &&
-          <About
-            version={currentVersion}
-          />
+          <About />
         }
       </div>
 
