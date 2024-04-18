@@ -8,6 +8,11 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
+### **1.5.0 (unreleased)**
+
+- 🛠️ Fixed multiple accessibility issues.
+- ⚙️ Unit tests are now more focoused on basic features while ignoring implmentation.
+
 ### **1.4.1 (Marh 13, 2024)**
 
 - 🛠️ Fix modern layout (layout_02) showing "native" for maxed out skill items. 
