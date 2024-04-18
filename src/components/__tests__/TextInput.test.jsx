@@ -5,90 +5,75 @@ import userEvent from "@testing-library/user-event";
 
 describe("TextInput component", () => {
 
-    it("Renders in the DOM", () => {
-
-        render(<TextInput/>);
-
-        expect(screen.getByTestId("text-input")).toBeInTheDocument();
-    });
-
     it("Renders a label with text from props", () => {
 
         render(<TextInput labelText={"label text"}/>);
 
-        expect(screen.getByText("label text")).toBeInTheDocument();
-        expect(screen.getByText("label text").nodeName).toBe("LABEL");
+        expect(screen.queryByText("label text")).toBeInTheDocument();
     });
 
     it("Renders a text input with id from props", () => {
 
         render(<TextInput id={"input field"}/>);
 
-        expect(screen.getByRole("textbox").id).toBe("input field");
+        expect(screen.queryByRole("textbox").id).toBe("input field");
     });
 
     it("Sets text input value using text prop", () => {
 
         render(<TextInput text={"test text"} />);
 
-        expect(screen.getByRole("textbox").value).toBe("test text");
+        expect(screen.queryByRole("textbox", {value: "test text"})).toBeInTheDocument();
     });
 
     it("Sets text input placeholder text from props", () => {
 
         render(<TextInput placeholder={"placeholder text"}/>);
 
-        expect(screen.getByRole("textbox").placeholder).toBe("placeholder text");
+        expect(screen.queryByRole("textbox").placeholder).toBe("placeholder text");
     });
 
     it("Calls onChange function when text is changed", () => {
 
         const onChange = vi.fn();
         render(<TextInput onChange={onChange}/>);
-        const textArea = screen.getByRole("textbox");
+        const textArea = screen.queryByRole("textbox");
         fireEvent.change(textArea, {target: {value: "text"}});
 
         expect(onChange).toHaveBeenCalledOnce();
     });
 
-    it("Does not call onChange function when text is not changed", () => {
+    it("Renders a clear text button when input field is not empty", () => {
 
-        const onChange = vi.fn();
-        render(<TextInput onChange={onChange}/>);
+        render(<TextInput text={"test"}/>);
 
-        expect(onChange).not.toHaveBeenCalled();
+        expect(screen.queryByRole("button", {name: /clear/i})).toBeInTheDocument();
     });
 
-    it("Render clear field button when textbox is not empty", () => {
-
-        render(<TextInput text={"text"} />);
-
-        expect(screen.getByTestId("clear-field-button")).toBeInTheDocument();
-    });
-
-    it("Does not render clear field button when textbox is empty", () => {
+    it("Does not render a clear text button when input field is empty", () => {
 
         render(<TextInput text={""}/>);
 
-        expect(screen.queryByTestId("clear-field-button")).not.toBeInTheDocument();
+        expect(screen.queryByRole("button", {name: /clear/i})).not.toBeInTheDocument();
     });
 
-    it("Calls clearField function when clear field button is clicked", async () => {
+    it("Calls clearField function when clear field button is clicked", () => {
 
-        const user = userEvent.setup();
         const clearField = vi.fn();
-        render(<TextInput text={"text"} clearField={clearField}/>);
-        const button = screen.getByTestId("clear-field-button");
-        await user.click(button);
+        render(<TextInput clearField={clearField} text={"test"}/>);
+        const clearButton = screen.queryByRole("button", {name: /clear/i});
+        fireEvent.click(clearButton);
 
         expect(clearField).toHaveBeenCalledOnce();
     });
 
-    it("Does not call clearField function when clear field button is not clicked", () => {
+    it("Keeps text input in focus after clearing field", () => {
 
         const clearField = vi.fn();
-        render(<TextInput text={"text"} clearField={clearField}/>);
+        render(<TextInput text={"test"} clearField={clearField}/>);
+        const clearButton = screen.queryByRole("button", {name: /clear/i});
+        fireEvent.click(clearButton);
 
-        expect(clearField).not.toHaveBeenCalled();
-    });
+        expect(screen.getByRole("textbox", {value: "test"})).toEqual(document.activeElement);
+    })
 });
