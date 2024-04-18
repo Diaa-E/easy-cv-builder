@@ -6,14 +6,13 @@
 - Switch to css modules.
 - Make CV preview affected by zoom.
 - Add a magnifying glass for CV preview.
-- Make unit tests more implementation agnostic.
 - Reduce/eliminate use of viewport units.
 - Animate view transition.
-- remove dummy tests.
 - Use reducers for complex states.
-- Improve accessibility button prompts.
-- Show clear field button only when field is in focus.
 - Add a bubble layout template.
+- ~~Make unit tests more implementation agnostic.~~ ✅
+- ~~Improve accessibility button prompts.~~ ✅
+- ~~remove dummy tests.~~ ✅
 - ~~Add option for verbal level rating for skills and languages, strong/familiar for skills, Native/strong/familiar for languages.~~ ✅
 - ~~Add option to fix bad sections in a draft using default/sample values.~~ ✅
 - ~~Use sampleinfo in reset all instead of hardcoded values.~~ ✅
@@ -45,5 +44,6 @@
 - ~~Save user dark theme preference for the session.~~ ✅
 - ~~Fix list item text color.~~ ✅
 - ~~Create a unique component for dark mode button with changing colors based on active mode.~~ ✅
+- ~~Show clear field button only when field is in focus.~~ ❌ -> Breaks clearing text function as button disappears before running clear function.
 - ~~Show clear field button only when textbox is in focus.~~ ❌ -> disabling/removing the button cancels ongoing click handler
 - ~~move dark mode button to main controls box for better accessibility, putting it inside nav might be confusing.~~ ❌ -> Not enough space in main controls.
