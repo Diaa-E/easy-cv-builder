@@ -1,102 +1,108 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import RangeInput from "../RangeInput";
-import userEvent from "@testing-library/user-event";
 
 describe("RangeInput component", () => {
 
-    it("Render to the DOM", () => {
+    const textLevels = [
+        {
+            min: 0,
+            name: "test level"
+        }
+    ]
 
-        render(<RangeInput/>);
+    it("Renders a slider input", () => {
 
-        expect(screen.getByTestId("range-input")).toBeInTheDocument();
+        render(<RangeInput checked={true} onCheckedChange={() => {}} onRangeChange={() => {}} />);
+
+        expect(screen.queryByRole("slider", {name: /level/i})).toBeInTheDocument();
     });
 
-    it("Uses label text prop for checkbox label", () => {
+    it("Renders a checkbox with label text from props", () => {
 
-        render(<RangeInput labelText={"check"}/>);
+        render(<RangeInput labelText={"test"} checked={true} onCheckedChange={() => {}} onRangeChange={() => {}} />);
 
-        expect(screen.getByText("check")).toBeInTheDocument();
-        expect(screen.getByText("check").nodeName).toBe("LABEL");
-        expect(screen.getByText("check").childNodes[0].nodeName).toBe("INPUT");
+        expect(screen.queryByRole("checkbox", {name: /test/i})).toBeInTheDocument();
     });
 
-    it("Uses checked prop to set checkbox state", () => {
+    it("Checks checkbox when check prop is true", () => {
 
-        render(<RangeInput checked={true}/>);
+        render(<RangeInput labelText={"test"} checked={true} onCheckedChange={() => {}} onRangeChange={() => {}} />);
 
-        expect(screen.getByRole("checkbox")).toBeChecked();
+        expect(screen.queryByRole("checkbox", {name: /test/i})).toBeChecked();
     });
 
-    it("Calls onCheckedChange function when checkbox is clicked and changed", async () => {
+    it("Unchecks checkbox when check prop is false", () => {
 
-        const user = userEvent.setup();
+        render(<RangeInput labelText={"test"} checked={false} onCheckedChange={() => {}} onRangeChange={() => {}} />);
+
+        expect(screen.queryByRole("checkbox", {name: /test/i})).not.toBeChecked();
+    });
+
+    it("Disables slider when checked is false", () => {
+
+        render(<RangeInput labelText={"test"} checked={false} onCheckedChange={() => {}} onRangeChange={() => {}} />);
+
+        expect(screen.queryByRole("slider", {hidden: true})).toBeDisabled();
+    });
+
+    it("Calls onCheckChange function when checkbox value is changed", () => {
+
         const onCheckedChange = vi.fn();
-        render(<RangeInput checked={false} onCheckedChange={onCheckedChange}/>);
-        const checkBox = screen.getByRole("checkbox");
-        await user.click(checkBox);
+        render(<RangeInput
+            labelText={"test"}
+            checked={false} 
+            onCheckedChange={onCheckedChange}
+            onRangeChange={() => {}} 
+        />);
+        const checkbox = screen.queryByRole("checkbox", {name: /test/i});
+        fireEvent.click(checkbox);
 
         expect(onCheckedChange).toHaveBeenCalledOnce();
     });
 
-    it("Does not call onCheckedChange function when checkbox is not clicked", () => {
-
-        const onCheckedChange = vi.fn();
-        render(<RangeInput checked={false} onCheckedChange={onCheckedChange}/>);
-
-        expect(onCheckedChange).not.toHaveBeenCalled();
-    });
-
-    it("Renders an input with type range", () => {
-
-        render(<RangeInput/>);
-
-        expect(screen.getByRole("slider")).toBeInTheDocument();
-    });
-
-    it("Uses value prop to set range input value", () => {
-
-        render(<RangeInput value={40}/>);
-
-        expect(screen.getByRole("slider").value).toBe("40");
-    });
-
-    it("Disables range input when checkbox is unchecked", () => {
-
-        render(<RangeInput checked={false} value={20}/>);
-
-        expect(screen.getByRole("slider")).toBeDisabled();
-    });
-
-    it("Enables range input when checkbox is checked", () => {
-
-        render(<RangeInput checked={true} value={20}/>);
-
-        expect(screen.getByRole("slider")).not.toBeDisabled();
-    });
-
-    it("Calls onRangeChange when range value is changed", () => {
+    it("Calls onRangeChange function when slider value is changed", () => {
 
         const onRangeChange = vi.fn();
-        render(<RangeInput onRangeChange={onRangeChange} value={40}/>);
-        const range = screen.getByRole("slider");
-        fireEvent.change(range, {target: {value: 20}});
+        render(<RangeInput
+            value={20}
+            labelText={"test"}
+            checked={true} 
+            onCheckedChange={() => {}}
+            onRangeChange={onRangeChange} 
+        />);
+        const rangeInput = screen.queryByRole("slider", {name: /level/i});
+        fireEvent.change(rangeInput, {target: {value: 40}});
 
         expect(onRangeChange).toHaveBeenCalledOnce();
     });
 
-    it("Does not call onChangeRange when range value is not changed", () => {
+    it("Displays value number when level mode is set to bar", () => {
 
-        const onRangeChange = vi.fn();
-        render(<RangeInput onRangeChange={onRangeChange} value={40}/>);
+        render(<RangeInput
+            value={20}
+            labelText={"test"}
+            checked={true} 
+            onCheckedChange={() => {}}
+            onRangeChange={() => {}} 
+            levelMode={"bar"}
+        />);
 
-        expect(onRangeChange).not.toHaveBeenCalled();
+        expect(screen.queryByText(/20/i, {hidden: true})).toBeInTheDocument();
     });
 
-    it("Uses id prop to set range id", () => {
+    it("Displays value as a text level when level mode is set to text", () => {
 
-        render(<RangeInput id={"range"}/>);
+        render(<RangeInput
+            value={20}
+            labelText={"test"}
+            checked={true} 
+            onCheckedChange={() => {}}
+            onRangeChange={() => {}} 
+            levelMode={"text"}
+            textLevels={textLevels}
+        />);
 
-        expect(screen.getByRole("slider").id).toBe("range");
-    });
+        expect(screen.queryByText(/test\slevel/i, {hidden: true})).toBeInTheDocument();
+    })
 });
