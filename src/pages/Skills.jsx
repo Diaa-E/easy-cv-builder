@@ -33,7 +33,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                 />
                 <RangeInput
                     value={currentItem.level}
-                    labelText={"Level"}
+                    labelText={"Show proficiency level"}
                     checked={currentItem.showLevel}
                     onRangeChange={(e) => setCurrentItem({...currentItem, level: e.target.value < 20? 20 : e.target.value})}
                     onCheckedChange={(e) => setCurrentItem({...currentItem, showLevel: e.target.checked})}
