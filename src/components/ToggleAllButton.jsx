@@ -1,11 +1,11 @@
-import "../styles/ToggleAllButton.css";
+import styles from "../styles/ToggleAllButton.module.css";
 
-export default function ToggleAllButton({icon, onClick, toolTip, colorClasses = []})
+export default function ToggleAllButton({icon, onClick, toolTip, danger = false})
 {
     return (
         <button
             onClick={onClick}
-            className={`toggle-all-button ${colorClasses.join(" ")}`}
+            className={[styles["toggle-all-button"], danger ? styles["toggle-all-button-danger"] : ""].join(" ")}
             title={toolTip}
             aria-label={toolTip}
         >

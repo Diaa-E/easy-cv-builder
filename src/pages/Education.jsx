@@ -92,7 +92,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
                 <ToggleAllButton
                     icon={appIcons.delete}
                     toolTip={"Delete all education items"}
-                    colorClasses={["toggle-all-button-red"]}
+                    danger={true}
                     onClick={() => setDialogState({
                         open: true,
                         actionText: "Delete All",

@@ -72,7 +72,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                 <ToggleAllButton
                     icon={appIcons.delete}
                     toolTip={"Delete all skills items"}
-                    colorClasses={["toggle-all-button-red"]}
+                    danger={true}
                     onClick={() => setDialogState({
                         open: true,
                         actionText: "Delete All",

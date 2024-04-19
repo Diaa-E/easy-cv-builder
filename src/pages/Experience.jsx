@@ -100,7 +100,7 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                 <ToggleAllButton
                     icon={appIcons.delete}
                     toolTip={"Delete all experience items"}
-                    colorClasses={["toggle-all-button-red"]}
+                    danger={true}
                     onClick={() => setDialogState({
                         open: true,
                         actionText: "Delete All",

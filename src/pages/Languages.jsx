@@ -72,7 +72,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
                 <ToggleAllButton
                     icon={appIcons.delete}
                     toolTip={"Delete all language items"}
-                    colorClasses={["toggle-all-button-red"]}
+                    danger={true}
                     onClick={() => setDialogState({
                         open: true,
                         actionText: "Delete All",

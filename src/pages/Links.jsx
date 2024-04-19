@@ -71,7 +71,7 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
                 <ToggleAllButton
                     icon={appIcons.delete}
                     toolTip={"Delete all links items"}
-                    colorClasses={["toggle-all-button-red"]}
+                    danger={true}
                     onClick={() => setDialogState({
                         open: true,
                         actionText: "Delete All",
