@@ -11,6 +11,7 @@
     font-size: 14px;
     padding: 10px 5px;
     color: var(--text);
+    cursor: pointer;
 }
 
 .select-input:focus{

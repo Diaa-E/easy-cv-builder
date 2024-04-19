@@ -1,12 +1,12 @@
-import "../styles/SelectInput.css";
+import styles from "../styles/SelectInput.module.css";
 
 export default function SelectInput({options, selected, labelText, id, onChange = () => {}})
 {
     return (
-        <div className="select-input-container">
+        <div className={styles["select-input-container"]}>
             <label
                 id={id + "-label"}
-                className="select-input-label"
+                className={styles["select-input-label"]}
                 htmlFor={id}
             >{labelText}</label>
             <select
@@ -14,7 +14,7 @@ export default function SelectInput({options, selected, labelText, id, onChange 
                 role="select"
                 value={selected}
                 onChange={onChange}
-                className="select-input"
+                className={styles["select-input"]}
                 name={id}
                 id={id}
             >
