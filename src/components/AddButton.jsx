@@ -1,4 +1,4 @@
-import "../styles/AddButton.css";
+import styles from "../styles/AddButton.module.css";
 import appIcons from "../data/appIconsBarrel";
 
 export default function AddButton({onclick = () => {}, itemType = ""})
@@ -9,7 +9,7 @@ export default function AddButton({onclick = () => {}, itemType = ""})
                 aria-label={`add a new ${itemType}`}
                 title={`add a new ${itemType}`}
                 onClick={onclick}
-                className="add-button"
+                className={styles["add-button"]}
             >
                 <img src={appIcons.add} alt={`add a new ${itemType}`} />
             </button>
