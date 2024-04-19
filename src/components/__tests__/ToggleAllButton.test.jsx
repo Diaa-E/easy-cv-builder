@@ -11,11 +11,11 @@ describe("Toggle all button component", () => {
         expect(screen.getByRole("img", {hidden: true}).src).toContain("path");
     });
 
-    it("Adds classes from props to the button", () => {
+    it("Adds danger class when danger prop is true", () => {
 
-        render(<ToggleAllButton toolTip={"click"} colorClasses={["color1", "color2"]}/>);
+        render(<ToggleAllButton toolTip={"click"} danger={true}/>);
 
-        expect(screen.getByRole("button", {name: /click/i})).toHaveClass("color1", "color2");
+        expect(screen.getByRole("button", {name: /click/i})).toHaveClass(/danger/i);
     });
 
     it("Adds tooltip prop to the title of the button", () => {

@@ -11,11 +11,11 @@ describe("ItemButton component", () => {
         expect(screen.getByRole("button", {name: "click here"})).toBeInTheDocument();
     });
 
-    it("Adds color class to the button", () => {
+    it("Adds danger class when danger prop is true", () => {
 
-        render(<ItemButton text={"click here"} colorClass="class"/>);
+        render(<ItemButton text={"click here"} danger={true}/>);
 
-        expect(screen.getByRole("button", {name: "click here"})).toHaveClass("class");
+        expect(screen.getByRole("button", {name: "click here"})).toHaveClass(/danger/i);
     });
 
     it("Uses image path from props", () => {

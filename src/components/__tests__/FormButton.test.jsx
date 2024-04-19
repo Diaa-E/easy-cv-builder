@@ -28,10 +28,31 @@ describe("FormButton component", () => {
         expect(screen.getByRole("button", {name: "click here"}).title).toBe("tip");
     });
 
-    it("Adds classes from props to the button", () => {
+    it("Adds primary class when passed primary style", () => {
 
-        render(<FormButton text="click here" classes={["class1", "class2"]}/>);
+        render(<FormButton text="click here" style="primary"/>);
 
-        expect(screen.getByRole("button", {name: "click here"})).toHaveClass("class1", "class2")
+        expect(screen.getByRole("button", {name: "click here"})).toHaveClass(/primary/i)
+    });
+
+    it("Adds secondary class when passed secondary style", () => {
+
+        render(<FormButton text="click here" style="secondary"/>);
+
+        expect(screen.getByRole("button", {name: "click here"})).toHaveClass(/secondary/i)
+    });
+
+    it("Adds danger class when passed danger style", () => {
+
+        render(<FormButton text="click here" style="danger"/>);
+
+        expect(screen.getByRole("button", {name: "click here"})).toHaveClass(/danger/i)
+    });
+
+    it("Adds secondary class by default", () => {
+
+        render(<FormButton text="click here"/>);
+
+        expect(screen.getByRole("button", {name: "click here"})).toHaveClass(/secondary/i)
     });
 });
