@@ -23,14 +23,14 @@ describe("NavItem component", () => {
 
         render(<NavItem selected={true}/>);
 
-        expect(screen.queryByRole("button")).toHaveClass("selected");
+        expect(screen.queryByRole("button")).toHaveClass(/selected/i);
     });
 
     it("Removes selected class when selected prop is false", () => {
 
         render(<NavItem selected={false}/>);
 
-        expect(screen.queryByRole("button")).not.toHaveClass("selected");
+        expect(screen.queryByRole("button")).not.toHaveClass(/selected/i);
     });
 
     it("Calls onClick function when clicked", () => {

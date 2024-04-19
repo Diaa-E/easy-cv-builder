@@ -1,4 +1,4 @@
-import "../styles/NavItem.css";
+import styles from "../styles/NavItem.module.css";
 
 export default function NavItem({iconUrl, title, selected = false, onClick = () => {}})
 {
@@ -7,7 +7,7 @@ export default function NavItem({iconUrl, title, selected = false, onClick = () 
             <button
                 aria-label={`go to ${title}`}
                 title={title}
-                className={`nav-item ${selected? "selected" : ""}`}
+                className={[styles["nav-item"], selected? styles["selected"] : ""].join(" ")}
                 onClick={onClick}
             >
                 <img aria-hidden src={iconUrl} alt={`${title} tab icon`} />
