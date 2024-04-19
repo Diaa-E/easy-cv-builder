@@ -1,4 +1,4 @@
-import "../styles/ListItem.css";
+import styles from "../styles/ListItem.module.css";
 import appIcons from "../data/appIconsBarrel";
 
 import ItemButton from "./ItemButton";
@@ -9,7 +9,7 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, t
     return (
         <li
             aria-label={`${website} link (${hidden ? "hidden" : "visible"})`}
-            className={hidden ? "list-item-hidden" : "list-item"}
+            className={hidden ? styles["list-item-hidden"] : styles["list-item"]}
         >
             <ItemButton
                 onClick={() => deleteItem(id)}
@@ -17,8 +17,8 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, t
                 imgPath={appIcons.delete}
                 danger={true}
             />
-            <div className="item-details item-details-row">
-                <img className="item-icon" src={iconPath} alt="item icon" />
+            <div className={[styles["item-details"], styles["item-details-row"]].join(" ")}>
+                <img className={styles["item-icon"]} src={iconPath} alt="item icon" />
                 <p aria-label={`url`} >{text}</p>
             </div>
             <ItemControls 

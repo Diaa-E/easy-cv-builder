@@ -1,4 +1,4 @@
-import "../styles/ListItem.css";
+import styles from "../styles/ListItem.module.css";
 import appIcons from "../data/appIconsBarrel";
 
 import ItemButton from "./ItemButton";
@@ -9,7 +9,7 @@ export default function ListItemText({title, firstLine, secondLine, hidden = fal
     return (
         <li
             aria-label={`${title} (${hidden ? "hidden" : "visible"})`}
-            className={hidden ? "list-item-hidden" : "list-item"}
+            className={hidden ? styles["list-item-hidden"] : styles["list-item"]}
         >
             <ItemButton
                 onClick={() => deleteItem(id)}
@@ -17,7 +17,7 @@ export default function ListItemText({title, firstLine, secondLine, hidden = fal
                 imgPath={appIcons.delete}
                 danger={true}
             />
-            <div className="item-details item-details-column">
+            <div className={[styles["item-details"], styles["item-details-column"]].join(" ")}>
                 <p>{firstLine}</p>
                 <p>{secondLine}</p>
             </div>

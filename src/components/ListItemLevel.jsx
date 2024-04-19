@@ -1,4 +1,4 @@
-import "../styles/ListItem.css";
+import styles from "../styles/ListItem.module.css";
 import appIcons from "../data/appIconsBarrel";
 
 import ItemButton from "./ItemButton";
@@ -12,7 +12,7 @@ export default function ListItemLevel({itemData, levelMode, textLevels, toggleHi
     return (
         <li
             aria-label={`${itemData.name} (${itemData.hidden ? "hidden" : "visible"})`}
-            className={itemData.hidden ? "list-item-hidden" : "list-item"}
+            className={itemData.hidden ? styles["list-item-hidden"] : styles["list-item"]}
         >
             <ItemButton
                 onClick={() => deleteItem(itemData.id)}
@@ -20,7 +20,7 @@ export default function ListItemLevel({itemData, levelMode, textLevels, toggleHi
                 imgPath={appIcons.delete}
                 danger={true}
             />
-            <div className="item-details item-details-column">
+            <div className={[styles["item-details"], styles["item-details-column"]].join(" ")}>
                 <p id="name">{itemData.name}</p>
                 {
                     itemData.showLevel &&
