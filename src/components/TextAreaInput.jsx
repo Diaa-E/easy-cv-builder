@@ -1,10 +1,10 @@
-import "../styles/TextAreaInput.css";
+import styles from "../styles/TextAreaInput.module.css";
 
 export default function TextAreaInput({labelText, text, placeholder, id, onChange = () => {}})
 {
     return (
-        <div className="text-area-input-container">
-            <label id={id + "-label"} className="text-area-input-label" htmlFor={id}>
+        <div className={styles["text-area-input-container"]}>
+            <label id={id + "-label"} className={styles["text-area-input-label"]} htmlFor={id}>
                 {labelText}
             </label>
             <textarea
@@ -13,7 +13,7 @@ export default function TextAreaInput({labelText, text, placeholder, id, onChang
                 type="text"
                 value={text}
                 placeholder={placeholder}
-                className="text-area-input-field"
+                className={styles["text-area-input-field"]}
                 onChange={onChange}
                 rows={5}
             />
