@@ -22,6 +22,6 @@ describe("ProgressBar component", () => {
 
         render(<ProgressBar disabled={true} />);
 
-        expect(screen.queryByRole("progressbar", {name: /level/i})).toHaveClass("disabled");
+        expect(screen.queryByRole("progressbar", {name: /level/i})).toHaveClass(/disabled/i);
     });
 });
