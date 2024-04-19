@@ -7,8 +7,8 @@ export default function TextInput({labelText, text, placeholder, id, onChange = 
     const textInputRef = useRef(null);
 
     return (
-        <div className="text-input-container">
-            <label className="text-input-label" htmlFor={id}>
+        <div className={styles["text-input-container"]}>
+            <label className={styles["text-input-label"]} htmlFor={id}>
                 {labelText}
             </label>
             <input
@@ -17,7 +17,7 @@ export default function TextInput({labelText, text, placeholder, id, onChange = 
                 type="text"
                 value={text}
                 placeholder={placeholder}
-                className="text-input-field"
+                className={styles["text-input-field"]}
                 onChange={onChange}
                 name={id}
             />
@@ -29,7 +29,7 @@ export default function TextInput({labelText, text, placeholder, id, onChange = 
                         clearField();
                         textInputRef.current.focus();
                     }}
-                    className="clear-button"
+                    className={styles["clear-button"]}
                     aria-label="clear field"
                 >
                 <img aria-hidden src={appIcons.clear} alt="Clear field button icon" />
