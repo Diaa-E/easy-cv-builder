@@ -1,15 +1,29 @@
-import "../styles/Save.css";
-import "../styles/FormButton.css"
+import styles from "../styles/Save.module.css";
 
 export default function Save({upload, download, status})
 {
     return (
-        <div className="items-container">
-            <button title="Download a copy of your data" onClick={download} className="form-button blue-button">
+        <div className={styles["save-container"]}>
+            <button
+                title="Download a copy of your data"
+                onClick={download}
+                className={styles["download-draft-button"]}
+            >
                 Download Draft
             </button>
-            <label title="Upload a saved copy of your data" role="button" htmlFor="uploadDraft" className="form-button white-button">
-                <input onChange={upload} className="file-input" id="uploadDraft" type="file" accept=".json"/>
+            <label
+                title="Upload a saved copy of your data"
+                role="button"
+                htmlFor="uploadDraft"
+                className={styles["upload-draft-button"]}
+            >
+                <input
+                    onChange={upload}
+                    className={styles["file-input"]}
+                    id="uploadDraft"
+                    type="file"
+                    accept=".json"
+                />
                 Upload Draft
             </label>
             <StatusPanel

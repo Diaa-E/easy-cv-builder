@@ -1,4 +1,4 @@
-import "../styles/FormButton.css";
+import styles from "../styles/FormButton.module.css";
 
 export default function FormButton({text = "Click", onClick = () => {}, classes = [], toolTip = `${text} button`})
 {

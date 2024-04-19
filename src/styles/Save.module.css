@@ -1,0 +1,17 @@
+.save-container{
+    composes: items-container from "./App.module.css";
+}
+
+.download-draft-button{
+    composes: form-button from "./FormButton.module.css";
+    composes: blue-button from "./FormButton.module.css";
+}
+
+.upload-draft-button{
+    composes: form-button from "./FormButton.module.css";
+    composes: white-button from "./FormButton.module.css";
+}
+
+.file-input{
+    display: none;
+}
