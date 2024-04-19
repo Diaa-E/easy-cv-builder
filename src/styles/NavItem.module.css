@@ -1,5 +1,5 @@
 .nav-item{
-    will-change: filter, background-color;
+    will-change: filter;
     background-color: var(--main);
     display: flex;
     place-items: center;
@@ -8,6 +8,8 @@
     padding: 15px;
     width: 70px;
     height: 70px;
+    transition-duration: 300ms;
+    cursor: pointer;
 }
 
 .nav-item:focus{
@@ -20,20 +22,12 @@
     filter: brightness(90%);
 }
 
-.nav-item, .nav-item>img{
-    cursor: pointer;
-    transition-duration: 300ms;
-}
-
 .nav-item>img{
+    cursor: inherit;
     filter: var(--icon-filter);
 }
 
 .selected{
-    background-color: var(--accent);
-}
-
-.selected:hover{
     background-color: var(--accent);
 }
 
@@ -42,6 +36,7 @@
 }
 
 @media (min-width: 700px){
+    
     .nav-item{
         width: 3dvw;
         height: 3dvw;
