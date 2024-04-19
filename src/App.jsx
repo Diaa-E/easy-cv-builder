@@ -389,7 +389,7 @@ function App({rootClass}) {
         <FormButton
           toolTip='Clear all data'
           text='Clear'
-          classes={["form-button", "red-button", "push-left"]}
+          style='danger'
           onClick={() => {
             setDialogState({
               open: true,
@@ -405,7 +405,7 @@ function App({rootClass}) {
         <FormButton
           toolTip='Reset data to sample template'
           text='Reset'
-          classes={["form-button", "white-button"]}
+          style='secondary'
           onClick={() => {
             setDialogState({
               open: true,
@@ -418,7 +418,12 @@ function App({rootClass}) {
             })
           }}
         />
-        <FormButton toolTip='Export as PDF/print CV' text='Export' classes={["form-button", "blue-button"]} onClick={print}/>
+        <FormButton
+          toolTip='Export as PDF/print CV'
+          text='Export'
+          style='primary'
+          onClick={print}
+        />
       </div>
       {
         layout === "layout-01" &&

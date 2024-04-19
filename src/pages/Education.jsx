@@ -10,6 +10,7 @@ import { v4 as generateId } from 'uuid';
 import appIcons from "../data/appIconsBarrel";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { toggleHideSection } from "../utils/toggleHideSection";
+import styles from "../styles/App.module.css";
 
 export default function Education({educationItems, setEducationItems, setDialogState, emptyText})
 {
@@ -19,8 +20,8 @@ export default function Education({educationItems, setEducationItems, setDialogS
     if (editMode)
     {
         return (
-            <div className="items-container">
-                <h2 className="edit-title">{`${getItemIndex(educationItems, currentItem.id) > -1 ? "Edit" : "Add"} Degree`}</h2>
+            <div className={styles["items-container"]}>
+                <h2 className={styles["edit-title"]}>{`${getItemIndex(educationItems, currentItem.id) > -1 ? "Edit" : "Add"} Degree`}</h2>
                 <TextInput
                     text={currentItem.degree}
                     labelText="Degree"
@@ -61,15 +62,15 @@ export default function Education({educationItems, setEducationItems, setDialogS
                     placeholder="end"
                     id="end"
                 />
-                <div className="edit-controls">
+                <div className={styles["edit-controls"]}>
                     <FormButton
                         text='Cancel'
-                        classes={["form-button", "white-button"]}
+                        style="secondary"
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
                         text={getItemIndex(educationItems, currentItem.id) > -1 ? "Save" : "Add"}
-                        classes={["form-button", "blue-button"]}
+                        style="primary"
                         onClick={() => {
                             setEditMode(false);
                             setEducationItems(updateItems(currentItem, educationItems));
@@ -81,14 +82,14 @@ export default function Education({educationItems, setEducationItems, setDialogS
     }
 
     return (
-        <div className="items-container">
+        <div className={styles["items-container"]}>
         {
             educationItems.length === 0 &&
-            <h2 className="empty-list-text">{emptyText}</h2>
+            <h2 className={styles["empty-list-text"]}>{emptyText}</h2>
         }
         {
             educationItems.length !== 0 &&
-            <div className="list-controls">
+            <div className={styles["list-controls"]}>
                 <ToggleAllButton
                     icon={appIcons.delete}
                     toolTip={"Delete all education items"}
@@ -111,7 +112,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
                 />
             </div>
         }
-        <ul>
+        <ul className={styles["items-container"]} aria-label="education list">
         {
             educationItems.map(item => {
                 return <ListItemText

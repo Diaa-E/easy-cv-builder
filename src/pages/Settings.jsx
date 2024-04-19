@@ -2,11 +2,12 @@ import ColorInput from "../components/ColorInput"
 import SelectInput from "../components/SelectInput"
 import fonts from "../data/fonts";
 import layouts from "../data/layouts";
+import styles from "../styles/App.module.css";
 
 export default function Settings({color, updateColor, font, updateFont, layout, updateLayout, order, setOrder, levelMode, setLevelMode})
 {
     return (
-        <div className="items-container">
+        <div className={styles["items-container"]}>
             <ColorInput
                 onChange={updateColor}
                 id={"colorSelector"}
@@ -15,8 +16,6 @@ export default function Settings({color, updateColor, font, updateFont, layout, 
             />
             <SelectInput
                 options={fonts}
-                optionNameKey={"name"}
-                optionValueKey={"value"}
                 selected={font}
                 onChange={updateFont}
                 labelText={"Font"}
@@ -24,8 +23,6 @@ export default function Settings({color, updateColor, font, updateFont, layout, 
             />
             <SelectInput
                 options={layouts}
-                optionNameKey={"name"}
-                optionValueKey={"value"}
                 selected={layout}
                 onChange={updateLayout}
                 labelText={"Layout"}
@@ -33,8 +30,6 @@ export default function Settings({color, updateColor, font, updateFont, layout, 
             />
             <SelectInput
                 options={[{name: "Education first", value: "educationFirst"}, {name: "Experience first", value: "experienceFirst"}]}
-                optionNameKey={"name"}
-                optionValueKey={"value"}
                 selected={order}
                 onChange={setOrder}
                 labelText={"Order"}
@@ -42,8 +37,6 @@ export default function Settings({color, updateColor, font, updateFont, layout, 
             />
             <SelectInput
                 options={[{name: "Text", value: "text"}, {name: "Bar", value: "bar"}]}
-                optionNameKey={"name"}
-                optionValueKey={"value"}
                 selected={levelMode}
                 onChange={setLevelMode}
                 labelText={"Proproficiency Level Style"}

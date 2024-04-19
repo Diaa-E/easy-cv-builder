@@ -11,6 +11,7 @@ import appIcons from "../data/appIconsBarrel";
 import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { toggleHideSection } from "../utils/toggleHideSection";
+import styles from "../styles/App.module.css";
 
 export default function Experience({experienceItems, setExperienceItems, setDialogState, emptyText})
 {
@@ -20,8 +21,8 @@ export default function Experience({experienceItems, setExperienceItems, setDial
     if (editMode)
     {
         return (
-            <div className="items-container">
-                <h2 className="edit-title">{`${getItemIndex(experienceItems, currentItem.id) > -1 ? "Edit" : "Add"} Job`}</h2>
+            <div className={styles["items-container"]}>
+                <h2 className={styles["edit-title"]}>{`${getItemIndex(experienceItems, currentItem.id) > -1 ? "Edit" : "Add"} Job`}</h2>
                 <TextInput
                     text={currentItem.company}
                     labelText="Company"
@@ -69,15 +70,15 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                     placeholder="details"
                     id="details"
                 />
-                <div className="edit-controls">
+                <div className={styles["edit-controls"]}>
                     <FormButton
                         text='Cancel'
-                        classes={["form-button", "white-button"]}
+                        style="secondary"
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
                         text={getItemIndex(experienceItems, currentItem.id) > -1 ? "Save" : "Add"}
-                        classes={["form-button", "blue-button"]}
+                        style="primary"
                         onClick={() => {
                             setEditMode(false);
                             setExperienceItems(updateItems(currentItem, experienceItems));
@@ -89,14 +90,14 @@ export default function Experience({experienceItems, setExperienceItems, setDial
     }
 
     return (
-        <div className="items-container">
+        <div className={styles["items-container"]}>
         {
             experienceItems.length === 0 &&
-            <h2 className="empty-list-text">{emptyText}</h2>
+            <h2 className={styles["empty-list-text"]}>{emptyText}</h2>
         }
         {
             experienceItems.length !== 0 &&
-            <div className="list-controls">
+            <div className={styles["list-controls"]}>
                 <ToggleAllButton
                     icon={appIcons.delete}
                     toolTip={"Delete all experience items"}
@@ -119,7 +120,7 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                 />
             </div>
         }
-        <ul>
+        <ul className={styles["items-container"]} aria-label="experience list">
         {
             experienceItems.map(item => {
                 return <ListItemText

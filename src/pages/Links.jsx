@@ -12,6 +12,7 @@ import appIcons from "../data/appIconsBarrel";
 import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { toggleHideSection } from "../utils/toggleHideSection";
+import styles from "../styles/App.module.css";
 
 export default function Links({linksItems, setLinksItems, setDialogState,  emptyText})
 {
@@ -21,8 +22,8 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
     if (editMode)
     {
         return (
-            <div className="items-container">
-                <h2 className="edit-title">{`${getItemIndex(linksItems, currentItem.id) > -1 ? "Edit" : "Add"} Link`}</h2>
+            <div className={styles["items-container"]}>
+                <h2 className={styles["edit-title"]}>{`${getItemIndex(linksItems, currentItem.id) > -1 ? "Edit" : "Add"} Link`}</h2>
                 <SelectInput
                     options={linkIcons}
                     optionNameKey={"name"}
@@ -40,15 +41,15 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
                     placeholder="url"
                     id="url"
                 />
-                <div className="edit-controls">
+                <div className={styles["edit-controls"]}>
                     <FormButton
                         text='Cancel'
-                        classes={["form-button", "white-button"]}
+                        style="secondary"
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
                         text={getItemIndex(linksItems, currentItem.id) > -1 ? "Save" : "Add"}
-                        classes={["form-button", "blue-button"]}
+                        style="primary"
                         onClick={() => {
                             setEditMode(false);
                             setLinksItems(updateItems(currentItem, linksItems));
@@ -60,14 +61,14 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
     }
 
     return (
-        <div className="items-container">
+        <div className={styles["items-container"]}>
         {
             linksItems.length === 0 &&
-            <h2 className="empty-list-text">{emptyText}</h2>
+            <h2 className={styles["empty-list-text"]}>{emptyText}</h2>
         }
         {
             linksItems.length !== 0 &&
-            <div className="list-controls">
+            <div className={styles["list-controls"]}>
                 <ToggleAllButton
                     icon={appIcons.delete}
                     toolTip={"Delete all links items"}
@@ -90,7 +91,7 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
                 />
             </div>
         }
-        <ul aria-label="links list">
+        <ul className={styles["items-container"]} aria-label="links list">
         {
             linksItems.map(item => {
                 return <LinkItem

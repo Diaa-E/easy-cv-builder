@@ -12,6 +12,7 @@ import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { toggleHideSection } from "../utils/toggleHideSection";
 import { skillLevels } from "../data/textLevelTemplates";
+import styles from "../styles/App.module.css";
 
 export default function Skills({skillsItems, setSkillsItems, setDialogState, emptyText, levelMode})
 {
@@ -21,8 +22,8 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
     if (editMode)
     {
         return (
-            <div className="items-container">
-                <h2 className="edit-title">{`${getItemIndex(skillsItems, currentItem.id) > -1 ? "Edit" : "Add"} Skill`}</h2>
+            <div className={styles["items-container"]}>
+                <h2 className={styles["edit-title"]}>{`${getItemIndex(skillsItems, currentItem.id) > -1 ? "Edit" : "Add"} Skill`}</h2>
                 <TextInput
                     text={currentItem.name}
                     labelText="Skill"
@@ -41,15 +42,15 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                     textLevels={skillLevels}
                     levelMode={levelMode}
                 />
-                <div className="edit-controls">
+                <div className={styles["edit-controls"]}>
                     <FormButton
                         text='Cancel'
-                        classes={["form-button", "white-button"]}
+                        style="secondary"
                         onClick={() => {setEditMode(false)}}
                     />
                     <FormButton
                         text={getItemIndex(skillsItems, currentItem.id) > -1 ? "Save" : "Add"}
-                        classes={["form-button", "blue-button"]}
+                        style="primary"
                         onClick={() => {
                             setEditMode(false);
                             setSkillsItems(updateItems(currentItem, skillsItems));
@@ -61,14 +62,14 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
     }
 
     return (
-        <div className="items-container">
+        <div className={styles["items-container"]}>
         {
             skillsItems.length === 0 &&
-            <h2 className="empty-list-text">{emptyText}</h2>
+            <h2 className={styles["empty-list-text"]}>{emptyText}</h2>
         }
         {
             skillsItems.length !== 0 &&
-            <div className="list-controls">
+            <div className={styles["list-controls"]}>
                 <ToggleAllButton
                     icon={appIcons.delete}
                     toolTip={"Delete all skills items"}
@@ -91,7 +92,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                 />
             </div>
         }
-        <ul>
+        <ul className={styles["items-container"]} aria-label="skills list">
         {
             skillsItems.map(item => {
                 return <ListItemLevel

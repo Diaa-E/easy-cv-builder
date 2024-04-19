@@ -13,34 +13,30 @@
     outline-color: var(--accent);
 }
 
-.blue-button{
+.primary{
     background-color: var(--accent);
     color: var(--white);
 }
 
-.blue-button:hover{
+.primary:hover{
     filter:  saturate(90%) brightness(150%);
 }
 
-.white-button{
+.secondary{
     background-color: var(--main);
     color: var(--text);
     border: 1px solid var(--text);
 }
 
-.white-button:hover{
+.secondary:hover{
     filter:  brightness(90%);
 }
 
-.red-button{
+.danger{
     background-color: var(--danger);
     color: var(--white);
 }
 
-.red-button:hover{
+.danger:hover{
     filter:  saturate(90%) brightness(150%);
-}
-
-.push-left{
-    margin: 0 auto 0 0;
 }
