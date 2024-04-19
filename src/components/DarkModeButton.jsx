@@ -1,4 +1,4 @@
-import "../styles/DarkModeButton.css";
+import styles from "../styles/DarkModeButton.module.css";
 import appIcons from "../data/appIconsBarrel";
 
 export default function DarkModeButton({darkMode, onClick})
@@ -8,17 +8,25 @@ export default function DarkModeButton({darkMode, onClick})
             aria-label={`use ${darkMode ? "light" : "dark"} theme`}
             title={`Use ${darkMode ? "light" : "dark"} theme`}
             onClick={onClick}
-            className={`dark-mode-button`}
+            className={styles[`dark-mode-button`]}
         >
             <img
                 aria-hidden
-                className={`dark-mode-icon yellow ${darkMode ? "inactive" : "active"}`}
+                className={[
+                    styles["dark-mode-icon"],
+                    styles["yellow"],
+                    darkMode ? styles["inactive"] : styles["active"]
+                ].join(" ")}
                 src={appIcons.light}
                 alt="dark mode button"
             />
             <img
                 aria-hidden
-                className={`dark-mode-icon blue ${darkMode ? "active" : "inactive"}`}
+                className={[
+                    styles["dark-mode-icon"],
+                    styles["blue"],
+                    darkMode ? styles["active"] : styles["inactive"]
+                ].join(" ")}
                 src={appIcons.dark}
                 alt="dark mode button"
             />
