@@ -26,7 +26,7 @@ export default function ConfirmDialog({prompt, actionText, dangerAction, onConfi
                 }
                 </p>
                 <FormButton
-                    classes={["form-button", "white-button"]}
+                    style="secondary"
                     onClick={e => {
                         e.stopPropagation();
                         onCancel();
@@ -34,7 +34,7 @@ export default function ConfirmDialog({prompt, actionText, dangerAction, onConfi
                     text="Cancel"
                     toolTip="Cancel action"/>
                 <FormButton
-                    classes={["form-button", dangerAction ? "red-button" : "blue-button"]}
+                    style={dangerAction ? "danger" : "primary"}
                     onClick={e => {
                         e.stopPropagation();
                         onConfirm();
