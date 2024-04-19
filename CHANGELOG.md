@@ -11,6 +11,7 @@ This change log only highlights important changes.
 ### **1.5.0 (unreleased)**
 
 - 🛠️ Fixed multiple accessibility issues.
+- ⚙️ Switched to CSS modules.
 - ⚙️ Unit tests are now more focoused on basic features while ignoring implmentation.
 
 ### **1.4.1 (Marh 13, 2024)**
