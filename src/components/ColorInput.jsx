@@ -1,4 +1,4 @@
-import "../styles/ColorInput.css";
+import styles from "../styles/ColorInput.module.css";
 import { useRef } from "react";
 
 export default function ColorInput({id, name, onChange, value})
@@ -10,12 +10,12 @@ export default function ColorInput({id, name, onChange, value})
     }
 
     return (
-        <div className="text-input-container">
-            <label htmlFor={id} className="color-input-label-text">Color</label>
+        <div className={styles["color-input-container"]}>
+            <label htmlFor={id} className={styles["color-input-label-text"]}>Color</label>
             <button
                 onClick={() => colorInputRef.current.click()}
                 style={labelStyle}
-                className="color-input-label"
+                className={styles["color-input-label"]}
                 aria-hidden
             >
                 <input
@@ -25,7 +25,7 @@ export default function ColorInput({id, name, onChange, value})
                     name={name}
                     type="color"
                     onChange={onChange}
-                    className="color-input"
+                    className={styles["color-input"]}
                     value={value}
                 >
                 </input>

@@ -1,3 +1,7 @@
+.color-input-container{
+    composes: text-input-container from "./TextInput.module.css";
+}
+
 .color-input{
     opacity: 0;
 }

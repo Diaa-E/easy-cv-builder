@@ -1,4 +1,4 @@
-import "../styles/TextInput.css";
+import styles from  "../styles/TextInput.module.css";
 import appIcons from "../data/appIconsBarrel";
 import { useRef } from "react";
 
