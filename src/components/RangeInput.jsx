@@ -1,11 +1,11 @@
-import "../styles/RangeInput.css";
+import styles from "../styles/RangeInput.module.css";
 import { calculateTextLevel } from "../utils/calculateTextLevel";
 
 export default function RangeInput({labelText, checked, value, id, onRangeChange, onCheckedChange, levelMode, textLevels})
 {
     return (
-        <div className="range-input-container">
-            <label id="checkbox-label" className="range-input-label" htmlFor="checkBox">
+        <div className={styles["range-input-container"]}>
+            <label id="checkbox-label" className={styles["range-input-label"]} htmlFor="checkBox">
                 <input
                     aria-labelledby="checkbox-label"
                     id="checkBox"
@@ -23,12 +23,12 @@ export default function RangeInput({labelText, checked, value, id, onRangeChange
                 max={100}
                 min={0}
                 step={20}
-                className="range-input"
+                className={styles["range-input"]}
                 onChange={onRangeChange}
                 disabled={!checked}
                 aria-hidden={!checked}
             />
-            <p aria-hidden={!checked} className="level-text">
+            <p aria-hidden={!checked} className={styles["level-text"]}>
             {
                 levelMode === "bar" &&
                 value + "%"

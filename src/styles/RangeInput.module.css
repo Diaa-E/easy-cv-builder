@@ -15,3 +15,7 @@
 .range-input{
    padding: 10px 0;
 }
+
+.level-text{
+    color: var(--accent);
+}
