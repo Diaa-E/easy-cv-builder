@@ -1,4 +1,4 @@
-import "../styles/layouts/Layout_01.css";
+import styles from "../styles/layouts/Layout_01.module.css";
 
 import appIcons from "../data/appIconsBarrel";
 import linkIcons from "../data/linkIconsBarrel";
@@ -17,11 +17,11 @@ export default function Layout_01({data})
     const secondaryColor = brightAccent? data.accentColor : "var(--white)";
    
     return (
-        <div style={{fontFamily: data.font}} className="preview layout-01">
-            <div style={{backgroundColor: data.accentColor}} className="header-wrapper">
-                <h1 style={{color: textColor}} className="name">{data.personalInfo.fullName}</h1>
-                <h2 style={{color: textColor}} className="profession">{data.personalInfo.profession}</h2>
-                <div className="header-items-wrapper">
+        <div style={{fontFamily: data.font}} className={styles["layout-01"]}>
+            <div style={{backgroundColor: data.accentColor}} className={styles["header-wrapper"]}>
+                <h1 style={{color: textColor}} className={styles["name"]}>{data.personalInfo.fullName}</h1>
+                <h2 style={{color: textColor}} className={styles["profession"]}>{data.personalInfo.profession}</h2>
+                <div className={styles["header-items-wrapper"]}>
                     {
                         data.personalInfo.address !== "" &&
                         <HeaderItem brightAccent={brightAccent} text={data.personalInfo.address} icon={appIcons.address}/>
@@ -83,7 +83,7 @@ export default function Layout_01({data})
                     </>
                 )
             }
-            <div className="bottom-wrapper">
+            <div className={styles["bottom-wrapper"]}>
                 <SkillsSection
                     accentColor={data.accentColor}
                     secondaryColor={secondaryColor}
@@ -106,19 +106,19 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, data})
     if (isEmptySection(data.languages)) return <></>
 
     return (
-        <div className="section-wrapper">
+        <div className={styles["section-wrapper"]}>
             <h3 
                 style={{backgroundColor: backgroundColor, color: secondaryColor}}
-                className="section-title"
+                className={styles["section-title"]}
             >Languages</h3>
-            <div className="flow-wrapper">
+            <div className={styles["flow-wrapper"]}>
             {
                 data.languages.map(item => {
                     
                     return (
                         !item.hidden &&
-                        <div key={item.id} className="flow-item">
-                            <p className="section-text">{item.name}</p>
+                        <div key={item.id} className={styles["flow-item"]}>
+                            <p className={styles["section-text"]}>{item.name}</p>
                             {
                                 item.showLevel &&
                                 <>
@@ -128,7 +128,11 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, data})
                                     }
                                     {
                                         data.levelMode === "text" &&
-                                        <p className="section-text level-text">{`(${calculateTextLevel(languageLevels, item.level)})`}</p>
+                                        <p
+                                            className={[styles["section-text"], styles["level-text"]].join(" ")}
+                                        >
+                                            {`(${calculateTextLevel(languageLevels, item.level)})`}
+                                        </p>
                                     }
                                 </>
                             }
@@ -146,19 +150,19 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, data})
     if (isEmptySection(data.skills)) return <></>
 
     return (
-        <div className="section-wrapper">
+        <div className={styles["section-wrapper"]}>
             <h3 
                 style={{backgroundColor: backgroundColor, color: secondaryColor}}
-                className="section-title"
+                className={styles["section-title"]}
             >Skills</h3>
-            <div className="flow-wrapper">
+            <div className={styles["flow-wrapper"]}>
             {
                 data.skills.map(item => {
                     
                     return (
                         !item.hidden &&
-                        <div key={item.id} className="flow-item">
-                            <p className="section-text">{item.name}</p>
+                        <div key={item.id} className={styles["flow-item"]}>
+                            <p className={styles["section-text"]}>{item.name}</p>
                             {
                                 item.showLevel &&
                                 <>
@@ -168,7 +172,11 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, data})
                                     }
                                     {
                                         data.levelMode === "text" &&
-                                        <p className="section-text level-text">{`(${calculateTextLevel(skillLevels, item.level)})`}</p>
+                                        <p
+                                            className={[styles["section-text"], styles["level-text"]].join(" ")}
+                                        >
+                                            {`(${calculateTextLevel(skillLevels, item.level)})`}
+                                        </p>
                                     }
                                 </>
                             }
@@ -184,8 +192,8 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, data})
 function LevelBar({level, accentColor})
 {
     return (
-        <div className="level-container">
-            <span style={{width: level + "%", backgroundColor: accentColor}} className="level"></span>
+        <div className={styles["level-container"]}>
+            <span style={{width: level + "%", backgroundColor: accentColor}} className={styles["level"]}></span>
         </div>
     )
 }
@@ -195,32 +203,32 @@ function ExperienceSection({backgroundColor, secondaryColor, experienceItems})
     if (isEmptySection(experienceItems)) return <></>
 
     return (
-        <div className="section-wrapper wide">
+        <div className={[styles["section-wrapper"], styles["wide"]].join(" ")}>
             <h3 
                 style={{backgroundColor: backgroundColor, color: secondaryColor}}
-                className="section-title"
+                className={styles["section-title"]}
             >Experience</h3>
             {
                 experienceItems.map(item => {
 
                     return (
                         !item.hidden &&
-                        <div key={item.id} className="section-item">
+                        <div key={item.id} className={styles["section-item"]}>
                         {
                             (item.end !== "" || item.start !== "") &&
-                            <p className="section-text">{joinString([item.start, item.end], "-")}</p>
+                            <p className={styles["section-text"]}>{joinString([item.start, item.end], "-")}</p>
                         }
                         {
                             (item.position !== "")&&
-                            <p className="section-text">{item.position}</p>
+                            <p className={styles["section-text"]}>{item.position}</p>
                         }
                         {
                             (item.location !== "" || item.company !== "" ) &&
-                            <p className="section-text">{joinString([item.company, item.location], ", ")}</p>
+                            <p className={styles["section-text"]}>{joinString([item.company, item.location], ", ")}</p>
                         }
                         {
                             (item.details !== "") &&
-                            <p className="section-text">{item.details}</p>
+                            <p className={styles["section-text"]}>{item.details}</p>
                         }
                         </div>
                     )
@@ -235,28 +243,28 @@ function EducationSection({backgroundColor, secondaryColor, educationItems})
     if (isEmptySection(educationItems)) return <></>;
 
     return (
-        <div className="section-wrapper wide">
+        <div className={[styles["section-wrapper"], styles["wide"]].join(" ")}>
             <h3 
                 style={{backgroundColor: backgroundColor, color: secondaryColor}}
-                className="section-title"
+                className={styles["section-title"]}
             >Education</h3>
             {
                 educationItems.map(item => {
 
                     return (
                         !item.hidden &&
-                        <div key={item.id} className="section-item">
+                        <div key={item.id} className={styles["section-item"]}>
                         {
                             (item.end !== "" || item.start !== "") &&
-                            <p className="section-text">{joinString([item.start, item.end], ", ")}</p>
+                            <p className={styles["section-text"]}>{joinString([item.start, item.end], ", ")}</p>
                         }
                         {
                             (item.degree !== "") &&
-                            <p className="section-text">{item.degree}</p>
+                            <p className={styles["section-text"]}>{item.degree}</p>
                         }
                         {
                             (item.school !== "" || item.location !== "") &&
-                            <p className="section-text">{joinString([item.school, item.location], ", ")}</p>
+                            <p className={styles["section-text"]}>{joinString([item.school, item.location], ", ")}</p>
                         }
                         </div>
                     )
@@ -269,9 +277,9 @@ function EducationSection({backgroundColor, secondaryColor, educationItems})
 function HeaderItem({icon, text, brightAccent})
 {
     return (
-        <div className="header-item">
-            <img style={{filter: brightAccent ? "" : "invert(1)"}} className="header-item-icon" src={icon} alt="" />
-            <p style={{color: brightAccent ? "var(--black)" : "var(--white)"}} className="header-item-text">{text}</p>
+        <div className={styles["header-item"]}>
+            <img style={{filter: brightAccent ? "" : "invert(1)"}} className={styles["header-item-icon"]} src={icon} alt="" />
+            <p style={{color: brightAccent ? "var(--black)" : "var(--white)"}} className={styles["header-item-text"]}>{text}</p>
         </div>
     )
 }

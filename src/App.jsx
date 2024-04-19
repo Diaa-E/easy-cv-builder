@@ -6,8 +6,7 @@ import appIcons from './data/appIconsBarrel';
 import NavItem from './components/NavItem';
 import FormButton from './components/FormButton';
 
-import './styles/reset.css';
-import './styles/App.css';
+import styles from './styles/App.module.css';
 import PersonalInformation from './pages/PersonalInformation';
 import Contact from './pages/Contact';
 import sampleInfo from './data/sampleInfo';
@@ -31,7 +30,7 @@ import { meta } from './data/meta';
 
 export const ScreenWidthContext = createContext(null);
 
-function App() {
+function App({rootClass}) {
 
   const [darkMode, setDarkMode] = useState(Boolean(JSON.parse(localStorage.getItem("darkMode"))));
   const [currentTab, setCurrentTab] = useState(tabs.personalInfo);
@@ -80,8 +79,8 @@ function App() {
 
   useEffect(() => {
 
-    document.body.classList.remove(darkMode ? "light" : "dark");
-    document.body.classList.add(darkMode ? "dark" : "light");
+    document.body.classList.remove(darkMode ? styles["light"] : styles["dark"]);
+    document.body.classList.add(darkMode ? styles["dark"] : styles["light"]);
 
     return () => {};
 
@@ -221,11 +220,11 @@ function App() {
   }
 
   return (
-    <>
-      <img src={logo} alt="Easy CV builder's logo" className='logo' />
+    <div className={rootClass}>
+      <img src={logo} alt="Easy CV builder's logo" className={styles['logo']} />
 
       <nav>
-        <ul className='nav'>
+        <ul className={styles['nav']}>
           <DarkModeButton darkMode={darkMode} onClick={() => {
             setDarkMode(darkMode => !darkMode);
             localStorage.setItem("darkMode", JSON.stringify(!darkMode));
@@ -292,8 +291,8 @@ function App() {
           />
         </ul>
       </nav>
-      <div className="editor">
-        <h1 className='editor-title'>{currentTab}</h1>
+      <div className={styles["editor"]}>
+        <h1 className={styles['editor-title']}>{currentTab}</h1>
         {
           currentTab === tabs.personalInfo &&
           <PersonalInformation
@@ -386,7 +385,7 @@ function App() {
         }
       </div>
 
-      <div id='mainControls' className='main-controls'>
+      <div id='mainControls' className={styles['main-controls']}>
         <FormButton
           toolTip='Clear all data'
           text='Clear'
@@ -446,7 +445,7 @@ function App() {
           onCancel={closeDialog}
         />
       }
-    </>
+    </div>
   )
 }
 

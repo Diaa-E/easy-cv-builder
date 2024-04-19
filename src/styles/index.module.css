@@ -1,0 +1,94 @@
+@font-face {
+  font-family: "regular";
+  src: url("../assets/fonts/Roboto-Regular.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "regular";
+  src: url("../assets/fonts/Roboto-Regular-Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "slab";
+  src: url("../assets/fonts/Roboto-Slab.ttf");
+}
+
+@font-face {
+  font-family: "condensed";
+  src: url("../assets/fonts/Roboto-Condensed.ttf");
+}
+
+@font-face {
+  font-family: "flex";
+  src: url("../assets/fonts/Roboto-Flex.ttf");
+}
+
+@font-face {
+  font-family: "mono";
+  src: url("../assets/fonts/Roboto-Mono.ttf");
+}
+
+@font-face {
+  font-family: "serif";
+  src: url("../assets/fonts/Roboto-Serif.ttf");
+}
+
+.root {
+  background-color: var(--main-dark);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, min-content);
+  grid-template-areas:
+  "logo"
+  "controls"
+  "nav"
+  "edit"
+  "preview";
+  padding: 15px;
+  gap: 15px;
+  overflow: visible;
+
+  --none: #00000000;
+  --white: #ffffff;
+}
+
+:root {
+  font-family: "regular", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+@media (min-width: 700px){
+
+  .root{
+    grid-template-columns: 3dvw 32dvw 60dvw;
+    grid-template-rows: 60px min-content;
+    grid-template-areas:
+    "logo controls preview"
+    "nav edit preview";
+    padding: 1dvw;
+    gap: 1dvw;
+  }
+}
+
+@media print {
+
+  .root{
+    grid-template-areas: 
+    "preview preview preview"
+    "preview preview preview"
+    "preview preview preview"
+    "preview preview preview";
+    padding: 0;
+    gap: 0;
+  }
+}

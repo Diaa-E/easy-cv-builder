@@ -22,3 +22,16 @@ img, picture, svg, video{
     display: block;
     max-width: 100%;
 }
+
+a{
+    cursor: pointer;
+    color: var(--link);
+}
+
+a:visited{
+    color: var(--visited);
+}
+
+body{
+    overflow: visible;
+}

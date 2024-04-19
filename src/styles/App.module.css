@@ -1,50 +1,48 @@
-@font-face {
-  font-family: "regular";
-  src: url("../assets/fonts/Roboto-Regular.ttf");
-  font-weight: normal;
+.light{
+  --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, 0.08);
+  --accent: #0078ff;
+  --danger: #ff3121;
+  --link: #0000EE;
+  --visited: #551A8B;;
+  --main: #ffffff;
+  --main-dark: #ededed;
+  --backdrop: #ffffff7a;
+  --text: #000000;
+  --text-light: #b0b0b0;
+  --icon-filter: invert(0);
+  --icon-filter-danger: brightness(0) saturate(100%) invert(29%) sepia(54%) saturate(5589%) hue-rotate(349deg) brightness(104%) contrast(100%);
+  --icon-filter-yellow: invert(67%) sepia(57%) saturate(1674%) hue-rotate(359deg) brightness(104%) contrast(106%);
+  --icon-filter-blue: invert(29%) sepia(59%) saturate(3092%) hue-rotate(203deg) brightness(104%) contrast(105%);
+  --logo-filter: none;
 }
 
-@font-face {
-  font-family: "regular";
-  src: url("../assets/fonts/Roboto-Regular-Bold.ttf");
-  font-weight: bold;
+.dark{
+  --accent: #2d70bb;
+  --danger: #a72a21;
+  --link: #6767ff;
+  --visited: #9d60d5;;
+  --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, .2);
+  --main: #2e2e2e;
+  --main-dark: #212121;
+  --backdrop: #2e2e2e80;
+  --text: #e3e3e3;
+  --text-light: #787878;
+  --icon-filter: invert(98%) sepia(0%) saturate(7487%) hue-rotate(214deg) brightness(122%) contrast(78%);;
+  --icon-filter-danger: invert(20%) sepia(63%) saturate(2138%) hue-rotate(340deg) brightness(102%) contrast(99%);
+  --icon-filter-blue: invert(30%) sepia(100%) saturate(490%) hue-rotate(173deg) brightness(107%) contrast(89%);
+  --icon-filter-yellow: invert(67%) sepia(57%) saturate(1674%) hue-rotate(359deg) brightness(104%) contrast(106%) contrast(70%) saturate(80%);
+  --logo-filter: contrast(70%) saturate(80%);
 }
 
-@font-face {
-  font-family: "slab";
-  src: url("../assets/fonts/Roboto-Slab.ttf");
-}
-
-@font-face {
-  font-family: "condensed";
-  src: url("../assets/fonts/Roboto-Condensed.ttf");
-}
-
-@font-face {
-  font-family: "flex";
-  src: url("../assets/fonts/Roboto-Flex.ttf");
-}
-
-@font-face {
-  font-family: "mono";
-  src: url("../assets/fonts/Roboto-Mono.ttf");
-}
-
-@font-face {
-  font-family: "serif";
-  src: url("../assets/fonts/Roboto-Serif.ttf");
-}
-
-:root {
-  font-family: "regular", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+.editor{
+  grid-area: edit;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--main);
+  align-self: flex-start;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 10px;
 }
 
 .logo{
@@ -55,13 +53,13 @@
 }
 
 .main-controls{
+  grid-area: controls;
   transform: translateZ(0); /*fixes repaint whenever editor title changes*/
   z-index: 9900;
   position: sticky;
   top: 10px;
   background-color: var(--main);
   border-radius: 10px;
-  grid-area: controls;
   box-shadow: var(--shadow);
   display: flex;
   justify-items: flex-end;
@@ -70,29 +68,22 @@
   gap: 10px;
 }
 
+nav{
+  overflow: hidden;
+}
+
 .nav{
+  grid-area: nav;
   display: grid;
   grid-auto-flow: column;
   background-color: var(--main);
   border-radius: 10px;
-  grid-area: nav;
   gap: 2px;
   overflow: scroll;
 }
 
 .nav::-webkit-scrollbar{
   display: none;
-}
-
-.editor{
-  display: flex;
-  flex-direction: column;
-  grid-area: edit;
-  background-color: var(--main);
-  align-self: flex-start;
-  border-radius: 10px;
-  padding: 20px;
-  gap: 10px;
 }
 
 .editor-title{
@@ -155,26 +146,19 @@
   color: var(--text-light);
 }
 
-a{
-  cursor: pointer;
-  color: var(--link);
-}
-
-a:visited{
-  color: var(--visited);
-}
-
-body{
-  overflow: visible;
-}
-
 .list-controls{
   display: flex;
   place-items: space-between;
   place-content: space-between;
 }
 
+
 @media (min-width: 700px){
+
+  nav{
+    overflow: visible;
+  }
+
   .nav{
     display: flex;
     flex-direction: column;
@@ -193,7 +177,7 @@ body{
   }
 
   .preview{
-    --width: 60vw;
+    --width: 60dvw;
     place-self: flex-start;
   }
 
@@ -204,12 +188,13 @@ body{
 }
 
 @media print {
+
   .logo, .editor, .main-controls, .nav {
     display: none !important;
   }
 
   .preview{
-    --width: 100vw;
+    --width: 100dvw;
     box-shadow: none;
   }
 

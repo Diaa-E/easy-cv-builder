@@ -1,4 +1,4 @@
-import "../styles/layouts/Layout_02.css";
+import styles from "../styles/layouts/Layout_02.module.css";
 
 import appIcons from "../data/appIconsBarrel";
 import linkIcons from "../data/linkIconsBarrel";
@@ -16,13 +16,13 @@ export default function Layout_02({data})
     const iconColor = useDarkText ? "invert(0)" : "invert(1)";
 
     return (
-        <div style={{fontFamily: data.font}} className="preview layout-02">
-            <div className="left">
-                <div style={{backgroundColor: data.accentColor}} className="header-wrapper">
-                    <h1 style={{color: textColor}} className="name">{data.personalInfo.fullName}</h1>
-                    <h2 style={{color: textColor}} className="profession">{data.personalInfo.profession}</h2>
-                    <div style={{borderBottom: `solid calc(var(--width) * .002) ${textColor}`}} className="seperator"></div>
-                    <div className="header-items-wrapper">
+        <div style={{fontFamily: data.font}} className={styles["layout-02"]}>
+            <div className={styles["left"]}>
+                <div style={{backgroundColor: data.accentColor}} className={styles["header-wrapper"]}>
+                    <h1 style={{color: textColor}} className={styles["name"]}>{data.personalInfo.fullName}</h1>
+                    <h2 style={{color: textColor}} className={styles["profession"]}>{data.personalInfo.profession}</h2>
+                    <div style={{borderBottom: `solid calc(var(--width) * .002) ${textColor}`}} className={styles["seperator"]}></div>
+                    <div className={styles["header-items-wrapper"]}>
                         {
                             data.personalInfo.address !== "" &&
                             <HeaderItem textColor={textColor} iconColor={iconColor} icon={appIcons.address} text={data.personalInfo.address}/>
@@ -58,7 +58,7 @@ export default function Layout_02({data})
                 </div>
                     <LanguagesSection accentColor={data.accentColor} iconColor={iconColor} data={data}/>
             </div>
-            <div className="right">
+            <div className={styles["right"]}>
                 {
                     data.order === "educationFirst" ? (
                         <>
@@ -81,22 +81,22 @@ export default function Layout_02({data})
     {
         return (
             !isEmptySection(data.skills) &&
-            <div className="section-wrapper">
-                <h3 className="section-title">
-                    <div className="section-icon-wrapper" style={{backgroundColor: accentColor}}>
-                        <img style={{filter: iconColor}} className="section-icon" src={appIcons.skills} alt="" />
+            <div className={styles["section-wrapper"]}>
+                <h3 className={styles["section-title"]}>
+                    <div className={styles["section-icon-wrapper"]} style={{backgroundColor: accentColor}}>
+                        <img style={{filter: iconColor}} className={styles["section-icon"]} src={appIcons.skills} alt="" />
                     </div>
                     Skills
                 </h3>
-                <div className="seperator"></div>
-                <div className="flow-wrapper">
+                <div className={styles["seperator"]}></div>
+                <div className={styles["flow-wrapper"]}>
                 {
                     data.skills.map(item => {
                         
                         return (
                             !item.hidden &&
-                            <div key={item.id} className="flow-item">
-                                <p className="section-text">{item.name}</p>
+                            <div key={item.id} className={styles["flow-item"]}>
+                                <p className={styles["section-text"]}>{item.name}</p>
                                 {
                                     item.showLevel &&
                                     <>
@@ -106,7 +106,11 @@ export default function Layout_02({data})
                                         }
                                         {
                                             data.levelMode === "text" &&
-                                            <p className="section-text level-text" >{`(${calculateTextLevel(skillLevels, item.level)})`}</p>
+                                            <p
+                                                className={[styles["section-text"], styles["level-text"]].join(" ")}
+                                            >
+                                                {`(${calculateTextLevel(skillLevels, item.level)})`}
+                                            </p>
                                         }
                                     </>
                                 }
@@ -123,36 +127,36 @@ export default function Layout_02({data})
     {
         return (
             !isEmptySection(experienceItems) &&
-            <div className="section-wrapper">
-                <h3 className="section-title">
-                    <div className="section-icon-wrapper" style={{backgroundColor: accentColor}}>
-                        <img style={{filter: iconColor}} className="section-icon" src={appIcons.experience} alt="" />
+            <div className={styles["section-wrapper"]}>
+                <h3 className={styles["section-title"]}>
+                    <div className={styles["section-icon-wrapper"]} style={{backgroundColor: accentColor}}>
+                        <img style={{filter: iconColor}} className={styles["section-icon"]} src={appIcons.experience} alt="" />
                     </div>
                     Experience
                 </h3>
-                <div className="seperator"></div>
+                <div className={styles["seperator"]}></div>
                 {
                     experienceItems.map(item => {
                         return(
                             !item.hidden &&
-                            <div key={item.id} className="section-item">
+                            <div key={item.id} className={styles["section-item"]}>
                             {
                                 (item.start !== "" || item.end !== "" || item.position !== "" || item.company) &&
-                                <p className="section-text">
-                                    <span className="bold">{joinString([item.position, item.company], ", ")}</span>
+                                <p className={styles["section-text"]}>
+                                    <span className={styles["bold"]}>{joinString([item.position, item.company], ", ")}</span>
                                     <br></br>
                                     {joinString([item.start, item.end], "-")}
                                 </p>
                             }
                             {
                                 (item.location !== "") &&
-                                <p className="section-text">
+                                <p className={styles["section-text"]}>
                                     {item.location}
                                 </p>
                             }
                             {
                                 (item.details !== "") &&
-                                <p className="section-text">
+                                <p className={styles["section-text"]}>
                                     {item.details}
                                 </p>
                             }
@@ -168,34 +172,34 @@ export default function Layout_02({data})
     {
         return (
             !isEmptySection(educationITems) &&
-            <div className="section-wrapper">
-                <h3 className="section-title">
-                    <div className="section-icon-wrapper" style={{backgroundColor: accentColor}}>
-                        <img style={{filter: iconColor}} className="section-icon" src={appIcons.education} alt="" />
+            <div className={styles["section-wrapper"]}>
+                <h3 className={styles["section-title"]}>
+                    <div className={styles["section-icon-wrapper"]} style={{backgroundColor: accentColor}}>
+                        <img style={{filter: iconColor}} className={styles["section-icon"]} src={appIcons.education} alt="" />
                     </div>
                     Education
                 </h3>
-                <div className="seperator"></div>
+                <div className={styles["seperator"]}></div>
                 {
                     educationITems.map(item => {
                         return(
                             !item.hidden &&
-                            <div key={item.id} className="section-item">
+                            <div key={item.id} className={styles["section-item"]}>
                             {
                                 (item.start !== "" || item.end !== "") &&
-                                <p className="section-text">
+                                <p className={styles["section-text"]}>
                                     {joinString([item.start, item.end], "-")}
                                 </p>
                             }
                             {
                                 (item.degree !== "") &&
-                                <p className="section-text">
-                                    <span className="bold">{item.degree}</span>
+                                <p className={styles["section-text"]}>
+                                    <span className={styles["bold"]}>{item.degree}</span>
                                 </p>
                             }
                             {
                                 (item.location !== "" || item.school !== "") &&
-                                <p className="section-text">
+                                <p className={styles["section-text"]}>
                                     {joinString([item.school, item.location], ", ")}
                                 </p>
                             }
@@ -211,22 +215,22 @@ export default function Layout_02({data})
     {
         return (
             !isEmptySection(data.languages) &&
-            <div className="section-wrapper">
-                <h3 className="section-title">
-                    <div className="section-icon-wrapper" style={{backgroundColor: accentColor}}>
-                        <img style={{filter: iconColor}} className="section-icon" src={appIcons.languages} alt="" />
+            <div className={styles["section-wrapper"]}>
+                <h3 className={styles["section-title"]}>
+                    <div className={styles["section-icon-wrapper"]} style={{backgroundColor: accentColor}}>
+                        <img style={{filter: iconColor}} className={styles["section-icon"]} src={appIcons.languages} alt="" />
                     </div>
                     Languages
                 </h3>
-                <div className="seperator"></div>
-                <div className="flow-wrapper">
+                <div className={styles["seperator"]}></div>
+                <div className={styles["flow-wrapper"]}>
                 {
                     data.languages.map(item => {
                         
                         return (
                             !item.hidden &&
-                            <div key={item.id} className="flow-item">
-                                <p className="section-text">{item.name}</p>
+                            <div key={item.id} className={styles["flow-item"]}>
+                                <p className={styles["section-text"]}>{item.name}</p>
                                 {
                                     item.showLevel &&
                                     <>
@@ -236,7 +240,11 @@ export default function Layout_02({data})
                                         }
                                         {
                                             data.levelMode === "text" &&
-                                            <p className="section-text level-text" >{`(${calculateTextLevel(languageLevels, item.level)})`}</p>
+                                            <p
+                                                className={[styles["section-text"], styles["level-text"]].join(" ")}
+                                            >
+                                                {`(${calculateTextLevel(languageLevels, item.level)})`}
+                                            </p>
                                         }
                                     </>
                                 }
@@ -252,8 +260,8 @@ export default function Layout_02({data})
     function LevelBar({level, accentColor})
 {
     return (
-        <div className="level-container">
-            <span style={{width: level + "%", backgroundColor: accentColor}} className="level"></span>
+        <div className={styles["level-container"]}>
+            <span style={{width: level + "%", backgroundColor: accentColor}} className={styles["level"]}></span>
         </div>
     )
 }
@@ -261,9 +269,9 @@ export default function Layout_02({data})
     function HeaderItem({textColor, iconColor, text, icon})
     {
         return (
-            <div className="header-item">
-                <img style={{filter: iconColor}} className="header-item-icon" src={icon} alt="" />
-                <p style={{color: textColor}} className="header-item-text">{text}</p>
+            <div className={styles["header-item"]}>
+                <img style={{filter: iconColor}} className={styles["header-item-icon" ]}src={icon} alt="" />
+                <p style={{color: textColor}} className={styles["header-item-text"]}>{text}</p>
             </div>
         )
     }
