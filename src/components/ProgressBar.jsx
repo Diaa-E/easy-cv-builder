@@ -1,4 +1,4 @@
-import "../styles/ProgressBar.css";
+import styles from "../styles/ProgressBar.module.css";
 
 export default function ProgressBar({level, disabled})
 {
@@ -7,9 +7,9 @@ export default function ProgressBar({level, disabled})
             role="progressbar"
             aria-label="proficiency level"
             aria-valuenow={`${level} percent`}
-            className={`progress-bar-outer ${disabled ? "disabled" : ""}`}
+            className={[styles["progress-bar-outer"], disabled ? styles["disabled"] : ""].join(" ")}
         >
-            <span aria-hidden className="progress-bar-inner" style={{width: `${level}%`}}></span>
+            <span aria-hidden className={styles["progress-bar-inner"]} style={{width: `${level}%`}}></span>
         </div>
     )
 }
