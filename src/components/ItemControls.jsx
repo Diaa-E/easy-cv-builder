@@ -22,9 +22,21 @@ export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden
 
     return (
         <>
-            <ItemButton onClick={toggleEdit} text="edit" imgPath={appIcons.edit}/>
-            <ItemButton onClick={toggleHide} text={hidden ? "show" : "hide"} imgPath={hidden ? appIcons.hidden : appIcons.visible}/>
-            <ItemButton onClick={moveItemUp} text="move up" colorClass="item-button-blue" imgPath={appIcons.moveUp}/>
+            <ItemButton
+                onClick={toggleEdit}
+                text="edit"
+                imgPath={appIcons.edit}
+            />
+            <ItemButton
+                onClick={toggleHide}
+                text={hidden ? "show" : "hide"}
+                imgPath={hidden ? appIcons.hidden : appIcons.visible}
+            />
+            <ItemButton
+                onClick={moveItemUp}
+                text="move up"
+                imgPath={appIcons.moveUp}
+            />
         </>
     )
 }

@@ -16,10 +16,6 @@
     filter: var(--icon-filter-danger);
 }
 
-.item-button-blue>img{
-    filter: var(--icon-filter-blue);
-}
-
 .item-menu{
     position: absolute;
     display: flex;

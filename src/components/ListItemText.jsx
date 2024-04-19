@@ -11,7 +11,12 @@ export default function ListItemText({title, firstLine, secondLine, hidden = fal
             aria-label={`${title} (${hidden ? "hidden" : "visible"})`}
             className={hidden ? "list-item-hidden" : "list-item"}
         >
-            <ItemButton onClick={() => deleteItem(id)} text="delete item" imgPath={appIcons.delete} colorClass="item-button-danger"/>
+            <ItemButton
+                onClick={() => deleteItem(id)}
+                text="delete item"
+                imgPath={appIcons.delete}
+                danger={true}
+            />
             <div className="item-details item-details-column">
                 <p>{firstLine}</p>
                 <p>{secondLine}</p>

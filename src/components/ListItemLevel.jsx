@@ -14,7 +14,12 @@ export default function ListItemLevel({itemData, levelMode, textLevels, toggleHi
             aria-label={`${itemData.name} (${itemData.hidden ? "hidden" : "visible"})`}
             className={itemData.hidden ? "list-item-hidden" : "list-item"}
         >
-            <ItemButton onClick={() => deleteItem(itemData.id)} text="delete item" imgPath={appIcons.delete} colorClass="item-button-danger"/>
+            <ItemButton
+                onClick={() => deleteItem(itemData.id)}
+                text="delete item"
+                imgPath={appIcons.delete}
+                danger={true}
+            />
             <div className="item-details item-details-column">
                 <p id="name">{itemData.name}</p>
                 {
