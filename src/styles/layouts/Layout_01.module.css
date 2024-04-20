@@ -10,6 +10,8 @@
     background-color: var(--white);
     gap: calc(var(--width) * .02);
     justify-items: stretch;
+    height: 100%;
+    width: 100%;
 }
 
 .header-wrapper {
