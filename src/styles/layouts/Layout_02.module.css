@@ -5,7 +5,7 @@
     --grey: #dedede;
     --light-grey: #eeeeee;
     --dark-grey: #8b8b8b;
-
+    transform: translateZ(0);
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 1fr 2fr;
