@@ -167,16 +167,13 @@ nav{
     display: flex;
     flex-direction: column;
     place-self: flex-start;
-    width: 3dvw;
     overflow: auto;
-    gap: .2dvw;
-    border-radius: 1.5dvw;
+    gap: 5px;
+    border-radius: 1000px;
     overflow: visible;
   }
 
   .logo{
-    height: 3dvw;
-    width: 3dvw;
     place-self: center;
   }
 
@@ -186,8 +183,7 @@ nav{
   }
 
   .main-controls{
-    max-width: 32dvw;
-    top: 1dvw;
+    top: 20px;
   }
 }
 

@@ -76,8 +76,8 @@
     grid-template-areas:
     "logo controls preview"
     "nav edit preview";
-    padding: 1dvw;
-    gap: 1dvw;
+    padding: 20px;
+    gap: 20px;
   }
 }
 

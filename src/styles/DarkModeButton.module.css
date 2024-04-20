@@ -48,9 +48,9 @@
 
 @media (min-width: 700px) {
     .dark-mode-button{
-        width: 3dvw;
-        height: 3dvw;
-        padding: .5dvw;
+        width: 50px;
+        height: 50px;
+        padding: 10px;
         border-radius: 50%;
     }
 }
