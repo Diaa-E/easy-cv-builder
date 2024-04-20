@@ -5,6 +5,7 @@
     min-height: 12px;
     border-radius: 6px;
     background-color: var(--main-dark);
+    margin: 0 30px 0 0;
 }
 
 .progress-bar-inner{

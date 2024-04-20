@@ -57,7 +57,7 @@
 @media (min-width: 700px) {
 
     .list-item, .list-item-hidden{
-        gap: 20px;
+        gap: 5px;
         padding: 10px;
     }
 
