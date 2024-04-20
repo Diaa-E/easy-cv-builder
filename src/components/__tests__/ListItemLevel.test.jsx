@@ -38,6 +38,14 @@ describe("List Item Level somponent", () => {
         expect(screen.queryByRole("listitem", { name: new RegExp(sampleItem.name, "i") })).toBeInTheDocument();
     });
 
+    it("Displays text on hover for when text is overflowing", () => {
+
+        const sampleItem = createSampleItem()
+        render(<ListItemLevel itemData={sampleItem} />);
+
+        expect(screen.queryByText(new RegExp(sampleItem.name, "i")).title).toContain(sampleItem.name);
+    });
+
     it("Labels item as hidden", () => {
 
         const sampleItem = { ...createSampleItem(), hidden: true };

@@ -18,6 +18,14 @@ describe("List Item Text component", () => {
         expect(screen.queryByRole("listitem", {name: /title/i})).toBeInTheDocument();
     });
 
+    it("Displays text of each line on hover for when text is overflowing", () => {
+
+        render(<ListItemText firstLine={"line1"} secondLine={"line2"} />);
+
+        expect(screen.queryByText(/line1/i).title).toContain("line1");
+        expect(screen.queryByText(/line2/i).title).toContain("line2");
+    });
+
     it("Labels item as hidden", () => {
 
         render(<ListItemText hidden={true} title={"title"} />);

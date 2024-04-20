@@ -21,7 +21,7 @@ export default function ListItemLevel({itemData, levelMode, textLevels, toggleHi
                 danger={true}
             />
             <div className={[styles["item-details"], styles["item-details-column"]].join(" ")}>
-                <p id="name">{itemData.name}</p>
+                <p title={itemData.name} id="name">{itemData.name}</p>
                 {
                     itemData.showLevel &&
                     <>

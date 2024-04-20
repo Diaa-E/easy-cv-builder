@@ -18,8 +18,8 @@ export default function ListItemText({title, firstLine, secondLine, hidden = fal
                 danger={true}
             />
             <div className={[styles["item-details"], styles["item-details-column"]].join(" ")}>
-                <p>{firstLine}</p>
-                <p>{secondLine}</p>
+                <p title={firstLine}>{firstLine}</p>
+                <p title={secondLine}>{secondLine}</p>
             </div>
             <ItemControls 
                 moveItemUp={() => moveItemUp(id)}

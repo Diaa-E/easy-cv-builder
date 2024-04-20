@@ -19,7 +19,7 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, t
             />
             <div className={[styles["item-details"], styles["item-details-row"]].join(" ")}>
                 <img className={styles["item-icon"]} src={iconPath} alt="item icon" />
-                <p aria-label={`url`} >{text}</p>
+                <p title={text} aria-label={`url`} >{text}</p>
             </div>
             <ItemControls 
                 moveItemUp={() => moveItemUp(id)}

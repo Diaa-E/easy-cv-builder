@@ -66,4 +66,11 @@ describe("Link Item component", () => {
 
         expect(screen.queryByText(/test/i)).toBeInTheDocument();
     });
+
+    it("Displays text on hover for when text is overflowing", () => {
+
+        render(<LinkItem text={"test"}/>);
+
+        expect(screen.queryByText(/test/i).title).toContain("test");
+    });
 });
