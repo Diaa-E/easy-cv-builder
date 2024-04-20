@@ -16,41 +16,6 @@
     filter: var(--icon-filter-danger);
 }
 
-.item-menu{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--main);
-    box-shadow: var(--shadow);
-}
-
-.close-menu{
-    align-self: flex-end;
-}
-
-.item-menu-button{
-    background-color: var(--main);
-    font-size: 18px;
-    padding: 10px 20px;
-    color: var(--text);
-}
-
-.item-menu-button:hover{
-    cursor: pointer;
-    color: var(--white);
-    background-color: var(--accent);
-}
-
-.item-menu-overlay{
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100dvw;
-    height: 100dvh;
-    background-color: var(--none);
-    z-index: 9999;
-}
-
 @media (min-width: 700px) {
     .item-button{
         width: 2dvw;

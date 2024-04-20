@@ -35,7 +35,6 @@
 }
 
 .editor{
-  transform: translateZ(0);
   grid-area: edit;
   display: flex;
   flex-direction: column;

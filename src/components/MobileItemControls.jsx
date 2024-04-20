@@ -3,6 +3,8 @@ import { ScreenWidthContext } from "../App";
 import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 
+import styles from "../styles/MobileItemControls.module.css";
+
 export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp, hidden }) {
     const screenWidth = useContext(ScreenWidthContext).screenWidth;
     const [open, setOpen] = useState(false);
@@ -32,12 +34,12 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
             />
             {
                 open &&
-                <div onClick={() => setOpen(false)} id="item-menu-overlay" className="item-menu-overlay">
+                <div onClick={() => setOpen(false)} id="item-menu-overlay" className={styles["item-menu-overlay"]}>
                     <div
                         role="menu"
                         aria-label="item controls menu"
                         onClick={e => e.stopPropagation()}
-                        className="item-menu"
+                        className={styles["item-menu"]}
                         style={{ right: cursorPositionRef.current[0], top: cursorPositionRef.current[1] }}
                     >
                         <ItemButton
@@ -45,14 +47,13 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
                             text={"close menu"}
                             onClick={() => setOpen(false)}
                             toolTip="Close menu"
-                            colorClass="close-menu"
                         />
                         <button
                             onClick={() => {
                                 toggleEdit();
                                 setOpen(false);
                             }}
-                            className="item-menu-button"
+                            className={styles["item-menu-button"]}
                         >Edit</button>
                         
                         <button
@@ -60,7 +61,7 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
                                 toggleHide();
                                 setOpen(false);
                             }}
-                            className="item-menu-button"
+                            className={styles["item-menu-button"]}
                         >{hidden ? "Show" : "Hide"}</button>
 
                         <button
@@ -68,7 +69,7 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
                                 moveItemUp();
                                 setOpen(false);
                             }}
-                            className="item-menu-button"
+                            className={styles["item-menu-button"]}
                         >Move up</button>
                     </div>
                 </div>
