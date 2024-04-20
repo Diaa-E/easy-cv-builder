@@ -11,6 +11,7 @@ This change log only highlights important changes.
 ### **1.5.0 (unreleased)**
 
 - ➕ CV preview is now affected by zoom.
+- 🛠️ List item text is now cropped when it grows bigger than available space. Cropped text can be read by either entering into edit mode or hover over text.
 - 🛠️ Fixed multiple accessibility issues.
 - ⚙️ Switched to CSS modules.
 - ⚙️ Unit tests are now more focoused on basic features while ignoring implmentation.
