@@ -1,0 +1,23 @@
+.preview {
+    --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, 0.08);
+    --main: #ffffff;
+    --main-dark: #ededed;
+    --text: #000000;
+    --text-light: #b0b0b0;
+    --width: 92dvw;
+    grid-area: preview;
+    width: var(--width);
+    height: calc(1.41 * var(--width));
+    background-color: var(--main);
+    box-shadow: var(--shadow);
+    place-self: center;
+}
+
+@media (min-width: 700px) {
+
+    .preview {
+        --width: 800px;
+        place-self: flex-start;
+    }
+
+}

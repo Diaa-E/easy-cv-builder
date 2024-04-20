@@ -1,6 +1,6 @@
 import Layout_01 from "../layouts/Layout_01";
 import Layout_02 from "../layouts/Layout_02";
-import styles from "../styles/App.module.css";
+import styles from "../styles/Preview.module.css";
 
 export default function Preview({ layout, data }) {
     return (
