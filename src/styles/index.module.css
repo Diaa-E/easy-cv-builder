@@ -71,7 +71,7 @@
 @media (min-width: 700px){
 
   .root{
-    grid-template-columns: min-content 1fr min-content;
+    grid-template-columns: min-content minmax(400px, 1fr) min-content;
     grid-template-rows: 60px min-content;
     grid-template-areas:
     "logo controls preview"
