@@ -8,6 +8,10 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
+### **1.5.1 (Apr 20, 2024)**
+
+- 🛠️ Fixed CV preview not filling A4 page height.
+
 ### **1.5.0 (Apr 20, 2024)**
 
 - ➕ CV preview is now affected by zoom.
