@@ -3,11 +3,10 @@
 ## To do list
 
 - Fix icon lag by loading all resources before opening app main page.
-- Add a magnifying glass for CV preview.
-- Reduce/eliminate use of viewport units.
 - Animate view transition.
 - Use reducers for complex states.
 - Add a bubble layout template.
+- ~~Reduce/eliminate use of viewport units.~~ ✅
 - ~~Make CV preview affected by zoom.~~ ✅
 - ~~Switch to css modules.~~ ✅
 - ~~Make unit tests more implementation agnostic.~~ ✅
@@ -44,6 +43,7 @@
 - ~~Save user dark theme preference for the session.~~ ✅
 - ~~Fix list item text color.~~ ✅
 - ~~Create a unique component for dark mode button with changing colors based on active mode.~~ ✅
+- ~~Add a magnifying glass for CV preview.~~ ❌ -> The most efficient way works only on images, the alternative is duplicating the entire preview and cropping it.
 - ~~Show clear field button only when field is in focus.~~ ❌ -> Breaks clearing text function as button disappears before running clear function.
 - ~~Show clear field button only when textbox is in focus.~~ ❌ -> disabling/removing the button cancels ongoing click handler
 - ~~move dark mode button to main controls box for better accessibility, putting it inside nav might be confusing.~~ ❌ -> Not enough space in main controls.
