@@ -49,6 +49,7 @@
   padding: 15px;
   gap: 15px;
   overflow: visible;
+  min-height: 100dvh;
 
   --none: #00000000;
   --white: #ffffff;
@@ -70,7 +71,7 @@
 @media (min-width: 700px){
 
   .root{
-    grid-template-columns: 3dvw 32dvw 60dvw;
+    grid-template-columns: min-content 1fr min-content;
     grid-template-rows: 60px min-content;
     grid-template-areas:
     "logo controls preview"

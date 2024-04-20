@@ -181,7 +181,7 @@ nav{
   }
 
   .preview{
-    --width: 60dvw;
+    --width: 800px;
     place-self: flex-start;
   }
 
