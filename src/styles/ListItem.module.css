@@ -57,15 +57,11 @@
 @media (min-width: 700px) {
 
     .list-item, .list-item-hidden{
-        gap: .5dvw;
-        padding: 1dvw;
-    }
-
-    .list-item p, .list-item-hidden p{
-        max-width: 13dvw;
+        gap: 20px;
+        padding: 10px;
     }
 
     .item-icon{
-        width: 2dvw;
+        width: 30px;
     }
 }

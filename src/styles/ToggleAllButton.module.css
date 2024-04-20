@@ -19,7 +19,7 @@
 
 @media (min-width: 700px) {
     .toggle-all-button{
-        width: 3dvw;
-        padding: .5dvw;
+        width: 40px;
+        padding: 5px;
     }
 }
