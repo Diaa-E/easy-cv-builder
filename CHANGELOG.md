@@ -8,7 +8,7 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
-### **1.5.0 (unreleased)**
+### **1.5.0 (Apr 20, 2024)**
 
 - ➕ CV preview is now affected by zoom.
 - 🛠️ List item text is now cropped when it grows bigger than available space. Cropped text can be read by either entering into edit mode or hover over text.
@@ -16,7 +16,7 @@ This change log only highlights important changes.
 - ⚙️ Switched to CSS modules.
 - ⚙️ Unit tests are now more focoused on basic features while ignoring implmentation.
 
-### **1.4.1 (Marh 13, 2024)**
+### **1.4.1 (Mar 13, 2024)**
 
 - 🛠️ Fix modern layout (layout_02) showing "native" for maxed out skill items. 
 
