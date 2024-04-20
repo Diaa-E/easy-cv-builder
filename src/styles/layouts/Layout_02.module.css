@@ -1,5 +1,4 @@
 .layout-02{
-    composes: preview from "../App.module.css";
     --white: white;
     --black: black;
     --grey: #dedede;

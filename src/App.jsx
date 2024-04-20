@@ -27,6 +27,7 @@ import DarkModeButton from './components/DarkModeButton';
 import ConfirmDialog from './components/ConfirmDialog';
 import { fixDraft } from './utils/fixDraft';
 import { meta } from './data/meta';
+import Preview from './components/Preview';
 
 export const ScreenWidthContext = createContext(null);
 
@@ -425,18 +426,10 @@ function App({rootClass}) {
           onClick={print}
         />
       </div>
-      {
-        layout === "layout-01" &&
-        <Layout_01
-          data={data}
-        />
-      }
-      {
-        layout === "layout-02" &&
-        <Layout_02
-          data={data}
-        />
-      }
+      <Preview
+        data={data}
+        layout={layout}
+      />
       {
         dialogState.open &&
         <ConfirmDialog
