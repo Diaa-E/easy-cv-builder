@@ -3,12 +3,12 @@
 ## To do list
 
 - Fix icon lag by loading all resources before opening app main page.
-- Make CV preview affected by zoom.
 - Add a magnifying glass for CV preview.
 - Reduce/eliminate use of viewport units.
 - Animate view transition.
 - Use reducers for complex states.
 - Add a bubble layout template.
+- ~~Make CV preview affected by zoom.~~ ✅
 - ~~Switch to css modules.~~ ✅
 - ~~Make unit tests more implementation agnostic.~~ ✅
 - ~~Improve accessibility button prompts.~~ ✅
