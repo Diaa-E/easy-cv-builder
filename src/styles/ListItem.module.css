@@ -21,6 +21,7 @@
     display: flex;
     margin: auto auto auto 0;
     min-width: 0;
+    flex-grow: 1;
 }
 
 .list-item p, .list-item-hidden p{
