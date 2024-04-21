@@ -8,6 +8,10 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
+### **1.5.2 (Apr 21, 2024)**
+
+- ⚙️ Fixed typo in settings tab.
+
 ### **1.5.1 (Apr 20, 2024)**
 
 - 🛠️ Fixed CV preview not filling A4 page height.
@@ -18,7 +22,7 @@ This change log only highlights important changes.
 - 🛠️ List item text is now cropped when it grows bigger than available space. Cropped text can be read by either entering into edit mode or hover over text.
 - 🛠️ Fixed multiple accessibility issues.
 - ⚙️ Switched to CSS modules.
-- ⚙️ Unit tests are now more focoused on basic features while ignoring implmentation.
+- ⚙️ Unit tests are now more focused on functionality.
 
 ### **1.4.1 (Mar 13, 2024)**
 
