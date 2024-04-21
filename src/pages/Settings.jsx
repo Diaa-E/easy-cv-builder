@@ -39,7 +39,7 @@ export default function Settings({color, updateColor, font, updateFont, layout, 
                 options={[{name: "Text", value: "text"}, {name: "Bar", value: "bar"}]}
                 selected={levelMode}
                 onChange={setLevelMode}
-                labelText={"Proproficiency Level Style"}
+                labelText={"Proficiency Level Style"}
                 id={"proficiency level style"}
             />
         </div>
