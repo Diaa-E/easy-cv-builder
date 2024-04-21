@@ -6,6 +6,7 @@
 - Animate view transition.
 - Use reducers for complex states.
 - Add a bubble layout template.
+- ~~Fix settings proficiency level typo.~~ ✅
 - ~~Reduce/eliminate use of viewport units.~~ ✅
 - ~~Make CV preview affected by zoom.~~ ✅
 - ~~Switch to css modules.~~ ✅
