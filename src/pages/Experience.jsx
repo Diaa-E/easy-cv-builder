@@ -6,14 +6,12 @@ import FormButton from "../components/FormButton";
 import TextAreaInput from "../components/TextAreaInput";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
-import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
 import appIcons from "../data/appIconsBarrel";
 import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
-import { toggleHideSection } from "../utils/toggleHideSection";
 import styles from "../styles/App.module.css";
 
-export default function Experience({experienceItems, setExperienceItems, setDialogState, emptyText})
+export default function Experience({experienceItems, dispatchExperience, setDialogState, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -81,7 +79,7 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                         style="primary"
                         onClick={() => {
                             setEditMode(false);
-                            setExperienceItems(updateItems(currentItem, experienceItems));
+                            dispatchExperience({type: "updateList", newItem: currentItem});
                         }}
                     />
                 </div>
@@ -108,7 +106,7 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                         dangerAction: true,
                         prompt: "Are you sure you want to *premenantly delete all items* the experience section?",
                         onConfirm: () => {
-                            setExperienceItems([]);
+                            dispatchExperience({type: "deleteAll"});
                         }
                     })}
                 />
@@ -116,7 +114,7 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                     icon={isEmptySection(experienceItems) ? appIcons.hidden : appIcons.visible}
                     toolTip={"Hide all experience items"}
                     colorClasses={["toggle-all-button-white"]}
-                    onClick={() => setExperienceItems(toggleHideSection(experienceItems, !isEmptySection(experienceItems)))}
+                    onClick={() => dispatchExperience({type: "toggleHideAll"})}
                 />
             </div>
         }
@@ -130,23 +128,12 @@ export default function Experience({experienceItems, setExperienceItems, setDial
                             hidden={item.hidden}
                             id={item.id}
                             key={item.id}
-                            toggleHide={(id) => setExperienceItems(toggleHide(id, experienceItems))}
-                            toggleEdit={(id) => {
+                            setDialogState={setDialogState}
+                            dispatchList={dispatchExperience}
+                            toggleEdit={() => {
                                 setEditMode(true);
-                                setCurrentItem(experienceItems[getItemIndex(experienceItems, id)]);
+                                setCurrentItem(experienceItems[getItemIndex(experienceItems, item.id)]);
                             }}
-                            deleteItem={(id) => {
-                                setDialogState({
-                                    open: true,
-                                    actionText: "Delete",
-                                    dangerAction: true,
-                                    prompt: "Are you sure you want to *premenantly delete* this item from the experience section?",
-                                    onConfirm: () => {
-                                        setExperienceItems(deleteItem(id, experienceItems));
-                                    }
-                                })
-                            }}
-                            moveItemUp={id => setExperienceItems(moveItemUp(id, experienceItems))}
                         />
             })
         }

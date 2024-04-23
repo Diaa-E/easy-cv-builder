@@ -37,7 +37,7 @@ function App({rootClass}) {
   const [personalInfo, setPersonalInfo] = useState(getSessionData("personalInfo", sampleInfo.personalInfo));
   const [contact, setContact] = useState(getSessionData("contact", sampleInfo.contact));
   const [education, dispatchEducation] = useReducer(reduceList, null, () => getSessionData("education", sampleInfo.education));
-  const [experience, setExperience] = useState(getSessionData("experience", sampleInfo.experience));
+  const [experience, dispatchExperience] = useReducer(reduceList, null, () => getSessionData("experience", sampleInfo.experience));
   const [links, setLinks] = useState(getSessionData("links", sampleInfo.links));
   const [skills, setSkills] = useState(getSessionData("skills", sampleInfo.skills));
   const [languages, setLanguages] = useState(getSessionData("languages", sampleInfo.languages));
@@ -152,7 +152,7 @@ function App({rootClass}) {
     setContact(draft.contact);
     setPersonalInfo(draft.personalInfo);
     dispatchEducation(draft.education);
-    setExperience(draft.experience);
+    dispatchExperience(draft.experience);
     setLinks(draft.links);
     setLanguages(draft.languages);
     setLayout(draft.layout);
@@ -174,7 +174,7 @@ function App({rootClass}) {
     setPersonalInfo(sampleInfo.personalInfo);
     setContact(sampleInfo.contact);
     dispatchEducation({type: "reset", defaultList: sampleInfo.education});
-    setExperience(sampleInfo.experience);
+    dispatchExperience({type: "reset", defaultList: sampleInfo.experience});
     setLanguages(sampleInfo.languages);
     setSkills(sampleInfo.skills);
     setLinks(sampleInfo.links);
@@ -198,7 +198,7 @@ function App({rootClass}) {
       email: "",
     });
     dispatchEducation({type: "deleteAll"});
-    setExperience([]);
+    dispatchExperience({type: "deleteAll"});
     setLinks([]);
     setSkills([]);
     setLanguages([]);
@@ -321,7 +321,7 @@ function App({rootClass}) {
             currentTab === tabs.experience &&
             <Experience
               experienceItems={experience}
-              setExperienceItems={setExperience}
+              dispatchExperience={dispatchExperience}
               setDialogState={setDialogState}
               emptyText={emptyListText}
             />
