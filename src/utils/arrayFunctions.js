@@ -2,7 +2,7 @@ import { getItemIndex } from "./utility";
 
 export function toggleHide(targetId, dataArray)
 {
-    const newArray = Array.from(dataArray);
+    const newArray = JSON.parse(JSON.stringify(dataArray));
     const hideTarget = getItemIndex(newArray, targetId);
     newArray[hideTarget].hidden = !newArray[hideTarget].hidden;
 

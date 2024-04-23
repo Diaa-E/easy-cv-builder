@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
 
 import logo from "./assets/images/logo.svg";
 import appIcons from './data/appIconsBarrel';
@@ -26,6 +26,7 @@ import ConfirmDialog from './components/ConfirmDialog';
 import { fixDraft } from './utils/fixDraft';
 import { meta } from './data/meta';
 import Preview from './components/Preview';
+import reduceList from './utils/listReducer';
 
 export const ScreenWidthContext = createContext(null);
 
@@ -35,7 +36,7 @@ function App({rootClass}) {
   const [currentTab, setCurrentTab] = useState(tabs.personalInfo);
   const [personalInfo, setPersonalInfo] = useState(getSessionData("personalInfo", sampleInfo.personalInfo));
   const [contact, setContact] = useState(getSessionData("contact", sampleInfo.contact));
-  const [education, setEducation] = useState(getSessionData("education", sampleInfo.education));
+  const [education, dispatchEducation] = useReducer(reduceList, getSessionData("education", sampleInfo.education));
   const [experience, setExperience] = useState(getSessionData("experience", sampleInfo.experience));
   const [links, setLinks] = useState(getSessionData("links", sampleInfo.links));
   const [skills, setSkills] = useState(getSessionData("skills", sampleInfo.skills));
@@ -150,7 +151,7 @@ function App({rootClass}) {
     setSkills(draft.skills);
     setContact(draft.contact);
     setPersonalInfo(draft.personalInfo);
-    setEducation(draft.education);
+    dispatchEducation(draft.education);
     setExperience(draft.experience);
     setLinks(draft.links);
     setLanguages(draft.languages);
@@ -172,7 +173,7 @@ function App({rootClass}) {
   {
     setPersonalInfo(sampleInfo.personalInfo);
     setContact(sampleInfo.contact);
-    setEducation(sampleInfo.education);
+    dispatchEducation({type: "reset", defaultList: sampleInfo.education});
     setExperience(sampleInfo.experience);
     setLanguages(sampleInfo.languages);
     setSkills(sampleInfo.skills);
@@ -196,7 +197,7 @@ function App({rootClass}) {
       phoneNumber: "",
       email: "",
     });
-    setEducation([]);
+    dispatchEducation({type: "deleteAll"});
     setExperience([]);
     setLinks([]);
     setSkills([]);
@@ -311,7 +312,7 @@ function App({rootClass}) {
             currentTab === tabs.education &&
             <Education
               educationItems={education}
-              setEducationItems = {setEducation}
+              dispatchEducation = {dispatchEducation}
               setDialogState={setDialogState}
               emptyText={emptyListText}
             />

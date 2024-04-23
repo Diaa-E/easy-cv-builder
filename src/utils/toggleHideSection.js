@@ -1,6 +1,6 @@
 export function toggleHideSection(itemsArray, hide)
 {
-    const newArray = Array.from(itemsArray);
+    const newArray = JSON.parse(JSON.stringify(itemsArray));
 
     newArray.forEach(item => {
 

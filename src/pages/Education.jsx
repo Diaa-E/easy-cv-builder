@@ -5,14 +5,12 @@ import TextInput from "../components/TextInput";
 import FormButton from "../components/FormButton";
 import ToggleAllButton from "../components/ToggleAllButton";
 import { getItemIndex } from "../utils/utility";
-import { toggleHide, deleteItem, moveItemUp, updateItems } from "../utils/arrayFunctions";
 import { v4 as generateId } from 'uuid';
 import appIcons from "../data/appIconsBarrel";
 import { isEmptySection } from "../utils/emptySectionDetector";
-import { toggleHideSection } from "../utils/toggleHideSection";
 import styles from "../styles/App.module.css";
 
-export default function Education({educationItems, setEducationItems, setDialogState, emptyText})
+export default function Education({educationItems, dispatchEducation, setDialogState, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -73,7 +71,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
                         style="primary"
                         onClick={() => {
                             setEditMode(false);
-                            setEducationItems(updateItems(currentItem, educationItems));
+                            dispatchEducation({type: "updateList", newItem: currentItem});
                         }}
                     />
                 </div>
@@ -100,7 +98,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
                         dangerAction: true,
                         prompt: "Are you sure you want to *premenantly delete all items* the education section?",
                         onConfirm: () => {
-                            setEducationItems([]);
+                            dispatchEducation({type: "deleteAll"});
                         }
                     })}
                 />
@@ -108,7 +106,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
                     icon={isEmptySection(educationItems) ? appIcons.hidden : appIcons.visible}
                     toolTip={"Hide all education items"}
                     colorClasses={["toggle-all-button-white"]}
-                    onClick={() => setEducationItems(toggleHideSection(educationItems, !isEmptySection(educationItems)))}
+                    onClick={() => dispatchEducation({type: "toggleHideAll"})}
                 />
             </div>
         }
@@ -122,7 +120,7 @@ export default function Education({educationItems, setEducationItems, setDialogS
                             hidden={item.hidden}
                             id={item.id}
                             key={item.id}
-                            toggleHide={(id) => setEducationItems(toggleHide(id, educationItems))}
+                            toggleHide={(id) => dispatchEducation({type: "toggleHideItem", itemId: id})}
                             toggleEdit={(id) => {
                                 setEditMode(true);
                                 setCurrentItem(educationItems[getItemIndex(educationItems, id)]);
@@ -134,11 +132,11 @@ export default function Education({educationItems, setEducationItems, setDialogS
                                     dangerAction: true,
                                     prompt: "Are you sure you want to *premenantly delete* this item from the education section?",
                                     onConfirm: () => {
-                                        setEducationItems(deleteItem(id, educationItems));
+                                        dispatchEducation({type: "deleteItem", itemId: id});
                                     }
                                 });
                             }}
-                            moveItemUp={id => setEducationItems(moveItemUp(id, educationItems))}
+                            moveItemUp={id => dispatchEducation({type: "moveUp", itemId: id})}
                         />
             })
         }
