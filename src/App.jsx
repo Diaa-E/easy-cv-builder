@@ -36,7 +36,7 @@ function App({rootClass}) {
   const [currentTab, setCurrentTab] = useState(tabs.personalInfo);
   const [personalInfo, setPersonalInfo] = useState(getSessionData("personalInfo", sampleInfo.personalInfo));
   const [contact, setContact] = useState(getSessionData("contact", sampleInfo.contact));
-  const [education, dispatchEducation] = useReducer(reduceList, getSessionData("education", sampleInfo.education));
+  const [education, dispatchEducation] = useReducer(reduceList, null, () => getSessionData("education", sampleInfo.education));
   const [experience, setExperience] = useState(getSessionData("experience", sampleInfo.experience));
   const [links, setLinks] = useState(getSessionData("links", sampleInfo.links));
   const [skills, setSkills] = useState(getSessionData("skills", sampleInfo.skills));
