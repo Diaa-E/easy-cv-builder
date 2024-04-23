@@ -8,6 +8,10 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
+### **1.5.3 (unreleased)**
+
+- ⚙️ Update Node modules to the latest version.
+
 ### **1.5.2 (Apr 21, 2024)**
 
 - ⚙️ Fixed typo in settings tab.
