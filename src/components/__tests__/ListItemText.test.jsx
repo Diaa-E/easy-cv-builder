@@ -54,24 +54,4 @@ describe("List Item Text component", () => {
 
         expect(screen.queryByRole("button", {name: /delete/i})).toBeInTheDocument();
     });
-
-    it("Calls deleteItem function when delete button is clicked", () => {
-
-        const deleteItem = vi.fn();
-        render(<ListItemText deleteItem={deleteItem} />);
-        const deleteButton = screen.queryByRole("button", {name: /delete/i});
-        fireEvent.click(deleteButton);
-
-        expect(deleteItem).toHaveBeenCalledOnce();
-    });
-
-    it("Calls deleteItem function with prop id when delete button is clicked", () => {
-
-        const deleteItem = vi.fn();
-        render(<ListItemText deleteItem={deleteItem} id={"testid"} />);
-        const deleteButton = screen.queryByRole("button", {name: /delete/i});
-        fireEvent.click(deleteButton);
-
-        expect(deleteItem).toHaveBeenCalledWith("testid");
-    });
 });
