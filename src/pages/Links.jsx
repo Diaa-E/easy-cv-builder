@@ -7,11 +7,9 @@ import SelectInput from "../components/SelectInput";
 import linkIcons from "../data/linkIconsBarrel";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
-import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
 import appIcons from "../data/appIconsBarrel";
 import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
-import { toggleHideSection } from "../utils/toggleHideSection";
 import styles from "../styles/App.module.css";
 
 export default function Links({linksItems, dispatchLinks, setDialogState,  emptyText})
