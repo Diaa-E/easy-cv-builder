@@ -38,7 +38,7 @@ function App({rootClass}) {
   const [contact, setContact] = useState(getSessionData("contact", sampleInfo.contact));
   const [education, dispatchEducation] = useReducer(reduceList, null, () => getSessionData("education", sampleInfo.education));
   const [experience, dispatchExperience] = useReducer(reduceList, null, () => getSessionData("experience", sampleInfo.experience));
-  const [links, setLinks] = useState(getSessionData("links", sampleInfo.links));
+  const [links, dispatchLinks] = useReducer(reduceList, null, () => getSessionData("links", sampleInfo.links));
   const [skills, setSkills] = useState(getSessionData("skills", sampleInfo.skills));
   const [languages, setLanguages] = useState(getSessionData("languages", sampleInfo.languages));
   const [accentColor, setAccentColor] = useState(getSessionData("accentColor", sampleInfo.accentColor));
@@ -151,9 +151,9 @@ function App({rootClass}) {
     setSkills(draft.skills);
     setContact(draft.contact);
     setPersonalInfo(draft.personalInfo);
-    dispatchEducation(draft.education);
-    dispatchExperience(draft.experience);
-    setLinks(draft.links);
+    dispatchEducation({type: "reset", defaultList: draft.education});
+    dispatchExperience({type: "reset", defaultList: draft.experience});
+    dispatchLinks({type: "reset", defaultList: draft.links});
     setLanguages(draft.languages);
     setLayout(draft.layout);
     setOrder(draft.order);
@@ -177,7 +177,7 @@ function App({rootClass}) {
     dispatchExperience({type: "reset", defaultList: sampleInfo.experience});
     setLanguages(sampleInfo.languages);
     setSkills(sampleInfo.skills);
-    setLinks(sampleInfo.links);
+    dispatchLinks({type: "reset", defaultList: sampleInfo.links});
     setLayout(sampleInfo.layout);
     setAccentColor(sampleInfo.accentColor);
     setFont(sampleInfo.font);
@@ -199,7 +199,7 @@ function App({rootClass}) {
     });
     dispatchEducation({type: "deleteAll"});
     dispatchExperience({type: "deleteAll"});
-    setLinks([]);
+    dispatchLinks({type: "deleteAll"});
     setSkills([]);
     setLanguages([]);
   }
@@ -330,7 +330,7 @@ function App({rootClass}) {
             currentTab === tabs.links &&
             <Links
               linksItems={links}
-              setLinksItems={setLinks}
+              dispatchLinks={dispatchLinks}
               setDialogState={setDialogState}
               emptyText={emptyListText}
             />

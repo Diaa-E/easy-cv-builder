@@ -40,26 +40,6 @@ describe("Link Item component", () => {
         expect(screen.getByRole("button", {name: /delete/i})).toBeInTheDocument();
     });
 
-    it("Calls deleteItem function when delete button is clicked", () => {
-
-        const deleteItem = vi.fn();
-        render(<LinkItem deleteItem={deleteItem} />);
-        const deleteButton = screen.queryByRole("button", { name: /delete/i});
-        fireEvent.click(deleteButton);
-
-        expect(deleteItem).toHaveBeenCalledOnce();
-    });
-
-    it("Calls deleteItem function with id prop when delete button is clicked", () => {
-
-        const deleteItem = vi.fn();
-        render(<LinkItem id={"testid"} deleteItem={deleteItem} />);
-        const deleteButton = screen.queryByRole("button", { name: /delete/i});
-        fireEvent.click(deleteButton);
-
-        expect(deleteItem).toHaveBeenCalledWith("testid");
-    });
-
     it("Renders text from props", () => {
 
         render(<LinkItem text={"test"}/>);

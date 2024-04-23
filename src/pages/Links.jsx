@@ -14,7 +14,7 @@ import { isEmptySection } from "../utils/emptySectionDetector";
 import { toggleHideSection } from "../utils/toggleHideSection";
 import styles from "../styles/App.module.css";
 
-export default function Links({linksItems, setLinksItems, setDialogState,  emptyText})
+export default function Links({linksItems, dispatchLinks, setDialogState,  emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -52,7 +52,7 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
                         style="primary"
                         onClick={() => {
                             setEditMode(false);
-                            setLinksItems(updateItems(currentItem, linksItems));
+                            dispatchLinks({type: "updateList", newItem: currentItem});
                         }}
                     />
                 </div>
@@ -79,7 +79,7 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
                         dangerAction: true,
                         prompt: "Are you sure you want to *premenantly delete all items* the links section?",
                         onConfirm: () => {
-                            setLinksItems([]);
+                            dispatchLinks({type: "deleteAll"});
                         }
                     })}
                 />
@@ -87,7 +87,7 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
                     icon={isEmptySection(linksItems) ? appIcons.hidden : appIcons.visible}
                     toolTip={"Hide all links items"}
                     colorClasses={["toggle-all-button-white"]}
-                    onClick={() => setLinksItems(toggleHideSection(linksItems, !isEmptySection(linksItems)))}
+                    onClick={() => dispatchLinks({type: "toggleHideAll"})}
                 />
             </div>
         }
@@ -101,23 +101,12 @@ export default function Links({linksItems, setLinksItems, setDialogState,  empty
                             hidden={item.hidden}
                             id={item.id}
                             key={item.id}
-                            toggleHide={(id) => setLinksItems(toggleHide(id, linksItems))}
-                            toggleEdit={(id) => {
+                            dispatchList={dispatchLinks}
+                            setDialogState={setDialogState}
+                            toggleEdit={() => {
                                 setEditMode(true);
-                                setCurrentItem(linksItems[getItemIndex(linksItems, id)]);
+                                setCurrentItem(linksItems[getItemIndex(linksItems, item.id)]);
                             }}
-                            deleteItem={(id) => {
-                                setDialogState({
-                                    open: true,
-                                    actionText: "Delete",
-                                    dangerAction: true,
-                                    prompt: "Are you sure you want to *premenantly delete* this item from the links section?",
-                                    onConfirm: () => {
-                                        setLinksItems(deleteItem(id, linksItems))
-                                    }
-                                })
-                            }}
-                            moveItemUp={(id) => setLinksItems(moveItemUp(id, linksItems))}
                         />
             })
         }       

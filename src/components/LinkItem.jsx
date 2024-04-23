@@ -4,7 +4,7 @@ import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import ItemControls from "./ItemControls";
 
-export default function LinkItem({website, iconPath, text, hidden = false, id, toggleHide, toggleEdit, deleteItem, moveItemUp})
+export default function LinkItem({website, iconPath, text, hidden = false, id, dispatchList, toggleEdit, setDialogState})
 {
     return (
         <li
@@ -12,7 +12,17 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, t
             className={hidden ? styles["list-item-hidden"] : styles["list-item"]}
         >
             <ItemButton
-                onClick={() => deleteItem(id)}
+                onClick={() => {
+                    setDialogState({
+                        open: true,
+                        actionText: "Delete",
+                        dangerAction: true,
+                        prompt: "Are you sure you want to *premenantly delete* this item from the links section?",
+                        onConfirm: () => {
+                            dispatchList({type: "deleteItem", itemId: id})
+                        }
+                    })
+                }}
                 text="delete item"
                 imgPath={appIcons.delete}
                 danger={true}
@@ -22,9 +32,9 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, t
                 <p title={text} aria-label={`url`} >{text}</p>
             </div>
             <ItemControls 
-                moveItemUp={() => moveItemUp(id)}
-                toggleEdit={() => toggleEdit(id)} 
-                toggleHide={() => toggleHide(id)}
+                moveItemUp={() => dispatchList({type: "moveUp", itemId: id})}
+                toggleEdit={toggleEdit} 
+                toggleHide={() => dispatchList({type: "toggleHideItem", itemId: id})}
                 hidden={hidden}
             />
         </li>

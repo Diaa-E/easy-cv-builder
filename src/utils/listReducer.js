@@ -25,6 +25,6 @@ export default function reduceList(list, action)
         case "reset": return [
             ...action.defaultList
         ];
-        default: throw new Error ("Invalid action: " + action.type);
+        default: throw new Error ("Invalid action type: " + action.type);
     }
 }
