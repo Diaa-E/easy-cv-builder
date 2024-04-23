@@ -120,23 +120,12 @@ export default function Education({educationItems, dispatchEducation, setDialogS
                             hidden={item.hidden}
                             id={item.id}
                             key={item.id}
-                            toggleHide={(id) => dispatchEducation({type: "toggleHideItem", itemId: id})}
-                            toggleEdit={(id) => {
+                            dispatchList={dispatchEducation}
+                            setDialogState={setDialogState}
+                            toggleEdit={() => {
                                 setEditMode(true);
-                                setCurrentItem(educationItems[getItemIndex(educationItems, id)]);
+                                setCurrentItem(educationItems[getItemIndex(educationItems, item.id)]);
                             }}
-                            deleteItem={(id) => {
-                                setDialogState({
-                                    open: true,
-                                    actionText: "Delete",
-                                    dangerAction: true,
-                                    prompt: "Are you sure you want to *premenantly delete* this item from the education section?",
-                                    onConfirm: () => {
-                                        dispatchEducation({type: "deleteItem", itemId: id});
-                                    }
-                                });
-                            }}
-                            moveItemUp={id => dispatchEducation({type: "moveUp", itemId: id})}
                         />
             })
         }

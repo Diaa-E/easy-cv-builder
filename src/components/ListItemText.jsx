@@ -4,7 +4,7 @@ import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import ItemControls from "./ItemControls";
 
-export default function ListItemText({title, firstLine, secondLine, hidden = false, id, toggleHide, toggleEdit, deleteItem, moveItemUp})
+export default function ListItemText({title, firstLine, secondLine, hidden = false, id, toggleEdit, dispatchList, setDialogState})
 {
     return (
         <li
@@ -12,7 +12,17 @@ export default function ListItemText({title, firstLine, secondLine, hidden = fal
             className={hidden ? styles["list-item-hidden"] : styles["list-item"]}
         >
             <ItemButton
-                onClick={() => deleteItem(id)}
+                onClick={() => {
+                    setDialogState({
+                        open: true,
+                        actionText: "Delete",
+                        dangerAction: true,
+                        prompt: `Are you sure you want to *premenantly delete* ${firstLine}?`,
+                        onConfirm: () => {
+                            dispatchList({type: "deleteItem", itemId: id});
+                        }
+                    });
+                }}
                 text="delete item"
                 imgPath={appIcons.delete}
                 danger={true}
@@ -22,9 +32,9 @@ export default function ListItemText({title, firstLine, secondLine, hidden = fal
                 <p title={secondLine}>{secondLine}</p>
             </div>
             <ItemControls 
-                moveItemUp={() => moveItemUp(id)}
-                toggleEdit={() => toggleEdit(id)} 
-                toggleHide={() => toggleHide(id)}
+                moveItemUp={() => dispatchList({type: "moveUp", itemId: id})}
+                toggleEdit={toggleEdit} 
+                toggleHide={() => dispatchList({type: "toggleHideItem", itemId: id})}
                 hidden={hidden}
             />
         </li>
