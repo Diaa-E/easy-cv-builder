@@ -19,8 +19,6 @@ import Languages from './pages/Languages';
 import Settings from './pages/Settings';
 import Save from './pages/Save';
 import About from './pages/About';
-import Layout_01 from './layouts/Layout_01';
-import Layout_02 from './layouts/Layout_02';
 
 import { testDraftValidity } from './utils/draftValidation';
 import DarkModeButton from './components/DarkModeButton';
