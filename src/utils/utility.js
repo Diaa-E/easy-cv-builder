@@ -17,3 +17,8 @@ export function isBright(colorHex)
 
     return (luma > 100);
 }
+
+export function deepCopy(object)
+{
+    return JSON.parse(JSON.stringify(object));
+}

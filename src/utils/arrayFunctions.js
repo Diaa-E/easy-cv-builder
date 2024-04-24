@@ -1,8 +1,8 @@
-import { getItemIndex } from "./utility";
+import { deepCopy, getItemIndex } from "./utility";
 
 export function toggleHide(targetId, dataArray)
 {
-    const newArray = JSON.parse(JSON.stringify(dataArray));
+    const newArray = deepCopy(dataArray);
     const hideTarget = getItemIndex(newArray, targetId);
     newArray[hideTarget].hidden = !newArray[hideTarget].hidden;
 
@@ -11,7 +11,7 @@ export function toggleHide(targetId, dataArray)
 
 export function updateItems(newItem, dataArray)
 {
-  const newArray = JSON.parse(JSON.stringify(dataArray));
+  const newArray = deepCopy(dataArray);
   const newItemIndex = getItemIndex(newArray, newItem.id);
 
   if (newItemIndex === -1)
