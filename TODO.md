@@ -5,7 +5,6 @@
 - Fix icon lag by loading all resources before opening app main page.
 - Animate view transition.
 - Add a bubble layout template.
-- Use semantic dialog element instead of makeshift div one.
 - ~~Use reducers for complex states.~~ ✅
 - ~~Fix settings proficiency level typo.~~ ✅
 - ~~Reduce/eliminate use of viewport units.~~ ✅
@@ -45,6 +44,7 @@
 - ~~Save user dark theme preference for the session.~~ ✅
 - ~~Fix list item text color.~~ ✅
 - ~~Create a unique component for dark mode button with changing colors based on active mode.~~ ✅
+- ~~Use semantic dialog element instead of makeshift div one.~~ ❌ -> Too complex for little gain, hopefully will be improved in future React updates.
 - ~~Add a magnifying glass for CV preview.~~ ❌ -> The most efficient way works only on images, the alternative is duplicating the entire preview and cropping it.
 - ~~Show clear field button only when field is in focus.~~ ❌ -> Breaks clearing text function as button disappears before running clear function.
 - ~~Show clear field button only when textbox is in focus.~~ ❌ -> disabling/removing the button cancels ongoing click handler
