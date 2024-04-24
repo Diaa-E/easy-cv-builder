@@ -69,7 +69,7 @@ function App({rootClass}) {
 
     window.addEventListener("scroll", () => {
       
-      dispatchDialog({...dialogState, open: false});
+      dispatchDialog({type: "close"});
     });
 
     return () => {
