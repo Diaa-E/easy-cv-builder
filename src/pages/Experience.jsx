@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ListItemText from "../components/ListItemText";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
@@ -10,11 +10,13 @@ import appIcons from "../data/appIconsBarrel";
 import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import styles from "../styles/App.module.css";
+import { DialogContext } from "../App";
 
-export default function Experience({experienceItems, dispatchExperience, setDialogState, emptyText})
+export default function Experience({experienceItems, dispatchExperience, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
+    const dispatchDialog = useContext(DialogContext);
 
     if (editMode)
     {
@@ -100,15 +102,14 @@ export default function Experience({experienceItems, dispatchExperience, setDial
                     icon={appIcons.delete}
                     toolTip={"Delete all experience items"}
                     danger={true}
-                    onClick={() => setDialogState({
-                        open: true,
-                        actionText: "Delete All",
-                        dangerAction: true,
-                        prompt: "Are you sure you want to *premenantly delete all items* the experience section?",
-                        onConfirm: () => {
-                            dispatchExperience({type: "deleteAll"});
-                        }
-                    })}
+                    onClick={() => {
+                        dispatchDialog({
+                            type: "openDanger",
+                            prompt: "Are you sure you want to *premenantly delete all items* the experience section?",
+                            actionText: "Delete All",
+                            onConfirm: () => dispatchExperience({type: "deleteAll"})
+                        })
+                    }}
                 />
                 <ToggleAllButton
                     icon={isEmptySection(experienceItems) ? appIcons.hidden : appIcons.visible}
@@ -128,7 +129,6 @@ export default function Experience({experienceItems, dispatchExperience, setDial
                             hidden={item.hidden}
                             id={item.id}
                             key={item.id}
-                            setDialogState={setDialogState}
                             dispatchList={dispatchExperience}
                             toggleEdit={() => {
                                 setEditMode(true);

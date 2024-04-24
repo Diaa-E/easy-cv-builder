@@ -4,8 +4,13 @@ import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import ItemControls from "./ItemControls";
 
-export default function ListItemText({title, firstLine, secondLine, hidden = false, id, toggleEdit, dispatchList, setDialogState})
+import { DialogContext } from "../App";
+import { useContext } from "react";
+
+export default function ListItemText({title, firstLine, secondLine, hidden = false, id, toggleEdit, dispatchList})
 {
+    const dispatchDialog = useContext(DialogContext);
+
     return (
         <li
             aria-label={`${title} (${hidden ? "hidden" : "visible"})`}
@@ -13,15 +18,12 @@ export default function ListItemText({title, firstLine, secondLine, hidden = fal
         >
             <ItemButton
                 onClick={() => {
-                    setDialogState({
-                        open: true,
-                        actionText: "Delete",
-                        dangerAction: true,
+                    dispatchDialog({
+                        type: "openDanger",
                         prompt: `Are you sure you want to *premenantly delete* ${firstLine}?`,
-                        onConfirm: () => {
-                            dispatchList({type: "deleteItem", itemId: id});
-                        }
-                    });
+                        actionText: "Delete",
+                        onConfirm: () => dispatchList({type: "deleteItem", itemId: id})
+                    })
                 }}
                 text="delete item"
                 imgPath={appIcons.delete}

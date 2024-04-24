@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ListItemText from "../components/ListItemText";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
@@ -9,11 +9,13 @@ import { v4 as generateId } from 'uuid';
 import appIcons from "../data/appIconsBarrel";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import styles from "../styles/App.module.css";
+import { DialogContext } from "../App";
 
-export default function Education({educationItems, dispatchEducation, setDialogState, emptyText})
+export default function Education({educationItems, dispatchEducation, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
+    const dispatchDialog = useContext(DialogContext);
 
     if (editMode)
     {
@@ -92,15 +94,14 @@ export default function Education({educationItems, dispatchEducation, setDialogS
                     icon={appIcons.delete}
                     toolTip={"Delete all education items"}
                     danger={true}
-                    onClick={() => setDialogState({
-                        open: true,
-                        actionText: "Delete All",
-                        dangerAction: true,
-                        prompt: "Are you sure you want to *premenantly delete all items* the education section?",
-                        onConfirm: () => {
-                            dispatchEducation({type: "deleteAll"});
-                        }
-                    })}
+                    onClick={() => {
+                        dispatchDialog({
+                            type: "openDanger",
+                            prompt: "Are you sure you want to *premenantly delete all items* the education section?",
+                            actionText: "Delete All",
+                            onConfirm: () => dispatchEducation({type: "deleteAll"}),
+                        })
+                    }}
                 />
                 <ToggleAllButton
                     icon={isEmptySection(educationItems) ? appIcons.hidden : appIcons.visible}
@@ -121,7 +122,6 @@ export default function Education({educationItems, dispatchEducation, setDialogS
                             id={item.id}
                             key={item.id}
                             dispatchList={dispatchEducation}
-                            setDialogState={setDialogState}
                             toggleEdit={() => {
                                 setEditMode(true);
                                 setCurrentItem(educationItems[getItemIndex(educationItems, item.id)]);
