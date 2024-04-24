@@ -10,6 +10,7 @@ This change log only highlights important changes.
 
 ### **1.5.3 (unreleased)**
 
+- ➕ Added animation to list items.
 - ➕ Added animation to dialog box.
 - ⚙️ Dialog reducers are now passed through a context instead of prop drilling.
 - ⚙️ Replaced dialog state setters with reducers.
