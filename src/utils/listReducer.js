@@ -1,6 +1,5 @@
-import { deleteItem, moveItemUp, toggleHide, updateItems } from "./arrayFunctions";
+import { deleteItem, moveItemUp, toggleHide, updateItems, toggleHideSection } from "./arrayFunctions";
 import { isEmptySection } from "./emptySectionDetector";
-import { toggleHideSection } from "./toggleHideSection";
 
 export default function reduceList(list, action)
 {
