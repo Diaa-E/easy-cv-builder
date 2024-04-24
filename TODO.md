@@ -4,8 +4,9 @@
 
 - Fix icon lag by loading all resources before opening app main page.
 - Animate view transition.
-- Use reducers for complex states.
 - Add a bubble layout template.
+- Use semantic dialog element instead of makeshift div one.
+- ~~Use reducers for complex states.~~ ✅
 - ~~Fix settings proficiency level typo.~~ ✅
 - ~~Reduce/eliminate use of viewport units.~~ ✅
 - ~~Make CV preview affected by zoom.~~ ✅
