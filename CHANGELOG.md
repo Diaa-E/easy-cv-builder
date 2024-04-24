@@ -10,6 +10,8 @@ This change log only highlights important changes.
 
 ### **1.5.3 (unreleased)**
 
+- ⚙️ Moved dialog call one layer deeper for future animation purposes (callback delay).
+- ⚙️ User data made of lists now use reducers for state updates to reduce complexity.
 - ⚙️ Update Node modules to the latest version.
 
 ### **1.5.2 (Apr 21, 2024)**
