@@ -3,7 +3,7 @@ import { highlightText } from "../utils/highlightText";
 import FormButton from "./FormButton";
 import { v4 as generateId } from "uuid";
 
-export default function ConfirmDialog({prompt, actionText, dangerAction, onConfirm, onCancel = () => {}})
+export default function ConfirmDialog({prompt, actionText, danger, onConfirm, onCancel = () => {}})
 {
     return (
         <div
@@ -34,7 +34,7 @@ export default function ConfirmDialog({prompt, actionText, dangerAction, onConfi
                     text="Cancel"
                     toolTip="Cancel action"/>
                 <FormButton
-                    style={dangerAction ? "danger" : "primary"}
+                    style={danger ? "danger" : "primary"}
                     onClick={e => {
                         e.stopPropagation();
                         onConfirm();

@@ -27,6 +27,7 @@ import { fixDraft } from './utils/fixDraft';
 import { meta } from './data/meta';
 import Preview from './components/Preview';
 import reduceList from './utils/listReducer';
+import reduceDialog from './utils/dialogReducer';
 
 export const ScreenWidthContext = createContext(null);
 
@@ -47,7 +48,15 @@ function App({rootClass}) {
   const [order, setOrder] = useState(getSessionData("order", sampleInfo.order));
   const [levelMode, setLevelMOde] = useState(getSessionData("levelMode", sampleInfo.levelMode));
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []}); //code key is used to determine error panel text and color in Save component
-  const [dialogState, setDialogState] = useState({open: false, actionText: "", prompt: "", onConfirm: () => {}, dangerAction: false});
+  const [dialogState, dispatchDialog] = useReducer(reduceDialog, null, () => {
+    return {
+      open: false,
+      actionText: "",
+      prompt: "",
+      danger: false,
+      onConfirm: () => {},
+    }
+  });
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -59,7 +68,7 @@ function App({rootClass}) {
 
     window.addEventListener("scroll", () => {
       
-      setDialogState({...dialogState, open: false});
+      dispatchDialog({...dialogState, open: false});
     });
 
     return () => {
@@ -122,7 +131,7 @@ function App({rootClass}) {
     if (errorLog.length > 0)
     {
       setDraftStatus({code: 2, errorLog: errorLog});
-      setDialogState({
+      dispatchDialog({
         open: true,
         prompt: `The *${errorLog.join(", ")}* section${errorLog.length > 1 ? "s" : ""} 
         of the draft ${errorLog.length > 1 ? "are" : "is"} *invalid*, do you want to 
@@ -207,16 +216,6 @@ function App({rootClass}) {
   function print()
   {
     window.print()
-  }
-
-  function closeDialog()
-  {
-    setDialogState({
-      open: false,
-      actionText: "",
-      prompt: "",
-      onConfirm: () => {},
-    })
   }
 
   return (
@@ -313,7 +312,7 @@ function App({rootClass}) {
             <Education
               educationItems={education}
               dispatchEducation = {dispatchEducation}
-              setDialogState={setDialogState}
+              setDialogState={dispatchDialog}
               emptyText={emptyListText}
             />
           }
@@ -322,7 +321,7 @@ function App({rootClass}) {
             <Experience
               experienceItems={experience}
               dispatchExperience={dispatchExperience}
-              setDialogState={setDialogState}
+              setDialogState={dispatchDialog}
               emptyText={emptyListText}
             />
           }
@@ -331,7 +330,7 @@ function App({rootClass}) {
             <Links
               linksItems={links}
               dispatchLinks={dispatchLinks}
-              setDialogState={setDialogState}
+              setDialogState={dispatchDialog}
               emptyText={emptyListText}
             />
           }
@@ -341,7 +340,7 @@ function App({rootClass}) {
               levelMode={levelMode}
               skillsItems={skills}
               dispatchSkills={dispatchSkills}
-              setDialogState={setDialogState}
+              setDialogState={dispatchDialog}
               emptyText={emptyListText}
             />
           }
@@ -351,7 +350,7 @@ function App({rootClass}) {
               levelMode={levelMode}
               languagesItems={languages}
               dispatchLanguages={dispatchLanguages}
-              setDialogState={setDialogState}
+              setDialogState={dispatchDialog}
               emptyText={emptyListText}
             />
           }
@@ -391,15 +390,12 @@ function App({rootClass}) {
           text='Clear'
           style='danger'
           onClick={() => {
-            setDialogState({
-              open: true,
+            dispatchDialog({
+              type: "openDanger",
               prompt: "Are you sure you want to *clear all data* in this draft? *This action is irreversible.*",
               actionText: "Clear all",
-              dangerAction: true,
-              onConfirm: () => {
-                clearAll();
-              }
-            });
+              onConfirm: clearAll
+            })
           }}
         />
         <FormButton
@@ -407,14 +403,11 @@ function App({rootClass}) {
           text='Reset'
           style='secondary'
           onClick={() => {
-            setDialogState({
-              open: true,
-              actionText: "Reset all",
-              dangerAction: true,
+            dispatchDialog({
+              type: "openDanger",
               prompt: "Are you sure you want to *reset all data* to default values? *This action is irreversible.*",
-              onConfirm: () => {
-                resetAll();
-              }
+              actionText: "Reset all",
+              onConfirm: resetAll,
             })
           }}
         />
@@ -433,13 +426,13 @@ function App({rootClass}) {
         dialogState.open &&
         <ConfirmDialog
           actionText={dialogState.actionText}
-          dangerAction={dialogState.dangerAction}
+          danger={dialogState.danger}
           onConfirm={() => {
             dialogState.onConfirm();
-            closeDialog();
+            dispatchDialog({type: "close"});
           }}
           prompt={dialogState.prompt}
-          onCancel={closeDialog}
+          onCancel={() => dispatchDialog({type: "close"})}
         />
       }
     </div>
