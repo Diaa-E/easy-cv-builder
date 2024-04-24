@@ -10,6 +10,9 @@ This change log only highlights important changes.
 
 ### **1.5.3 (unreleased)**
 
+- ➕ Added a slight blur to dialog backdrop.
+- ⚙️ Dialog reducers are now passed through a context instead of prop drilling.
+- ⚙️ Replaced dialog state setters with reducers.
 - ⚙️ Moved dialog call one layer deeper for future animation purposes (callback delay).
 - ⚙️ User data made of lists now use reducers for state updates to reduce complexity.
 - ⚙️ Update Node modules to the latest version.
