@@ -12,6 +12,7 @@ This change log only highlights important changes.
 
 - ➕ Removed "move item up" button from first item in a list.
 - ➕ Added animation to dialog box.
+- 🛠️ Fixed typos in delete all item dialog.
 - 🛠️ Fixed dialog closing when user clicks inside the dialog box instead of only when cancel or backdrop button is clicked
 - ⚙️ Dialog reducers are now passed through a context instead of prop drilling.
 - ⚙️ Replaced dialog state setters with reducers.
