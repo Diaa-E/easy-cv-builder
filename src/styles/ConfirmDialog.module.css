@@ -4,14 +4,29 @@
     top: 0;
     width: 100dvw;
     height: 100dvh;
-    background-color: var(--backdrop);
     z-index: 9999;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
 
+    animation-name: backdrop-in;
+    animation-duration: .2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
     display: flex;
     place-items: center;
     place-content: center;
+}
+
+@keyframes backdrop-in {
+    0% {
+        backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0);
+        background-color: var(--none);
+    }
+
+    100%{
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        background-color: var(--backdrop);
+    }
 }
 
 .dialog-box{
@@ -25,6 +40,25 @@
     box-shadow: var(--shadow);
     place-items: stretch;
     width: 80vw;
+
+    animation-name: dialog-box-in;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes dialog-box-in {
+    0%{
+        transform: scale(0);
+    }
+
+    90%{
+        transform: scale(1.1);
+    }
+
+    100%{
+        transform: scale(1);
+    }
 }
 
 .prompt{
