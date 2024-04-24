@@ -1,16 +1,10 @@
 .list-item, .list-item-hidden{
-    will-change: filter;
     display: flex;
     justify-content: flex-end;
     border-radius: 5px;
     padding: 10px;
     gap: 5px;
     transition-duration: 300ms;
-
-    animation-name: list-item-in;
-    animation-duration: .3s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
 }
 
 @keyframes list-item-in {

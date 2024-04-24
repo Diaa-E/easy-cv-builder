@@ -14,7 +14,7 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, d
     return (
         <li
             aria-label={`${website} link (${hidden ? "hidden" : "visible"})`}
-            className={hidden ? styles["list-item-hidden"] : styles["list-item"]}
+            className={[hidden ? styles["list-item-hidden"] : styles["list-item"], styles["list-item-in"]].join(" ")}
         >
             <ItemButton
                 onClick={() => {
