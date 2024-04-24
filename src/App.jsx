@@ -341,7 +341,6 @@ function App({rootClass}) {
                 levelMode={levelMode}
                 skillsItems={skills}
                 dispatchSkills={dispatchSkills}
-                setDialogState={dispatchDialog}
                 emptyText={emptyListText}
               />
             }

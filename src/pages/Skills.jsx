@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ListItemLevel from "../components/ListItemLevel";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
@@ -11,11 +11,13 @@ import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { skillLevels } from "../data/textLevelTemplates";
 import styles from "../styles/App.module.css";
+import { DialogContext } from "../App";
 
-export default function Skills({skillsItems, dispatchSkills, setDialogState, emptyText, levelMode})
+export default function Skills({skillsItems, dispatchSkills, emptyText, levelMode})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
+    const dispatchDialog = useContext(DialogContext);
 
     if (editMode)
     {
@@ -72,15 +74,14 @@ export default function Skills({skillsItems, dispatchSkills, setDialogState, emp
                     icon={appIcons.delete}
                     toolTip={"Delete all skills items"}
                     danger={true}
-                    onClick={() => setDialogState({
-                        open: true,
-                        actionText: "Delete All",
-                        dangerAction: true,
-                        prompt: "Are you sure you want to *premenantly delete all items* the skills section?",
-                        onConfirm: () => {
-                            dispatchSkills({type: "deleteAll"});
-                        }
-                    })}
+                    onClick={() => {
+                        dispatchDialog({
+                            type: "openDanger",
+                            prompt: "Are you sure you want to *premenantly delete all items* the skills section?",
+                            actionText: "Delete All",
+                            onConfirm: () => dispatchSkills({type: "deleteAll"}),
+                        })
+                    }}
                 />
                 <ToggleAllButton
                     icon={isEmptySection(skillsItems) ? appIcons.hidden : appIcons.visible}
@@ -100,7 +101,6 @@ export default function Skills({skillsItems, dispatchSkills, setDialogState, emp
                             id={item.id}
                             key={item.id}
                             dispatchList={dispatchSkills}
-                            setDialogState={setDialogState}
                             toggleEdit={() => {
                                 setEditMode(true);
                                 setCurrentItem(skillsItems[getItemIndex(skillsItems, item.id)]);

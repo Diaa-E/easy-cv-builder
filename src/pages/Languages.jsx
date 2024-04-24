@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ListItemLevel from "../components/ListItemLevel";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
@@ -11,11 +11,13 @@ import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { languageLevels } from "../data/textLevelTemplates";
 import styles from "../styles/App.module.css";
+import { DialogContext } from "../App";
 
-export default function Languages({languagesItems, dispatchLanguages, setDialogState, emptyText, levelMode})
+export default function Languages({languagesItems, dispatchLanguages, emptyText, levelMode})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
+    const dispatchDialog = useContext(DialogContext);
 
     if (editMode)
     {
@@ -72,15 +74,14 @@ export default function Languages({languagesItems, dispatchLanguages, setDialogS
                     icon={appIcons.delete}
                     toolTip={"Delete all language items"}
                     danger={true}
-                    onClick={() => setDialogState({
-                        open: true,
-                        actionText: "Delete All",
-                        dangerAction: true,
-                        prompt: "Are you sure you want to *premenantly delete all items* the languages section?",
-                        onConfirm: () => {
-                            dispatchLanguages({type: "deleteAll"});
-                        }
-                    })}
+                    onClick={() => {
+                        dispatchDialog({
+                            type: "openDanger",
+                            prompt: "Are you sure you want to *premenantly delete all items* the languages section?",
+                            actionText: "Delete All",
+                            onConfirm: () => dispatchLanguages({type: "deleteAll"}),
+                        })
+                    }}
                 />
                 <ToggleAllButton
                     icon={isEmptySection(languagesItems) ? appIcons.hidden : appIcons.visible}
@@ -100,7 +101,6 @@ export default function Languages({languagesItems, dispatchLanguages, setDialogS
                         id={item.id}
                         key={item.id}
                         dispatchList={dispatchLanguages}
-                        setDialogState={setDialogState}
                         toggleEdit={() => {
                             setEditMode(true);
                             setCurrentItem(languagesItems[getItemIndex(languagesItems, item.id)]);

@@ -6,9 +6,14 @@ import ItemControls from "./ItemControls";
 import ProgressBar from "./ProgressBar";
 import LevelText from "./LevelText";
 
+import { DialogContext } from "../App";
+import { useContext } from "react";
+
 //All metered values range from 0 to 100 with increments of 20
-export default function ListItemLevel({itemData, levelMode, id, textLevels, setDialogState, dispatchList, toggleEdit})
+export default function ListItemLevel({itemData, levelMode, id, textLevels, dispatchList, toggleEdit})
 {
+    const dispatchDialog = useContext(DialogContext);
+
     return (
         <li
             aria-label={`${itemData.name} (${itemData.hidden ? "hidden" : "visible"})`}
@@ -16,15 +21,12 @@ export default function ListItemLevel({itemData, levelMode, id, textLevels, setD
         >
             <ItemButton
                 onClick={() => {
-                    setDialogState({
-                        open: true,
+                    dispatchDialog({
+                        type: "openDanger",
+                        prompt: `Are you sure you want to *premenantly delete* ${itemData.name}?`,
                         actionText: "Delete",
-                        dangerAction: true,
-                        prompt: "Are you sure you want to *premenantly delete* this item from the languages section?",
-                        onConfirm: () => {
-                            dispatchList({type: "deleteItem", itemId: id});
-                        }
-                    });
+                        onConfirm: () => dispatchList({type: "deleteItem", itemId: id}),
+                    })
                 }}
                 text="delete item"
                 imgPath={appIcons.delete}
