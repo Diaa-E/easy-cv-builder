@@ -6,15 +6,13 @@ import FormButton from "../components/FormButton";
 import RangeInput from "../components/RangeInput";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
-import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
 import appIcons from "../data/appIconsBarrel";
 import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
-import { toggleHideSection } from "../utils/toggleHideSection";
 import { skillLevels } from "../data/textLevelTemplates";
 import styles from "../styles/App.module.css";
 
-export default function Skills({skillsItems, setSkillsItems, setDialogState, emptyText, levelMode})
+export default function Skills({skillsItems, dispatchSkills, setDialogState, emptyText, levelMode})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -53,7 +51,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                         style="primary"
                         onClick={() => {
                             setEditMode(false);
-                            setSkillsItems(updateItems(currentItem, skillsItems));
+                            dispatchSkills({type: "updateList", newItem: currentItem});
                         }}
                     />
                 </div>
@@ -80,7 +78,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                         dangerAction: true,
                         prompt: "Are you sure you want to *premenantly delete all items* the skills section?",
                         onConfirm: () => {
-                            setSkillsItems([]);
+                            dispatchSkills({type: "deleteAll"});
                         }
                     })}
                 />
@@ -88,7 +86,7 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                     icon={isEmptySection(skillsItems) ? appIcons.hidden : appIcons.visible}
                     toolTip={"Hide all skills items"}
                     colorClasses={["toggle-all-button-white"]}
-                    onClick={() => setSkillsItems(toggleHideSection(skillsItems, !isEmptySection(skillsItems)))}
+                    onClick={() => dispatchSkills({type: "toggleHideAll"})}
                 />
             </div>
         }
@@ -99,24 +97,14 @@ export default function Skills({skillsItems, setSkillsItems, setDialogState, emp
                             textLevels={skillLevels}
                             levelMode={levelMode}
                             itemData={item}
+                            id={item.id}
                             key={item.id}
-                            toggleHide={(id) => setSkillsItems(toggleHide(id, skillsItems))}
-                            toggleEdit={(id) => {
+                            dispatchList={dispatchSkills}
+                            setDialogState={setDialogState}
+                            toggleEdit={() => {
                                 setEditMode(true);
-                                setCurrentItem(skillsItems[getItemIndex(skillsItems, id)]);
+                                setCurrentItem(skillsItems[getItemIndex(skillsItems, item.id)]);
                             }}
-                            deleteItem={(id) => {
-                                setDialogState({
-                                    open: true,
-                                    actionText: "Delete",
-                                    dangerAction: true,
-                                    prompt: "Are you sure you want to *premenantly delete* this item from the skills section?",
-                                    onConfirm: () => {
-                                        setSkillsItems(deleteItem(id, skillsItems));
-                                    }
-                                });
-                            }}
-                            moveItemUp={(id) => setSkillsItems(moveItemUp(id, skillsItems))}
                         />
             })
         }

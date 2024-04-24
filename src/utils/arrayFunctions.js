@@ -11,7 +11,7 @@ export function toggleHide(targetId, dataArray)
 
 export function updateItems(newItem, dataArray)
 {
-  const newArray = Array.from(dataArray);
+  const newArray = JSON.parse(JSON.stringify(dataArray));
   const newItemIndex = getItemIndex(newArray, newItem.id);
 
   if (newItemIndex === -1)

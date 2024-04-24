@@ -39,7 +39,7 @@ function App({rootClass}) {
   const [education, dispatchEducation] = useReducer(reduceList, null, () => getSessionData("education", sampleInfo.education));
   const [experience, dispatchExperience] = useReducer(reduceList, null, () => getSessionData("experience", sampleInfo.experience));
   const [links, dispatchLinks] = useReducer(reduceList, null, () => getSessionData("links", sampleInfo.links));
-  const [skills, setSkills] = useState(getSessionData("skills", sampleInfo.skills));
+  const [skills, dispatchSkills] = useReducer(reduceList, null, () => getSessionData("skills", sampleInfo.skills));
   const [languages, dispatchLanguages] = useReducer(reduceList, null, () => getSessionData("languages", sampleInfo.languages));
   const [accentColor, setAccentColor] = useState(getSessionData("accentColor", sampleInfo.accentColor));
   const [font, setFont] = useState(getSessionData("font", sampleInfo.font));
@@ -148,7 +148,7 @@ function App({rootClass}) {
 
     setAccentColor(draft.accentColor);
     setFont(draft.font);
-    setSkills(draft.skills);
+    dispatchSkills(draft.skills);
     setContact(draft.contact);
     setPersonalInfo(draft.personalInfo);
     dispatchEducation({type: "reset", defaultList: draft.education});
@@ -176,7 +176,7 @@ function App({rootClass}) {
     dispatchEducation({type: "reset", defaultList: sampleInfo.education});
     dispatchExperience({type: "reset", defaultList: sampleInfo.experience});
     dispatchLanguages({type: "reset", defaultList: sampleInfo.languages});
-    setSkills(sampleInfo.skills);
+    dispatchSkills({type: "reset", defaultList: sampleInfo.skills});
     dispatchLinks({type: "reset", defaultList: sampleInfo.links});
     setLayout(sampleInfo.layout);
     setAccentColor(sampleInfo.accentColor);
@@ -200,7 +200,7 @@ function App({rootClass}) {
     dispatchEducation({type: "deleteAll"});
     dispatchExperience({type: "deleteAll"});
     dispatchLinks({type: "deleteAll"});
-    setSkills([]);
+    dispatchSkills({type: "deleteAll"});
     dispatchLanguages({type: "deleteAll"});
   }
 
@@ -340,7 +340,7 @@ function App({rootClass}) {
             <Skills
               levelMode={levelMode}
               skillsItems={skills}
-              setSkillsItems={setSkills}
+              dispatchSkills={dispatchSkills}
               setDialogState={setDialogState}
               emptyText={emptyListText}
             />
