@@ -7,7 +7,7 @@ import ItemControls from "./ItemControls";
 import { DialogContext } from "../App";
 import { useContext } from "react";
 
-export default function ListItemText({title, firstLine, secondLine, hidden = false, id, toggleEdit, dispatchList})
+export default function ListItemText({title, firstLine, secondLine, hidden = false, id, toggleEdit, dispatchList, firstItem = false})
 {
     const dispatchDialog = useContext(DialogContext);
 
@@ -38,6 +38,7 @@ export default function ListItemText({title, firstLine, secondLine, hidden = fal
                 toggleEdit={toggleEdit} 
                 toggleHide={() => dispatchList({type: "toggleHideItem", itemId: id})}
                 hidden={hidden}
+                firstItem={firstItem}
             />
         </li>
     )

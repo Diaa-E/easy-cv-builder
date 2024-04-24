@@ -4,7 +4,7 @@ import ItemButton from "./ItemButton";
 import { ScreenWidthContext } from "../App";
 import MobileItemControls from "./MobileItemControls";
 
-export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden})
+export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden, firstItem})
 {
     const screenWidth = useContext(ScreenWidthContext).screenWidth;
     
@@ -12,6 +12,7 @@ export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden
     {
         return (
             <MobileItemControls 
+                firstItem={firstItem}
                 hidden={hidden}
                 moveItemUp={moveItemUp}
                 toggleEdit={toggleEdit}
@@ -22,6 +23,14 @@ export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden
 
     return (
         <>
+            {
+                !firstItem &&
+                <ItemButton
+                    onClick={moveItemUp}
+                    text="move up"
+                    imgPath={appIcons.moveUp}
+                />
+            }
             <ItemButton
                 onClick={toggleEdit}
                 text="edit"
@@ -31,11 +40,6 @@ export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden
                 onClick={toggleHide}
                 text={hidden ? "show" : "hide"}
                 imgPath={hidden ? appIcons.hidden : appIcons.visible}
-            />
-            <ItemButton
-                onClick={moveItemUp}
-                text="move up"
-                imgPath={appIcons.moveUp}
             />
         </>
     )

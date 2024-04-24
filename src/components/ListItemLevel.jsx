@@ -10,7 +10,7 @@ import { DialogContext } from "../App";
 import { useContext } from "react";
 
 //All metered values range from 0 to 100 with increments of 20
-export default function ListItemLevel({itemData, levelMode, id, textLevels, dispatchList, toggleEdit})
+export default function ListItemLevel({itemData, levelMode, id, textLevels, dispatchList, toggleEdit, firstItem})
 {
     const dispatchDialog = useContext(DialogContext);
 
@@ -53,6 +53,7 @@ export default function ListItemLevel({itemData, levelMode, id, textLevels, disp
                 toggleEdit={toggleEdit} 
                 toggleHide={() => dispatchList({type: "toggleHideItem", itemId: id})}
                 hidden={itemData.hidden}
+                firstItem={firstItem}
             />
         </li>
     )

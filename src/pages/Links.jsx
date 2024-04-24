@@ -92,8 +92,9 @@ export default function Links({linksItems, dispatchLinks, emptyText})
         }
         <ul className={styles["items-container"]} aria-label="links list">
         {
-            linksItems.map(item => {
+            linksItems.map((item, index) => {
                 return <LinkItem
+                            firsItem={index === 0}
                             website={item.icon}
                             iconPath={linkIcons.find(icon => item.icon === icon.name).icon}
                             text={item.url}

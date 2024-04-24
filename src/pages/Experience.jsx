@@ -121,8 +121,9 @@ export default function Experience({experienceItems, dispatchExperience, emptyTe
         }
         <ul className={styles["items-container"]} aria-label="experience list">
         {
-            experienceItems.map(item => {
+            experienceItems.map((item, index) => {
                 return <ListItemText
+                            firstItem={index === 0}
                             title={item.company}
                             firstLine={item.company}
                             secondLine={item.position}

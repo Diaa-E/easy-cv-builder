@@ -93,8 +93,9 @@ export default function Skills({skillsItems, dispatchSkills, emptyText, levelMod
         }
         <ul className={styles["items-container"]} aria-label="skills list">
         {
-            skillsItems.map(item => {
+            skillsItems.map((item, index) => {
                 return <ListItemLevel
+                            firstItem={index === 0}
                             textLevels={skillLevels}
                             levelMode={levelMode}
                             itemData={item}

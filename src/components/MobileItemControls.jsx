@@ -5,7 +5,7 @@ import ItemButton from "./ItemButton";
 
 import styles from "../styles/MobileItemControls.module.css";
 
-export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp, hidden }) {
+export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp, hidden, firstItem }) {
     const screenWidth = useContext(ScreenWidthContext).screenWidth;
     const [open, setOpen] = useState(false);
     const cursorPositionRef = useRef([0, 0]);
@@ -64,13 +64,18 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
                             className={styles["item-menu-button"]}
                         >{hidden ? "Show" : "Hide"}</button>
 
-                        <button
+                        {
+                            !firstItem &&
+                            <button
                             onClick={() => {
                                 moveItemUp();
                                 setOpen(false);
                             }}
                             className={styles["item-menu-button"]}
-                        >Move up</button>
+                            >
+                                Move up
+                            </button>
+                        }
                     </div>
                 </div>
             }

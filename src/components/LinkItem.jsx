@@ -7,7 +7,7 @@ import ItemControls from "./ItemControls";
 import { DialogContext } from "../App";
 import { useContext } from "react";
 
-export default function LinkItem({website, iconPath, text, hidden = false, id, dispatchList, toggleEdit})
+export default function LinkItem({website, iconPath, text, hidden = false, id, dispatchList, toggleEdit, firsItem})
 {
     const dispatchDialog = useContext(DialogContext);
 
@@ -38,6 +38,7 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, d
                 toggleEdit={toggleEdit} 
                 toggleHide={() => dispatchList({type: "toggleHideItem", itemId: id})}
                 hidden={hidden}
+                firstItem={firsItem}
             />
         </li>
     )

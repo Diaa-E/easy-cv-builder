@@ -93,8 +93,9 @@ export default function Languages({languagesItems, dispatchLanguages, emptyText,
         }
         <ul className={styles["items-container"]} aria-label="languages list">
         {
-            languagesItems.map(item => {
+            languagesItems.map((item, index) => {
             return <ListItemLevel
+                        firstItem={index === 0}
                         textLevels={languageLevels}
                         levelMode={levelMode}
                         itemData={item}

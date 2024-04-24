@@ -54,7 +54,7 @@
 
 .main-controls{
   grid-area: controls;
-  z-index: 9900;
+  z-index: 1;
   position: sticky;
   top: 10px;
   background-color: var(--main);

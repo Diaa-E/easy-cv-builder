@@ -1,4 +1,5 @@
 .list-item, .list-item-hidden{
+    will-change: filter;
     display: flex;
     justify-content: flex-end;
     border-radius: 5px;

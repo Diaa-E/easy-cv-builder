@@ -113,8 +113,9 @@ export default function Education({educationItems, dispatchEducation, emptyText}
         }
         <ul className={styles["items-container"]} aria-label="education list">
         {
-            educationItems.map(item => {
+            educationItems.map((item, index) => {
                 return <ListItemText
+                            firstItem={index === 0}
                             title={item.degree}
                             firstLine={item.degree}
                             secondLine={item.school}
