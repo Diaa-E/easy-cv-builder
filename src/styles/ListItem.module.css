@@ -5,6 +5,25 @@
     padding: 10px;
     gap: 5px;
     transition-duration: 300ms;
+
+    animation-name: list-item-in;
+    animation-duration: .3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes list-item-in {
+    0%{
+        transform-origin: top;
+        transform: scaleY(0);
+        filter: opacity(.5);
+    }
+
+    100%{
+        transform-origin: top;
+        transform: scaleY(1);
+        filter: opacity(1);
+    }
 }
 
 .list-item{
