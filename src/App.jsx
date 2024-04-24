@@ -40,7 +40,7 @@ function App({rootClass}) {
   const [experience, dispatchExperience] = useReducer(reduceList, null, () => getSessionData("experience", sampleInfo.experience));
   const [links, dispatchLinks] = useReducer(reduceList, null, () => getSessionData("links", sampleInfo.links));
   const [skills, setSkills] = useState(getSessionData("skills", sampleInfo.skills));
-  const [languages, setLanguages] = useState(getSessionData("languages", sampleInfo.languages));
+  const [languages, dispatchLanguages] = useReducer(reduceList, null, () => getSessionData("languages", sampleInfo.languages));
   const [accentColor, setAccentColor] = useState(getSessionData("accentColor", sampleInfo.accentColor));
   const [font, setFont] = useState(getSessionData("font", sampleInfo.font));
   const [layout, setLayout] = useState(getSessionData("layout", sampleInfo.layout));
@@ -154,7 +154,7 @@ function App({rootClass}) {
     dispatchEducation({type: "reset", defaultList: draft.education});
     dispatchExperience({type: "reset", defaultList: draft.experience});
     dispatchLinks({type: "reset", defaultList: draft.links});
-    setLanguages(draft.languages);
+    dispatchLanguages({type: "reset", defaultList: draft.languages});
     setLayout(draft.layout);
     setOrder(draft.order);
     setLevelMOde(draft.levelMode);
@@ -175,7 +175,7 @@ function App({rootClass}) {
     setContact(sampleInfo.contact);
     dispatchEducation({type: "reset", defaultList: sampleInfo.education});
     dispatchExperience({type: "reset", defaultList: sampleInfo.experience});
-    setLanguages(sampleInfo.languages);
+    dispatchLanguages({type: "reset", defaultList: sampleInfo.languages});
     setSkills(sampleInfo.skills);
     dispatchLinks({type: "reset", defaultList: sampleInfo.links});
     setLayout(sampleInfo.layout);
@@ -201,7 +201,7 @@ function App({rootClass}) {
     dispatchExperience({type: "deleteAll"});
     dispatchLinks({type: "deleteAll"});
     setSkills([]);
-    setLanguages([]);
+    dispatchLanguages({type: "deleteAll"});
   }
 
   function print()
@@ -350,7 +350,7 @@ function App({rootClass}) {
             <Languages
               levelMode={levelMode}
               languagesItems={languages}
-              setLanguagesItems={setLanguages}
+              dispatchLanguages={dispatchLanguages}
               setDialogState={setDialogState}
               emptyText={emptyListText}
             />

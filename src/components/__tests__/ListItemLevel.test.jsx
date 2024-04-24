@@ -104,26 +104,4 @@ describe("List Item Level somponent", () => {
 
         expect(screen.queryByRole("button", {name: /delete/i})).toBeInTheDocument();
     });
-
-    it("Calls deleteItem function when delete button is clicked", () => {
-
-        const deleteItem = vi.fn();
-        const sampleItem = createSampleItem();
-        render(<ListItemLevel deleteItem={deleteItem} itemData={sampleItem}/>);
-        const deleteButton = screen.queryByRole("button", {name: /delete/i});
-        fireEvent.click(deleteButton);
-
-        expect(deleteItem).toHaveBeenCalledOnce();
-    });
-
-    it("Calls deleteItem function with item id prop when delete button is clicked", () => {
-
-        const deleteItem = vi.fn();
-        const sampleItem = createSampleItem();
-        render(<ListItemLevel id={sampleItem.id} deleteItem={deleteItem} itemData={sampleItem}/>);
-        const deleteButton = screen.queryByRole("button", {name: /delete/i});
-        fireEvent.click(deleteButton);
-
-        expect(deleteItem).toHaveBeenCalledWith(sampleItem.id);
-    });
 });

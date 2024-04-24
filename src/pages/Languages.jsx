@@ -6,15 +6,13 @@ import FormButton from "../components/FormButton";
 import RangeInput from "../components/RangeInput";
 import { v4  as generateId} from "uuid";
 import { getItemIndex } from "../utils/utility";
-import { deleteItem, moveItemUp, toggleHide, updateItems } from "../utils/arrayFunctions";
 import appIcons from "../data/appIconsBarrel";
 import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
-import { toggleHideSection } from "../utils/toggleHideSection";
 import { languageLevels } from "../data/textLevelTemplates";
 import styles from "../styles/App.module.css";
 
-export default function Languages({languagesItems, setLanguagesItems, setDialogState, emptyText, levelMode})
+export default function Languages({languagesItems, dispatchLanguages, setDialogState, emptyText, levelMode})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -53,7 +51,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
                         style="primary"
                         onClick={() => {
                             setEditMode(false);
-                            setLanguagesItems(updateItems(currentItem, languagesItems));
+                            dispatchLanguages({type: "updateList", newItem: currentItem});
                         }}
                     />
                 </div>
@@ -80,7 +78,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
                         dangerAction: true,
                         prompt: "Are you sure you want to *premenantly delete all items* the languages section?",
                         onConfirm: () => {
-                            setLanguagesItems([]);
+                            dispatchLanguages({type: "deleteAll"});
                         }
                     })}
                 />
@@ -88,7 +86,7 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
                     icon={isEmptySection(languagesItems) ? appIcons.hidden : appIcons.visible}
                     toolTip={"Hide all language items"}
                     colorClasses={["toggle-all-button-white"]}
-                    onClick={() => setLanguagesItems(toggleHideSection(languagesItems, !isEmptySection(languagesItems)))}
+                    onClick={() => dispatchLanguages({type: "toggleHideAll"})}
                 />
             </div>
         }
@@ -99,24 +97,14 @@ export default function Languages({languagesItems, setLanguagesItems, setDialogS
                         textLevels={languageLevels}
                         levelMode={levelMode}
                         itemData={item}
+                        id={item.id}
                         key={item.id}
-                        toggleHide={(id) => setLanguagesItems(toggleHide(id, languagesItems))}
-                        toggleEdit={(id) => {
+                        dispatchList={dispatchLanguages}
+                        setDialogState={setDialogState}
+                        toggleEdit={() => {
                             setEditMode(true);
-                            setCurrentItem(languagesItems[getItemIndex(languagesItems, id)]);
+                            setCurrentItem(languagesItems[getItemIndex(languagesItems, item.id)]);
                         }}
-                        deleteItem={(id) => {
-                            setDialogState({
-                                open: true,
-                                actionText: "Delete",
-                                dangerAction: true,
-                                prompt: "Are you sure you want to *premenantly delete* this item from the languages section?",
-                                onConfirm: () => {
-                                    setLanguagesItems(deleteItem(id, languagesItems));
-                                }
-                            });
-                        }}
-                        moveItemUp={(id => setLanguagesItems(moveItemUp(id, languagesItems)))}
                     />
             }) 
         }
