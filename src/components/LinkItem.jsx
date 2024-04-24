@@ -4,8 +4,13 @@ import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import ItemControls from "./ItemControls";
 
-export default function LinkItem({website, iconPath, text, hidden = false, id, dispatchList, toggleEdit, setDialogState})
+import { DialogContext } from "../App";
+import { useContext } from "react";
+
+export default function LinkItem({website, iconPath, text, hidden = false, id, dispatchList, toggleEdit})
 {
+    const dispatchDialog = useContext(DialogContext);
+
     return (
         <li
             aria-label={`${website} link (${hidden ? "hidden" : "visible"})`}
@@ -13,14 +18,11 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, d
         >
             <ItemButton
                 onClick={() => {
-                    setDialogState({
-                        open: true,
+                    dispatchDialog({
+                        type: "openDanger",
+                        prompt: `Are you sure you want to *premenantly delete* ${text}?`,
                         actionText: "Delete",
-                        dangerAction: true,
-                        prompt: "Are you sure you want to *premenantly delete* this item from the links section?",
-                        onConfirm: () => {
-                            dispatchList({type: "deleteItem", itemId: id})
-                        }
+                        onConfirm: () => dispatchList({type: "deleteItem", itemId: id}),
                     })
                 }}
                 text="delete item"

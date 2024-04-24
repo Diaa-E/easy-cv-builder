@@ -30,6 +30,7 @@ import reduceList from './utils/listReducer';
 import reduceDialog from './utils/dialogReducer';
 
 export const ScreenWidthContext = createContext(null);
+export const DialogContext = createContext(null);
 
 function App({rootClass}) {
 
@@ -292,96 +293,97 @@ function App({rootClass}) {
       </nav>
       <div className={styles["editor"]}>
         <h1 className={styles['editor-title']}>{currentTab}</h1>
-        {
-          currentTab === tabs.personalInfo &&
-          <PersonalInformation
-            personalInfo={personalInfo}
-            setPersonalInfo={setPersonalInfo}
-          />
-        }
-        {
-          currentTab === tabs.contact &&
-          <Contact
-            contact={contact}
-            setContact={setContact}
-          />
-        }
-        <ScreenWidthContext.Provider value={{screenWidth: screenWidth}}>
+        <DialogContext.Provider value={dispatchDialog}>
           {
-            currentTab === tabs.education &&
-            <Education
-              educationItems={education}
-              dispatchEducation = {dispatchEducation}
-              setDialogState={dispatchDialog}
-              emptyText={emptyListText}
+            currentTab === tabs.personalInfo &&
+            <PersonalInformation
+              personalInfo={personalInfo}
+              setPersonalInfo={setPersonalInfo}
             />
           }
           {
-            currentTab === tabs.experience &&
-            <Experience
-              experienceItems={experience}
-              dispatchExperience={dispatchExperience}
-              setDialogState={dispatchDialog}
-              emptyText={emptyListText}
+            currentTab === tabs.contact &&
+            <Contact
+              contact={contact}
+              setContact={setContact}
             />
           }
+          <ScreenWidthContext.Provider value={{screenWidth: screenWidth}}>
+            {
+              currentTab === tabs.education &&
+              <Education
+                educationItems={education}
+                dispatchEducation = {dispatchEducation}
+                setDialogState={dispatchDialog}
+                emptyText={emptyListText}
+              />
+            }
+            {
+              currentTab === tabs.experience &&
+              <Experience
+                experienceItems={experience}
+                dispatchExperience={dispatchExperience}
+                setDialogState={dispatchDialog}
+                emptyText={emptyListText}
+              />
+            }
+            {
+              currentTab === tabs.links &&
+              <Links
+                linksItems={links}
+                dispatchLinks={dispatchLinks}
+                emptyText={emptyListText}
+              />
+            }
+            {
+              currentTab === tabs.skills &&
+              <Skills
+                levelMode={levelMode}
+                skillsItems={skills}
+                dispatchSkills={dispatchSkills}
+                setDialogState={dispatchDialog}
+                emptyText={emptyListText}
+              />
+            }
+            {
+              currentTab === tabs.languages &&
+              <Languages
+                levelMode={levelMode}
+                languagesItems={languages}
+                dispatchLanguages={dispatchLanguages}
+                setDialogState={dispatchDialog}
+                emptyText={emptyListText}
+              />
+            }
+          </ScreenWidthContext.Provider>
           {
-            currentTab === tabs.links &&
-            <Links
-              linksItems={links}
-              dispatchLinks={dispatchLinks}
-              setDialogState={dispatchDialog}
-              emptyText={emptyListText}
-            />
-          }
-          {
-            currentTab === tabs.skills &&
-            <Skills
+            currentTab === tabs.settings &&
+            <Settings
+              color={accentColor}
+              updateColor={(e) => setAccentColor(e.target.value)}
+              font={font}
+              updateFont={(e) => setFont(e.target.value)}
+              layout={layout}
+              updateLayout={(e) => setLayout(e.target.value)}
+              order={order}
+              setOrder={(e) => setOrder(e.target.value)}
               levelMode={levelMode}
-              skillsItems={skills}
-              dispatchSkills={dispatchSkills}
-              setDialogState={dispatchDialog}
-              emptyText={emptyListText}
+              setLevelMode={(e) => setLevelMOde(e.target.value)}
             />
           }
           {
-            currentTab === tabs.languages &&
-            <Languages
-              levelMode={levelMode}
-              languagesItems={languages}
-              dispatchLanguages={dispatchLanguages}
-              setDialogState={dispatchDialog}
-              emptyText={emptyListText}
+            currentTab === tabs.save &&
+            <Save
+              download={downloadDraft}
+              upload={uploadDraft}
+              status={draftStatus}
             />
           }
-        </ScreenWidthContext.Provider>
-        {
-          currentTab === tabs.settings &&
-          <Settings
-            color={accentColor}
-            updateColor={(e) => setAccentColor(e.target.value)}
-            font={font}
-            updateFont={(e) => setFont(e.target.value)}
-            layout={layout}
-            updateLayout={(e) => setLayout(e.target.value)}
-            order={order}
-            setOrder={(e) => setOrder(e.target.value)}
-            levelMode={levelMode}
-            setLevelMode={(e) => setLevelMOde(e.target.value)}
-          />
-        }
-        {
-          currentTab === tabs.save &&
-          <Save
-            download={downloadDraft}
-            upload={uploadDraft}
-            status={draftStatus}
-          />
-        }
-        {
-          currentTab === tabs.about &&
-          <About />
-        }
+          {
+            currentTab === tabs.about &&
+            <About />
+          }
+        </DialogContext.Provider>
       </div>
 
       <div id='mainControls' className={styles['main-controls']}>
