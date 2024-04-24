@@ -77,7 +77,7 @@ export default function Languages({languagesItems, dispatchLanguages, emptyText,
                     onClick={() => {
                         dispatchDialog({
                             type: "openDanger",
-                            prompt: "Are you sure you want to *premenantly delete all items* the languages section?",
+                            prompt: "Are you sure you want to *premenantly delete all items* in the languages section?",
                             actionText: "Delete All",
                             onConfirm: () => dispatchLanguages({type: "deleteAll"}),
                         })

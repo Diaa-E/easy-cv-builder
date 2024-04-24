@@ -105,7 +105,7 @@ export default function Experience({experienceItems, dispatchExperience, emptyTe
                     onClick={() => {
                         dispatchDialog({
                             type: "openDanger",
-                            prompt: "Are you sure you want to *premenantly delete all items* the experience section?",
+                            prompt: "Are you sure you want to *premenantly delete all items* in the experience section?",
                             actionText: "Delete All",
                             onConfirm: () => dispatchExperience({type: "deleteAll"})
                         })

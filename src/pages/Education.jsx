@@ -97,7 +97,7 @@ export default function Education({educationItems, dispatchEducation, emptyText}
                     onClick={() => {
                         dispatchDialog({
                             type: "openDanger",
-                            prompt: "Are you sure you want to *premenantly delete all items* the education section?",
+                            prompt: "Are you sure you want to *premenantly delete all items* in the education section?",
                             actionText: "Delete All",
                             onConfirm: () => dispatchEducation({type: "deleteAll"}),
                         })

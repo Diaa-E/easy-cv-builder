@@ -77,7 +77,7 @@ export default function Skills({skillsItems, dispatchSkills, emptyText, levelMod
                     onClick={() => {
                         dispatchDialog({
                             type: "openDanger",
-                            prompt: "Are you sure you want to *premenantly delete all items* the skills section?",
+                            prompt: "Are you sure you want to *premenantly delete all items* in the skills section?",
                             actionText: "Delete All",
                             onConfirm: () => dispatchSkills({type: "deleteAll"}),
                         })

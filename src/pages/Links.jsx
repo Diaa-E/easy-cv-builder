@@ -76,7 +76,7 @@ export default function Links({linksItems, dispatchLinks, emptyText})
                     onClick={() => {
                         dispatchDialog({
                             type: "openDanger",
-                            prompt: "Are you sure you want to *premenantly delete all items* the links section?",
+                            prompt: "Are you sure you want to *premenantly delete all items* in the links section?",
                             actionText: "Delete All",
                             onConfirm: () => dispatchLinks({type: "deleteAll"})
                         });
