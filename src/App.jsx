@@ -133,19 +133,16 @@ function App({rootClass}) {
     {
       setDraftStatus({code: 2, errorLog: errorLog});
       dispatchDialog({
-        open: true,
+        type: "openDefault",
         prompt: `The *${errorLog.join(", ")}* section${errorLog.length > 1 ? "s" : ""} 
         of the draft ${errorLog.length > 1 ? "are" : "is"} *invalid*, do you want to 
         replace ${errorLog.length > 1 ? "them" : "it"} with default values?`,
         actionText: "Fix Draft",
-        dangerAction: false,
         onConfirm: () => {
-
           fixDraft(draft, errorLog, sampleInfo);
           loadDraft(draft);
-          closeDialog();
         }
-      })
+      });
       return;
     }
 
@@ -158,12 +155,12 @@ function App({rootClass}) {
 
     setAccentColor(draft.accentColor);
     setFont(draft.font);
-    dispatchSkills(draft.skills);
     setContact(draft.contact);
     setPersonalInfo(draft.personalInfo);
     dispatchEducation({type: "reset", defaultList: draft.education});
     dispatchExperience({type: "reset", defaultList: draft.experience});
     dispatchLinks({type: "reset", defaultList: draft.links});
+    dispatchSkills({type: "reset", defaultList: draft.skills});
     dispatchLanguages({type: "reset", defaultList: draft.languages});
     setLayout(draft.layout);
     setOrder(draft.order);
