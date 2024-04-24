@@ -7,14 +7,19 @@ export default function ConfirmDialog({prompt, actionText, danger, onConfirm, on
 {
     return (
         <div
-            onClick={e => {
-                e.stopPropagation();
-                onCancel();
-            }} 
             className={styles["backdrop"]}
             id="dialog-backdrop"
+            onClick={onCancel}
         >
-            <div aria-label="confirm action" aria-describedby="prompt" role="dialog" className={styles["dialog-box"]}>
+            <div
+                aria-label="confirm action"
+                aria-describedby="prompt"
+                role="dialog"
+                className={styles["dialog-box"]}
+                onClick={e => {
+                    e.stopPropagation();
+                }} 
+            >
                 <p id="prompt" className={styles["prompt"]}>
                 {
                     highlightText(prompt, "*").map(segment => {

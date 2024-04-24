@@ -1,8 +1,10 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import ConfirmDialog from "../ConfirmDialog";
 
 describe("Confirm dialog component", () => {
+
+    beforeEach(() => cleanup())
 
     it("Renders a confirm button using prop value and a cancel button", () => {
 
@@ -37,6 +39,16 @@ describe("Confirm dialog component", () => {
         fireEvent.click(backdrop);
         
         expect(onCancel).toHaveBeenCalledOnce();
+    });
+
+    it("Does not call onCancel when user clicks inside the dialog box", () => {
+
+        const onCancel = vi.fn();
+        const {container} = render(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={() => {}}/>);
+        const dialogBox = screen.queryByRole("dialog");
+        fireEvent.click(dialogBox);
+
+        expect(onCancel).not.toHaveBeenCalled();
     });
 
     it("Calls onConfirm function once when confirm button is clicked", () => {
