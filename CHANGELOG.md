@@ -8,7 +8,7 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
-### **1.5.3 (unreleased)**
+### **1.5.3 (Apr 24, 2024)**
 
 - ➕ Removed "move item up" button from first item in a list.
 - ➕ Added animation to dialog box.
