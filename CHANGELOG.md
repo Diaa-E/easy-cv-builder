@@ -8,7 +8,7 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
-### **1.5.5 (unreleased)**
+### **1.5.5 (30 Apr, 2024)**
 
 - 🛠️ Improved upload draft button accessibility.
 - 🛠️ Improved item controls buttons accessibility.
