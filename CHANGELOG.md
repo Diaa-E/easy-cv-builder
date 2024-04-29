@@ -8,6 +8,10 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
+### **1.5.5 (unreleased)**
+
+- 🛠️ Improved clear text field button accessibility.
+
 ### **1.5.4 (Apr 24, 2024)**
 
 - 🛠️ Fixed Uploading draft crash.
