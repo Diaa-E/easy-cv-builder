@@ -10,7 +10,8 @@ This change log only highlights important changes.
 
 ### **1.5.5 (unreleased)**
 
-- 🛠️ Improve item controls buttons accessibility.
+- 🛠️ Improved upload draft button accessibility.
+- 🛠️ Improved item controls buttons accessibility.
 - 🛠️ Improved clear text field button accessibility.
 
 ### **1.5.4 (Apr 24, 2024)**
