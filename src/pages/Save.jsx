@@ -1,7 +1,10 @@
+import { useRef } from "react";
 import styles from "../styles/Save.module.css";
 
 export default function Save({upload, download, status})
 {
+    const fileInputRef = useRef(null);
+
     return (
         <div className={styles["save-container"]}>
             <button
@@ -11,11 +14,12 @@ export default function Save({upload, download, status})
             >
                 Download Draft
             </button>
-            <label
+            <button
                 title="Upload a saved copy of your data"
                 role="button"
                 htmlFor="uploadDraft"
                 className={styles["upload-draft-button"]}
+                onClick={() => fileInputRef.current.click()}
             >
                 <input
                     onChange={upload}
@@ -23,9 +27,11 @@ export default function Save({upload, download, status})
                     id="uploadDraft"
                     type="file"
                     accept=".json"
+                    ref={fileInputRef}
+                    aria-hidden
                 />
                 Upload Draft
-            </label>
+            </button>
             <StatusPanel
                 status={status}
             />
