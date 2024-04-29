@@ -13,6 +13,7 @@ This change log only highlights important changes.
 - 🛠️ Improved upload draft button accessibility.
 - 🛠️ Improved item controls buttons accessibility.
 - 🛠️ Improved clear text field button accessibility.
+- ⚙️ Moved CV order and level modes templates to their own modules.
 
 ### **1.5.4 (Apr 24, 2024)**
 
