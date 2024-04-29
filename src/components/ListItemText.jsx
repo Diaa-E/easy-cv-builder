@@ -39,6 +39,7 @@ export default function ListItemText({title, firstLine, secondLine, hidden = fal
                 toggleHide={() => dispatchList({type: "toggleHideItem", itemId: id})}
                 hidden={hidden}
                 firstItem={firstItem}
+                itemTitle={firstLine}
             />
         </li>
     )

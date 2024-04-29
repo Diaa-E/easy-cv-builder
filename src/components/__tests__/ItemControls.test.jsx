@@ -30,7 +30,7 @@ describe("Item controls component", () => {
         setup(<ItemControls />, {providerProps});
 
         expect(screen.queryByRole("button", {name: /options/i})).not.toBeInTheDocument();
-        expect(screen.queryByRole("button", {name: /move\sup/i})).toBeInTheDocument();
+        expect(screen.queryByRole("button", {name: /move.*?up/i})).toBeInTheDocument();
         expect(screen.queryByRole("button", {name: /edit/i})).toBeInTheDocument();
         expect(screen.queryByRole("button", {name: /hide|show/i})).toBeInTheDocument();
     });
@@ -42,7 +42,7 @@ describe("Item controls component", () => {
             value: {screenWidth: 1000}
         };
         setup(<ItemControls moveItemUp={moveItemUp }/>, {providerProps});
-        const moveUpButton = screen.queryByRole("button", {name: /move\sup/i});
+        const moveUpButton = screen.queryByRole("button", {name: /move.*?up/i});
         fireEvent.click(moveUpButton);
 
         expect(moveItemUp).toHaveBeenCalledOnce();

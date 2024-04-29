@@ -39,6 +39,7 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, d
                 toggleHide={() => dispatchList({type: "toggleHideItem", itemId: id})}
                 hidden={hidden}
                 firstItem={firsItem}
+                itemTitle={website}
             />
         </li>
     )

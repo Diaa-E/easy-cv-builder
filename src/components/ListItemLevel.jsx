@@ -54,6 +54,7 @@ export default function ListItemLevel({itemData, levelMode, id, textLevels, disp
                 toggleHide={() => dispatchList({type: "toggleHideItem", itemId: id})}
                 hidden={itemData.hidden}
                 firstItem={firstItem}
+                itemTitle={itemData.name}
             />
         </li>
     )
