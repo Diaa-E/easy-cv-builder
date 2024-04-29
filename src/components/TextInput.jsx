@@ -24,13 +24,13 @@ export default function TextInput({labelText, text, placeholder, id, onChange = 
             {
                 !(text === "") &&
                 <button
-                    title="Clear field"
+                    title={"Clear " + labelText}
                     onClick={() => {
                         clearField();
                         textInputRef.current.focus();
                     }}
                     className={styles["clear-button"]}
-                    aria-label="clear field"
+                    aria-label={"clear " + labelText}
                 >
                 <img aria-hidden src={appIcons.clear} alt="Clear field button icon" />
                 </button>
