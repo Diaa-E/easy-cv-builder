@@ -37,7 +37,7 @@ export function moveItemUp(targetId, dataArray)
 {
   const targetIndex = getItemIndex(dataArray, targetId);
   
-  if (targetIndex === 0) return Array.from(dataArray);
+  if (targetIndex === 0) return dataArray;
   const newArray = [];
 
   for (let i = 0; i < dataArray.length; i++)
@@ -58,7 +58,7 @@ export function moveItemUp(targetId, dataArray)
 
 export function toggleHideSection(itemsArray, hide)
 {
-    const newArray = JSON.parse(JSON.stringify(itemsArray));
+    const newArray = deepCopy(itemsArray);
 
     newArray.forEach(item => {
 
