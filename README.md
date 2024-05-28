@@ -98,52 +98,52 @@
         onConfirm: function runOnConfirm() => {}
     });
     ```
-    ------
+------
 
-    ### Utility functions
+### Utility functions
 
-    1. Toggle hide an item in an array
-        ```js
-        import { toggleHide } from "./src/utils/arrayFunctions.js";
+1. Toggle hide an item in an array
+    ```js
+    import { toggleHide } from "./src/utils/arrayFunctions.js";
 
-        toggleHide(targetId: "string", dataArray: []);
-        ```
-        Inverts target item's "hidden" boolean key.
-        Returns a new array with the changes.
-    
-    1. Update an array / Add an item to an array
-        ```js
-        import { updateItems } from "./src/utils/arrayFunctions.js";
+    toggleHide(targetId: "string", dataArray: []);
+    ```
+    Inverts target item's "hidden" boolean key.
+    Returns a new array with the changes.
 
-        updateItems(newItem: {}, dataArray: []);
-        ```
-        Adds the ```newItem``` object to the end of the array if it does not already exist in the array (based on ID), if the item already exists, it is replaced with the ```newItem``` object.
-        Returns a new array with the changes.
+1. Update an array / Add an item to an array
+    ```js
+    import { updateItems } from "./src/utils/arrayFunctions.js";
 
-    1. Delete an Item from an array
-        ```js
-        import { deleteItem } from "./src/utils/arrayFunctions.js";
+    updateItems(newItem: {}, dataArray: []);
+    ```
+    Adds the ```newItem``` object to the end of the array if it does not already exist in the array (based on ID), if the item already exists, it is replaced with the ```newItem``` object.
+    Returns a new array with the changes.
 
-        deleteItem(targetId: "string", dataArray: []);
-        ```
-        Removes an item from an array.
-        Returns a new array with the changes.
-    
-    1. Move an item up in an array
-        ```js
-        import { moveItemUp } from "./src/utils/arrayFunctions.js";
+1. Delete an Item from an array
+    ```js
+    import { deleteItem } from "./src/utils/arrayFunctions.js";
 
-        moveItemUp(targetId: "string", dataArray: []);
-        ```
-        Moves an item up in the array (index - 1), if the item is already at index 0, the ```dataArray``` is returned unchanged.
-        Returns a new array with the changes.
+    deleteItem(targetId: "string", dataArray: []);
+    ```
+    Removes an item from an array.
+    Returns a new array with the changes.
 
-    1. Toggle hide an entire array.
-        ```js
-        import { toggleHideSection } from "./src/utils/arrayFunctions.js";
+1. Move an item up in an array
+    ```js
+    import { moveItemUp } from "./src/utils/arrayFunctions.js";
 
-        toggleHideSection(itemsArray: [], hide: Boolean);
-        ```
-        If the hide flag is true, each item in the array gets its "hidden" key set to true, if the hide flag is false, each item in the array gets its "hidden" key set to false.
-        Returns a new array with the changes.
-    ------
+    moveItemUp(targetId: "string", dataArray: []);
+    ```
+    Moves an item up in the array (index - 1), if the item is already at index 0, the ```dataArray``` is returned unchanged.
+    Returns a new array with the changes.
+
+1. Toggle hide an entire array.
+    ```js
+    import { toggleHideSection } from "./src/utils/arrayFunctions.js";
+
+    toggleHideSection(itemsArray: [], hide: Boolean);
+    ```
+    If the hide flag is true, each item in the array gets its "hidden" key set to true, if the hide flag is false, each item in the array gets its "hidden" key set to false.
+    Returns a new array with the changes.
+------
