@@ -41,7 +41,7 @@
         newPage: newPageIcon
     }
     ```
-1. Add a ```<NavItem />``` component to the ```<nav></nav>``` component
+1. Add a ```<NavItem />``` component to the ```<nav></nav>``` component in ```App.jsx``` 
     ```html
     <nav>
         <ul>
@@ -55,17 +55,17 @@
     </nav>
     ```
 1. Each page component reuses other components which have their own CSS modules, other styles like containers exist in ```./src/styles/App.module.css```.
-1. Any state used to in the CV preview must be moved to the ```<App />``` component and passed down to the page component the state and its setter.
+1. Any state used in the CV preview must be moved to the ```<App />``` component and passed down to the page component the state and its setter.
 1. **(Optional)** screen width context. Screen width context contains the current viewport width ```window.innerWidth```, it can be used for conditional rendering based on screen width.
     ```js
-        import ScreenWidthContext from "../App.jsx";
+    import ScreenWidthContext from "../App.jsx";
 
-        ...
+    ...
 
-        function NewPage({})
-        {
-            const screenWidth = useContext(ScreenWidthContext).screenWidth;
-        }
+    function NewPage({})
+    {
+        const screenWidth = useContext(ScreenWidthContext).screenWidth;
+    }
     ```
 1. **(Optional)** Dialog context. Dialog context is used to open a confirm action dialog. It contains a dispatch function that accepts an action object with a type key and other options if required. The dialog closes on its own when the user clicks the cancel button, this is the default behaviour, no extra code is needed.
     ```js
