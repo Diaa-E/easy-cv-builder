@@ -4,6 +4,7 @@
 
 - Fix icon lag by loading all resources before opening app main page.
 - Animate view transition.
+- Add max width to body for super wide screens.
 - Add a bubble layout template.
 - Add more safety to utility functions by throwing errors for unexpected inputs (probably easier to debug than "can't read properties of undefined")
 - Write tests for the rest of the page components.
