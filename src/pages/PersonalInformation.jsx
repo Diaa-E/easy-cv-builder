@@ -1,5 +1,5 @@
 import TextInput from "../components/TextInput";
-import { getStartCase } from "../utils/startCase";
+import { capFirstLetter } from "../utils/capFirstLetter";
 
 export default function PersonalInformation({personalInfo, setPersonalInfo})
 {
@@ -8,7 +8,7 @@ export default function PersonalInformation({personalInfo, setPersonalInfo})
             <TextInput
                 text={personalInfo.fullName}
                 labelText="Full Name"
-                onChange={(e) => {setPersonalInfo({...personalInfo, fullName: getStartCase(e.target.value)})}}
+                onChange={(e) => {setPersonalInfo({...personalInfo, fullName: capFirstLetter(e.target.value)})}}
                 clearField={() => {setPersonalInfo({...personalInfo, fullName: ""})}}
                 placeholder="John Doe"
                 id="fullName"
