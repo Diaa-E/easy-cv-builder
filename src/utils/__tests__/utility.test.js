@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { deepCopy, isBright } from "../utility";
+import { deepCopy, getItemIndex, isBright } from "../utility";
 
 describe("Brightness sensor", () => {
 
@@ -53,5 +53,50 @@ describe("Deep copy", () => {
 
         expect(deepCopy(sampleArray)).not.toBe(sampleArray);
         expect(deepCopy(sampleArray)).toEqual(sampleArray);
+    });
+});
+
+describe("Get item index", () => {
+
+    it("Returns index of item with matching id", () => {
+
+        const itemArray = [
+            {
+                id: 1
+            },
+            {
+                id: 2
+            }
+        ];
+
+        expect(getItemIndex(itemArray, 2)).toBe(1);
+    });
+
+    it("Returns -1 when no item matches the passed id", () => {
+
+        const itemArray = [
+            {
+                id: 1
+            },
+            {
+                id: 2
+            }
+        ];
+
+        expect(getItemIndex(itemArray, 3)).toBe(-1);
+    });
+
+    it("Handles mismatching id types (string/number)", () => {
+
+        const itemArray = [
+            {
+                id: 1
+            },
+            {
+                id: 2
+            }
+        ];
+
+        expect(getItemIndex(itemArray, "2")).toBe(1);
     });
 });

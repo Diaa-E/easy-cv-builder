@@ -1,6 +1,6 @@
 export function getItemIndex(itemArray, itemId)
 {
-    return itemArray.findIndex(item => item.id === itemId);
+    return itemArray.findIndex(item => item.id.toString() === itemId.toString());
 }
 
 export function isBright(colorHex)
