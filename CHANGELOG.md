@@ -10,6 +10,7 @@ This change log only highlights important changes.
 
 ### **1.5.7 (unreleased)**
 
+- ⚙️ Improved capitalizing first letter utility function, it now parses the string and capitalizes characters preceeded by a white space.
 - ⚙️ Improved text highlighting utility function, highlights text while parsing the string instead of splitting into an array.
 - ⚙️ Calculate text level utility function now throws on receiving invalid parameters.
 
