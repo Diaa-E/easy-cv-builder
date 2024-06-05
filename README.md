@@ -146,4 +146,44 @@
     ```
     If the hide flag is true, each item in the array gets its "hidden" key set to true, if the hide flag is false, each item in the array gets its "hidden" key set to false.
     Returns a new array with the changes.
+
+1. calculateTextLevel
+    ```js
+    import { calculateTextLevel } from "./src/utils/calculateTextLevel.js";
+
+    calculateTextLevel(textLevels: [], value: number | "number string");
+    ```
+    Returns a matching verbal proficiency level from the textLevels array based on passed value. Text levels array must be an array of objects in the following format:
+    ```js
+    const textLevels = [
+        {
+            name: "pass",
+            min: 50,
+        },
+        {
+            name: "fail",
+            min: 0
+        }
+    ];
+    ```
+    The min key is the minimum value (inclusive) for the value to match the same level.
+    Text levels array must have at least 1 element up to any number of elements.
+    Text Levels array does not have to be sorted in a specific order, the function already sorts it before matching a level. If the value cannot be converted into a number, the function throwws an error. If the value is smaller than the smallest min value in the text levels array, the function throws an error.
+
+1. isEmptySection
+    ```js
+    import { isEmptySection } from "./src/utils/emptySectionDetector.js";
+
+    isEmptySection(dataArray: []);
+    ```
+    Returns true if the array is empty or if all the elements in the array have their hidden key set to true.
+
+1. fixDraft
+    ```js
+    import { fixDraft } from "./src/utils/fixDraft.js";
+
+    fixDraft(draft: {}, invalidKeys: [], defaultTemplate: {});
+    ```
+    Fixes the invalid sections in a CV draft.
+    Returns a mutated draft object with each key in the invalidKeys array set to the equivilant key from the defaultTemplate object.
 ------
