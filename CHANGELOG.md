@@ -8,7 +8,7 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
-### **1.5.7 (unreleased)**
+### **1.5.7 (6 Jun, 2024)**
 
 - ⚙️ Improved capitalizing first letter utility function, it now parses the string and capitalizes characters preceeded by a white space.
 - ⚙️ Improved text highlighting utility function, highlights text while parsing the string instead of splitting into an array.
