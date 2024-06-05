@@ -83,4 +83,14 @@ describe("Calculate text level function", () => {
         expect(calculateTextLevel(shuffledPattern(), 25)).toBe("min");
         expect(calculateTextLevel(shuffledPattern(), 49)).toBe("min");
     });
+
+    it("Throws an error when value is lower than the lower bound of the templates", () => {
+
+        expect(() => calculateTextLevel(orderedPattern(), -20)).toThrowError(/lower\sbound/i);
+    });
+
+    it("Throws an error when the value cannot be converted into a number", () => {
+
+        expect(() => calculateTextLevel(orderedPattern(), "hello")).toThrowError(/nan/i);
+    });
 });
