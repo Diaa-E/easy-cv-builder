@@ -211,4 +211,20 @@
         }
     ]
     ```
+
+1. #### capFirstLetter
+    ```js
+    import { capFirstLetter } from ".src/utils/capFirstLetter.js";
+
+    capFirstLetter(string: "string");
+    ```
+    Capitalizes the first letter of each word seperated by a white space. Returns a new string with changes.
+
+1. #### joinString
+    ```js
+    import { joinString } from ".src/utils/stringJoiner.js";
+
+    joinString(stringArray: [], joiner: "string");
+    ```
+    A more advanced string joining function, it ignores empty strings and empty arrays. Returns a string consisting of the array's elements joined by the joiner string while ignoring empty strings in the array. Returns null if the array has no elements (to disable rendering in React component).
 ------
