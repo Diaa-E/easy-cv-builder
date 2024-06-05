@@ -107,6 +107,13 @@ describe("Move item up function", () => {
 
         expect(moveItemUp("1", setup())).toEqual(setup());
     });
+
+    it("Returns the same array reference when passed ID matches first item in array (saves re-render)", () => {
+
+        const list = setup();
+
+        expect(moveItemUp("1", list)).toBe(list);
+    });
 });
 
 describe("Toggle hide all items function" , () => {
