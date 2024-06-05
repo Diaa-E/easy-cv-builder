@@ -1,32 +1,40 @@
 export function highlightText(string, highlightToken)
 {
-    let tokenInstances = 0;
+    const stringChunks = [];
+    let highlight = false;
+    let acc = "";
 
     for (let i = 0; i < string.length; i++)
     {
-        if (string.charAt(i) === highlightToken) tokenInstances++;
+        if (string.charAt(i) === highlightToken && highlight) //found a closing token
+        {
+            stringChunks.push({value: acc, highlight: true});
+            highlight = false;
+            acc = "";
+        }
+        else if (string.charAt(i) === highlightToken && !highlight) //found an opening token
+        {
+            if (i > 0) //don't push empty string when first character is a highlight token
+            {
+                stringChunks.push({value: acc, highlight: false})
+            }
+            highlight = true;
+            acc = "";
+        }
+        else if (i === string.length - 1 && highlight) //last character and highlight is still open
+        {
+            throw new Error("String has an unclosed highlight area");
+        }
+        else if (i === string.length - 1 && !highlight) //last character and highlight is closed
+        {
+            acc += string.charAt(i); //push last character
+            stringChunks.push({value: acc, highlight: false});
+        }
+        else //add regular chars to accumulator
+        {
+            acc += string.charAt(i);
+        }
     }
 
-    if (tokenInstances % 2 !== 0) throw new Error("String has an unclosed mark");
-
-    const splitString = string.split(highlightToken);
-    const finalArray = [];
-
-    for (let i = 0; i < splitString.length; i++)
-    {
-        if (splitString[i] === "")
-        {
-            continue;
-        }
-        else if (i % 2 === 0)
-        {
-            finalArray.push({value: splitString[i], highlight: false});
-        }
-        else
-        {
-            finalArray.push({value: splitString[i], highlight: true});
-        }
-    }
-
-    return finalArray;
+    return stringChunks;
 }

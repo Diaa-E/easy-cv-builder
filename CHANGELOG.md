@@ -10,6 +10,7 @@ This change log only highlights important changes.
 
 ### **1.5.7 (unreleased)**
 
+- ⚙️ Improved text highlighting utility function, highlights text while parsing the string instead of splitting into an array.
 - ⚙️ Calculate text level utility function now throws on receiving invalid parameters.
 
 ### **1.5.6 (29 May, 2024)**
