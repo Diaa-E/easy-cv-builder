@@ -8,6 +8,10 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
+### **1.5.7 (unreleased)**
+
+- ⚙️ Calculate text level utility function now throws on receiving invalid parameters.
+
 ### **1.5.6 (29 May, 2024)**
 
 - ⚙️ Return same array if the item being moved up is already at the top (removes unnecessary re-render).
