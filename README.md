@@ -186,4 +186,29 @@
     ```
     Fixes the invalid sections in a CV draft.
     Returns a mutated draft object with each key in the invalidKeys array set to the equivilant key from the defaultTemplate object.
+
+1. #### highlightText
+    ```js
+    import { highlightText } from "./src/utils/highlightText.js";
+
+    highlightText(string: "string", highlightToken: "string");
+    ```
+    Highlights each part of the string enclosed between a pair of highlight tokens as shown in the following example:
+    ```js
+    highlightText("this is some *marked text*", "*"); //highlights the substring "marked text", all "*" are removed.
+    ```
+    Returns an array objects, each object contains a chunk of the original string with a boolean highlight flag.
+    ```js
+    //return value
+    [
+        {
+            value: "this is some ",
+            highlight: false
+        },
+        {
+            value: "marked text",
+            highlight: true,
+        }
+    ]
+    ```
 ------
