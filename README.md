@@ -102,7 +102,7 @@
 
 ### Utility functions
 
-1. toggleHide
+1. #### toggleHide
     ```js
     import { toggleHide } from "./src/utils/arrayFunctions.js";
 
@@ -111,7 +111,7 @@
     Inverts target item's "hidden" boolean key.
     Returns a new array with the changes.
 
-1. updateItems
+1. #### updateItems
     ```js
     import { updateItems } from "./src/utils/arrayFunctions.js";
 
@@ -120,7 +120,7 @@
     Adds the ```newItem``` object to the end of the array if it does not already exist in the array (based on ID), if the item already exists, it is replaced with the ```newItem``` object.
     Returns a new array with the changes.
 
-1. deleteItem
+1. #### deleteItem
     ```js
     import { deleteItem } from "./src/utils/arrayFunctions.js";
 
@@ -129,7 +129,7 @@
     Removes an item from an array.
     Returns a new array with the changes.
 
-1. moveItemUp
+1. #### moveItemUp
     ```js
     import { moveItemUp } from "./src/utils/arrayFunctions.js";
 
@@ -138,7 +138,7 @@
     Moves an item up in the array (index - 1), if the item is already at index 0, the ```dataArray``` is returned unchanged.
     Returns a new array with the changes.
 
-1. toggleHideSection
+1. #### toggleHideSection
     ```js
     import { toggleHideSection } from "./src/utils/arrayFunctions.js";
 
@@ -147,7 +147,7 @@
     If the hide flag is true, each item in the array gets its "hidden" key set to true, if the hide flag is false, each item in the array gets its "hidden" key set to false.
     Returns a new array with the changes.
 
-1. calculateTextLevel
+1. #### calculateTextLevel
     ```js
     import { calculateTextLevel } from "./src/utils/calculateTextLevel.js";
 
@@ -170,7 +170,7 @@
     Text levels array must have at least 1 element up to any number of elements.
     Text Levels array does not have to be sorted in a specific order, the function already sorts it before matching a level. If the value cannot be converted into a number, the function throwws an error. If the value is smaller than the smallest min value in the text levels array, the function throws an error.
 
-1. isEmptySection
+1. #### isEmptySection
     ```js
     import { isEmptySection } from "./src/utils/emptySectionDetector.js";
 
@@ -178,7 +178,7 @@
     ```
     Returns true if the array is empty or if all the elements in the array have their hidden key set to true.
 
-1. fixDraft
+1. #### fixDraft
     ```js
     import { fixDraft } from "./src/utils/fixDraft.js";
 
