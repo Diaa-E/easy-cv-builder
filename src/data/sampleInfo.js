@@ -1,5 +1,4 @@
 import { v4 as generateId } from 'uuid';
-import linkIcons from "./linkIconsBarrel";
 
 const sampleInfo = {
     personalInfo: {
