@@ -1,4 +1,4 @@
-export const levelModes = [
+const levelModes = [
     {
         name: "Text",
         value: "text"
@@ -7,4 +7,6 @@ export const levelModes = [
         name: "Bar",
         value: "bar"
     }
-]
+];
+
+export default levelModes

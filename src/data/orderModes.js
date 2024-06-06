@@ -1,4 +1,4 @@
-export const orderModes = [
+const orderModes = [
     {
         name: "Education first",
         value: "educationFirst"
@@ -8,3 +8,5 @@ export const orderModes = [
         value: "experienceFirst"
     }
 ];
+
+export default orderModes
