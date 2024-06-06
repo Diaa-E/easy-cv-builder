@@ -1,55 +1,57 @@
 import fonts from "../data/fonts";
 import layouts from "../data/layouts";
 import linkIcons from "../data/linkIconsBarrel";
+import sampleInfo from "../data/sampleInfo";
 
 export function testDraftValidity(draft)
 {
-    const dataIntegrity = [
+    const validators = {
+        "accentColor": (color) => testColor(color),
+        "order": (order) => testOrder(order),
+        "font": (font) => testFont(font),
+        "layout": (layout) => testLayout(layout),
+        "links": (links) => testLinks(links),
+        "skills": (skills) => testSkills(skills),
+        "languages": (languages) => testLanguages(languages),
+        "education": (education) => testEducation(education),
+        "experience": (experience) => testExperience(experience),
+        "personalInfo": (personalInfo) => testPersonalInfo(personalInfo),
+        "contact": (contact) => testContact(contact),
+        "levelMode": (levelMode) => testLevelMode(levelMode),
+    };
+    
+    const dataIntegrity = [];
+
+    for (const property in sampleInfo)
+    {
+        if (!draft?.hasOwnProperty(property))
         {
-            name: "accentColor",
-            valid: testColor(draft?.accentColor),
-        },
-        {
-            name: "order",
-            valid: testOrder(draft?.order),
-        },
-        {
-            name: "font",
-            valid: testFont(draft?.font, fonts),
-        },
-        {
-            name: "layout",
-            valid: testLayout(draft?.layout, layouts),
-        },
-        {
-            name: "links",
-            valid: testLinks(draft?.links, linkIcons),
-        },
-        {
-            name: "skills",
-            valid: testSkills(draft?.skills),
-        },
-        {
-            name: "languages",
-            valid: testLanguages(draft?.languages),
-        },
-        {
-            name: "education",
-            valid: testEducation(draft?.education),
-        },
-        {
-            name: "experience",
-            valid: testExperience(draft?.experience),
-        },
-        {
-            name: "personalInfo",
-            valid: testPersonalInfo(draft?.personalInfo),
-        },
-        {
-            name: "contact",
-            valid: testContact(draft?.contact),
+            dataIntegrity.push(
+                {
+                    name: property,
+                    valid: false,
+                }
+            );
         }
-      ];
+        else if (typeof draft[property] !== typeof sampleInfo[property])
+        {
+            dataIntegrity.push(
+                {
+                    name: property,
+                    valid: false,
+                }
+            );
+        }
+        else
+        {
+            dataIntegrity.push(
+                {
+                    name: property,
+                    valid: validators[property](draft[property]),
+                }
+            );
+        }
+    }
   
       const errorLog = [];
   
@@ -62,6 +64,13 @@ export function testDraftValidity(draft)
       });
 
       return errorLog;
+}
+
+export function testLevelMode(levelMode)
+{
+    if (levelMode !== "bar" && levelMode !== "text") return false;
+
+    return true;
 }
 
 export function testOrder(order)

@@ -125,6 +125,7 @@ describe("Draft validity", () => {
             layout: "layout2",
             font: "font1",
             order: "educationFirst",
+            levelMode: "bar",
             education: [
                 {
                     id: 0,
@@ -249,6 +250,7 @@ describe("Draft validity", () => {
         "experience",
         "personalInfo",
         "contact",
+        "levelMode"
     ];
 
     it("Returns an empty array for a valid draft", () => {
@@ -331,14 +333,15 @@ describe("Draft validity", () => {
 
     it("Returns all fields in an array if the draft is not a valid object", () => {
 
-        expect(testDraftValidity(undefined)).toEqual(fullErrorLog);
-        expect(testDraftValidity(null)).toEqual(fullErrorLog);
-        expect(testDraftValidity("text")).toEqual(fullErrorLog);
-        expect(testDraftValidity(15)).toEqual(fullErrorLog);
-        expect(testDraftValidity({})).toEqual(fullErrorLog);
-        expect(testDraftValidity([])).toEqual(fullErrorLog);
-        expect(testDraftValidity(false)).toEqual(fullErrorLog);
-        expect(testDraftValidity(() => {})).toEqual(fullErrorLog);
+        //sorting removes the headache of ordering the array in a specific order
+        expect(testDraftValidity(undefined).sort()).toEqual(fullErrorLog.sort());
+        expect(testDraftValidity(null).sort()).toEqual(fullErrorLog.sort());
+        expect(testDraftValidity("text").sort()).toEqual(fullErrorLog.sort());
+        expect(testDraftValidity(15).sort()).toEqual(fullErrorLog.sort());
+        expect(testDraftValidity({}).sort()).toEqual(fullErrorLog.sort());
+        expect(testDraftValidity([]).sort()).toEqual(fullErrorLog.sort());
+        expect(testDraftValidity(false).sort()).toEqual(fullErrorLog.sort());
+        expect(testDraftValidity(() => {}).sort()).toEqual(fullErrorLog.sort());
     });
 });
 
