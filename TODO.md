@@ -6,9 +6,9 @@
 - Animate view transition.
 - Add max width to body for super wide screens.
 - Add a bubble layout template.
-- Add more safety to utility functions by throwing errors for unexpected inputs (probably easier to debug than "can't read properties of undefined")
 - Write tests for the rest of the page components.
 - Revisit the draft testing function, it doesn't seem too safe at the moment.
+- ~~Add more safety to utility functions by throwing errors for unexpected inputs (probably easier to debug than "can't read properties of undefined").~~ ✅
 - ~~Use reducers for complex states.~~ ✅
 - ~~Fix settings proficiency level typo.~~ ✅
 - ~~Reduce/eliminate use of viewport units.~~ ✅
