@@ -20,7 +20,7 @@ import Settings from './pages/Settings';
 import Save from './pages/Save';
 import About from './pages/About';
 
-import { testDraftValidity } from './utils/draftValidation';
+import { testDraftValidity, tryParseJSON } from './utils/draftValidation';
 import DarkModeButton from './components/DarkModeButton';
 import ConfirmDialog from './components/ConfirmDialog';
 import { fixDraft } from './utils/fixDraft';
@@ -126,7 +126,15 @@ function App({rootClass}) {
     const file = e.target.files[0]
     e.target.value = null;
     const Jsondraft = await file.text();
-    const draft = JSON.parse(Jsondraft);
+
+    const draft = tryParseJSON(Jsondraft);
+    
+    if (!draft)
+    {
+      setDraftStatus({code: 2, errorLog: ["Invalid JSON"]});
+      return;
+    }
+
     const errorLog = testDraftValidity(draft);
 
     if (errorLog.length > 0)

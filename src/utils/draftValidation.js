@@ -112,3 +112,16 @@ export function testArray(sampleArray, targetObject)
 
     return true;
 }
+
+export function tryParseJSON(JSONString)
+{
+    try
+    {
+        const JSONObject = JSON.parse(JSONString);
+        return JSONObject;
+    }
+    catch (error)
+    {
+        return false;
+    }
+}

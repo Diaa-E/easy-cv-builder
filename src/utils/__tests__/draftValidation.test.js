@@ -2,7 +2,8 @@ import { describe, expect, it, vi } from "vitest";
 import { 
     testDraftValidity,
     testObject,
-    testArray
+    testArray,
+    tryParseJSON
 } from "../draftValidation";
 import sampleInfo from "../../data/sampleInfo";
 
@@ -371,5 +372,18 @@ describe("Test array function", () => {
     it("Returns false when a non-object item exists in the array", () => {
 
         expect(testArray([{key1: 1, key2: "adf"}, null], {key1: 45, key2: "tef"})).toBe(false);
+    });
+});
+
+describe("Try parse JSON function", () => {
+
+    it("Returns the parsed object if the string is valid", () => {
+
+        expect(tryParseJSON(JSON.stringify({id: 12}))).toEqual({id: 12});
+    });
+
+    it("Returns false if the string is invalid", () => {
+
+        expect(tryParseJSON(undefined)).toEqual(false);
     });
 });
