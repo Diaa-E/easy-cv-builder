@@ -131,7 +131,7 @@ function App({rootClass}) {
     
     if (!draft)
     {
-      setDraftStatus({code: 2, errorLog: ["Invalid JSON"]});
+      setDraftStatus({code: 3, errorLog: ["Invalid JSON"]});
       return;
     }
 

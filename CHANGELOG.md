@@ -8,6 +8,11 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
+### **1.5.8 (unreleased)**
+
+- ➕ Attempting to parse invalid JSON will now display an error message.
+- ⚙️ Refactored draft validation functions into more general purpose ones.
+
 ### **1.5.7 (6 Jun, 2024)**
 
 - ⚙️ Improved capitalizing first letter utility function, it now parses the string and capitalizes characters preceeded by a white space.
