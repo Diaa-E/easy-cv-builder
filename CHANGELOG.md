@@ -10,7 +10,7 @@ This change log only highlights important changes.
 
 ### **1.5.8 (unreleased)**
 
-- ➕ Attempting to parse invalid JSON will now display an error message.
+- 🛠️ Attempting to parse invalid JSON will now display an error message.
 - ⚙️ Refactored draft validation functions into more general purpose ones.
 
 ### **1.5.7 (6 Jun, 2024)**
