@@ -357,4 +357,19 @@ describe("Test array function", () => {
 
         expect(testArray([{key1: 1, key2: "adf"}, {key1: 23, key2: "yer"}], {key1: 45, key2: "tef"})).toBe(true);
     });
+
+    it("Returns false when an object in the array does not match has missing properties", () => {
+
+        expect(testArray([{key1: 1, key2: "adf"}, {key1: 23}], {key1: 45, key2: "tef"})).toBe(false);
+    });
+
+    it("Returns false when an object in the array does not match the template type", () => {
+
+        expect(testArray([{key1: 1, key2: "adf"}, {key1: "2", key2: "yer"}], {key1: 45, key2: "tef"})).toBe(false);
+    });
+
+    it("Returns false when a non-object item exists in the array", () => {
+
+        expect(testArray([{key1: 1, key2: "adf"}, null], {key1: 45, key2: "tef"})).toBe(false);
+    });
 });
