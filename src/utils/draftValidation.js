@@ -9,17 +9,22 @@ export function testDraftValidity(draft)
 {
     const validators = {
         "accentColor": (color) => testStringPattern(color, /^#[0-9A-F]{6}$/i),
-        "order": (order) => testAppResource(order, orderModes),
-        "font": (font) => testAppResource(font, fonts),
-        "layout": (layout) => testAppResource(layout, layouts),
-        "links": (links) => testArray(links, sampleInfo.links[0]),
+        "order": (order) => testAppResource(order, orderModes, "value"),
+        "font": (font) => testAppResource(font, fonts, "value"),
+        "layout": (layout) => testAppResource(layout, layouts, "value"),
+        "links": (links) => {
+            return (
+                testArray(links, sampleInfo.links[0]) &&
+                !links.find(link => !testAppResource(link.icon, linkIcons, "name")) //If a single link icon is invalid
+            );
+        },
         "skills": (skills) => testArray(skills, sampleInfo.skills[0]),
         "languages": (languages) => testArray(languages, sampleInfo.languages[0]),
         "education": (education) => testArray(education, sampleInfo.education[0]),
         "experience": (experience) => testArray(experience, sampleInfo.experience[0]),
         "personalInfo": (personalInfo) => testObject(personalInfo, sampleInfo.personalInfo),
         "contact": (contact) => testObject(contact, sampleInfo.contact),
-        "levelMode": (levelMode) => testAppResource(levelMode, levelModes),
+        "levelMode": (levelMode) => testAppResource(levelMode, levelModes, "value"),
     };
 
     const dataIntegrity = [];
@@ -73,9 +78,9 @@ function testStringPattern(string, regexPattern)
     return regexPattern.test(string);
 }
 
-function testAppResource(sampleResource, targetResources)
+function testAppResource(sampleResource, targetResources, targetProperty)
 {
-    return targetResources.find(item => item.value === sampleResource);
+    return targetResources.find(item => item[targetProperty] === sampleResource);
 }
 
 export function testObject(sampleObject, targetObject)
