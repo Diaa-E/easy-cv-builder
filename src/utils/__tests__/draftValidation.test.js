@@ -1,18 +1,6 @@
-import { describe, expect, it, test, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { 
-    testColor,
-    testContact,
     testDraftValidity,
-    testEducation,
-    testExperience,
-    testFont,
-    testLanguages,
-    testLayout,
-    testLinks,
-    testObjectKeys,
-    testPersonalInfo,
-    testSkills,
-    testOrder,
     testObject,
     testArray
 } from "../draftValidation";
@@ -69,6 +57,38 @@ vi.mock("../../data/linkIconsBarrel.js", () => {
     }
 });
 
+vi.mock("../../data/orderModes.js", () => {
+
+    return {
+        default: [
+            {
+                name: "order one",
+                value: "order1"
+            },
+            {
+                name: "order two",
+                value: "order2"
+            }
+        ]
+    }
+});
+
+vi.mock("../../data/levelModes.js", () => {
+
+    return {
+        default: [
+            {
+                name: "level mode one",
+                value: "levelMode1"
+            },
+            {
+                name: "level mode two",
+                value: "levelMode2",
+            }
+        ]
+    }
+});
+
 describe("Draft validity", () => {
 
     function setup()
@@ -87,8 +107,8 @@ describe("Draft validity", () => {
             accentColor: "#ffffff",
             layout: "layout2",
             font: "font1",
-            order: "educationFirst",
-            levelMode: "bar",
+            order: "order2",
+            levelMode: "levelMode1",
             education: [
                 {
                     id: "0",
