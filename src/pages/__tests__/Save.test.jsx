@@ -60,9 +60,9 @@ describe("Save component", () => {
         expect(screen.queryByText(/error.*?error1.*?error2/i)).toBeInTheDocument();
     });
 
-    it("Prints nothing when status code is 3", () => {
+    it("Prints nothing when status code is 4", () => {
 
-        render(<Save download={() => {}} upload={() => {}} status={{code: 3, errorLog: []}} />);
+        render(<Save download={() => {}} upload={() => {}} status={{code: 4, errorLog: []}} />);
         
         expect(screen.queryByText(/success|error|loading/i)).not.toBeInTheDocument();
     });
