@@ -3,8 +3,8 @@ import { describe, expect, it, vi } from "vitest";
 import Settings from "../Settings";
 import fonts from "../../data/fonts";
 import layouts from "../../data/layouts";
-import { levelModes } from "../../data/levelModes";
-import { orderModes } from "../../data/orderModes";
+import levelModes from "../../data/levelModes";
+import orderModes from "../../data/orderModes";
 
 describe("Settings component", () => {
 

@@ -2,8 +2,8 @@ import ColorInput from "../components/ColorInput"
 import SelectInput from "../components/SelectInput"
 import fonts from "../data/fonts";
 import layouts from "../data/layouts";
-import { levelModes } from "../data/levelModes";
-import { orderModes } from "../data/orderModes";
+import levelModes from "../data/levelModes";
+import orderModes from "../data/orderModes";
 import styles from "../styles/App.module.css";
 
 export default function Settings({color, updateColor, font, updateFont, layout, updateLayout, order, setOrder, levelMode, setLevelMode})
