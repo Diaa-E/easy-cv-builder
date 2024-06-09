@@ -279,6 +279,14 @@ describe("Draft validity", () => {
         expect(testDraftValidity(invalidDraft)).toEqual(["links"]);
     });
 
+    it("Returns 'links' in an array for invalid links icon", () => {
+
+        const invalidDraft = setupValidDraft();
+        invalidDraft.links[0].icon = "text";
+
+        expect(testDraftValidity(invalidDraft)).toEqual(["links"]);
+    });
+
     it("Returns 'skills' in an array for invalid skills", () => {
 
         const invalidDraft = setupValidDraft();
