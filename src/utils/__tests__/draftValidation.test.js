@@ -4,6 +4,7 @@ import {
     testObject,
     testArray
 } from "../draftValidation";
+import sampleInfo from "../../data/sampleInfo";
 
 vi.mock("../../data/fonts.js", () => {
 
@@ -91,7 +92,7 @@ vi.mock("../../data/levelModes.js", () => {
 
 describe("Draft validity", () => {
 
-    function setup()
+    function setupValidDraft()
     {
         return {
             personalInfo: {
@@ -220,39 +221,35 @@ describe("Draft validity", () => {
         };
     }
 
-    const fullErrorLog = [
+    const setupFullErrorLog = () => {
 
-        "accentColor",
-        "order",
-        "font",
-        "layout",
-        "links",
-        "skills",
-        "languages",
-        "education",
-        "experience",
-        "personalInfo",
-        "contact",
-        "levelMode"
-    ];
+        const errorLog = [];
+
+        for (const property in sampleInfo)
+        {
+            errorLog.push(property);
+        }
+
+        return errorLog;
+    }
 
     it("Returns an empty array for a valid draft", () => {
 
-        const validDraft = setup();
+        const validDraft = setupValidDraft();
 
         expect(testDraftValidity(validDraft)).toEqual([]);
     });
 
     it("Returns an empty array for a valid draft after serialization", () => {
 
-        const validDraft = setup();
+        const validDraft = setupValidDraft();
 
         expect(JSON.parse(JSON.stringify(testDraftValidity(validDraft)))).toEqual([]);
     });
 
     it("Returns 'accentColor' in an array for invalid accent color value", () => {
 
-        const invalidDraft = setup();
+        const invalidDraft = setupValidDraft();
         invalidDraft.accentColor = "text";
 
         expect(testDraftValidity(invalidDraft)).toEqual(["accentColor"]);
@@ -260,7 +257,7 @@ describe("Draft validity", () => {
 
     it("Returns 'font' in an array for invalid font value", () => {
 
-        const invalidDraft = setup();
+        const invalidDraft = setupValidDraft();
         invalidDraft.font = "text";
 
         expect(testDraftValidity(invalidDraft)).toEqual(["font"]);
@@ -268,7 +265,7 @@ describe("Draft validity", () => {
 
     it("Returns 'layout' in an array for invalid layout value", () => {
 
-        const invalidDraft = setup();
+        const invalidDraft = setupValidDraft();
         invalidDraft.layout = "text";
 
         expect(testDraftValidity(invalidDraft)).toEqual(["layout"]);
@@ -276,7 +273,7 @@ describe("Draft validity", () => {
 
     it("Returns 'links' in an array for invalid links", () => {
 
-        const invalidDraft = setup();
+        const invalidDraft = setupValidDraft();
         invalidDraft.links = undefined;
 
         expect(testDraftValidity(invalidDraft)).toEqual(["links"]);
@@ -284,7 +281,7 @@ describe("Draft validity", () => {
 
     it("Returns 'skills' in an array for invalid skills", () => {
 
-        const invalidDraft = setup();
+        const invalidDraft = setupValidDraft();
         invalidDraft.skills = undefined;
 
         expect(testDraftValidity(invalidDraft)).toEqual(["skills"]);
@@ -292,7 +289,7 @@ describe("Draft validity", () => {
 
     it("Returns 'languages' in an array for invalid languages", () => {
 
-        const invalidDraft = setup();
+        const invalidDraft = setupValidDraft();
         invalidDraft.languages = undefined;
 
         expect(testDraftValidity(invalidDraft)).toEqual(["languages"]);
@@ -300,7 +297,7 @@ describe("Draft validity", () => {
 
     it("Returns 'education' in an array for invalid education", () => {
 
-        const invalidDraft = setup();
+        const invalidDraft = setupValidDraft();
         invalidDraft.education = undefined;
 
         expect(testDraftValidity(invalidDraft)).toEqual(["education"]);
@@ -308,7 +305,7 @@ describe("Draft validity", () => {
 
     it("Returns 'experience' in an array for invalid experience", () => {
 
-        const invalidDraft = setup();
+        const invalidDraft = setupValidDraft();
         invalidDraft.experience = undefined;
 
         expect(testDraftValidity(invalidDraft)).toEqual(["experience"]);
@@ -317,14 +314,14 @@ describe("Draft validity", () => {
     it("Returns all fields in an array if the draft is not a valid object", () => {
 
         //sorting removes the headache of ordering the array in a specific order
-        expect(testDraftValidity(undefined).sort()).toEqual(fullErrorLog.sort());
-        expect(testDraftValidity(null).sort()).toEqual(fullErrorLog.sort());
-        expect(testDraftValidity("text").sort()).toEqual(fullErrorLog.sort());
-        expect(testDraftValidity(15).sort()).toEqual(fullErrorLog.sort());
-        expect(testDraftValidity({}).sort()).toEqual(fullErrorLog.sort());
-        expect(testDraftValidity([]).sort()).toEqual(fullErrorLog.sort());
-        expect(testDraftValidity(false).sort()).toEqual(fullErrorLog.sort());
-        expect(testDraftValidity(() => {}).sort()).toEqual(fullErrorLog.sort());
+        expect(testDraftValidity(undefined).sort()).toEqual(setupFullErrorLog().sort());
+        expect(testDraftValidity(null).sort()).toEqual(setupFullErrorLog().sort());
+        expect(testDraftValidity("text").sort()).toEqual(setupFullErrorLog().sort());
+        expect(testDraftValidity(15).sort()).toEqual(setupFullErrorLog().sort());
+        expect(testDraftValidity({}).sort()).toEqual(setupFullErrorLog().sort());
+        expect(testDraftValidity([]).sort()).toEqual(setupFullErrorLog().sort());
+        expect(testDraftValidity(false).sort()).toEqual(setupFullErrorLog().sort());
+        expect(testDraftValidity(() => {}).sort()).toEqual(setupFullErrorLog().sort());
     });
 });
 
