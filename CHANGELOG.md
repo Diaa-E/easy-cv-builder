@@ -8,6 +8,10 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
+### **1.5.9 (unreleased)**
+
+- 🛠️ Fixed page on smaller screens not stretching to viewport width.
+
 ### **1.5.8 (10 Jun, 2024)**
 
 - ➕ Page elements are now centered in the viewport and no longer stretches too far on super wide screens.
