@@ -106,7 +106,7 @@
     ```js
     import { toggleHide } from "./src/utils/arrayFunctions.js";
 
-    toggleHide(targetId: "string", dataArray: []);
+    toggleHide(targetId: "string", dataArray: []): []
     ```
     Inverts target item's "hidden" boolean key.
     Returns a new array with the changes.
@@ -115,7 +115,7 @@
     ```js
     import { updateItems } from "./src/utils/arrayFunctions.js";
 
-    updateItems(newItem: {}, dataArray: []);
+    updateItems(newItem: {}, dataArray: []): []
     ```
     Adds the ```newItem``` object to the end of the array if it does not already exist in the array (based on ID), if the item already exists, it is replaced with the ```newItem``` object.
     Returns a new array with the changes.
@@ -124,7 +124,7 @@
     ```js
     import { deleteItem } from "./src/utils/arrayFunctions.js";
 
-    deleteItem(targetId: "string", dataArray: []);
+    deleteItem(targetId: "string", dataArray: []): []
     ```
     Removes an item from an array.
     Returns a new array with the changes.
@@ -133,7 +133,7 @@
     ```js
     import { moveItemUp } from "./src/utils/arrayFunctions.js";
 
-    moveItemUp(targetId: "string", dataArray: []);
+    moveItemUp(targetId: "string", dataArray: []): []
     ```
     Moves an item up in the array (index - 1), if the item is already at index 0, the ```dataArray``` is returned unchanged.
     Returns a new array with the changes.
@@ -142,7 +142,7 @@
     ```js
     import { toggleHideSection } from "./src/utils/arrayFunctions.js";
 
-    toggleHideSection(itemsArray: [], hide: Boolean);
+    toggleHideSection(itemsArray: [], hide: Boolean): []
     ```
     If the hide flag is true, each item in the array gets its "hidden" key set to true, if the hide flag is false, each item in the array gets its "hidden" key set to false.
     Returns a new array with the changes.
@@ -151,7 +151,7 @@
     ```js
     import { calculateTextLevel } from "./src/utils/calculateTextLevel.js";
 
-    calculateTextLevel(textLevels: [], value: number | "number string");
+    calculateTextLevel(textLevels: [], value: number | "number string"): string
     ```
     Returns a matching verbal proficiency level from the textLevels array based on passed value. Text levels array must be an array of objects in the following format:
     ```js
@@ -174,7 +174,7 @@
     ```js
     import { isEmptySection } from "./src/utils/emptySectionDetector.js";
 
-    isEmptySection(dataArray: []);
+    isEmptySection(dataArray: []): boolean
     ```
     Returns true if the array is empty or if all the elements in the array have their hidden key set to true.
 
@@ -182,7 +182,7 @@
     ```js
     import { fixDraft } from "./src/utils/fixDraft.js";
 
-    fixDraft(draft: {}, invalidKeys: [], defaultTemplate: {});
+    fixDraft(draft: {}, invalidKeys: [], defaultTemplate: {}): {}
     ```
     Fixes the invalid sections in a CV draft.
     Returns a mutated draft object with each key in the invalidKeys array set to the equivilant key from the defaultTemplate object.
@@ -191,7 +191,7 @@
     ```js
     import { highlightText } from "./src/utils/highlightText.js";
 
-    highlightText(string: "string", highlightToken: "string");
+    highlightText(string: "string", highlightToken: "string"): []
     ```
     Highlights each part of the string enclosed between a pair of highlight tokens as shown in the following example:
     ```js
@@ -216,7 +216,7 @@
     ```js
     import { capFirstLetter } from ".src/utils/capFirstLetter.js";
 
-    capFirstLetter(string: "string");
+    capFirstLetter(string: "string"): string
     ```
     Capitalizes the first letter of each word seperated by a white space. Returns a new string with changes.
 
@@ -224,7 +224,55 @@
     ```js
     import { joinString } from ".src/utils/stringJoiner.js";
 
-    joinString(stringArray: [], joiner: "string");
+    joinString(stringArray: [], joiner: "string"): string
     ```
     A more advanced string joining function, it ignores empty strings and empty arrays. Returns a string consisting of the array's elements joined by the joiner string while ignoring empty strings in the array. Returns null if the array has no elements (to disable rendering in React component).
+
+1. #### testDraftValidity
+    ```js
+    import { testDraftValidity } from ".src/utils/draftValidation.js";
+
+    testDraftValidity(draft: {}): []
+    ```
+    Tests each section of the draft for invalid data types or values using other utility functions each for a specific test case. Returns an array containing the names of the faulty sections.
+
+1. #### testStringPattern
+    ```js
+    import { testStringPattern } from ".src/utils/draftValidation.js";
+
+    testStringPattern(string: "string", regexPattern: regex): boolean
+    ```
+    Tests a string using a regex pattern. Returns true if the string matches, false otherwise.
+
+1. #### testAppResource
+    ```js
+    import { testAppResource } from ".src/utils/draftValidation.js";
+
+    testAppResource(sampleResource: {}, targetResource: {}, targetProperty: "string"): boolean
+    ```
+    Tests app resources used in the draft like icons or fonts. Returns true if the target property in the sample resource matches its counterpart in the target resource, otherwise it returns false.
+
+1. #### testObject
+    ```js
+    import { testObject } from ".src/utils/draftValidation.js";
+
+    testObject(sampleObject: {}, targetObject: {}): boolean
+    ```
+    Tests a sample object for any missing properties or different property types from that of the target object. Returns false if there is a property or more missing or if a property's type is not matching its counterpart in the target object, otherwise returns true.
+
+1. #### testArray
+    ```js
+    import { testArray } from ".src/utils/draftValidation.js";
+
+    testArray(sampleArray: [], targetObject: {}): boolean
+    ```
+    Tests every object in the array for missing properties or different property type from that of the target object. Returns false if one or more objects in the array have missing properties or type mismatch, otherwise returns true.
+
+1. #### tryParseJSON
+    ```js
+    import { tryParseJSON } from ".src/utils/draftValidation.js";
+
+    tryParseJSON(JSONString: Serialized JSON): {} | boolean
+    ```
+    Tests a JSON string's validity. Returns false if the parsing throws an error, returns the parsed object if the parsing is successful.
 ------
