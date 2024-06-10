@@ -10,6 +10,8 @@ This change log only highlights important changes.
 
 ### **1.5.8 (unreleased)**
 
+- ➕ Page elements are now centered in the viewport and no longer stretches too far on super wide screens.
+- 🛠️ Page body now has proper background color based on theme instead of default white.
 - 🛠️ Attempting to parse invalid JSON will now display an error message.
 - ⚙️ Refactored draft validation functions into more general purpose ones.
 

@@ -34,4 +34,7 @@ a:visited{
 
 body{
     overflow: visible;
+    background-color: var(--main-dark);
+    display: flex;
+    place-content: center;
 }
