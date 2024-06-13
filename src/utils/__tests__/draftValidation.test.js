@@ -5,7 +5,8 @@ import {
     testArray,
     tryParseJSON,
     testLevel,
-    testStringPattern
+    testStringPattern,
+    testAppResource
 } from "../draftValidation";
 import sampleInfo from "../../data/sampleInfo";
 
@@ -417,6 +418,45 @@ describe("Test string pattern function", () => {
     it("Returns false if string does not matchs regex", () => {
 
         expect(testStringPattern("apple", /text/i)).toBe(false);
+    });
+});
+
+describe("Test app resource function", () => {
+
+    it("Returns true if sample resource exists in the target resource array", () => {
+
+        expect(testAppResource( 1,
+        [
+            {
+                value: 1
+            },
+            {
+                value: 2
+            },
+            {
+                value: 3
+            }
+        ],
+        "value"
+        )).toBe(true);
+    });
+
+    it("Returns false if sample resource does not exist in the target resource array", () => {
+
+        expect(testAppResource( 4,
+            [
+                {
+                    value: 1
+                },
+                {
+                    value: 2
+                },
+                {
+                    value: 3
+                }
+            ],
+            "value"
+            )).toBe(false);
     });
 });
 

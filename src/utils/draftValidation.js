@@ -95,7 +95,7 @@ export function testStringPattern(string, regexPattern)
 
 export function testAppResource(sampleResource, targetResources, targetProperty)
 {
-    return targetResources.find(item => item[targetProperty] === sampleResource);
+    return Boolean(targetResources.find(item => item[targetProperty] === sampleResource));
 }
 
 export function testObject(sampleObject, targetObject)
