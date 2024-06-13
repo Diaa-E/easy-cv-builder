@@ -5,8 +5,8 @@
 - Fix icon lag by loading all resources before opening app main page.
 - Animate view transition.
 - Add a bubble layout template.
-- Use a text button for delete/hide all features instead of icon buttons.
 - Write tests for the rest of the page components.
+- ~~Use a text button for delete/hide all features instead of icon buttons.~~ ✅
 - ~~Fix first item in list having smaller width for controls and shifting text/bars to the right.~~ ✅
 - ~~Add max width to body for super wide screens.~~ ✅
 - ~~Revisit the draft testing function, it doesn't seem too safe at the moment.~~ ✅
