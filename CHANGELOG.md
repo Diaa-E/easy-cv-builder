@@ -10,6 +10,7 @@ This change log only highlights important changes.
 
 ### **1.5.9 (unreleased)**
 
+- 🛠️ Fixed item controls pulling level meter and text to the right when the move up button is not available (first item in list).
 - 🛠️ Fixed draft validation not checking for invalid skill/language levels.
 - 🛠️ Fixed page on smaller screens not stretching to viewport width.
 - ⚙️ Fixed app resource validator not returning a boolean.

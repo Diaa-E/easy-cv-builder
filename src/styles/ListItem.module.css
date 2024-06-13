@@ -70,6 +70,15 @@
     filter: var(--icon-filter);
 }
 
+.item-controls{
+    display: flex;
+    gap: 5px;
+    align-self: center;
+    justify-self: flex-end;
+    place-content: flex-end;
+    width: 20%;
+}
+
 @media (min-width: 700px) {
 
     .list-item, .list-item-hidden{

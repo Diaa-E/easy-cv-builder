@@ -3,6 +3,7 @@ import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import { ScreenWidthContext } from "../App";
 import MobileItemControls from "./MobileItemControls";
+import styles from "../styles/ListItem.module.css";
 
 export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden, firstItem, itemTitle})
 {
@@ -22,7 +23,7 @@ export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden
     }
 
     return (
-        <>
+        <div className={styles["item-controls"]}>
             {
                 !firstItem &&
                 <ItemButton
@@ -41,6 +42,6 @@ export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden
                 text={(hidden ? "show" : "hide") + itemTitle}
                 imgPath={hidden ? appIcons.hidden : appIcons.visible}
             />
-        </>
+        </div>
     )
 }
