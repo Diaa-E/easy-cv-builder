@@ -8,7 +8,7 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
-### **1.5.9 (unreleased)**
+### **1.5.9 (13 Jun, 2024)**
 
 - ➕ Delete/Hide all buttons are now regular text buttons instead of icon buttons.
 - 🛠️ Fixed item controls pulling level meter and text to the right when the move up button is not available (first item in list).
