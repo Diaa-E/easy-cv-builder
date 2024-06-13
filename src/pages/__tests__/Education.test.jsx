@@ -1,4 +1,4 @@
-import { fireEvent, queryAllByRole, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import Education from "../Education";
 import sampleInfo from "../../data/sampleInfo";
