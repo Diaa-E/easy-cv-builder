@@ -296,10 +296,58 @@ describe("Draft validity", () => {
         expect(testDraftValidity(invalidDraft)).toEqual(["skills"]);
     });
 
+    it("Returns 'skills' in an array for skill level not divisible by 20", () => {
+
+        const invalidDraft = setupValidDraft();
+        invalidDraft.skills[0].level = 50;
+
+        expect(testDraftValidity(invalidDraft)).toEqual(["skills"]);
+    });
+
+    it("Returns 'skills' in an array for skill level bigger than 100", () => {
+
+        const invalidDraft = setupValidDraft();
+        invalidDraft.skills[0].level = 120;
+
+        expect(testDraftValidity(invalidDraft)).toEqual(["skills"]);
+    });
+
+    it("Returns 'skills' in an array for skill level smaller than 20", () => {
+
+        const invalidDraft = setupValidDraft();
+        invalidDraft.skills[0].level = -20;
+
+        expect(testDraftValidity(invalidDraft)).toEqual(["skills"]);
+    });
+
     it("Returns 'languages' in an array for invalid languages", () => {
 
         const invalidDraft = setupValidDraft();
         invalidDraft.languages = undefined;
+
+        expect(testDraftValidity(invalidDraft)).toEqual(["languages"]);
+    });
+
+    it("Returns 'languages' in an array for language level not divisible by 20", () => {
+
+        const invalidDraft = setupValidDraft();
+        invalidDraft.languages[0].level = 50;
+
+        expect(testDraftValidity(invalidDraft)).toEqual(["languages"]);
+    });
+
+    it("Returns 'languages' in an array for language level bigger than 100", () => {
+
+        const invalidDraft = setupValidDraft();
+        invalidDraft.languages[0].level = 120;
+
+        expect(testDraftValidity(invalidDraft)).toEqual(["languages"]);
+    });
+
+    it("Returns 'languages' in an array for language level smaller than 20", () => {
+
+        const invalidDraft = setupValidDraft();
+        invalidDraft.languages[0].level = -20;
 
         expect(testDraftValidity(invalidDraft)).toEqual(["languages"]);
     });

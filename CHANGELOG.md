@@ -10,6 +10,7 @@ This change log only highlights important changes.
 
 ### **1.5.9 (unreleased)**
 
+- 🛠️ Fixed draft validation not checking for invalid skill/language levels.
 - 🛠️ Fixed page on smaller screens not stretching to viewport width.
 
 ### **1.5.8 (10 Jun, 2024)**

@@ -18,8 +18,18 @@ export function testDraftValidity(draft)
                 !links.find(link => !testAppResource(link.icon, linkIcons, "name")) //If a single link icon is invalid
             );
         },
-        "skills": (skills) => testArray(skills, sampleInfo.skills[0]),
-        "languages": (languages) => testArray(languages, sampleInfo.languages[0]),
+        "skills": (skills) => {
+            return (
+                testArray(skills, sampleInfo.skills[0]) &&
+                testArrayLevels(skills, 20, 100, 20)
+            );
+        },
+        "languages": (languages) => {
+            return (
+                testArray(languages, sampleInfo.languages[0]) &&
+                testArrayLevels(languages, 20, 100, 20)
+            );
+        },
         "education": (education) => testArray(education, sampleInfo.education[0]),
         "experience": (experience) => testArray(experience, sampleInfo.experience[0]),
         "personalInfo": (personalInfo) => testObject(personalInfo, sampleInfo.personalInfo),
@@ -73,12 +83,22 @@ export function testDraftValidity(draft)
       return errorLog;
 }
 
-function testStringPattern(string, regexPattern)
+export function testArrayLevels(sampleArray, min, max, increment)
+{
+    return !sampleArray.find(item => !testLevel(item.level, min, max, increment));
+}
+
+export function testLevel(level, min, max, increment)
+{
+    return !(level % increment !== 0 || level < min || level > max);
+}
+
+export function testStringPattern(string, regexPattern)
 {
     return regexPattern.test(string);
 }
 
-function testAppResource(sampleResource, targetResources, targetProperty)
+export function testAppResource(sampleResource, targetResources, targetProperty)
 {
     return targetResources.find(item => item[targetProperty] === sampleResource);
 }
