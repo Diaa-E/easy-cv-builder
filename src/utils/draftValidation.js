@@ -21,13 +21,13 @@ export function testDraftValidity(draft)
         "skills": (skills) => {
             return (
                 testArray(skills, sampleInfo.skills[0]) &&
-                testArrayLevels(skills, 20, 100, 20)
+                !skills.find(skill => !testLevel(skill.level, 20, 100, 20))
             );
         },
         "languages": (languages) => {
             return (
                 testArray(languages, sampleInfo.languages[0]) &&
-                testArrayLevels(languages, 20, 100, 20)
+                !languages.find(language => !testLevel(language.level, 20, 100, 20))
             );
         },
         "education": (education) => testArray(education, sampleInfo.education[0]),
@@ -81,11 +81,6 @@ export function testDraftValidity(draft)
       });
 
       return errorLog;
-}
-
-export function testArrayLevels(sampleArray, min, max, increment)
-{
-    return !sampleArray.find(item => !testLevel(item.level, min, max, increment));
 }
 
 export function testLevel(level, min, max, increment)
