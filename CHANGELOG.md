@@ -12,6 +12,7 @@ This change log only highlights important changes.
 
 - 🛠️ Fixed draft validation not checking for invalid skill/language levels.
 - 🛠️ Fixed page on smaller screens not stretching to viewport width.
+- ⚙️ Fixed app resource validator not returning a boolean.
 
 ### **1.5.8 (10 Jun, 2024)**
 
