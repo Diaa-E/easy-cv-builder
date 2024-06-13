@@ -72,9 +72,9 @@ describe("Education component", () => {
             }
         );
         
-        const deleteAllButton = screen.queryByRole("button", {name: /hide.*?all.*?education/i});
+        const hideAllButton = screen.queryByRole("button", {name: /hide.*?all.*?education/i});
         
-        expect(deleteAllButton).toBeInTheDocument();
+        expect(hideAllButton).toBeInTheDocument();
     });
 
     it("Calls dialog dispatcher when delete all button is clicked", () => {
@@ -155,15 +155,15 @@ describe("Education component", () => {
 
         expect(screen.queryByRole("heading", {name: /add/i})).toBeInTheDocument();
         expect(screen.queryByRole("button", {name: /add/i})).toBeInTheDocument();
-        expect(screen.queryByRole("button", {name: /add/i})).toBeInTheDocument();
+        expect(screen.queryByRole("button", {name: /cancel/i})).toBeInTheDocument();
         expect(screen.queryByLabelText(/degree/i, {selector: "input"}).value).toBe("");
         expect(screen.queryByLabelText(/school/i, {selector: "input"}).value).toBe("");
         expect(screen.queryByLabelText(/location/i, {selector: "input"}).value).toBe("");
-        expect(screen.queryByLabelText(/end/i, {selector: "input"}).value).toBe("");
+        expect(screen.queryByLabelText(/start/i, {selector: "input"}).value).toBe("");
         expect(screen.queryByLabelText(/end/i, {selector: "input"}).value).toBe("");
     });
 
-    it("Calls education dispatcher when add button is clicked", () => {
+    it("Calls education dispatcher when a new item is added", () => {
 
         const dispatchEducation = vi.fn();
         setup(
@@ -181,28 +181,6 @@ describe("Education component", () => {
         fireEvent.click(addItemButton);
         const addButton = screen.queryByRole("button", {name: /add/i});
         fireEvent.click(addButton);
-
-        expect(dispatchEducation).toHaveBeenCalled();
-    });
-
-    it("Calls education dispatcher when save button is clicked", () => {
-
-        const dispatchEducation = vi.fn();
-        setup(
-            <Education
-                dispatchEducation={dispatchEducation}
-                educationItems={sampleInfo.education}
-                emptyText={"empty"}
-            />,
-            {
-                screenWidth: 1920,
-                dispatchDialog: () => {}
-            }
-        );
-        const editItemButtons = screen.queryAllByRole("button", {name: /edit/i});
-        fireEvent.click(editItemButtons[0]);
-        const saveButton = screen.queryByRole("button", {name: /save/i});
-        fireEvent.click(saveButton);
 
         expect(dispatchEducation).toHaveBeenCalled();
     });
@@ -231,6 +209,28 @@ describe("Education component", () => {
         expect(screen.queryByLabelText(/location/i, {selector: "input"}).value).toBe(sampleInfo.education[0].location);
         expect(screen.queryByLabelText(/end/i, {selector: "input"}).value).toBe(sampleInfo.education[0].end);
         expect(screen.queryByLabelText(/end/i, {selector: "input"}).value).toBe(sampleInfo.education[0].start);
+    });
+
+    it("Calls education dispatcher when save button is clicked", () => {
+
+        const dispatchEducation = vi.fn();
+        setup(
+            <Education
+                dispatchEducation={dispatchEducation}
+                educationItems={sampleInfo.education}
+                emptyText={"empty"}
+            />,
+            {
+                screenWidth: 1920,
+                dispatchDialog: () => {}
+            }
+        );
+        const editItemButtons = screen.queryAllByRole("button", {name: /edit/i});
+        fireEvent.click(editItemButtons[0]);
+        const saveButton = screen.queryByRole("button", {name: /save/i});
+        fireEvent.click(saveButton);
+
+        expect(dispatchEducation).toHaveBeenCalled();
     });
 
     it("Calls education dispatcher when hide item button is clicked", () => {
