@@ -268,6 +268,14 @@
     ```
     Tests every object in the array for missing properties or different property type from that of the target object. Returns false if one or more objects in the array have missing properties or type mismatch, otherwise returns true.
 
+1. #### testLevel
+    ```js
+    import { testLevel } from ".src/utils/draftValidation.js";
+
+    testLevel(level: number, min: number, max: number, increment: number): boolean
+    ```
+    Tests if the level is smaller than the max, bigger than the min and divisible by the increment. Returns true if all previous conditions are met, returns false if one or more are not met.
+
 1. #### tryParseJSON
     ```js
     import { tryParseJSON } from ".src/utils/draftValidation.js";
