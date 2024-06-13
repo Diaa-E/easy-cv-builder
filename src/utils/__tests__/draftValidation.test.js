@@ -3,7 +3,8 @@ import {
     testDraftValidity,
     testObject,
     testArray,
-    tryParseJSON
+    tryParseJSON,
+    testLevel
 } from "../draftValidation";
 import sampleInfo from "../../data/sampleInfo";
 
@@ -379,6 +380,29 @@ describe("Draft validity", () => {
         expect(testDraftValidity([]).sort()).toEqual(setupFullErrorLog().sort());
         expect(testDraftValidity(false).sort()).toEqual(setupFullErrorLog().sort());
         expect(testDraftValidity(() => {}).sort()).toEqual(setupFullErrorLog().sort());
+    });
+});
+
+describe("Test level function", () => {
+
+    it("Returns true if the level is divisible by the increment, greater than min and smaller than max", () => {
+
+        expect(testLevel(40, 20, 100, 20)).toBe(true);
+    });
+
+    it("Returns false if the level is not divisible by the increment", () => {
+
+        expect(testLevel(50, 20, 100, 20)).toBe(false);
+    });
+
+    it("Returns false if the level is bigger than max", () => {
+
+        expect(testLevel(120, 20, 100, 20)).toBe(false);
+    });
+
+    it("Returns false if the level is smaller than min", () => {
+
+        expect(testLevel(0, 20, 100, 20)).toBe(false);
     });
 });
 
