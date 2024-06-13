@@ -4,7 +4,8 @@ import {
     testObject,
     testArray,
     tryParseJSON,
-    testLevel
+    testLevel,
+    testStringPattern
 } from "../draftValidation";
 import sampleInfo from "../../data/sampleInfo";
 
@@ -403,6 +404,19 @@ describe("Test level function", () => {
     it("Returns false if the level is smaller than min", () => {
 
         expect(testLevel(0, 20, 100, 20)).toBe(false);
+    });
+});
+
+describe("Test string pattern function", () => {
+
+    it("Returns true if string matches regex", () => {
+
+        expect(testStringPattern("text", /text/i)).toBe(true);
+    });
+
+    it("Returns false if string does not matchs regex", () => {
+
+        expect(testStringPattern("apple", /text/i)).toBe(false);
     });
 });
 
