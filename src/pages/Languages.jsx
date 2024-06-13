@@ -70,10 +70,9 @@ export default function Languages({languagesItems, dispatchLanguages, emptyText,
         {
             languagesItems.length !== 0 &&
             <div className={styles["list-controls"]}>
-                <ToggleAllButton
-                    icon={appIcons.delete}
-                    toolTip={"Delete all language items"}
-                    danger={true}
+                <FormButton
+                    style="danger"
+                    text="Delete All"
                     onClick={() => {
                         dispatchDialog({
                             type: "openDanger",
@@ -82,11 +81,12 @@ export default function Languages({languagesItems, dispatchLanguages, emptyText,
                             onConfirm: () => dispatchLanguages({type: "deleteAll"}),
                         })
                     }}
+                    toolTip={"Delete all language items"}
                 />
-                <ToggleAllButton
-                    icon={isEmptySection(languagesItems) ? appIcons.hidden : appIcons.visible}
+                <FormButton
+                    style="secondary"
+                    text={isEmptySection(languagesItems) ? "Show All" : "Hide All"}
                     toolTip={"Hide all language items"}
-                    colorClasses={["toggle-all-button-white"]}
                     onClick={() => dispatchLanguages({type: "toggleHideAll"})}
                 />
             </div>

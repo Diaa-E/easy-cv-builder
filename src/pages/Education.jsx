@@ -3,10 +3,8 @@ import ListItemText from "../components/ListItemText";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
 import FormButton from "../components/FormButton";
-import ToggleAllButton from "../components/ToggleAllButton";
 import { getItemIndex } from "../utils/utility";
 import { v4 as generateId } from 'uuid';
-import appIcons from "../data/appIconsBarrel";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import styles from "../styles/App.module.css";
 import { DialogContext } from "../App";
@@ -90,10 +88,9 @@ export default function Education({educationItems, dispatchEducation, emptyText}
         {
             educationItems.length !== 0 &&
             <div className={styles["list-controls"]}>
-                <ToggleAllButton
-                    icon={appIcons.delete}
-                    toolTip={"Delete all education items"}
-                    danger={true}
+                <FormButton
+                    style="danger"
+                    text="Delete All"
                     onClick={() => {
                         dispatchDialog({
                             type: "openDanger",
@@ -102,11 +99,12 @@ export default function Education({educationItems, dispatchEducation, emptyText}
                             onConfirm: () => dispatchEducation({type: "deleteAll"}),
                         })
                     }}
+                    toolTip={"Delete all education items"}
                 />
-                <ToggleAllButton
-                    icon={isEmptySection(educationItems) ? appIcons.hidden : appIcons.visible}
+                <FormButton
+                    style="secondary"
+                    text={isEmptySection(educationItems) ? "Show All" : "Hide All"}
                     toolTip={"Hide all education items"}
-                    colorClasses={["toggle-all-button-white"]}
                     onClick={() => dispatchEducation({type: "toggleHideAll"})}
                 />
             </div>

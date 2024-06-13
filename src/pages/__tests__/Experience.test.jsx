@@ -53,7 +53,7 @@ describe("Experience component", () => {
             }
         );
 
-        const deleteAllButton = screen.queryByRole("button", {name: /delete.*?all.*?experience/i});
+        const deleteAllButton = screen.queryByRole("button", {name: /delete.*?all/i});
 
         expect(deleteAllButton).toBeInTheDocument();
     });
@@ -72,7 +72,7 @@ describe("Experience component", () => {
             }
         );
 
-        const hideAllButton = screen.queryByRole("button", {name: /hide.*?all.*?experience/i});
+        const hideAllButton = screen.queryByRole("button", {name: /hide.*?all/i});
 
         expect(hideAllButton).toBeInTheDocument();
     });
@@ -93,7 +93,7 @@ describe("Experience component", () => {
             }
         );
 
-        const deleteAllButton = screen.queryByRole("button", { name: /delete.*?all.*?experience/i });
+        const deleteAllButton = screen.queryByRole("button", { name: /delete.*?all/i });
         fireEvent.click(deleteAllButton);
 
         expect(dispatchDialog).toHaveBeenCalledOnce();
@@ -115,7 +115,7 @@ describe("Experience component", () => {
             }
         );
 
-        const hideAllButton = screen.queryByRole("button", { name: /hide.*?all.*?experience/i });
+        const hideAllButton = screen.queryByRole("button", { name: /hide.*?all/i });
         fireEvent.click(hideAllButton);
 
         expect(dispatchExperience).toHaveBeenCalledOnce();

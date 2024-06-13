@@ -138,6 +138,7 @@ nav{
   display: flex;
   place-items: space-between;
   place-content: space-between;
+  margin: 10px 0;
 }
 
 

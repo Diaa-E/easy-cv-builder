@@ -6,8 +6,6 @@ import FormButton from "../components/FormButton";
 import TextAreaInput from "../components/TextAreaInput";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
-import appIcons from "../data/appIconsBarrel";
-import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import styles from "../styles/App.module.css";
 import { DialogContext } from "../App";
@@ -98,23 +96,23 @@ export default function Experience({experienceItems, dispatchExperience, emptyTe
         {
             experienceItems.length !== 0 &&
             <div className={styles["list-controls"]}>
-                <ToggleAllButton
-                    icon={appIcons.delete}
-                    toolTip={"Delete all experience items"}
-                    danger={true}
+                <FormButton
+                    style="danger"
+                    text="Delete All"
                     onClick={() => {
                         dispatchDialog({
                             type: "openDanger",
                             prompt: "Are you sure you want to *premenantly delete all items* in the experience section?",
                             actionText: "Delete All",
-                            onConfirm: () => dispatchExperience({type: "deleteAll"})
+                            onConfirm: () => dispatchExperience({type: "deleteAll"}),
                         })
                     }}
+                    toolTip={"Delete all experience items"}
                 />
-                <ToggleAllButton
-                    icon={isEmptySection(experienceItems) ? appIcons.hidden : appIcons.visible}
+                <FormButton
+                    style="secondary"
+                    text={isEmptySection(experienceItems) ? "Show All" : "Hide All"}
                     toolTip={"Hide all experience items"}
-                    colorClasses={["toggle-all-button-white"]}
                     onClick={() => dispatchExperience({type: "toggleHideAll"})}
                 />
             </div>

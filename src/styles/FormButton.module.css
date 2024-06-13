@@ -1,6 +1,6 @@
 .form-button{
     will-change: filter;
-    padding: 5px;
+    padding: 5px 10px;
     min-width: 20%;
     border-radius: 5px;
     cursor: pointer;

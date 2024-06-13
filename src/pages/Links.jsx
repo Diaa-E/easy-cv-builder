@@ -7,8 +7,6 @@ import SelectInput from "../components/SelectInput";
 import linkIcons from "../data/linkIconsBarrel";
 import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
-import appIcons from "../data/appIconsBarrel";
-import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import styles from "../styles/App.module.css";
 import { DialogContext } from "../App";
@@ -69,23 +67,23 @@ export default function Links({linksItems, dispatchLinks, emptyText})
         {
             linksItems.length !== 0 &&
             <div className={styles["list-controls"]}>
-                <ToggleAllButton
-                    icon={appIcons.delete}
-                    toolTip={"Delete all links items"}
-                    danger={true}
+                <FormButton
+                    style="danger"
+                    text="Delete All"
                     onClick={() => {
                         dispatchDialog({
                             type: "openDanger",
                             prompt: "Are you sure you want to *premenantly delete all items* in the links section?",
                             actionText: "Delete All",
-                            onConfirm: () => dispatchLinks({type: "deleteAll"})
-                        });
+                            onConfirm: () => dispatchLinks({type: "deleteAll"}),
+                        })
                     }}
+                    toolTip={"Delete all link items"}
                 />
-                <ToggleAllButton
-                    icon={isEmptySection(linksItems) ? appIcons.hidden : appIcons.visible}
-                    toolTip={"Hide all links items"}
-                    colorClasses={["toggle-all-button-white"]}
+                <FormButton
+                    style="secondary"
+                    text={isEmptySection(linksItems) ? "Show All" : "Hide All"}
+                    toolTip={"Hide all link items"}
                     onClick={() => dispatchLinks({type: "toggleHideAll"})}
                 />
             </div>

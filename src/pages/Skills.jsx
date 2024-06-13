@@ -70,10 +70,9 @@ export default function Skills({skillsItems, dispatchSkills, emptyText, levelMod
         {
             skillsItems.length !== 0 &&
             <div className={styles["list-controls"]}>
-                <ToggleAllButton
-                    icon={appIcons.delete}
-                    toolTip={"Delete all skills items"}
-                    danger={true}
+                <FormButton
+                    style="danger"
+                    text="Delete All"
                     onClick={() => {
                         dispatchDialog({
                             type: "openDanger",
@@ -82,11 +81,12 @@ export default function Skills({skillsItems, dispatchSkills, emptyText, levelMod
                             onConfirm: () => dispatchSkills({type: "deleteAll"}),
                         })
                     }}
+                    toolTip={"Delete all skills items"}
                 />
-                <ToggleAllButton
-                    icon={isEmptySection(skillsItems) ? appIcons.hidden : appIcons.visible}
+                <FormButton
+                    style="secondary"
+                    text={isEmptySection(skillsItems) ? "Show All" : "Hide All"}
                     toolTip={"Hide all skills items"}
-                    colorClasses={["toggle-all-button-white"]}
                     onClick={() => dispatchSkills({type: "toggleHideAll"})}
                 />
             </div>

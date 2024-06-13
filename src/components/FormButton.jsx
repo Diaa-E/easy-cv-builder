@@ -4,7 +4,11 @@ export default function FormButton({text = "Click", onClick = () => {}, style = 
 {
     return (
         <>
-            <button title={toolTip} className={[styles["form-button"], styles[style]].join(" ")} onClick={onClick}>
+            <button
+                title={toolTip}
+                className={[styles["form-button"], styles[style]].join(" ")}
+                onClick={onClick}
+            >
                 {text}
             </button>
         </>
