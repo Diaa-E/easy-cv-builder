@@ -1,15 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import MobileItemControls from "../MobileItemControls";
-import { ScreenWidthContext } from "../../App";
 
 describe("Mobile Item Controls component", () => {
 
-    function setup(jsx, {providerProps})
+    function setup(jsx)
     {
-        return render(
-            <ScreenWidthContext.Provider {...providerProps}>{jsx}</ScreenWidthContext.Provider>
-        );
+        return render(jsx);
     }
 
     function openMenu()
@@ -18,27 +15,24 @@ describe("Mobile Item Controls component", () => {
         fireEvent.click(button);
     }
 
-    const providerProps = {
-        value: {screenWidth: 500}
-    };
 
     it("Renders a menu button", () => {
 
-        setup(<MobileItemControls />, {providerProps});
+        setup(<MobileItemControls />);
 
         expect(screen.queryByRole("button", {name: /options/i})).toBeInTheDocument();
     });
 
     it("Renders menu closed by default", () => {
 
-        setup(<MobileItemControls />, {providerProps});
+        setup(<MobileItemControls />);
 
         expect(screen.queryByRole("menu")).not.toBeInTheDocument();
     });
 
     it("Opens menu when button is clicked", () => {
 
-        setup(<MobileItemControls />, {providerProps});
+        setup(<MobileItemControls />);
         openMenu();
 
         expect(screen.queryByRole("menu", {name: /menu/i})).toBeInTheDocument();
@@ -46,7 +40,7 @@ describe("Mobile Item Controls component", () => {
 
     it("Does not close menu when overlay children are clicked", () => {
 
-        setup(<MobileItemControls />, {providerProps});
+        setup(<MobileItemControls />);
         openMenu();
 
         expect(screen.queryByRole("menu")).toBeInTheDocument();
@@ -58,7 +52,7 @@ describe("Mobile Item Controls component", () => {
 
     it("Closes menu when overlay is clicked", () => {
 
-        const {container} = setup(<MobileItemControls />, {providerProps});
+        const {container} = setup(<MobileItemControls />);
         openMenu();
         const overlay = container.querySelector("#item-menu-overlay");
 
@@ -72,7 +66,7 @@ describe("Mobile Item Controls component", () => {
     it("Calls moveItemUp function once when move up menu option is clicked", () => {
 
         const moveItemUp = vi.fn();
-        setup(<MobileItemControls moveItemUp={moveItemUp} />, {providerProps});
+        setup(<MobileItemControls moveItemUp={moveItemUp} />);
         openMenu();
         const  moveUpButton = screen.queryByRole("button", {name: /move\sup/i});
         fireEvent.click(moveUpButton);
@@ -83,7 +77,7 @@ describe("Mobile Item Controls component", () => {
     it("Calls toggleEdit function once when edit menu option is clicked", () => {
 
         const toggleEdit = vi.fn();
-        setup(<MobileItemControls toggleEdit={toggleEdit} />, {providerProps});
+        setup(<MobileItemControls toggleEdit={toggleEdit} />);
         openMenu();
         const  editButton = screen.queryByRole("button", {name: /edit/i});
         fireEvent.click(editButton);
@@ -94,7 +88,7 @@ describe("Mobile Item Controls component", () => {
     it("Calls toggleHide function once when toggle hide menu option is clicked", () => {
 
         const toggleHide = vi.fn();
-        setup(<MobileItemControls toggleHide={toggleHide} />, {providerProps});
+        setup(<MobileItemControls toggleHide={toggleHide} />);
         openMenu();
         const  toggleHideButton = screen.queryByRole("button", {name: /hide|show/i});
         fireEvent.click(toggleHideButton);
@@ -104,7 +98,7 @@ describe("Mobile Item Controls component", () => {
 
     it("Toggle hide button has 'hide' text when item is visible", () => {
 
-        setup(<MobileItemControls hidden={false} />, {providerProps});
+        setup(<MobileItemControls hidden={false} />);
         openMenu();
 
         expect(screen.queryByRole("button", {name: /hide/i})).toBeInTheDocument();
@@ -112,7 +106,7 @@ describe("Mobile Item Controls component", () => {
 
     it("Toggle hide button has 'show' text when item is hidden", () => {
 
-        setup(<MobileItemControls hidden={true} />, {providerProps});
+        setup(<MobileItemControls hidden={true} />);
         openMenu();
 
         expect(screen.queryByRole("button", {name: /show/i})).toBeInTheDocument();
@@ -120,7 +114,7 @@ describe("Mobile Item Controls component", () => {
 
     it("Renders a close menu button", () => {
 
-        setup(<MobileItemControls />, {providerProps});
+        setup(<MobileItemControls />);
         openMenu();
 
         expect(screen.queryByRole("button", {name: /close/i})).toBeInTheDocument();
@@ -128,7 +122,7 @@ describe("Mobile Item Controls component", () => {
 
     it("Closes menu when close menu button is clicked", () => {
 
-        setup(<MobileItemControls />, {providerProps});
+        setup(<MobileItemControls />);
         openMenu();
         const closeButton = screen.queryByRole("button", {name: /close/i});
 

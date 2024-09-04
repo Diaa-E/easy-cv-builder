@@ -1,25 +1,35 @@
-import { useEffect, useContext, useState, useRef } from "react";
-import { ScreenWidthContext } from "../App";
+import { useEffect, useState, useRef } from "react";
 import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
-
 import styles from "../styles/MobileItemControls.module.css";
 
 export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp, hidden, firstItem }) {
-    const screenWidth = useContext(ScreenWidthContext).screenWidth;
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [open, setOpen] = useState(false);
     const cursorPositionRef = useRef([0, 0]);
 
     useEffect(() => {
 
-        window.addEventListener("scroll", () => {
+        function handleResize()
+        {
+            setScreenWidth(window.innerWidth);
+        }
 
+        function handleScroll()
+        {
             setOpen(false);
-        });
+        }
 
-        return () => window.removeEventListener("scroll", window);
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleResize)
 
-    }, [])
+        return () => {
+
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
+        };
+
+    }, []);
 
     return (
         <>

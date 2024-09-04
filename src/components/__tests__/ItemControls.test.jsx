@@ -1,33 +1,25 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { ScreenWidthContext } from "../../App";
 import ItemControls from "../ItemControls";
 
 describe("Item controls component", () => {
 
-    function setup(jsx, {providerProps})
+    function setup(jsx, screenWidth)
     {
-        return render(
-            <ScreenWidthContext.Provider {...providerProps}>{jsx}</ScreenWidthContext.Provider>
-        );
+        window.innerWidth = screenWidth;
+        return render(jsx);
     }
 
     it("Renders a mobile menu button when screen width is less than 700 pixels", () => {
 
-        const providerProps = {
-            value: {screenWidth: 500}
-        };
-        setup(<ItemControls />, {providerProps});
+        setup(<ItemControls />, 500);
 
         expect(screen.queryByRole("button", {name: /options/i})).toBeInTheDocument();
     });
 
     it("Renders item control buttons when screen width is more than 700 pixels", () => {
 
-        const providerProps = {
-            value: {screenWidth: 1000}
-        };
-        setup(<ItemControls />, {providerProps});
+        setup(<ItemControls />, 1000);
 
         expect(screen.queryByRole("button", {name: /options/i})).not.toBeInTheDocument();
         expect(screen.queryByRole("button", {name: /move.*?up/i})).toBeInTheDocument();
@@ -38,10 +30,7 @@ describe("Item controls component", () => {
     it("Calls moveItemUp function when move up button is clicked", () => {
 
         const moveItemUp = vi.fn();
-        const providerProps = {
-            value: {screenWidth: 1000}
-        };
-        setup(<ItemControls moveItemUp={moveItemUp }/>, {providerProps});
+        setup(<ItemControls moveItemUp={moveItemUp }/>, 1000);
         const moveUpButton = screen.queryByRole("button", {name: /move.*?up/i});
         fireEvent.click(moveUpButton);
 
@@ -51,10 +40,7 @@ describe("Item controls component", () => {
     it("Calls toggleEdit function when edit button is clicked", () => {
 
         const toggleEdit = vi.fn();
-        const providerProps = {
-            value: {screenWidth: 1000}
-        };
-        setup(<ItemControls toggleEdit={toggleEdit }/>, {providerProps});
+        setup(<ItemControls toggleEdit={toggleEdit }/>, 1000);
         const editButton = screen.queryByRole("button", {name: /edit/i});
         fireEvent.click(editButton);
 
@@ -64,10 +50,7 @@ describe("Item controls component", () => {
     it("Calls toggleHide function when show/hide button is clicked", () => {
 
         const toggleHide = vi.fn();
-        const providerProps = {
-            value: {screenWidth: 1000}
-        };
-        setup(<ItemControls toggleHide={toggleHide }/>, {providerProps});
+        setup(<ItemControls toggleHide={toggleHide }/>, 1000);
         const toggleHideButton = screen.queryByRole("button", {name: /hide|show/i});
         fireEvent.click(toggleHideButton);
 
@@ -76,20 +59,14 @@ describe("Item controls component", () => {
 
     it("Toggle hide button reads 'hide' text when item is visible", () => {
 
-        const providerProps = {
-            value: {screenWidth: 1000}
-        };
-        setup(<ItemControls hidden={false} />, {providerProps});
+        setup(<ItemControls hidden={false} />, 1000);
 
         expect(screen.queryByRole("button", {name: /hide/i})).toBeInTheDocument();
     });
 
     it("Toggle hide button reads 'show' text when item is hidden", () => {
 
-        const providerProps = {
-            value: {screenWidth: 1000}
-        };
-        setup(<ItemControls hidden={true} />, {providerProps});
+        setup(<ItemControls hidden={true} />, 1000);
 
         expect(screen.queryByRole("button", {name: /show/i})).toBeInTheDocument();
     });
