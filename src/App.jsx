@@ -60,15 +60,16 @@ function App({rootClass}) {
 
   useEffect(() => {
 
-    window.addEventListener("scroll", () => {
-      
+    function handleScroll()
+    {
       dispatchDialog({type: "close"});
-    });
+    }
+
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
 
-      removeEventListener("resize", window);
-      removeEventListener("scroll", window);
+      window.removeEventListener("scroll", handleScroll);
     }
   }, []);
 
