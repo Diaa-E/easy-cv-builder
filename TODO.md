@@ -8,7 +8,6 @@
 - Write tests for the rest of the page components.
 - Replace inline styles in the preview component with css variables.
 - Replace the dialog context with a simpler solution.
-- Fix page unit tests that update state.
 - Lock scroll when dialog box is open instead of closing the dialog on scroll event.
 - Animate dialog box close.
 - ~~Replace screen width context with a simpler solution.~~ ✅
@@ -56,6 +55,7 @@
 - ~~Save user dark theme preference for the session.~~ ✅
 - ~~Fix list item text color.~~ ✅
 - ~~Create a unique component for dark mode button with changing colors based on active mode.~~ ✅
+- ~~Fix page unit tests that update state.~~ ❌ -> They are not broken...?
 - ~~Use semantic dialog element instead of makeshift div one.~~ ❌ -> Too complex for little gain, hopefully will be improved in future React updates.
 - ~~Add a magnifying glass for CV preview.~~ ❌ -> The most efficient way works only on images, the alternative is duplicating the entire preview and cropping it.
 - ~~Show clear field button only when field is in focus.~~ ❌ -> Breaks clearing text function as button disappears before running clear function.
