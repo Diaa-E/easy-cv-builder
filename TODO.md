@@ -7,8 +7,11 @@
 - Add a bubble layout template.
 - Write tests for the rest of the page components.
 - Replace inline styles in the preview component with css variables.
-- Try to replace the context hooks with a simpler solution.
+- Replace the dialog context with a simpler solution.
 - Fix page unit tests that update state.
+- Lock scroll when dialog box is open instead of closing the dialog on scroll event.
+- Animate dialog box close.
+- ~~Replace screen width context with a simpler solution.~~ ✅
 - ~~Use a text button for delete/hide all features instead of icon buttons.~~ ✅
 - ~~Fix first item in list having smaller width for controls and shifting text/bars to the right.~~ ✅
 - ~~Add max width to body for super wide screens.~~ ✅
