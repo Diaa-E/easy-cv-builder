@@ -57,14 +57,8 @@ function App({rootClass}) {
       onConfirm: () => {},
     }
   });
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-
-    window.addEventListener("resize", () => {
-      
-      setScreenWidth(window.innerWidth);
-    });
 
     window.addEventListener("scroll", () => {
       
