@@ -29,7 +29,6 @@ import Preview from './components/Preview';
 import reduceList from './utils/listReducer';
 import reduceDialog from './utils/dialogReducer';
 
-export const ScreenWidthContext = createContext(null);
 export const DialogContext = createContext(null);
 
 function App({rootClass}) {
@@ -313,53 +312,51 @@ function App({rootClass}) {
               setContact={setContact}
             />
           }
-          <ScreenWidthContext.Provider value={{screenWidth: screenWidth}}>
-            {
-              currentTab === tabs.education &&
-              <Education
-                educationItems={education}
-                dispatchEducation = {dispatchEducation}
-                setDialogState={dispatchDialog}
-                emptyText={emptyListText}
-              />
-            }
-            {
-              currentTab === tabs.experience &&
-              <Experience
-                experienceItems={experience}
-                dispatchExperience={dispatchExperience}
-                setDialogState={dispatchDialog}
-                emptyText={emptyListText}
-              />
-            }
-            {
-              currentTab === tabs.links &&
-              <Links
-                linksItems={links}
-                dispatchLinks={dispatchLinks}
-                emptyText={emptyListText}
-              />
-            }
-            {
-              currentTab === tabs.skills &&
-              <Skills
-                levelMode={levelMode}
-                skillsItems={skills}
-                dispatchSkills={dispatchSkills}
-                emptyText={emptyListText}
-              />
-            }
-            {
-              currentTab === tabs.languages &&
-              <Languages
-                levelMode={levelMode}
-                languagesItems={languages}
-                dispatchLanguages={dispatchLanguages}
-                setDialogState={dispatchDialog}
-                emptyText={emptyListText}
-              />
-            }
-          </ScreenWidthContext.Provider>
+          {
+            currentTab === tabs.education &&
+            <Education
+              educationItems={education}
+              dispatchEducation = {dispatchEducation}
+              setDialogState={dispatchDialog}
+              emptyText={emptyListText}
+            />
+          }
+          {
+            currentTab === tabs.experience &&
+            <Experience
+              experienceItems={experience}
+              dispatchExperience={dispatchExperience}
+              setDialogState={dispatchDialog}
+              emptyText={emptyListText}
+            />
+          }
+          {
+            currentTab === tabs.links &&
+            <Links
+              linksItems={links}
+              dispatchLinks={dispatchLinks}
+              emptyText={emptyListText}
+            />
+          }
+          {
+            currentTab === tabs.skills &&
+            <Skills
+              levelMode={levelMode}
+              skillsItems={skills}
+              dispatchSkills={dispatchSkills}
+              emptyText={emptyListText}
+            />
+          }
+          {
+            currentTab === tabs.languages &&
+            <Languages
+              levelMode={levelMode}
+              languagesItems={languages}
+              dispatchLanguages={dispatchLanguages}
+              setDialogState={dispatchDialog}
+              emptyText={emptyListText}
+            />
+          }
           {
             currentTab === tabs.settings &&
             <Settings

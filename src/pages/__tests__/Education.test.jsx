@@ -2,20 +2,18 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import Education from "../Education";
 import sampleInfo from "../../data/sampleInfo";
-import { DialogContext, ScreenWidthContext } from "../../App";
+import { DialogContext } from "../../App";
 
 describe("Education component", () => {
 
     function setup(jsx, providerProps)
     {
         return render(
-            <ScreenWidthContext.Provider value={{screenWidth: providerProps.screenWidth}}>
                 <DialogContext.Provider value={providerProps.dispatchDialog}>
                 {
                     jsx
                 }
                 </DialogContext.Provider>
-            </ScreenWidthContext.Provider>
         );
     }
 
