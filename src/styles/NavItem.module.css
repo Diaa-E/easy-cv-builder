@@ -19,7 +19,7 @@
 }
 
 .nav-item:hover{
-    filter: brightness(90%);
+    background-color: var(--main-dark);
 }
 
 .nav-item>img{
