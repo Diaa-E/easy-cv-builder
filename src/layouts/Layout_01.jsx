@@ -8,25 +8,18 @@ import { isEmptySection } from "../utils/emptySectionDetector";
 import { joinString } from "../utils/stringJoiner";
 import { calculateTextLevel } from "../utils/calculateTextLevel";
 import { languageLevels, skillLevels } from "../data/textLevelTemplates";
-import { useEffect, useState } from "react";
 
 export default function Layout_01({data})
 {
-    const [cssVariables, setCssVariables] = useState();
+    const brightAccent = isBright(data.accentColor);
 
-    useEffect(() => {
-
-        const brightAccent = isBright(data.accentColor);
-
-        setCssVariables({
-            "--background": `${data.accentColor}`,
-            "--background-2": brightAccent ? "var(--black)" : data.accentColor,
-            "--text-color": brightAccent ? "var(--black)" : "var(--white)",
-            "--text-color-2": brightAccent ? data.accentColor : "var(--white)",
-            "--icon-filter": brightAccent ? "invert(0)" : "invert(1)",
-        });
-        
-    }, [data.accentColor]);
+    const cssVariables = {
+        "--background": `${data.accentColor}`,
+        "--background-2": brightAccent ? "var(--black)" : data.accentColor,
+        "--text-color": brightAccent ? "var(--black)" : "var(--white)",
+        "--text-color-2": brightAccent ? data.accentColor : "var(--white)",
+        "--icon-filter": brightAccent ? "invert(0)" : "invert(1)",
+    };
    
     return (
         <div style={{...cssVariables, fontFamily: data.font}} className={styles["layout-01"]}>
