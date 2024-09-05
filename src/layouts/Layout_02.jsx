@@ -59,7 +59,7 @@ export default function Layout_02({data})
                         }
                     </div>
                 </div>
-                    <LanguagesSection data={data}/>
+                <LanguagesSection data={data}/>
             </div>
             <div className={styles["right"]}>
                 {

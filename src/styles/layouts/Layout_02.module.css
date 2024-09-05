@@ -5,7 +5,6 @@
     --light-grey: #eeeeee;
     --dark-grey: #8b8b8b;
     font-family: var(--font);
-    transform: translateZ(0);
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 1fr 2fr;
@@ -81,7 +80,6 @@
     align-items: center;
     justify-items: flex-start;
     width: calc(var(--width) * 1 / 4);
-
 }
 
 .header-item-icon{
