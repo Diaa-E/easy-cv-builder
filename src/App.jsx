@@ -35,18 +35,18 @@ function App({rootClass}) {
 
   const [darkMode, setDarkMode] = useState(Boolean(JSON.parse(localStorage.getItem("darkMode"))));
   const [currentTab, setCurrentTab] = useState(getSessionItem("currentTab", tabs.personalInfo));
-  const [personalInfo, setPersonalInfo] = useState(getSessionData("personalInfo", sampleInfo.personalInfo));
-  const [contact, setContact] = useState(getSessionData("contact", sampleInfo.contact));
-  const [education, dispatchEducation] = useReducer(reduceList, null, () => getSessionData("education", sampleInfo.education));
-  const [experience, dispatchExperience] = useReducer(reduceList, null, () => getSessionData("experience", sampleInfo.experience));
-  const [links, dispatchLinks] = useReducer(reduceList, null, () => getSessionData("links", sampleInfo.links));
-  const [skills, dispatchSkills] = useReducer(reduceList, null, () => getSessionData("skills", sampleInfo.skills));
-  const [languages, dispatchLanguages] = useReducer(reduceList, null, () => getSessionData("languages", sampleInfo.languages));
-  const [accentColor, setAccentColor] = useState(getSessionData("accentColor", sampleInfo.accentColor));
-  const [font, setFont] = useState(getSessionData("font", sampleInfo.font));
-  const [layout, setLayout] = useState(getSessionData("layout", sampleInfo.layout));
-  const [order, setOrder] = useState(getSessionData("order", sampleInfo.order));
-  const [levelMode, setLevelMOde] = useState(getSessionData("levelMode", sampleInfo.levelMode));
+  const [personalInfo, setPersonalInfo] = useState(getSessionItem("data", sampleInfo).personalInfo);
+  const [contact, setContact] = useState(getSessionItem("data", sampleInfo).contact);
+  const [education, dispatchEducation] = useReducer(reduceList, null, () => getSessionItem("data", sampleInfo).education);
+  const [experience, dispatchExperience] = useReducer(reduceList, null, () => getSessionItem("data", sampleInfo).experience);
+  const [links, dispatchLinks] = useReducer(reduceList, null, () => getSessionItem("data", sampleInfo).links);
+  const [skills, dispatchSkills] = useReducer(reduceList, null, () => getSessionItem("data", sampleInfo).skills);
+  const [languages, dispatchLanguages] = useReducer(reduceList, null, () => getSessionItem("data", sampleInfo).languages);
+  const [accentColor, setAccentColor] = useState(getSessionItem("data", sampleInfo).accentColor);
+  const [font, setFont] = useState(getSessionItem("data", sampleInfo).font);
+  const [layout, setLayout] = useState(getSessionItem("data", sampleInfo).layout);
+  const [order, setOrder] = useState(getSessionItem("data", sampleInfo).order);
+  const [levelMode, setLevelMOde] = useState(getSessionItem("data", sampleInfo).levelMode);
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []}); //code key is used to determine error panel text and color in Save component
   const [dialogState, dispatchDialog] = useReducer(reduceDialog, null, () => {
     return {
@@ -112,13 +112,6 @@ function App({rootClass}) {
     order: order,
     levelMode: levelMode
   };
-
-  function getSessionData(key, defaultValue)
-  {
-    if (!Boolean(JSON.parse(sessionStorage.getItem("data")))) return defaultValue;
-
-    return JSON.parse(sessionStorage.getItem("data"))[key];
-  }
 
   function getSessionItem(name, defaultvalue)
   {
