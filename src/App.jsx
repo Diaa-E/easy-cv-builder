@@ -34,7 +34,7 @@ export const DialogContext = createContext(null);
 function App({rootClass}) {
 
   const [darkMode, setDarkMode] = useState(Boolean(JSON.parse(localStorage.getItem("darkMode"))));
-  const [currentTab, setCurrentTab] = useState(tabs.personalInfo);
+  const [currentTab, setCurrentTab] = useState(getSessionItem("currentTab", tabs.personalInfo));
   const [personalInfo, setPersonalInfo] = useState(getSessionData("personalInfo", sampleInfo.personalInfo));
   const [contact, setContact] = useState(getSessionData("contact", sampleInfo.contact));
   const [education, dispatchEducation] = useReducer(reduceList, null, () => getSessionData("education", sampleInfo.education));
@@ -75,6 +75,12 @@ function App({rootClass}) {
 
   useEffect(() => {
 
+    sessionStorage.setItem("currentTab", JSON.stringify(currentTab));
+
+  }, [currentTab]);
+
+  useEffect(() => {
+
     sessionStorage.setItem("data", JSON.stringify(data));
 
     return () => {};
@@ -112,6 +118,13 @@ function App({rootClass}) {
     if (!Boolean(JSON.parse(sessionStorage.getItem("data")))) return defaultValue;
 
     return JSON.parse(sessionStorage.getItem("data"))[key];
+  }
+
+  function getSessionItem(name, defaultvalue)
+  {
+    if (!Boolean(JSON.parse(sessionStorage.getItem(name)))) return defaultvalue;
+
+    return JSON.parse(sessionStorage.getItem(name));
   }
 
   async function uploadDraft(e)

@@ -5,11 +5,11 @@
 - Fix icon lag by loading all resources before opening app main page.
 - Animate view transition.
 - Add a bubble layout template.
-- Save current active tab to session storage.
 - Write tests for the rest of the page components.
 - Replace the dialog context with a simpler solution.
 - Lock scroll when dialog box is open instead of closing the dialog on scroll event.
 - Animate dialog box close.
+- ~~Save current active tab to session storage.~~ ✅
 - ~~Replace inline styles in the preview component with css variables.~~ ✅
 - ~~Replace screen width context with a simpler solution.~~ ✅
 - ~~Use a text button for delete/hide all features instead of icon buttons.~~ ✅
