@@ -4,6 +4,7 @@
     --grey: #dedede;
     --light-grey: #eeeeee;
     --dark-grey: #8b8b8b;
+    font-family: var(--font);
     transform: translateZ(0);
     display: grid;
     grid-auto-flow: column;
@@ -30,6 +31,7 @@
 }
 
 .header-wrapper{
+    background-color: var(--background);
     display: flex;
     flex-direction: column;
     place-items: center;
@@ -44,6 +46,7 @@
 }
 
 .name{
+    color: var(--text-color);
     text-align: center;
     word-wrap: break-word;
     font-weight: bold;
@@ -52,6 +55,7 @@
 }
 
 .profession{
+    color: var(--text-color);
     text-align: center;
     word-wrap: break-word;
     width: calc(var(--width) * 1 / 4);
@@ -59,10 +63,17 @@
 }
 
 .seperator{
+    border-bottom: solid calc(var(--width) * .002) var(--text-color);
     width: 90%;
     height: calc(var(--width) * .02);
     margin-bottom: calc(var(--width) * .02);
+}
+
+.seperator-body{
     border-bottom: solid calc(var(--width) * .002) var(--black);
+    width: 90%;
+    height: calc(var(--width) * .02);
+    margin-bottom: calc(var(--width) * .02);
 }
 
 .header-item{
@@ -74,11 +85,13 @@
 }
 
 .header-item-icon{
+    filter: var(--icon-filter);
     width: calc(var(--width) * .03);
     margin-right:  calc(var(--width) * .01);
 }
 
 .header-item-text{
+    color: var(--text-color);
     font-size:  calc(var(--width) * .017);
     max-width: calc(var(--width) * 1 / 4.5);
     word-wrap: break-word;
@@ -99,11 +112,13 @@
 }
 
 .section-icon{
+    filter: var(--icon-filter);
     width: calc(var(--width) * .06);
     padding: calc(var(--width) * .007);
 }
 
 .section-icon-wrapper{
+    background-color: var(--background);
     border-radius: 50%;
 }
 
@@ -140,6 +155,8 @@
 }
 
 .level{
+    width: var(--level-width);
+    background-color: var(--background);
     border-top-right-radius: calc(var(--width) * 0.005);
     border-bottom-right-radius: calc(var(--width) * 0.005);
 }

@@ -10,6 +10,7 @@ This change log only highlights important changes.
 
 ### **1.5.10 (unreleased)**
 
+- ⚙️ Replaced inline styles with top level inline CSS variables.
 - ⚙️ Replaced an unnecessary useRef with a useState.
 - ⚙️ Replaced screen width context with a custom hook to reduce code complexity and re-renders.
 

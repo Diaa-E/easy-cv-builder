@@ -7,10 +7,10 @@
 - Add a bubble layout template.
 - Save current active tab to session storage.
 - Write tests for the rest of the page components.
-- Replace inline styles in the preview component with css variables.
 - Replace the dialog context with a simpler solution.
 - Lock scroll when dialog box is open instead of closing the dialog on scroll event.
 - Animate dialog box close.
+- ~~Replace inline styles in the preview component with css variables.~~ ✅
 - ~~Replace screen width context with a simpler solution.~~ ✅
 - ~~Use a text button for delete/hide all features instead of icon buttons.~~ ✅
 - ~~Fix first item in list having smaller width for controls and shifting text/bars to the right.~~ ✅
