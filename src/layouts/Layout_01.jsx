@@ -19,10 +19,11 @@ export default function Layout_01({data})
         "--text-color": brightAccent ? "var(--black)" : "var(--white)",
         "--text-color-2": brightAccent ? data.accentColor : "var(--white)",
         "--icon-filter": brightAccent ? "invert(0)" : "invert(1)",
+        "--font": data.font
     };
    
     return (
-        <div style={{...cssVariables, fontFamily: data.font}} className={styles["layout-01"]}>
+        <div style={cssVariables} className={styles["layout-01"]}>
             <div className={styles["header-wrapper"]}>
                 <h1 className={styles["name"]}>{data.personalInfo.fullName}</h1>
                 <h2 className={styles["profession"]}>{data.personalInfo.profession}</h2>
