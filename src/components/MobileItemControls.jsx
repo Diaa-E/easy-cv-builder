@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import styles from "../styles/MobileItemControls.module.css";
@@ -8,7 +8,7 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
 
     const screenWidth = useScreenWidth();
     const [open, setOpen] = useState(false);
-    const cursorPositionRef = useRef([0, 0]);
+    const [cursorPosition, setCursorPosition] = useState([0, 0]);
 
     useEffect(() => {
 
@@ -31,9 +31,8 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
             <ItemButton
                 onClick={(e) => {
                     setOpen(true);
-                    cursorPositionRef.current = [screenWidth - e.clientX, e.clientY]
-                }
-                }
+                    setCursorPosition([screenWidth - e.clientX, e.clientY]);
+                }}
                 text={"more options"}
                 imgPath={appIcons.more}
             />
@@ -45,7 +44,7 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
                         aria-label="item controls menu"
                         onClick={e => e.stopPropagation()}
                         className={styles["item-menu"]}
-                        style={{ right: cursorPositionRef.current[0], top: cursorPositionRef.current[1] }}
+                        style={{ right: cursorPosition[0], top: cursorPosition[1] }}
                     >
                         <ItemButton
                             imgPath={appIcons.clear}
