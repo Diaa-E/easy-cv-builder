@@ -1,5 +1,4 @@
 .nav-item{
-    will-change: filter;
     background-color: var(--main);
     display: flex;
     place-items: center;
