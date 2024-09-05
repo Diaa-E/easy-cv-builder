@@ -15,6 +15,7 @@
 }
 
 .header-wrapper {
+    background-color: var(--background);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -26,6 +27,7 @@
 }
 
 .name {
+    color: var(--text-color);
     text-align: center;
     font-size: calc(var(--width) * 0.06);
     max-width: var(--width * .9);
@@ -34,6 +36,7 @@
 }
 
 .profession {
+    color: var(--text-color);
     text-align: center;
     font-size: calc(var(--width) * .04);
     max-width: var(--width * .9);
@@ -59,6 +62,7 @@
 }
 
 .header-item-text {
+    color: var(--text-color);
     font-size: calc(var(--width) * .02);
     max-width: calc(var(--width) * .8);
     word-wrap: break-word;
@@ -66,6 +70,7 @@
 }
 
 .header-item-icon {
+    filter: var(--icon-filter);
     width: calc(var(--width) * .03);
 }
 
@@ -83,6 +88,8 @@
 }
 
 .section-title {
+    background-color: var(--background-2);
+    color: var(--text-color-2);
     text-align: center;
     place-self: stretch;
     font-size: calc(var(--width) * .03);
@@ -132,6 +139,8 @@
 }
 
 .level {
+    width: var(--level-width);
+    background-color: var(--background);
     border-radius: calc(var(--width) * 0.005);
 }
 

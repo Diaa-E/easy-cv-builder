@@ -8,35 +8,47 @@ import { isEmptySection } from "../utils/emptySectionDetector";
 import { joinString } from "../utils/stringJoiner";
 import { calculateTextLevel } from "../utils/calculateTextLevel";
 import { languageLevels, skillLevels } from "../data/textLevelTemplates";
+import { useEffect, useState } from "react";
 
 export default function Layout_01({data})
 {
-    const brightAccent = isBright(data.accentColor);
-    const textColor = brightAccent? "var(--black)" : "var(--white)";
-    const secondaryBackgroundColor = brightAccent? "var(--black)" : data.accentColor;
-    const secondaryColor = brightAccent? data.accentColor : "var(--white)";
+    const [cssVariables, setCssVariables] = useState();
+
+    useEffect(() => {
+
+        const brightAccent = isBright(data.accentColor);
+
+        setCssVariables({
+            "--background": `${data.accentColor}`,
+            "--background-2": brightAccent ? "var(--black)" : data.accentColor,
+            "--text-color": brightAccent ? "var(--black)" : "var(--white)",
+            "--text-color-2": brightAccent ? data.accentColor : "var(--white)",
+            "--icon-filter": brightAccent ? "invert(0)" : "invert(1)",
+        });
+        
+    }, [data.accentColor]);
    
     return (
-        <div style={{fontFamily: data.font}} className={styles["layout-01"]}>
-            <div style={{backgroundColor: data.accentColor}} className={styles["header-wrapper"]}>
-                <h1 style={{color: textColor}} className={styles["name"]}>{data.personalInfo.fullName}</h1>
-                <h2 style={{color: textColor}} className={styles["profession"]}>{data.personalInfo.profession}</h2>
+        <div style={{...cssVariables, fontFamily: data.font}} className={styles["layout-01"]}>
+            <div className={styles["header-wrapper"]}>
+                <h1 className={styles["name"]}>{data.personalInfo.fullName}</h1>
+                <h2 className={styles["profession"]}>{data.personalInfo.profession}</h2>
                 <div className={styles["header-items-wrapper"]}>
                     {
                         data.personalInfo.address !== "" &&
-                        <HeaderItem brightAccent={brightAccent} text={data.personalInfo.address} icon={appIcons.address}/>
+                        <HeaderItem text={data.personalInfo.address} icon={appIcons.address}/>
                     }
                     {
                         data.contact.phoneNumber !== "" &&
-                        <HeaderItem brightAccent={brightAccent} text={data.contact.phoneNumber} icon={appIcons.contact}/>
+                        <HeaderItem text={data.contact.phoneNumber} icon={appIcons.contact}/>
                     }
                     {
                         data.contact.email !== "" &&
-                        <HeaderItem brightAccent={brightAccent} text={data.contact.email} icon={appIcons.email}/>
+                        <HeaderItem text={data.contact.email} icon={appIcons.email}/>
                     }
                     {
                         data.personalInfo.zip !== "" &&
-                        <HeaderItem brightAccent={brightAccent} text={data.personalInfo.zip} icon={appIcons.zip}/>
+                        <HeaderItem text={data.personalInfo.zip} icon={appIcons.zip}/>
                     }
                     {
                         data.links.map(link => {
@@ -45,7 +57,6 @@ export default function Layout_01({data})
                                 !link.hidden &&
                                 <HeaderItem 
                                     key={link.id}
-                                    brightAccent={brightAccent}
                                     text={link.url}
                                     icon={linkIcons.find(icon => icon.name === link.icon).icon}
                                 />
@@ -58,26 +69,18 @@ export default function Layout_01({data})
                 data.order === "educationFirst" ? (
                     <>
                         <EducationSection
-                            secondaryColor={secondaryColor}
-                            backgroundColor={secondaryBackgroundColor}
                             educationItems={data.education}
                         />
                         <ExperienceSection
-                            secondaryColor={secondaryColor}
-                            backgroundColor={secondaryBackgroundColor}
                             experienceItems={data.experience}
                         />
                     </>
                 ) : (
                     <>
                         <ExperienceSection
-                            secondaryColor={secondaryColor}
-                            backgroundColor={secondaryBackgroundColor}
                             experienceItems={data.experience}
                         />
                         <EducationSection
-                            secondaryColor={secondaryColor}
-                            backgroundColor={secondaryBackgroundColor}
                             educationItems={data.education}
                         />
                     </>
@@ -85,15 +88,9 @@ export default function Layout_01({data})
             }
             <div className={styles["bottom-wrapper"]}>
                 <SkillsSection
-                    accentColor={data.accentColor}
-                    secondaryColor={secondaryColor}
-                    backgroundColor={secondaryBackgroundColor}
                     data={data}
                 />
                 <LanguagesSection
-                    accentColor={data.accentColor}
-                    secondaryColor={secondaryColor}
-                    backgroundColor={secondaryBackgroundColor}
                     data={data}
                 />
             </div>
@@ -101,14 +98,13 @@ export default function Layout_01({data})
     )
 }
 
-function LanguagesSection({accentColor, backgroundColor, secondaryColor, data})
+function LanguagesSection({data})
 {
     if (isEmptySection(data.languages)) return <></>
 
     return (
         <div className={styles["section-wrapper"]}>
             <h3 
-                style={{backgroundColor: backgroundColor, color: secondaryColor}}
                 className={styles["section-title"]}
             >Languages</h3>
             <div className={styles["flow-wrapper"]}>
@@ -124,7 +120,7 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, data})
                                 <>
                                     {
                                         data.levelMode === "bar" &&
-                                        <LevelBar accentColor={accentColor} level={item.level}/>
+                                        <LevelBar level={item.level}/>
                                     }
                                     {
                                         data.levelMode === "text" &&
@@ -145,14 +141,13 @@ function LanguagesSection({accentColor, backgroundColor, secondaryColor, data})
     )
 }
 
-function SkillsSection({accentColor, backgroundColor, secondaryColor, data})
+function SkillsSection({data})
 {
     if (isEmptySection(data.skills)) return <></>
 
     return (
         <div className={styles["section-wrapper"]}>
             <h3 
-                style={{backgroundColor: backgroundColor, color: secondaryColor}}
                 className={styles["section-title"]}
             >Skills</h3>
             <div className={styles["flow-wrapper"]}>
@@ -168,7 +163,7 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, data})
                                 <>
                                     {
                                         data.levelMode === "bar" &&
-                                        <LevelBar accentColor={accentColor} level={item.level}/>
+                                        <LevelBar level={item.level}/>
                                     }
                                     {
                                         data.levelMode === "text" &&
@@ -189,23 +184,22 @@ function SkillsSection({accentColor, backgroundColor, secondaryColor, data})
     )
 }
 
-function LevelBar({level, accentColor})
+function LevelBar({level})
 {
     return (
         <div className={styles["level-container"]}>
-            <span style={{width: level + "%", backgroundColor: accentColor}} className={styles["level"]}></span>
+            <span style={{"--level-width": `${level}%`}} className={styles["level"]}></span>
         </div>
     )
 }
 
-function ExperienceSection({backgroundColor, secondaryColor, experienceItems})
+function ExperienceSection({experienceItems})
 {
     if (isEmptySection(experienceItems)) return <></>
 
     return (
         <div className={[styles["section-wrapper"], styles["wide"]].join(" ")}>
             <h3 
-                style={{backgroundColor: backgroundColor, color: secondaryColor}}
                 className={styles["section-title"]}
             >Experience</h3>
             {
@@ -238,14 +232,13 @@ function ExperienceSection({backgroundColor, secondaryColor, experienceItems})
     )
 }
 
-function EducationSection({backgroundColor, secondaryColor, educationItems})
+function EducationSection({educationItems})
 {
     if (isEmptySection(educationItems)) return <></>;
 
     return (
         <div className={[styles["section-wrapper"], styles["wide"]].join(" ")}>
             <h3 
-                style={{backgroundColor: backgroundColor, color: secondaryColor}}
                 className={styles["section-title"]}
             >Education</h3>
             {
@@ -274,12 +267,12 @@ function EducationSection({backgroundColor, secondaryColor, educationItems})
     )
 }
 
-function HeaderItem({icon, text, brightAccent})
+function HeaderItem({icon, text})
 {
     return (
         <div className={styles["header-item"]}>
-            <img style={{filter: brightAccent ? "" : "invert(1)"}} className={styles["header-item-icon"]} src={icon} alt="" />
-            <p style={{color: brightAccent ? "var(--black)" : "var(--white)"}} className={styles["header-item-text"]}>{text}</p>
+            <img className={styles["header-item-icon"]} src={icon} alt="" />
+            <p className={styles["header-item-text"]}>{text}</p>
         </div>
     )
 }
