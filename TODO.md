@@ -5,6 +5,7 @@
 - Fix icon lag by loading all resources before opening app main page.
 - Animate view transition.
 - Add a bubble layout template.
+- Save current active tab to session storage.
 - Write tests for the rest of the page components.
 - Replace inline styles in the preview component with css variables.
 - Replace the dialog context with a simpler solution.
