@@ -1,25 +1,12 @@
-import { useEffect, useState} from "react";
 import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import MobileItemControls from "./MobileItemControls";
 import styles from "../styles/ListItem.module.css";
+import useScreenWidth from "../hooks/useScreenWidth";
 
 export default function ItemControls({toggleEdit, toggleHide, moveItemUp, hidden, firstItem, itemTitle})
 {
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-
-        function handleResize()
-        {
-            setScreenWidth(window.innerWidth);
-        }
-
-        window.addEventListener("resize", handleResize);
-
-        return () => window.removeEventListener("resize", handleResize);
-
-    }, []);
+    const screenWidth = useScreenWidth();
     
     if (screenWidth <= 700)
     {

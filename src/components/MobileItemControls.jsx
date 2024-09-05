@@ -2,18 +2,15 @@ import { useEffect, useState, useRef } from "react";
 import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import styles from "../styles/MobileItemControls.module.css";
+import useScreenWidth from "../hooks/useScreenWidth";
 
 export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp, hidden, firstItem }) {
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+    const screenWidth = useScreenWidth();
     const [open, setOpen] = useState(false);
     const cursorPositionRef = useRef([0, 0]);
 
     useEffect(() => {
-
-        function handleResize()
-        {
-            setScreenWidth(window.innerWidth);
-        }
 
         function handleScroll()
         {
@@ -21,12 +18,10 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
         }
 
         window.addEventListener("scroll", handleScroll);
-        window.addEventListener("resize", handleResize)
 
         return () => {
 
             window.removeEventListener("scroll", handleScroll);
-            window.removeEventListener("resize", handleResize);
         };
 
     }, []);
