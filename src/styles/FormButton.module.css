@@ -1,5 +1,4 @@
 .form-button{
-    will-change: filter;
     padding: 5px 10px;
     min-width: 20%;
     border-radius: 5px;
@@ -19,7 +18,7 @@
 }
 
 .primary:hover{
-    filter:  saturate(90%) brightness(150%);
+    background-color: var(--accent-dark);
 }
 
 .secondary{
@@ -29,7 +28,7 @@
 }
 
 .secondary:hover{
-    filter:  brightness(90%);
+    background-color: var(--main-dark);
 }
 
 .danger{
@@ -38,5 +37,5 @@
 }
 
 .danger:hover{
-    filter:  saturate(90%) brightness(150%);
+    background-color: var(--danger-dark);
 }

@@ -1,7 +1,9 @@
 .light{
   --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, 0.08);
   --accent: #0078ff;
+  --accent-dark: #0a60c2;
   --danger: #ff3121;
+  --danger-dark: #df1a0c;
   --link: #0000EE;
   --visited: #551A8B;;
   --main: #ffffff;
@@ -18,7 +20,9 @@
 
 .dark{
   --accent: #2d70bb;
+  --accent-dark: #2c5687;
   --danger: #a72a21;
+  --danger-dark: #742520;
   --link: #6767ff;
   --visited: #9d60d5;;
   --shadow: 0px 1px 3px rgb(0, 0, 0, 0.1), 0px 6px 12px rgb(0, 0, 0, .2);
