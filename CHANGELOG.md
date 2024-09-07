@@ -11,6 +11,7 @@ This change log only highlights important changes.
 ### **1.5.10 (unreleased)**
 
 - ➕ Active tab no longer resets on page reload.
+- 🛠️ Fix bug where the whole page re-renders when the user scrolls.
 - ⚙️ Replaced inline styles with top level inline CSS variables.
 - ⚙️ Replaced an unnecessary useRef with a useState.
 - ⚙️ Replaced screen width context with a custom hook to reduce code complexity and re-renders.
