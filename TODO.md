@@ -9,7 +9,7 @@
 - Replace the dialog context with a simpler solution.
 - Lock scroll when dialog box is open instead of closing the dialog on scroll event.
 - Animate dialog box close.
-- Fix App component re-render on scroll (devtools profiler -> hook 16 changed: hook 16 is the dialog box reducer)
+- ~~Fix App component re-render on scroll (devtools profiler -> hook 16 changed: hook 16 is the dialog box reducer)~~ ✅
 - ~~Save current active tab to session storage.~~ ✅
 - ~~Replace inline styles in the preview component with css variables.~~ ✅
 - ~~Replace screen width context with a simpler solution.~~ ✅
