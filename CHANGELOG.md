@@ -8,7 +8,7 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
-### **1.5.10 (unreleased)**
+### **1.5.10 (7 Sep, 2024)**
 
 - ➕ Added a closing animation to dialog box.
 - ➕ Active tab no longer resets on page reload.
