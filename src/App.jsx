@@ -7,6 +7,8 @@ import NavItem from './components/NavItem';
 import FormButton from './components/FormButton';
 
 import styles from './styles/App.module.css';
+import "./styles/globals.css";
+
 import PersonalInformation from './pages/PersonalInformation';
 import Contact from './pages/Contact';
 import sampleInfo from './data/sampleInfo';
@@ -28,6 +30,7 @@ import { meta } from './data/meta';
 import Preview from './components/Preview';
 import reduceList from './utils/listReducer';
 import reduceDialog from './utils/dialogReducer';
+import useToggleScroll from './hooks/useToggleScroll';
 
 export const DialogContext = createContext(null);
 
@@ -80,6 +83,8 @@ function App({rootClass}) {
     return () => {};
 
   }, [darkMode]);
+
+  useToggleScroll(dialogState.open);
 
   const emptyListText = "Nothing here yet."
 

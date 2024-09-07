@@ -3,12 +3,15 @@ import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import styles from "../styles/MobileItemControls.module.css";
 import useScreenWidth from "../hooks/useScreenWidth";
+import useToggleScroll from "../hooks/useToggleScroll";
 
 export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp, hidden, firstItem }) {
 
     const screenWidth = useScreenWidth();
     const [open, setOpen] = useState(false);
     const [cursorPosition, setCursorPosition] = useState([0, 0]);
+
+    useToggleScroll(open);
 
     return (
         <>

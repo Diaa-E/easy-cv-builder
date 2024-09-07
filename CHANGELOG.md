@@ -11,6 +11,7 @@ This change log only highlights important changes.
 ### **1.5.10 (unreleased)**
 
 - ➕ Active tab no longer resets on page reload.
+- ➕ Page scroll is now locked when a dialog box or a menu is open.
 - 🛠️ Fix bug where the whole page re-renders when the user scrolls.
 - ⚙️ Replaced inline styles with top level inline CSS variables.
 - ⚙️ Replaced an unnecessary useRef with a useState.
