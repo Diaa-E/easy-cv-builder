@@ -11,7 +11,7 @@ export default function ConfirmDialog({prompt, actionText, danger, onConfirm, on
 
     return (
         <div
-            className={styles["backdrop"]}
+            className={`${styles["backdrop"]} ${mounted ? styles["open"] : styles["close"]}`}
             id="dialog-backdrop"
             onClick={() => unmount(onCancel)}
         >
