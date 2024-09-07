@@ -60,21 +60,6 @@ function App({rootClass}) {
 
   useEffect(() => {
 
-    function handleScroll()
-    {
-      dispatchDialog({type: "close"});
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-
-      window.removeEventListener("scroll", handleScroll);
-    }
-  }, []);
-
-  useEffect(() => {
-
     sessionStorage.setItem("currentTab", JSON.stringify(currentTab));
 
   }, [currentTab]);

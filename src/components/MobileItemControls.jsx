@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import appIcons from "../data/appIconsBarrel";
 import ItemButton from "./ItemButton";
 import styles from "../styles/MobileItemControls.module.css";
@@ -9,22 +9,6 @@ export default function MobileItemControls({ toggleEdit, toggleHide, moveItemUp,
     const screenWidth = useScreenWidth();
     const [open, setOpen] = useState(false);
     const [cursorPosition, setCursorPosition] = useState([0, 0]);
-
-    useEffect(() => {
-
-        function handleScroll()
-        {
-            setOpen(false);
-        }
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-
-            window.removeEventListener("scroll", handleScroll);
-        };
-
-    }, []);
 
     return (
         <>
