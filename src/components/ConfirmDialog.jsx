@@ -1,3 +1,4 @@
+import useUnmountDelay from "../hooks/useUnmountDelay";
 import styles from "../styles/ConfirmDialog.module.css";
 import { highlightText } from "../utils/highlightText";
 import FormButton from "./FormButton";
@@ -5,17 +6,20 @@ import { v4 as generateId } from "uuid";
 
 export default function ConfirmDialog({prompt, actionText, danger, onConfirm, onCancel = () => {}})
 {
+
+    const [mounted, mount, unmount] = useUnmountDelay(300);
+
     return (
         <div
             className={styles["backdrop"]}
             id="dialog-backdrop"
-            onClick={onCancel}
+            onClick={() => unmount(onCancel)}
         >
             <div
                 aria-label="confirm action"
                 aria-describedby="prompt"
                 role="dialog"
-                className={styles["dialog-box"]}
+                className={`${styles["dialog-box"]} ${mounted ? styles["open"] : styles["close"]}`}
                 onClick={e => {
                     e.stopPropagation();
                 }} 
@@ -34,7 +38,7 @@ export default function ConfirmDialog({prompt, actionText, danger, onConfirm, on
                     style="secondary"
                     onClick={e => {
                         e.stopPropagation();
-                        onCancel();
+                        unmount(onCancel);
                     }}
                     text="Cancel"
                     toolTip="Cancel action"/>
@@ -42,7 +46,7 @@ export default function ConfirmDialog({prompt, actionText, danger, onConfirm, on
                     style={danger ? "danger" : "primary"}
                     onClick={e => {
                         e.stopPropagation();
-                        onConfirm();
+                        unmount(onConfirm);
                     }}
                     text={actionText}
                     toolTip="Confirm action"/>

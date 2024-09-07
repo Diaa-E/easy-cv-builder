@@ -1,10 +1,13 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import ConfirmDialog from "../ConfirmDialog";
 
 describe("Confirm dialog component", () => {
 
-    beforeEach(() => cleanup())
+    beforeEach(() => {
+
+        vi.useFakeTimers();
+    });
 
     it("Renders a confirm button using prop value and a cancel button", () => {
 
@@ -26,7 +29,12 @@ describe("Confirm dialog component", () => {
         const onCancel = vi.fn();
         render(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={() => {}}/>);
         const button = screen.getByRole("button", {name: /cancel/i});
-        fireEvent.click(button);
+
+        act(() => {
+
+            fireEvent.click(button);
+            vi.runAllTimers();
+        });
 
         expect(onCancel).toHaveBeenCalledOnce();
     });
@@ -36,7 +44,12 @@ describe("Confirm dialog component", () => {
         const onCancel = vi.fn();
         const {container} = render(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={() => {}}/>);
         const backdrop = container.querySelector("#dialog-backdrop");
-        fireEvent.click(backdrop);
+
+        act(() => {
+            
+            fireEvent.click(backdrop);
+            vi.runAllTimers();
+        });
         
         expect(onCancel).toHaveBeenCalledOnce();
     });
@@ -56,7 +69,12 @@ describe("Confirm dialog component", () => {
         const onConfirm = vi.fn();
         render(<ConfirmDialog prompt={"text"} actionText={"confirm"} onCancel={() => {}} onConfirm={onConfirm}/>);
         const confirmButton = screen.getByRole("button", {name: "confirm"});
-        fireEvent.click(confirmButton);
+
+        act(() => {
+
+            fireEvent.click(confirmButton);
+            vi.runAllTimers();
+        })
 
         expect(onConfirm).toHaveBeenCalledOnce();
     });
@@ -67,7 +85,12 @@ describe("Confirm dialog component", () => {
         const onCancel = vi.fn();
         render(<ConfirmDialog prompt={"text"} actionText={"confirm"} onCancel={onCancel} onConfirm={onConfirm}/>);
         const button = screen.getByRole("button", {name: "confirm"});
-        fireEvent.click(button);
+
+        act(() => {
+
+            fireEvent.click(button);
+            vi.runAllTimers();
+        });
 
         expect(onConfirm).toHaveBeenCalledOnce();
         expect(onCancel).not.toHaveBeenCalled();
