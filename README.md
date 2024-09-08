@@ -1,28 +1,27 @@
 # <img src="./src/assets/images/logo.svg" alt="Easy CV builder logo" width="30px"/> Easy CV Builder
 
-## Contents
+## 📃 Contents
 
 1. [Live Preview](#live-preview)
 1. [Changes](#changes)
 1. [Documentation](#documentation)
 
-## Live Preview
+## 🖥️ Live Preview
 
  [Github Pages Deployment](https://diaa-e.github.io/easy-cv-builder/)
 
-## Changes
+## 🪜 Changes 
 
 [Change log file](./CHANGELOG.md)
 
-## Documentation
-
-### Contents
+## 📖 Documentation
 
 1. [Adding a new page component](#adding-a-new-page-component)
 1. [Utility functions](#utility-functions)
+1. [Hooks](#hooks)
 -------
 
-### Adding a new page component
+### 🧩 Adding a new page component 
 
 1. Add a new unique tab key to the tabs object in ```./src/data/tabs.js``` file.
 1. Each key must have a unique value as it is used to render the correct page in the ```<App/>``` component.
@@ -56,15 +55,15 @@
     ```
 1. Each page component reuses other components which have their own CSS modules, other styles like containers exist in ```./src/styles/App.module.css```.
 1. Any state used in the CV preview must be moved to the ```<App />``` component and passed down to the page component the state and its setter.
-1. **(Optional)** screen width context. Screen width context contains the current viewport width ```window.innerWidth```, it can be used for conditional rendering based on screen width.
+1. **(Optional)** screen width hook. This hook returns a state with the window's current width ```window.innerWidth```, it can be used for conditional rendering based on screen width.
     ```js
-    import ScreenWidthContext from "../App.jsx";
+    import useScreenWidth from "../hooks/useScreenWidth.jsx";
 
     ...
 
     function NewPage({})
     {
-        const screenWidth = useContext(ScreenWidthContext).screenWidth;
+        const screenWidth = useScreenWidth();
     }
     ```
 1. **(Optional)** Dialog context. Dialog context is used to open a confirm action dialog. It contains a dispatch function that accepts an action object with a type key and other options if required. The dialog closes on its own when the user clicks the cancel button, this is the default behaviour, no extra code is needed.
@@ -100,7 +99,7 @@
     ```
 ------
 
-### Utility functions
+### 🛠️ Utility functions 
 
 1. #### toggleHide
     ```js
@@ -284,3 +283,50 @@
     ```
     Tests a JSON string's validity. Returns false if the parsing throws an error, returns the parsed object if the parsing is successful.
 ------
+
+### 🪝 Hooks 
+
+1. #### useScreenWidth
+    ```js
+    import useScreenWidth from "./src/hooks/useScreenWidth.jsx";
+
+    useScreenWidth(): number
+    ```
+
+    Adds a resize event listener to the window and returns a state with the window's current inner width.
+
+1. #### useToggleScroll
+    ```js
+    import useToggleScroll from "./src/hooks/useToggleScroll.jsx";
+
+    useToggleScroll(lock: boolean): undefined;
+    ```
+
+    Takes a boolean lock argument and locks the document's body scroll if it is true and unlocks it if it is false. The lock argument is ideally a reactive state.
+
+1. #### useUnmountDelay
+    ```js
+    import useUnmountDelay from "./src/hooks/useUnmountDelay.jsx";
+
+    useUnmountDelay(unmountDelayMS: number): [mounted: boolean, mount: (mountCallback: () => {}) => {}, unmount: (unmountCallback: () => {}) => {}];
+    ```
+
+    Delays component unmount for a set time to run an unmount animation. Takes a number argument for delay time in millisceonds. Returns an array containing a boolean flag for current mount state, a mount function that takes a callback as an argument and an unmount function that takes a callback as an argument.
+
+    The initial value of the mounted variable is ```true``` since components in this project are unmounted by the parent.
+    The mount function sets the mounted state to true then calls the passed callback. The unmount function sets the mounted state to false and calls the passed callback after the specified time in the delay argument has passed.
+
+    Example:
+    ```js
+    const [mounted, mount, unmount] = useUnmountDelay(500);
+
+    return (
+        <button
+            classname=`${mounted ? "mount-animation" : "unmount-animation"}`
+            onClick={() => unmount(() => {})}
+        >
+            click to unmount
+        </button>
+    )
+    ```
+-------
