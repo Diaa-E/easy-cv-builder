@@ -8,11 +8,11 @@
 
 ## 🖥️ Live Preview
 
- [Github Pages Deployment](https://diaa-e.github.io/easy-cv-builder/)
+ 1. [Github Pages Deployment](https://diaa-e.github.io/easy-cv-builder/)
 
 ## 🪜 Changes 
 
-[Change log file](./CHANGELOG.md)
+1. [Change log file](./CHANGELOG.md)
 
 ## 📖 Documentation
 
