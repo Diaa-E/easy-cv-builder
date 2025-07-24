@@ -8,7 +8,7 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
-### **1.5.11 (unreleased)**
+### **1.5.11 (24 Jul, 2025)**
 
 - ➕ Dialog box no longer locks page scroll.
 - ⚙️ A new confirm dialog instance is created using a custom hook for each component requiring access to the modal it instead of using react context.
