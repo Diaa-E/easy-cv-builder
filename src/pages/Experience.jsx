@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ListItemText from "../components/ListItemText";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
@@ -8,13 +8,13 @@ import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import styles from "../styles/App.module.css";
-import { DialogContext } from "../App";
+import useConfirmDialog from "../hooks/useConfirmDialog";
 
 export default function Experience({experienceItems, dispatchExperience, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
-    const dispatchDialog = useContext(DialogContext);
+    const [confirmDialogState, dispatchConfirmDialog, confirmDialog] = useConfirmDialog();
 
     if (editMode)
     {
@@ -100,7 +100,7 @@ export default function Experience({experienceItems, dispatchExperience, emptyTe
                     style="danger"
                     text="Delete All"
                     onClick={() => {
-                        dispatchDialog({
+                        dispatchConfirmDialog({
                             type: "openDanger",
                             prompt: "Are you sure you want to *premenantly delete all items* in the experience section?",
                             actionText: "Delete All",
@@ -117,39 +117,42 @@ export default function Experience({experienceItems, dispatchExperience, emptyTe
                 />
             </div>
         }
-        <ul className={styles["items-container"]} aria-label="experience list">
-        {
-            experienceItems.map((item, index) => {
-                return <ListItemText
-                            firstItem={index === 0}
-                            title={item.company}
-                            firstLine={item.company}
-                            secondLine={item.position}
-                            hidden={item.hidden}
-                            id={item.id}
-                            key={item.id}
-                            dispatchList={dispatchExperience}
-                            toggleEdit={() => {
-                                setEditMode(true);
-                                setCurrentItem(experienceItems[getItemIndex(experienceItems, item.id)]);
-                            }}
-                        />
-            })
-        }
-        </ul>
-        <AddButton itemType="experience" onclick={() => {
-            setCurrentItem({
-                id: generateId(),
-                company: "",
-                location: "",
-                position: "",
-                start: "",
-                end: "",
-                details: "",
-                hidden: false,
-            });
-            setEditMode(true);
-        }}/>
+            <ul className={styles["items-container"]} aria-label="experience list">
+            {
+                experienceItems.map((item, index) => {
+                    return <ListItemText
+                                firstItem={index === 0}
+                                title={item.company}
+                                firstLine={item.company}
+                                secondLine={item.position}
+                                hidden={item.hidden}
+                                id={item.id}
+                                key={item.id}
+                                dispatchList={dispatchExperience}
+                                toggleEdit={() => {
+                                    setEditMode(true);
+                                    setCurrentItem(experienceItems[getItemIndex(experienceItems, item.id)]);
+                                }}
+                            />
+                })
+            }
+            </ul>
+            <AddButton itemType="experience" onclick={() => {
+                setCurrentItem({
+                    id: generateId(),
+                    company: "",
+                    location: "",
+                    position: "",
+                    start: "",
+                    end: "",
+                    details: "",
+                    hidden: false,
+                });
+                setEditMode(true);
+            }}/>
+            {
+                confirmDialogState.open && confirmDialog
+            }
         </div>
     )
 }

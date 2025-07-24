@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ListItemLevel from "../components/ListItemLevel";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
@@ -6,18 +6,16 @@ import FormButton from "../components/FormButton";
 import RangeInput from "../components/RangeInput";
 import { v4  as generateId} from "uuid";
 import { getItemIndex } from "../utils/utility";
-import appIcons from "../data/appIconsBarrel";
-import ToggleAllButton from "../components/ToggleAllButton";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import { languageLevels } from "../data/textLevelTemplates";
 import styles from "../styles/App.module.css";
-import { DialogContext } from "../App";
+import useConfirmDialog from "../hooks/useConfirmDialog";
 
 export default function Languages({languagesItems, dispatchLanguages, emptyText, levelMode})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
-    const dispatchDialog = useContext(DialogContext);
+    const [confirmDialogState, dispatchConfirmDialog, confirmDialog] = useConfirmDialog();
 
     if (editMode)
     {
@@ -74,7 +72,7 @@ export default function Languages({languagesItems, dispatchLanguages, emptyText,
                     style="danger"
                     text="Delete All"
                     onClick={() => {
-                        dispatchDialog({
+                        dispatchConfirmDialog({
                             type: "openDanger",
                             prompt: "Are you sure you want to *premenantly delete all items* in the languages section?",
                             actionText: "Delete All",
@@ -91,35 +89,38 @@ export default function Languages({languagesItems, dispatchLanguages, emptyText,
                 />
             </div>
         }
-        <ul className={styles["items-container"]} aria-label="languages list">
-        {
-            languagesItems.map((item, index) => {
-            return <ListItemLevel
-                        firstItem={index === 0}
-                        textLevels={languageLevels}
-                        levelMode={levelMode}
-                        itemData={item}
-                        id={item.id}
-                        key={item.id}
-                        dispatchList={dispatchLanguages}
-                        toggleEdit={() => {
-                            setEditMode(true);
-                            setCurrentItem(languagesItems[getItemIndex(languagesItems, item.id)]);
-                        }}
-                    />
-            }) 
-        }
-        </ul>
-        <AddButton itemType="language" onclick={() => {
-            setCurrentItem({
-                id: generateId(),
-                name: "",
-                level: 60,
-                hidden: false,
-                showLevel: true,
-            });
-            setEditMode(true);
-        }}/>
+            <ul className={styles["items-container"]} aria-label="languages list">
+            {
+                languagesItems.map((item, index) => {
+                return <ListItemLevel
+                            firstItem={index === 0}
+                            textLevels={languageLevels}
+                            levelMode={levelMode}
+                            itemData={item}
+                            id={item.id}
+                            key={item.id}
+                            dispatchList={dispatchLanguages}
+                            toggleEdit={() => {
+                                setEditMode(true);
+                                setCurrentItem(languagesItems[getItemIndex(languagesItems, item.id)]);
+                            }}
+                        />
+                }) 
+            }
+            </ul>
+            <AddButton itemType="language" onclick={() => {
+                setCurrentItem({
+                    id: generateId(),
+                    name: "",
+                    level: 60,
+                    hidden: false,
+                    showLevel: true,
+                });
+                setEditMode(true);
+            }}/>
+            {
+                confirmDialogState.open && confirmDialog
+            }
         </div>
     )
 }

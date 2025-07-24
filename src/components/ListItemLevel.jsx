@@ -5,14 +5,12 @@ import ItemButton from "./ItemButton";
 import ItemControls from "./ItemControls";
 import ProgressBar from "./ProgressBar";
 import LevelText from "./LevelText";
-
-import { DialogContext } from "../App";
-import { useContext } from "react";
+import useConfirmDialog from "../hooks/useConfirmDialog";
 
 //All metered values range from 0 to 100 with increments of 20
 export default function ListItemLevel({itemData, levelMode, id, textLevels, dispatchList, toggleEdit, firstItem})
 {
-    const dispatchDialog = useContext(DialogContext);
+    const [confirmDialogState, dispatchConfirmDialog, confirmDialog] = useConfirmDialog();
 
     return (
         <li
@@ -21,7 +19,7 @@ export default function ListItemLevel({itemData, levelMode, id, textLevels, disp
         >
             <ItemButton
                 onClick={() => {
-                    dispatchDialog({
+                    dispatchConfirmDialog({
                         type: "openDanger",
                         prompt: `Are you sure you want to *premenantly delete* ${itemData.name}?`,
                         actionText: "Delete",
@@ -56,6 +54,9 @@ export default function ListItemLevel({itemData, levelMode, id, textLevels, disp
                 firstItem={firstItem}
                 itemTitle={itemData.name}
             />
+            {
+                confirmDialogState.open && confirmDialog
+            }
         </li>
     )
 }

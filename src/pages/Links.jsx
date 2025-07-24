@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import LinkItem from "../components/LinkItem";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
@@ -9,13 +9,13 @@ import { v4 as generateId } from "uuid";
 import { getItemIndex } from "../utils/utility";
 import { isEmptySection } from "../utils/emptySectionDetector";
 import styles from "../styles/App.module.css";
-import { DialogContext } from "../App";
+import useConfirmDialog from "../hooks/useConfirmDialog";
 
 export default function Links({linksItems, dispatchLinks, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
-    const dispatchDialog = useContext(DialogContext);
+    const [confirmDialogState, dispatchConfirmDialog, confirmDialog] = useConfirmDialog();
 
     if (editMode)
     {
@@ -71,7 +71,7 @@ export default function Links({linksItems, dispatchLinks, emptyText})
                     style="danger"
                     text="Delete All"
                     onClick={() => {
-                        dispatchDialog({
+                        dispatchConfirmDialog({
                             type: "openDanger",
                             prompt: "Are you sure you want to *premenantly delete all items* in the links section?",
                             actionText: "Delete All",
@@ -88,35 +88,38 @@ export default function Links({linksItems, dispatchLinks, emptyText})
                 />
             </div>
         }
-        <ul className={styles["items-container"]} aria-label="links list">
-        {
-            linksItems.map((item, index) => {
-                return <LinkItem
-                            firsItem={index === 0}
-                            website={item.icon}
-                            iconPath={linkIcons.find(icon => item.icon === icon.name).icon}
-                            text={item.url}
-                            hidden={item.hidden}
-                            id={item.id}
-                            key={item.id}
-                            dispatchList={dispatchLinks}
-                            toggleEdit={() => {
-                                setEditMode(true);
-                                setCurrentItem(linksItems[getItemIndex(linksItems, item.id)]);
-                            }}
-                        />
-            })
-        }       
-        </ul>
-        <AddButton itemType="link" onclick={() => {
-            setCurrentItem({
-                id: generateId(),
-                url: "",
-                icon: linkIcons.find(item => item.name === "other").name,
-                hidden: false,
-            });
-            setEditMode(true);
-        }}/>
+            <ul className={styles["items-container"]} aria-label="links list">
+            {
+                linksItems.map((item, index) => {
+                    return <LinkItem
+                                firsItem={index === 0}
+                                website={item.icon}
+                                iconPath={linkIcons.find(icon => item.icon === icon.name).icon}
+                                text={item.url}
+                                hidden={item.hidden}
+                                id={item.id}
+                                key={item.id}
+                                dispatchList={dispatchLinks}
+                                toggleEdit={() => {
+                                    setEditMode(true);
+                                    setCurrentItem(linksItems[getItemIndex(linksItems, item.id)]);
+                                }}
+                            />
+                })
+            }       
+            </ul>
+            <AddButton itemType="link" onclick={() => {
+                setCurrentItem({
+                    id: generateId(),
+                    url: "",
+                    icon: linkIcons.find(item => item.name === "other").name,
+                    hidden: false,
+                });
+                setEditMode(true);
+            }}/>
+            {
+                confirmDialogState.open && confirmDialog
+            }
         </div>
     )
 }

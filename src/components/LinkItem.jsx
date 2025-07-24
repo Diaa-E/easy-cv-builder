@@ -3,13 +3,11 @@ import appIcons from "../data/appIconsBarrel";
 
 import ItemButton from "./ItemButton";
 import ItemControls from "./ItemControls";
-
-import { DialogContext } from "../App";
-import { useContext } from "react";
+import useConfirmDialog from "../hooks/useConfirmDialog";
 
 export default function LinkItem({website, iconPath, text, hidden = false, id, dispatchList, toggleEdit, firsItem})
 {
-    const dispatchDialog = useContext(DialogContext);
+    const [confirmDialogState, dispatchConfirmDialog, confirmDialog] = useConfirmDialog();
 
     return (
         <li
@@ -18,7 +16,7 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, d
         >
             <ItemButton
                 onClick={() => {
-                    dispatchDialog({
+                    dispatchConfirmDialog({
                         type: "openDanger",
                         prompt: `Are you sure you want to *premenantly delete* ${text}?`,
                         actionText: "Delete",
@@ -41,6 +39,9 @@ export default function LinkItem({website, iconPath, text, hidden = false, id, d
                 firstItem={firsItem}
                 itemTitle={website}
             />
+            {
+                confirmDialogState.open && confirmDialog
+            }
         </li>
     )
 }

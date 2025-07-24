@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ListItemText from "../components/ListItemText";
 import AddButton from "../components/AddButton";
 import TextInput from "../components/TextInput";
@@ -7,13 +7,13 @@ import { getItemIndex } from "../utils/utility";
 import { v4 as generateId } from 'uuid';
 import { isEmptySection } from "../utils/emptySectionDetector";
 import styles from "../styles/App.module.css";
-import { DialogContext } from "../App";
+import useConfirmDialog from "../hooks/useConfirmDialog";
 
 export default function Education({educationItems, dispatchEducation, emptyText})
 {
     const [editMode, setEditMode] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
-    const dispatchDialog = useContext(DialogContext);
+    const [confirmDialogState, dispatchConfirmDialog, confirmDialog] = useConfirmDialog();
 
     if (editMode)
     {
@@ -92,7 +92,7 @@ export default function Education({educationItems, dispatchEducation, emptyText}
                     style="danger"
                     text="Delete All"
                     onClick={() => {
-                        dispatchDialog({
+                        dispatchConfirmDialog({
                             type: "openDanger",
                             prompt: "Are you sure you want to *premenantly delete all items* in the education section?",
                             actionText: "Delete All",
@@ -142,6 +142,9 @@ export default function Education({educationItems, dispatchEducation, emptyText}
                 });
                 setEditMode(true);
             }}/>
+        }
+        {
+            confirmDialogState.open && confirmDialog
         }
         </div>
     )

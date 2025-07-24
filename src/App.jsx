@@ -24,13 +24,13 @@ import About from './pages/About';
 
 import { testDraftValidity, tryParseJSON } from './utils/draftValidation';
 import DarkModeButton from './components/DarkModeButton';
-import ConfirmDialog from './components/ConfirmDialog';
 import { fixDraft } from './utils/fixDraft';
 import { meta } from './data/meta';
 import Preview from './components/Preview';
 import reduceList from './utils/listReducer';
 import reduceDialog from './utils/dialogReducer';
 import useToggleScroll from './hooks/useToggleScroll';
+import useConfirmDialog from './hooks/useConfirmDialog';
 
 export const DialogContext = createContext(null);
 
@@ -51,15 +51,7 @@ function App({rootClass}) {
   const [order, setOrder] = useState(getSessionItem("data", sampleInfo).order);
   const [levelMode, setLevelMOde] = useState(getSessionItem("data", sampleInfo).levelMode);
   const [draftStatus, setDraftStatus] = useState({code: 4, errorLog: []}); //code key is used to determine error panel text and color in Save component
-  const [dialogState, dispatchDialog] = useReducer(reduceDialog, null, () => {
-    return {
-      open: false,
-      actionText: "",
-      prompt: "",
-      danger: false,
-      onConfirm: () => {},
-    }
-  });
+  const [confirmDialogState, dispatchConfirmDialog, confirmDialog] = useConfirmDialog();
 
   useEffect(() => {
 
@@ -84,7 +76,7 @@ function App({rootClass}) {
 
   }, [darkMode]);
 
-  useToggleScroll(dialogState.open);
+  useToggleScroll(confirmDialogState.open);
 
   const emptyListText = "Nothing here yet."
 
@@ -130,7 +122,7 @@ function App({rootClass}) {
     if (errorLog.length > 0)
     {
       setDraftStatus({code: 2, errorLog: errorLog});
-      dispatchDialog({
+      dispatchConfirmDialog({
         type: "openDefault",
         prompt: `The *${errorLog.join(", ")}* section${errorLog.length > 1 ? "s" : ""} 
         of the draft ${errorLog.length > 1 ? "are" : "is"} *invalid*, do you want to 
@@ -288,94 +280,89 @@ function App({rootClass}) {
       </nav>
       <div className={styles["editor"]}>
         <h1 className={styles['editor-title']}>{currentTab}</h1>
-        <DialogContext.Provider value={dispatchDialog}>
-          {
-            currentTab === tabs.personalInfo &&
-            <PersonalInformation
-              personalInfo={personalInfo}
-              setPersonalInfo={setPersonalInfo}
-            />
-          }
-          {
-            currentTab === tabs.contact &&
-            <Contact
-              contact={contact}
-              setContact={setContact}
-            />
-          }
-          {
-            currentTab === tabs.education &&
-            <Education
-              educationItems={education}
-              dispatchEducation = {dispatchEducation}
-              setDialogState={dispatchDialog}
-              emptyText={emptyListText}
-            />
-          }
-          {
-            currentTab === tabs.experience &&
-            <Experience
-              experienceItems={experience}
-              dispatchExperience={dispatchExperience}
-              setDialogState={dispatchDialog}
-              emptyText={emptyListText}
-            />
-          }
-          {
-            currentTab === tabs.links &&
-            <Links
-              linksItems={links}
-              dispatchLinks={dispatchLinks}
-              emptyText={emptyListText}
-            />
-          }
-          {
-            currentTab === tabs.skills &&
-            <Skills
-              levelMode={levelMode}
-              skillsItems={skills}
-              dispatchSkills={dispatchSkills}
-              emptyText={emptyListText}
-            />
-          }
-          {
-            currentTab === tabs.languages &&
-            <Languages
-              levelMode={levelMode}
-              languagesItems={languages}
-              dispatchLanguages={dispatchLanguages}
-              setDialogState={dispatchDialog}
-              emptyText={emptyListText}
-            />
-          }
-          {
-            currentTab === tabs.settings &&
-            <Settings
-              color={accentColor}
-              updateColor={(e) => setAccentColor(e.target.value)}
-              font={font}
-              updateFont={(e) => setFont(e.target.value)}
-              layout={layout}
-              updateLayout={(e) => setLayout(e.target.value)}
-              order={order}
-              setOrder={(e) => setOrder(e.target.value)}
-              levelMode={levelMode}
-              setLevelMode={(e) => setLevelMOde(e.target.value)}
-            />
-          }
-          {
-            currentTab === tabs.save &&
-            <Save
-              download={downloadDraft}
-              upload={uploadDraft}
-              status={draftStatus}
-            />
-          }
-          {
-            currentTab === tabs.about &&
-            <About />
-          }
-        </DialogContext.Provider>
+        {
+          currentTab === tabs.personalInfo &&
+          <PersonalInformation
+            personalInfo={personalInfo}
+            setPersonalInfo={setPersonalInfo}
+          />
+        }
+        {
+          currentTab === tabs.contact &&
+          <Contact
+            contact={contact}
+            setContact={setContact}
+          />
+        }
+        {
+          currentTab === tabs.education &&
+          <Education
+            educationItems={education}
+            dispatchEducation = {dispatchEducation}
+            emptyText={emptyListText}
+          />
+        }
+        {
+          currentTab === tabs.experience &&
+          <Experience
+            experienceItems={experience}
+            dispatchExperience={dispatchExperience}
+            emptyText={emptyListText}
+          />
+        }
+        {
+          currentTab === tabs.links &&
+          <Links
+            linksItems={links}
+            dispatchLinks={dispatchLinks}
+            emptyText={emptyListText}
+          />
+        }
+        {
+          currentTab === tabs.skills &&
+          <Skills
+            levelMode={levelMode}
+            skillsItems={skills}
+            dispatchSkills={dispatchSkills}
+            emptyText={emptyListText}
+          />
+        }
+        {
+          currentTab === tabs.languages &&
+          <Languages
+            levelMode={levelMode}
+            languagesItems={languages}
+            dispatchLanguages={dispatchLanguages}
+            emptyText={emptyListText}
+          />
+        }
+        {
+          currentTab === tabs.settings &&
+          <Settings
+            color={accentColor}
+            updateColor={(e) => setAccentColor(e.target.value)}
+            font={font}
+            updateFont={(e) => setFont(e.target.value)}
+            layout={layout}
+            updateLayout={(e) => setLayout(e.target.value)}
+            order={order}
+            setOrder={(e) => setOrder(e.target.value)}
+            levelMode={levelMode}
+            setLevelMode={(e) => setLevelMOde(e.target.value)}
+          />
+        }
+        {
+          currentTab === tabs.save &&
+          <Save
+            download={downloadDraft}
+            upload={uploadDraft}
+            status={draftStatus}
+          />
+        }
+        {
+          currentTab === tabs.about &&
+          <About />
+        }
       </div>
 
       <div id='mainControls' className={styles['main-controls']}>
@@ -384,11 +371,11 @@ function App({rootClass}) {
           text='Clear'
           style='danger'
           onClick={() => {
-            dispatchDialog({
+            dispatchConfirmDialog({
               type: "openDanger",
               prompt: "Are you sure you want to *clear all data* in this draft? *This action is irreversible.*",
               actionText: "Clear all",
-              onConfirm: clearAll
+              onConfirm: clearAll,
             })
           }}
         />
@@ -397,7 +384,7 @@ function App({rootClass}) {
           text='Reset'
           style='secondary'
           onClick={() => {
-            dispatchDialog({
+            dispatchConfirmDialog({
               type: "openDanger",
               prompt: "Are you sure you want to *reset all data* to default values? *This action is irreversible.*",
               actionText: "Reset all",
@@ -417,17 +404,7 @@ function App({rootClass}) {
         layout={layout}
       />
       {
-        dialogState.open &&
-        <ConfirmDialog
-          actionText={dialogState.actionText}
-          danger={dialogState.danger}
-          onConfirm={() => {
-            dialogState.onConfirm();
-            dispatchDialog({type: "close"});
-          }}
-          prompt={dialogState.prompt}
-          onCancel={() => dispatchDialog({type: "close"})}
-        />
+        confirmDialogState.open && confirmDialog
       }
     </div>
   )
