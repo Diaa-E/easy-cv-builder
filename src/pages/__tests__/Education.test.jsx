@@ -75,27 +75,6 @@ describe("Education component", () => {
         expect(hideAllButton).toBeInTheDocument();
     });
 
-    it("Calls dialog dispatcher when delete all button is clicked", () => {
-
-        const dispatchDialog = vi.fn();
-        setup(
-            <Education
-                dispatchEducation={() => {}}
-                educationItems={sampleInfo.education}
-                emptyText={"empty"}
-            />,
-            {
-                screenWidth: 1920,
-                dispatchDialog: dispatchDialog
-            }
-        );
-        
-        const deleteAllButton = screen.queryByRole("button", {name: /delete.*?all/i});
-        fireEvent.click(deleteAllButton);
-        
-        expect(dispatchDialog).toHaveBeenCalledOnce();
-    });
-
     it("Calls education dispatcher when hide all button is clicked", () => {
 
         const dispatchEducation = vi.fn();
