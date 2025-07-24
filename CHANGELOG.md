@@ -8,6 +8,10 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
+### **1.5.11 (unreleased)**
+
+- ⚙️ confirm dialog component is now a direct child of the document's body.
+
 ### **1.5.10 (7 Sep, 2024)**
 
 - ➕ Added a closing animation to dialog box.

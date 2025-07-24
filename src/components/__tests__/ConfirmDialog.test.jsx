@@ -42,8 +42,8 @@ describe("Confirm dialog component", () => {
     it("Calls onCancel function once when the backdrop is clicked", () => {
 
         const onCancel = vi.fn();
-        const {container} = render(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={() => {}}/>);
-        const backdrop = container.querySelector("#dialog-backdrop");
+        render(<ConfirmDialog prompt={"text"} onCancel={onCancel} onConfirm={() => {}}/>);
+        const backdrop = document.body.querySelector("#dialog-backdrop");
 
         act(() => {
             
