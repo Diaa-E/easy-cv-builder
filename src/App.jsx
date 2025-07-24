@@ -28,8 +28,6 @@ import { fixDraft } from './utils/fixDraft';
 import { meta } from './data/meta';
 import Preview from './components/Preview';
 import reduceList from './utils/listReducer';
-import reduceDialog from './utils/dialogReducer';
-import useToggleScroll from './hooks/useToggleScroll';
 import useConfirmDialog from './hooks/useConfirmDialog';
 
 export const DialogContext = createContext(null);
@@ -75,8 +73,6 @@ function App({rootClass}) {
     return () => {};
 
   }, [darkMode]);
-
-  useToggleScroll(confirmDialogState.open);
 
   const emptyListText = "Nothing here yet."
 
