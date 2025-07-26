@@ -329,4 +329,38 @@
         </button>
     )
     ```
+
+1. #### useConfirmDialog
+
+    ```js
+    import useConfirmDialog from "./src/hooks/useConfirmDialog.jsx";
+
+    useConfirmDialog(): [dialogState: { open: boolean, actionText: string, prompt: string, danger: boolean, onConfirm: () => {},}, dispatchDialog: ({type: "openDefault" | "openDanger" | "close", actionText: string, prompt: string, onConfirm: () => {}}) => {}, confirmDialog: JSX]
+    ```
+
+    Creates a modal component instance of the ```confirmDialog``` component.
+
+    The JSX is to be conditionally mounted based on ```dialogState.open``` flag inside the component using the hook.
+
+    The confirm dialog component is always moutned to the document's body using a portal.
+
+    Example:
+    
+    ```js
+    const [dialogState, dispatchDialog, confirmDialog] = useConfirmDialg();
+
+    function openDialog()
+    {
+        dispatchDialog({
+            type: "openDanger",
+            actionText: "Delete All",
+            prompt: "Are you sure you want to delete all items?",
+            onConfirm: () => {}
+        });
+    }
+
+    return {
+        dialogState.open && confirmDialog
+    }
+    ```
 -------
