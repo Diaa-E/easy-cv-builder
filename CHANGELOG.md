@@ -8,6 +8,10 @@ This change log only highlights important changes.
 - 🛠️ : Fix
 - ⚙️ : Code change with no impact on the user experience.
 
+### **1.5.12 (unreleased)**
+
+- ➕ Cancel button is focused when a dialog box is opened
+
 ### **1.5.11 (24 Jul, 2025)**
 
 - ➕ Dialog box no longer locks page scroll.

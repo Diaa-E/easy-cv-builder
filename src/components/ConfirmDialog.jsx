@@ -4,11 +4,19 @@ import styles from "../styles/ConfirmDialog.module.css";
 import { highlightText } from "../utils/highlightText";
 import FormButton from "./FormButton";
 import { v4 as generateId } from "uuid";
+import { useEffect, useRef } from "react";
 
 export default function ConfirmDialog({prompt, actionText, danger, onConfirm, onCancel = () => {}})
 {
 
     const [mounted, mount, unmount] = useUnmountDelay(300);
+    const cancelButtonRef = useRef(null);
+
+    useEffect(() => {
+
+        cancelButtonRef.current.focus();
+
+    }, []);
 
     return <>
         {
@@ -44,7 +52,9 @@ export default function ConfirmDialog({prompt, actionText, danger, onConfirm, on
                                 unmount(onCancel);
                             }}
                             text="Cancel"
-                            toolTip="Cancel action"/>
+                            toolTip="Cancel action"
+                            ref= {cancelButtonRef}  
+                        />
                         <FormButton
                             style={danger ? "danger" : "primary"}
                             onClick={e => {
