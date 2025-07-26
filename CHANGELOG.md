@@ -10,7 +10,7 @@ This change log only highlights important changes.
 
 ### **1.5.12 (unreleased)**
 
-- ➕ Cancel button is focused when a dialog box is opened
+- ➕ Cancel button is focused when a dialog box is opened.
 
 ### **1.5.11 (24 Jul, 2025)**
 

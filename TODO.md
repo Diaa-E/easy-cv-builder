@@ -6,8 +6,8 @@
 - Animate view transition.
 - Add a bubble layout template.
 - Write tests for the rest of the page components.
-- Set focus to first button when dialog opens.
 - Remove context from unit tests.
+- ~~Set focus to first button when dialog opens.~~
 - ~~Replace the dialog context with a simpler solution.~~ ✅
 - ~~Animate dialog box close.~~ ✅
 - ~~Lock scroll when dialog box is open instead of closing the dialog on scroll event.~~ ✅
